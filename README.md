@@ -9,3 +9,4 @@
 ---
 ###### This application was developed by students of Computer Science at Universidade Federal de Juiz de Fora
 ###### Lucas Marins Ramalho de Lima, Maria Cecília Romão Santos, Maria Luísa Riolino Guimarães, Nicolas Soares Martins
+###### tags: `graphs` `Graph Theory` `C++` `ADT` `UFJF`
