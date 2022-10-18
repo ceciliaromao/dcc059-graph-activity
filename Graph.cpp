@@ -154,16 +154,16 @@ Graph *Graph::getComplement(){
     complement->last_node = this->last_node;
     
     Node * next_node = this->first_node;
-    Node* checker = this->first_node->getNextNode();
+    Node* checker = next_node->getNextNode();
 
-    while (next_node !=nullptr && checker != nullptr)
+    while (complement->number_edges<missing_edges)
     {
         if(next_node->hasEdgeBetween(checker->getId()) == false){
             complement->insertEdge(next_node->getId(), checker->getId(), 1);
+            complement->number_edges++;
         }
         next_node = next_node->getNextNode();
         checker = checker->getNextNode();
-        complement->number_edges++;
     }
     return complement;
 }
