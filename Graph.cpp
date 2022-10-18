@@ -145,7 +145,7 @@ Graph* Graph::getSubjacent(){
 
     if (this->directed == false)
     {
-       return;
+       return nullptr;
     }
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
@@ -153,8 +153,6 @@ Graph* Graph::getSubjacent(){
     subjacent->first_node = this->first_node;
 
     Node * next_node = subjacent->first_node;
-
-    int aux_degree = 0;
 
     while(next_node != nullptr){
 
