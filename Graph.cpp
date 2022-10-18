@@ -163,6 +163,8 @@ Graph* Graph::getSubjacent(){
         next_node = next_node->getNextNode();
     }
 
+    subjacent->directed = false;
+    
     return subjacent;
 }
 
