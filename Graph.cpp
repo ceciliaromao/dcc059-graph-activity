@@ -133,18 +133,39 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 Graph *Graph::getComplement(){
 
+    if (this->first_node == nullptr)
+    {
+        return nullptr;
+    }
+    
     //checking if the graph is completed
     int check_edges = (this->order*(this->order-1))/2;
 
     if(check_edges == this->number_edges){
         cout<< "The graph is completed" << endl;
-        return;
+        return nullptr;
     }
 
     int missing_edges = check_edges - this->number_edges;
 
     Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
+    complement->first_node = this->first_node;
+    complement->last_node = this->last_node;
+    
+    Node * next_node = this->first_node;
+    Node* checker = this->first_node->getNextNode();
+
+    while (next_node !=nullptr && checker != nullptr)
+    {
+        if(next_node->hasEdgeBetween(checker->getId()) == false){
+            complement->insertEdge(next_node->getId(), checker->getId(), 1);
+        }
+        next_node = next_node->getNextNode();
+        checker = checker->getNextNode();
+        complement->number_edges++;
+    }
+    return complement;
 }
 
     
