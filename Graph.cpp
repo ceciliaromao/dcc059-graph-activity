@@ -115,7 +115,15 @@ bool Graph::searchNode(int id)
 
 Node *Graph::getNode(int id)
 {
+    if (this->first_node != nullptr)
+    {
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            if (aux->getId() == id) return aux;
+        }
+    }
 
+    return nullptr;
     
 }
 
