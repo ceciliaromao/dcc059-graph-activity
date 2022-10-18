@@ -132,7 +132,19 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 
 Graph *Graph::getComplement(){
-    
+
+    //checking if the graph is completed
+    int check_edges = (this->order*(this->order-1))/2;
+
+    if(check_edges == this->number_edges){
+        cout<< "The graph is completed" << endl;
+        return;
+    }
+
+    int missing_edges = check_edges - this->number_edges;
+
+    Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
 }
 
     
