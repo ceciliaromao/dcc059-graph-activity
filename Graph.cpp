@@ -150,6 +150,8 @@ Graph* Graph::getSubjacent(){
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
+    subjacent->first_node = this->first_node;
+
     Node * next_node = subjacent->first_node;
 
     int aux_degree = 0;
