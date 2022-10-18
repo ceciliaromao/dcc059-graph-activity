@@ -110,7 +110,15 @@ void Graph::removeNode(int id){
 
 bool Graph::searchNode(int id)
 {
-    
+    if (this->first_node != nullptr)
+    {
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            if (aux->getId() == id) return true;
+        }
+    }
+
+    return false;
 }
 
 Node *Graph::getNode(int id)
