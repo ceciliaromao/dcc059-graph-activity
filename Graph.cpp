@@ -117,7 +117,7 @@ void Graph::insertNode(int id)
                 next = next->getNextNode();
             }
 
-            aux->setNextNode(new Node(id)) */;
+            aux->setNextNode(node) */;
         }      
     }
 }
