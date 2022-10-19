@@ -1,0 +1,8 @@
+/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles/tdg.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles/test.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles/edit_cache.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles/rebuild_cache.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/tests/CMakeFiles/DPStest.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/tests/CMakeFiles/test.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/tests/CMakeFiles/edit_cache.dir
+/home/lucas/Documentos/teoria-dos-grafos/build/tests/CMakeFiles/rebuild_cache.dir

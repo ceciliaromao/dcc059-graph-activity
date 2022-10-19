@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtdg.a CMakeFiles/tdg.dir/Edge.cpp.o CMakeFiles/tdg.dir/Graph.cpp.o CMakeFiles/tdg.dir/Node.cpp.o CMakeFiles/tdg.dir/main.cpp.o
+/usr/bin/ranlib libtdg.a
