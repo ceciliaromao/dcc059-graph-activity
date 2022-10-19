@@ -11,6 +11,7 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <map>
 
 using namespace std;
 
@@ -135,10 +136,32 @@ Node *Graph::getNode(int id)
     
 }
 
-
+//NECESSÁRIO TESTAR!!!!!!!!!!!!!!
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
-    
+    Node* aux = getNode(initialId);
+
+    if(aux == nullptr)
+        return false; 
+    if(initialId == targetId)
+        return true; 
+
+    map<int,bool> verified; 
+    verified[initialId] = true; 
+
+    for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+    {
+        if(!verified[i->getTargetId()])
+        {
+            if(i->getTargetId() == targetId)
+            {
+                return true; 
+            }
+            return depthFirstSearch(i->getTargetId(), targetId);
+        }
+    }
+
+    return false; 
 }
 
 
