@@ -152,6 +152,19 @@ DPStest/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/build
 .PHONY : DPStest/fast
 
+#=============================================================================
+# Target rules for targets named BPStest
+
+# Build rule for target.
+BPStest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BPStest
+.PHONY : BPStest
+
+# fast build rule for target.
+BPStest/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/BPStest.dir/build.make tests/CMakeFiles/BPStest.dir/build
+.PHONY : BPStest/fast
+
 Edge.o: Edge.cpp.o
 .PHONY : Edge.o
 
@@ -257,6 +270,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... BPStest"
 	@echo "... DPStest"
 	@echo "... tdg"
 	@echo "... Edge.o"

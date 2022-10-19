@@ -140,6 +140,44 @@ DPStest/fast:
 	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/build
 .PHONY : DPStest/fast
 
+# Convenience name for target.
+tests/CMakeFiles/BPStest.dir/rule:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/BPStest.dir/rule
+.PHONY : tests/CMakeFiles/BPStest.dir/rule
+
+# Convenience name for target.
+BPStest: tests/CMakeFiles/BPStest.dir/rule
+.PHONY : BPStest
+
+# fast build rule for target.
+BPStest/fast:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/BPStest.dir/build.make tests/CMakeFiles/BPStest.dir/build
+.PHONY : BPStest/fast
+
+BPStest.o: BPStest.cc.o
+.PHONY : BPStest.o
+
+# target to build an object file
+BPStest.cc.o:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/BPStest.dir/build.make tests/CMakeFiles/BPStest.dir/BPStest.cc.o
+.PHONY : BPStest.cc.o
+
+BPStest.i: BPStest.cc.i
+.PHONY : BPStest.i
+
+# target to preprocess a source file
+BPStest.cc.i:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/BPStest.dir/build.make tests/CMakeFiles/BPStest.dir/BPStest.cc.i
+.PHONY : BPStest.cc.i
+
+BPStest.s: BPStest.cc.s
+.PHONY : BPStest.s
+
+# target to generate assembly for a file
+BPStest.cc.s:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/BPStest.dir/build.make tests/CMakeFiles/BPStest.dir/BPStest.cc.s
+.PHONY : BPStest.cc.s
+
 DPStest.o: DPStest.cc.o
 .PHONY : DPStest.o
 
@@ -173,7 +211,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... BPStest"
 	@echo "... DPStest"
+	@echo "... BPStest.o"
+	@echo "... BPStest.i"
+	@echo "... BPStest.s"
 	@echo "... DPStest.o"
 	@echo "... DPStest.i"
 	@echo "... DPStest.s"

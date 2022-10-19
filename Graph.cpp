@@ -164,9 +164,34 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     return false; 
 }
 
-
+//? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
+    int ak = 0; 
+    list<int> queue;
     
+    verified[ak] = true;
+    queue.push_back(ak);
+ 
+    while(!queue.empty())
+    {
+        ak = queue.front();
+        cout << ak << " ";
+        queue.pop_front();
+
+        Node* aux = getNode(ak);
+ 
+        // Get all adjacent vertices of the dequeued
+        // vertex s. If a adjacent has not been visited,
+        // then mark it visited and enqueue it
+        for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+        {
+            if (!verified[i->getTargetId()])
+            {
+                verified[i->getTargetId()] = true;
+                queue.push_back(i->getTargetId());
+            }
+        }
+    }
 }
 
 
