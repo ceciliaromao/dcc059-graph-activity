@@ -196,8 +196,32 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
   /usr/include/c++/10/bits/stl_list.h \
   /usr/include/c++/10/bits/allocated_ptr.h \
   /usr/include/c++/10/ext/aligned_buffer.h \
-  /usr/include/c++/10/bits/list.tcc
+  /usr/include/c++/10/bits/list.tcc \
+  /usr/include/c++/10/map \
+  /usr/include/c++/10/bits/stl_tree.h \
+  /usr/include/c++/10/bits/stl_map.h \
+  /usr/include/c++/10/tuple \
+  /usr/include/c++/10/utility \
+  /usr/include/c++/10/bits/stl_relops.h \
+  /usr/include/c++/10/array \
+  /usr/include/c++/10/bits/invoke.h \
+  /usr/include/c++/10/bits/stl_multimap.h \
+  /usr/include/c++/10/bits/erase_if.h
 
+
+/usr/include/c++/10/bits/erase_if.h:
+
+/usr/include/c++/10/bits/stl_multimap.h:
+
+/usr/include/c++/10/array:
+
+/usr/include/c++/10/bits/stl_relops.h:
+
+/usr/include/c++/10/utility:
+
+/usr/include/c++/10/tuple:
+
+/usr/include/c++/10/bits/stl_tree.h:
 
 /usr/include/c++/10/ext/aligned_buffer.h:
 
@@ -216,6 +240,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 /usr/include/c++/10/bits/istream.tcc:
 
 /usr/include/c++/10/istream:
+
+/usr/include/c++/10/bits/invoke.h:
 
 /usr/include/c++/10/bits/ostream.tcc:
 
@@ -321,11 +347,15 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
+/usr/include/c++/10/bits/stl_map.h:
+
 /usr/include/c++/10/deque:
 
 /usr/include/features.h:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
+
+/usr/include/c++/10/map:
 
 /usr/include/c++/10/bits/predefined_ops.h:
 

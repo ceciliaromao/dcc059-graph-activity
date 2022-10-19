@@ -374,6 +374,16 @@ CMakeFiles/tdg.dir/Graph.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/Graph.c
   /usr/include/c++/10/bits/allocated_ptr.h \
   /usr/include/c++/10/ext/aligned_buffer.h \
   /usr/include/c++/10/bits/list.tcc \
+  /usr/include/c++/10/map \
+  /usr/include/c++/10/bits/stl_tree.h \
+  /usr/include/c++/10/bits/stl_map.h \
+  /usr/include/c++/10/tuple \
+  /usr/include/c++/10/utility \
+  /usr/include/c++/10/bits/stl_relops.h \
+  /usr/include/c++/10/array \
+  /usr/include/c++/10/bits/invoke.h \
+  /usr/include/c++/10/bits/stl_multimap.h \
+  /usr/include/c++/10/bits/erase_if.h \
   /usr/include/c++/10/iostream \
   /usr/include/c++/10/queue \
   /usr/include/c++/10/vector \
@@ -405,19 +415,9 @@ CMakeFiles/tdg.dir/Graph.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/Graph.c
   /usr/include/c++/10/bits/locale_facets_nonio.tcc \
   /usr/include/c++/10/bits/locale_conv.h \
   /usr/include/c++/10/bits/unique_ptr.h \
-  /usr/include/c++/10/utility \
-  /usr/include/c++/10/bits/stl_relops.h \
-  /usr/include/c++/10/tuple \
-  /usr/include/c++/10/array \
-  /usr/include/c++/10/bits/invoke.h \
   /usr/include/c++/10/bits/quoted_string.h \
   /usr/include/c++/10/sstream \
-  /usr/include/c++/10/bits/sstream.tcc \
-  /usr/include/c++/10/map \
-  /usr/include/c++/10/bits/stl_tree.h \
-  /usr/include/c++/10/bits/stl_map.h \
-  /usr/include/c++/10/bits/stl_multimap.h \
-  /usr/include/c++/10/bits/erase_if.h
+  /usr/include/c++/10/bits/sstream.tcc
 
 CMakeFiles/tdg.dir/Node.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/Node.cpp \
   /usr/include/stdc-predef.h \
@@ -828,7 +828,12 @@ CMakeFiles/tdg.dir/main.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/main.cpp
   /usr/include/c++/10/bits/stl_list.h \
   /usr/include/c++/10/bits/allocated_ptr.h \
   /usr/include/c++/10/ext/aligned_buffer.h \
-  /usr/include/c++/10/bits/list.tcc
+  /usr/include/c++/10/bits/list.tcc \
+  /usr/include/c++/10/map \
+  /usr/include/c++/10/bits/stl_tree.h \
+  /usr/include/c++/10/bits/stl_map.h \
+  /usr/include/c++/10/bits/stl_multimap.h \
+  /usr/include/c++/10/bits/erase_if.h
 
 
 /usr/include/c++/10/limits:
@@ -838,20 +843,6 @@ CMakeFiles/tdg.dir/main.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/main.cpp
 /home/lucas/Documentos/teoria-dos-grafos/main.cpp:
 
 /home/lucas/Documentos/teoria-dos-grafos/Node.cpp:
-
-/usr/include/c++/10/bits/erase_if.h:
-
-/usr/include/c++/10/bits/stl_multimap.h:
-
-/usr/include/c++/10/bits/stl_tree.h:
-
-/usr/include/c++/10/array:
-
-/usr/include/c++/10/tuple:
-
-/usr/include/c++/10/bits/stl_relops.h:
-
-/usr/include/c++/10/utility:
 
 /usr/include/c++/10/bits/unique_ptr.h:
 
@@ -882,6 +873,20 @@ CMakeFiles/tdg.dir/main.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/main.cpp
 /usr/include/c++/10/bits/stl_vector.h:
 
 /usr/include/c++/10/queue:
+
+/usr/include/c++/10/bits/erase_if.h:
+
+/usr/include/c++/10/bits/stl_multimap.h:
+
+/usr/include/c++/10/array:
+
+/usr/include/c++/10/bits/stl_relops.h:
+
+/usr/include/c++/10/utility:
+
+/usr/include/c++/10/tuple:
+
+/usr/include/c++/10/bits/stl_tree.h:
 
 /usr/include/c++/10/stdlib.h:
 
