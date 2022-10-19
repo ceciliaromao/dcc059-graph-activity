@@ -96,7 +96,31 @@ Node *Graph::getLastNode()
 */
 void Graph::insertNode(int id)
 {
-    
+    Node *next;
+    Node *aux = nullptr;
+
+    if(this->getFirstNode() == nullptr) {
+        this->first_node = new Node(id);
+        this->last_node = this->getFirstNode();
+    } else {
+      if (!this->searchNode(id)) {
+            Node *node = new Node(id);
+            node->setNextNode(nullptr);
+
+            this->last_node->setNextNode(node);
+            this->last_node = node;
+        
+            /* next = this->first_node;
+
+            while (next != nullptr)
+            {
+                aux = next;
+                next = next->getNextNode();
+            }
+
+            aux->setNextNode(node) */;
+        }      
+    }
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
