@@ -140,9 +140,13 @@ Node *Graph::getNode(int id)
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
     Node* aux = getNode(initialId);
+    cout<<"entrou na função"<<endl;
 
     if(aux == nullptr)
+    {
+        cout<<"aux null"<<endl;
         return false; 
+    }
     if(initialId == targetId)
         return true; 
 
@@ -151,13 +155,16 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
 
     for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
     {
+        cout<<"Entrou no loop"<<endl;
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
             {
                 return true; 
             }
-            return depthFirstSearch(i->getTargetId(), targetId);
+
+            if(depthFirstSearch(i->getTargetId(), targetId))
+                return true;
         }
     }
 

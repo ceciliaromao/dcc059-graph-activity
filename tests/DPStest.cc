@@ -19,6 +19,8 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     //Leitura de arquivo
     for(int i = 1; i < 25 ; i++)
     {
+        graph->insertNode(input_file[i]);
+        graph->insertNode(input_file[i+1]);
         graph->insertEdge(input_file[i], input_file[++i], 0);
     }
 
@@ -30,6 +32,8 @@ int main()
     Graph* graph;
 
     graph = leituraInstancia(input_file, 0, 0, 0);
+    cout<< graph->getFirstNode()->getId()<<endl;
+    
     if(graph->depthFirstSearch(0, 4))
         cout<<"Nó encontrado"<<endl;
     else
