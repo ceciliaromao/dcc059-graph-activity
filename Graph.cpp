@@ -171,7 +171,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
         return true; 
     verified[initialId] = true; 
 
-    for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
     {
         //Line for debug
         //cout<<i->getTargetId()<<endl;
