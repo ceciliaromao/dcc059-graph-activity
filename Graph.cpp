@@ -191,29 +191,32 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
 
 //? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
-    int ak = 0; 
     list<int> queue;
-    
+    int ak = this->getFirstNode()->getId();
     verified[ak] = true;
     queue.push_back(ak);
- 
+    
+    Node* aux;
     while(!queue.empty())
     {
         ak = queue.front();
         queue.pop_front();
 
-        Node* aux = getNode(ak);
-        for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+        aux = this->getNode(ak);
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
         {
+            //output_file<<i->getTargetId()<<endl;
+            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
             cout<<i->getTargetId()<<endl;
             if (!verified[i->getTargetId()])
             {
                 verified[i->getTargetId()] = true;
                 queue.push_back(i->getTargetId());
-                
             }
         }
     }
+    //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
+
 }
 
 

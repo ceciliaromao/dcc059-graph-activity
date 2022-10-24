@@ -17,7 +17,7 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
-    for(int i = 1; i < 25 ; i++)
+    for(int i = 1; i < 25 ; i+=2)
     {
         graph->insertNode(input_file[i]);
         graph->insertNode(input_file[i+1]);
@@ -34,7 +34,9 @@ int main()
     Graph* graph;
 
     graph = leituraInstancia(input_file, 0, 0, 0);
-    ofstream a; 
-    graph->breadthFirstSearch(a);
+    ofstream output; 
+    output.open("/home/lucas/Documentos/teoria-dos-grafos/outputBFS.txt");
+    graph->breadthFirstSearch(output);
+    output.close();
 
 }
