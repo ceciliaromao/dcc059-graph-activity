@@ -10,7 +10,7 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     //Variáveis para auxiliar na criação dos nós no Grafo
     int idNodeSource;
     int idNodeTarget;
-    int order = input_file[0];
+    int order = input_file[0] -1;
     int numEdges;
 
     //Criando objeto grafo

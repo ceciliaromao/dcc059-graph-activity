@@ -174,7 +174,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
     {
         //Line for debug
-        //cout<<i->getTargetId()<<endl;
+        cout<<i->getTargetId()<<endl;
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
@@ -200,20 +200,17 @@ void Graph::breadthFirstSearch(ofstream &output_file){
     while(!queue.empty())
     {
         ak = queue.front();
-        cout << ak << " ";
         queue.pop_front();
 
         Node* aux = getNode(ak);
- 
-        // Get all adjacent vertices of the dequeued
-        // vertex s. If a adjacent has not been visited,
-        // then mark it visited and enqueue it
         for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
         {
+            cout<<i->getTargetId()<<endl;
             if (!verified[i->getTargetId()])
             {
                 verified[i->getTargetId()] = true;
                 queue.push_back(i->getTargetId());
+                
             }
         }
     }

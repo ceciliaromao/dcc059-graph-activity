@@ -176,11 +176,6 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
   /usr/include/c++/10/bits/basic_ios.tcc \
   /usr/include/c++/10/bits/ostream.tcc \
   /usr/include/c++/10/istream \
-<<<<<<< HEAD
-  /usr/include/c++/10/bits/istream.tcc
-
-
-=======
   /usr/include/c++/10/bits/istream.tcc \
   /home/lucas/Documentos/teoria-dos-grafos/Graph.h \
   /home/lucas/Documentos/teoria-dos-grafos/Node.h \
@@ -242,16 +237,12 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /home/lucas/Documentos/teoria-dos-grafos/Edge.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/bits/istream.tcc:
 
 /usr/include/c++/10/istream:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/invoke.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/bits/ostream.tcc:
 
 /usr/include/c++/10/bits/basic_ios.tcc:
@@ -264,11 +255,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/c++/10/streambuf:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/stl_deque.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/stdexcept:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/error_constants.h:
@@ -327,11 +315,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/c++/10/new:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/stack:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/system_error:
 
 /usr/include/alloca.h:
@@ -348,51 +333,36 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/c++/10/bits/locale_classes.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/uses_allocator.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
-<<<<<<< HEAD
-=======
 /home/lucas/Documentos/teoria-dos-grafos/Node.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/c++/10/bits/ctype_inline.h:
 
 /usr/include/c++/10/bits/stl_pair.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/stl_map.h:
 
 /usr/include/c++/10/deque:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/features.h:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/c++locale.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/map:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/bits/predefined_ops.h:
 
 /usr/include/c++/10/bits/allocator.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/x86_64-linux-gnu/c++/10/bits/c++io.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/ostream:
 
 /usr/include/c++/10/bits/basic_ios.h:
@@ -413,22 +383,16 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/stdc-predef.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/x86_64-linux-gnu/c++/10/bits/basic_file.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/c++/10/type_traits:
 
 /usr/include/c++/10/bits/stl_construct.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/codecvt.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
@@ -479,11 +443,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/c++/10/bits/functexcept.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/list.tcc:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/c++/10/cwchar:
@@ -522,11 +483,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/stl_stack.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/c++/10/cstdint:
 
 /usr/include/x86_64-linux-gnu/c++/10/bits/c++allocator.h:
@@ -559,11 +517,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/stl_list.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/c++/10/bits/cxxabi_forced.h:
@@ -572,11 +527,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/sched.h:
 
-<<<<<<< HEAD
-=======
 /home/lucas/Documentos/teoria-dos-grafos/Graph.h:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/ctype.h:
 
 /usr/include/c++/10/bits/range_cmp.h:
@@ -641,11 +593,8 @@ tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-gra
 
 /usr/include/c++/10/bits/ostream_insert.h:
 
-<<<<<<< HEAD
-=======
 /usr/include/c++/10/bits/fstream.tcc:
 
->>>>>>> feat-first-search-profundidade]
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/c++/10/backward/binders.h:
