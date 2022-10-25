@@ -22,7 +22,6 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
         graph->insertNode(input_file[i]);
         graph->insertNode(input_file[i+1]);
         graph->insertEdge(input_file[i], input_file[i+1], input_file[i+2]);
-        graph->insertEdge(input_file[i+1], input_file[i], input_file[i+2]);
     }
 
     return graph;
