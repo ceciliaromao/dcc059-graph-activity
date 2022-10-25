@@ -41,6 +41,7 @@ class Graph{
         //Other methods
         void insertNode(int id);
         void insertEdge(int id, int target_id, float weight);
+        void removeEdge(int id, int target_id);
         void removeNode(int id);
         bool searchNode(int id);
         Node* getNode(int id);
