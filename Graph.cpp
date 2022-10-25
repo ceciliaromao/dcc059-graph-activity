@@ -124,8 +124,17 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
+    if(getNode(id) == nullptr)
+    {
+        insertNode(id);
+    }
+    getNode(id)->insertEdge(target_id, weight);
+    this->number_edges++;
+}
 
-    
+void Graph::removeEdge(int id, int target_id)
+{
+    this->number_edges -= getNode(id)->removeEdge(target_id, directed, getNode(target_id));
 }
 
 void Graph::removeNode(int id){ 
