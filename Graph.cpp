@@ -161,7 +161,34 @@ Node *Graph::getNode(int id)
 
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
-    Node* aux = getNode(initialId);
+    if(initialId == targetId) return true;
+    list<Node *> queue; 
+    queue.push_back(this->getNode(initialId));
+
+    Node *aux; 
+    while(!queue.empty())
+    {
+        aux = queue.front();
+        queue.pop_front();
+
+        if(!verified[aux->getId()])
+        {
+            if(aux->getId() == targetId) return true; 
+
+            verified[aux->getId()] = true;
+            for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+            {
+                cout<<i->getTargetId()<<endl;
+
+                if(!verified[i->getTargetId()])
+                    queue.push_back(getNode(i->getTargetId()));
+            }
+        }
+
+    }
+    return false; 
+
+    /* Node* aux = getNode(initialId);
 
     if(aux == nullptr)
     {
@@ -169,24 +196,35 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     }
     if(initialId == targetId)
         return true; 
+    int ak;
+    list<int> queue;
     verified[initialId] = true; 
+    queue.push_back(initialId);
 
-    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+    while(!queue.empty())
     {
-        //Line for debug
-        //cout<<i->getTargetId()<<endl;
-        if(!verified[i->getTargetId()])
-        {
-            if(i->getTargetId() == targetId)
-            {
-                return true; 
-            }
+        ak = queue.front();
+        queue.pop_front();
 
-            return depthFirstSearch(i->getTargetId(), targetId);
+        aux = this->getNode(ak);
+        
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            //Line for debug
+            //cout<<i->getTargetId()<<endl;
+            if(!verified[i->getTargetId()])
+            {
+                if(i->getTargetId() == targetId)
+                {
+                    return true; 
+                }
+
+                return depthFirstSearch(i->getTargetId(), targetId);
+            }
         }
     }
 
-    return false; 
+    return false;  */
 }
 
 
