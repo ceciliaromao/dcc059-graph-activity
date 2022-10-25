@@ -182,7 +182,8 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
                 return true; 
             }
 
-            return depthFirstSearch(i->getTargetId(), targetId);
+            if(depthFirstSearch(i->getTargetId(), targetId))
+                return true;
         }
     }
 
