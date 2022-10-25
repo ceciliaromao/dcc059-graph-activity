@@ -195,6 +195,8 @@ void Graph::breadthFirstSearch(ofstream &output_file){
     int ak = this->getFirstNode()->getId();
     verified[ak] = true;
     queue.push_back(ak);
+
+    verified.clear();
     
     Node* aux;
     while(!queue.empty())
