@@ -3,7 +3,7 @@
 
 using namespace std; 
 
-int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
+int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 4, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
 
 Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int weightedNode){
 
@@ -17,11 +17,13 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
-    for(int i = 1; i < 22 ; i+=3)
+    for(int i = 1; i < 25 ; i+=3)
     {
         graph->insertNode(input_file[i]);
         graph->insertNode(input_file[i+1]);
         graph->insertEdge(input_file[i], input_file[i+1], input_file[i+2]);
+        graph->insertEdge(input_file[i+1], input_file[i], input_file[i+2]);
+
     }
 
     return graph;
@@ -44,8 +46,9 @@ int main()
 {
     Graph* graph;
 
-    graph = leituraInstancia(input_file, 0, 0, 0);
+    graph = leituraInstancia(input_file, 1, 0, 0);
     
+    graph->removeEdge(4, 1);
     cout<<"O programa foi executado "<< graph->getNumberEdges()<<endl;
     printEdges(graph);
 }
