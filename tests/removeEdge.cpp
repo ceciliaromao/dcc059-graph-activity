@@ -23,6 +23,7 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
         graph->insertNode(input_file[i+1]);
         graph->insertEdge(input_file[i], input_file[i+1], input_file[i+2]);
         graph->insertEdge(input_file[i+1], input_file[i], input_file[i+2]);
+
     }
 
     return graph;
@@ -45,9 +46,9 @@ int main()
 {
     Graph* graph;
 
-    graph = leituraInstancia(input_file, 0, 0, 0);
+    graph = leituraInstancia(input_file, 1, 0, 0);
     
-    graph->removeEdge(2, 0);
-    cout<<"O programa foi executado"<<endl;
+    graph->removeEdge(4, 1);
+    cout<<"O programa foi executado "<< graph->getNumberEdges()<<endl;
     printEdges(graph);
 }
