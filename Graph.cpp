@@ -16,7 +16,7 @@ using namespace std;
 
 /**************************************************************************************************
  * Defining the Graph's methods
-**************************************************************************************************/
+ **************************************************************************************************/
 
 // Constructor
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
@@ -98,17 +98,21 @@ void Graph::insertNode(int id)
     Node *next;
     Node *aux = nullptr;
 
-    if(this->getFirstNode() == nullptr) {
+    if (this->getFirstNode() == nullptr)
+    {
         this->first_node = new Node(id);
         this->last_node = this->getFirstNode();
-    } else {
-      if (!this->searchNode(id)) {
+    }
+    else
+    {
+        if (!this->searchNode(id))
+        {
             Node *node = new Node(id);
             node->setNextNode(nullptr);
 
             this->last_node->setNextNode(node);
             this->last_node = node;
-        
+
             /* next = this->first_node;
 
             while (next != nullptr)
@@ -117,19 +121,18 @@ void Graph::insertNode(int id)
                 next = next->getNextNode();
             }
 
-            aux->setNextNode(node) */;
-        }      
+            aux->setNextNode(node) */
+            ;
+        }
     }
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-
-    
 }
 
-void Graph::removeNode(int id){ 
-    
+void Graph::removeNode(int id)
+{
 }
 
 bool Graph::searchNode(int id)
@@ -138,7 +141,8 @@ bool Graph::searchNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return true;
+            if (aux->getId() == id)
+                return true;
         }
     }
 
@@ -151,117 +155,83 @@ Node *Graph::getNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return aux;
+            if (aux->getId() == id)
+                return aux;
         }
     }
 
     return nullptr;
-    
 }
 
-//Function that verifies if there is a path between two nodes
-bool Graph::depthFirstSearch(int initialId, int targetId){
-    if(initialId == targetId) return true;
-    list<Node *> queue; 
-    queue.push_back(this->getNode(initialId));
-
-    Node *aux; 
-    while(!queue.empty())
-    {
-        aux = queue.front();
-        queue.pop_front();
-
-        if(!verified[aux->getId()])
-        {
-            if(aux->getId() == targetId) return true; 
-
-            verified[aux->getId()] = true;
-            for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
-            {
-                cout<<i->getTargetId()<<endl;
-
-                if(!verified[i->getTargetId()])
-                    queue.push_back(getNode(i->getTargetId()));
-            }
-        }
-
-    }
-    return false; 
-
-    /* Node* aux = getNode(initialId);
-
-    if(aux == nullptr)
-    {
+// Function that verifies if there is a path between two nodes
+bool Graph::depthFirstSearch(int initialId, int targetId)
+{
+    if(getNode(initialId) == nullptr)
         return false; 
-    }
-    if(initialId == targetId)
-        return true; 
-    int ak;
-    list<int> queue;
-    verified[initialId] = true; 
-    queue.push_back(initialId);
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
 
-    while(!queue.empty())
+    verified.clear();
+
+    int current;
+    while(!pilha.empty())
     {
-        ak = queue.front();
-        queue.pop_front();
-
-        aux = this->getNode(ak);
-        
-        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
         {
-            //Line for debug
-            //cout<<i->getTargetId()<<endl;
-            if(!verified[i->getTargetId()])
-            {
-                if(i->getTargetId() == targetId)
-                {
-                    return true; 
-                }
+            cout<<current<<endl;
 
-                return depthFirstSearch(i->getTargetId(), targetId);
+            verified[current] = true; 
+            if(current == targetId) return true;
+            
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
+            {
+                if(!verified[i->getTargetId()])
+                {
+                    auxPilha.push(i->getTargetId());
+                }
+            }
+
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
             }
         }
     }
-
-    return false;  */
+    return false;
 }
 
-
-void Graph::breadthFirstSearch(ofstream &output_file){
-    
+void Graph::breadthFirstSearch(ofstream &output_file)
+{
 }
 
-
-Graph *Graph::getComplement(){
-    
+Graph *Graph::getComplement()
+{
 }
 
-    
-
-//A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
-Graph* Graph::getSubjacent(){
-    
+// A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
+Graph *Graph::getSubjacent()
+{
 }
 
-bool Graph::connectedGraph(){
-    
+bool Graph::connectedGraph()
+{
 }
 
-
-
-bool Graph::hasCircuit(){
-    
+bool Graph::hasCircuit()
+{
 }
 
-
-
-float** Graph::floydMarshall(){
-    
+float **Graph::floydMarshall()
+{
 }
 
-   
-
-float* Graph::dijkstra(int id){
-    
+float *Graph::dijkstra(int id)
+{
 }
