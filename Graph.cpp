@@ -125,16 +125,12 @@ void Graph::insertNode(int id)
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-<<<<<<< HEAD
-    
-=======
     if(getNode(id) == nullptr)
     {
         insertNode(id);
     }
     getNode(id)->insertEdge(target_id, weight);
     this->number_edges++;
->>>>>>> feat-graph-insere-aresta]
 }
 
 void Graph::removeEdge(int id, int target_id)
