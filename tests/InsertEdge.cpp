@@ -17,7 +17,7 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
-    for(int i = 1; i < 25 ; i+=2)
+    for(int i = 1; i < 25 ; i+=3)
     {
         graph->insertNode(input_file[i]);
         graph->insertNode(input_file[i+1]);
@@ -28,25 +28,25 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     return graph;
 }
 
+void printEdges(Graph *graph)
+{
+    Node *aux = graph->getFirstNode();
+
+    while(aux != nullptr)
+    {
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            cout<<i->getTargetId()<<endl;
+        }
+        aux = aux->getNextNode();
+    }
+}
 int main()
 {
     Graph* graph;
 
     graph = leituraInstancia(input_file, 0, 0, 0);
     
-    if(graph->depthFirstSearch(0, 4))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl;
-
-    if(graph->depthFirstSearch(0,0))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nõ não encontrado"<<endl;
-    
-    if(graph->depthFirstSearch(0,9))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl;
-
+    cout<<"O programa foi executado"<<endl;
+    printEdges(graph);
 }

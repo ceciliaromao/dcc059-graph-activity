@@ -152,6 +152,19 @@ DPStest/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/build
 .PHONY : DPStest/fast
 
+#=============================================================================
+# Target rules for targets named InsertEdge
+
+# Build rule for target.
+InsertEdge: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 InsertEdge
+.PHONY : InsertEdge
+
+# fast build rule for target.
+InsertEdge/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/InsertEdge.dir/build.make tests/CMakeFiles/InsertEdge.dir/build
+.PHONY : InsertEdge/fast
+
 Edge.o: Edge.cpp.o
 .PHONY : Edge.o
 
@@ -258,6 +271,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... DPStest"
+	@echo "... InsertEdge"
 	@echo "... tdg"
 	@echo "... Edge.o"
 	@echo "... Edge.i"

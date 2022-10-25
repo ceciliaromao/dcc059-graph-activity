@@ -47,4 +47,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/tdg.dir/DependInfo.cmake"
   "tests/CMakeFiles/DPStest.dir/DependInfo.cmake"
+  "tests/CMakeFiles/InsertEdge.dir/DependInfo.cmake"
   )

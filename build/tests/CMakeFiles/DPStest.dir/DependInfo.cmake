@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cc" "tests/CMakeFiles/DPStest.dir/DPStest.cc.o" "gcc" "tests/CMakeFiles/DPStest.dir/DPStest.cc.o.d"
+  "/home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cpp" "tests/CMakeFiles/DPStest.dir/DPStest.cpp.o" "gcc" "tests/CMakeFiles/DPStest.dir/DPStest.cpp.o.d"
   )
 
 # Targets to which this target links.

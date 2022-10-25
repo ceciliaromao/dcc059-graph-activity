@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/DPStest.dir/DPStest.cc.o -o DPStest  ../libtdg.a 
+/usr/bin/c++ CMakeFiles/DPStest.dir/DPStest.cpp.o -o DPStest  ../libtdg.a 

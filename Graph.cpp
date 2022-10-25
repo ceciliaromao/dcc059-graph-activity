@@ -130,6 +130,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
         insertNode(id);
     }
     getNode(id)->insertEdge(target_id, weight);
+    this->number_edges++;
 }
 
 void Graph::removeNode(int id){ 

@@ -140,29 +140,67 @@ DPStest/fast:
 	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/build
 .PHONY : DPStest/fast
 
-DPStest.o: DPStest.cc.o
+# Convenience name for target.
+tests/CMakeFiles/InsertEdge.dir/rule:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/InsertEdge.dir/rule
+.PHONY : tests/CMakeFiles/InsertEdge.dir/rule
+
+# Convenience name for target.
+InsertEdge: tests/CMakeFiles/InsertEdge.dir/rule
+.PHONY : InsertEdge
+
+# fast build rule for target.
+InsertEdge/fast:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/InsertEdge.dir/build.make tests/CMakeFiles/InsertEdge.dir/build
+.PHONY : InsertEdge/fast
+
+DPStest.o: DPStest.cpp.o
 .PHONY : DPStest.o
 
 # target to build an object file
-DPStest.cc.o:
-	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cc.o
-.PHONY : DPStest.cc.o
+DPStest.cpp.o:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cpp.o
+.PHONY : DPStest.cpp.o
 
-DPStest.i: DPStest.cc.i
+DPStest.i: DPStest.cpp.i
 .PHONY : DPStest.i
 
 # target to preprocess a source file
-DPStest.cc.i:
-	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cc.i
-.PHONY : DPStest.cc.i
+DPStest.cpp.i:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cpp.i
+.PHONY : DPStest.cpp.i
 
-DPStest.s: DPStest.cc.s
+DPStest.s: DPStest.cpp.s
 .PHONY : DPStest.s
 
 # target to generate assembly for a file
-DPStest.cc.s:
-	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cc.s
-.PHONY : DPStest.cc.s
+DPStest.cpp.s:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/DPStest.dir/build.make tests/CMakeFiles/DPStest.dir/DPStest.cpp.s
+.PHONY : DPStest.cpp.s
+
+InsertEdge.o: InsertEdge.cpp.o
+.PHONY : InsertEdge.o
+
+# target to build an object file
+InsertEdge.cpp.o:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/InsertEdge.dir/build.make tests/CMakeFiles/InsertEdge.dir/InsertEdge.cpp.o
+.PHONY : InsertEdge.cpp.o
+
+InsertEdge.i: InsertEdge.cpp.i
+.PHONY : InsertEdge.i
+
+# target to preprocess a source file
+InsertEdge.cpp.i:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/InsertEdge.dir/build.make tests/CMakeFiles/InsertEdge.dir/InsertEdge.cpp.i
+.PHONY : InsertEdge.cpp.i
+
+InsertEdge.s: InsertEdge.cpp.s
+.PHONY : InsertEdge.s
+
+# target to generate assembly for a file
+InsertEdge.cpp.s:
+	cd /home/lucas/Documentos/teoria-dos-grafos/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/InsertEdge.dir/build.make tests/CMakeFiles/InsertEdge.dir/InsertEdge.cpp.s
+.PHONY : InsertEdge.cpp.s
 
 # Help Target
 help:
@@ -174,9 +212,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... DPStest"
+	@echo "... InsertEdge"
 	@echo "... DPStest.o"
 	@echo "... DPStest.i"
 	@echo "... DPStest.s"
+	@echo "... InsertEdge.o"
+	@echo "... InsertEdge.i"
+	@echo "... InsertEdge.s"
 .PHONY : help
 
 

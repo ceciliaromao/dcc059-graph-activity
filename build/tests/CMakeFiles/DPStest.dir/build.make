@@ -69,28 +69,28 @@ include tests/CMakeFiles/DPStest.dir/progress.make
 # Include the compile flags for this target's objects.
 include tests/CMakeFiles/DPStest.dir/flags.make
 
-tests/CMakeFiles/DPStest.dir/DPStest.cc.o: tests/CMakeFiles/DPStest.dir/flags.make
-tests/CMakeFiles/DPStest.dir/DPStest.cc.o: /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cc
-tests/CMakeFiles/DPStest.dir/DPStest.cc.o: tests/CMakeFiles/DPStest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/DPStest.dir/DPStest.cc.o"
-	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/DPStest.dir/DPStest.cc.o -MF CMakeFiles/DPStest.dir/DPStest.cc.o.d -o CMakeFiles/DPStest.dir/DPStest.cc.o -c /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cc
+tests/CMakeFiles/DPStest.dir/DPStest.cpp.o: tests/CMakeFiles/DPStest.dir/flags.make
+tests/CMakeFiles/DPStest.dir/DPStest.cpp.o: /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cpp
+tests/CMakeFiles/DPStest.dir/DPStest.cpp.o: tests/CMakeFiles/DPStest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/Documentos/teoria-dos-grafos/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object tests/CMakeFiles/DPStest.dir/DPStest.cpp.o"
+	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT tests/CMakeFiles/DPStest.dir/DPStest.cpp.o -MF CMakeFiles/DPStest.dir/DPStest.cpp.o.d -o CMakeFiles/DPStest.dir/DPStest.cpp.o -c /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cpp
 
-tests/CMakeFiles/DPStest.dir/DPStest.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DPStest.dir/DPStest.cc.i"
-	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cc > CMakeFiles/DPStest.dir/DPStest.cc.i
+tests/CMakeFiles/DPStest.dir/DPStest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DPStest.dir/DPStest.cpp.i"
+	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cpp > CMakeFiles/DPStest.dir/DPStest.cpp.i
 
-tests/CMakeFiles/DPStest.dir/DPStest.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DPStest.dir/DPStest.cc.s"
-	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cc -o CMakeFiles/DPStest.dir/DPStest.cc.s
+tests/CMakeFiles/DPStest.dir/DPStest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DPStest.dir/DPStest.cpp.s"
+	cd /home/lucas/Documentos/teoria-dos-grafos/build/tests && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/Documentos/teoria-dos-grafos/tests/DPStest.cpp -o CMakeFiles/DPStest.dir/DPStest.cpp.s
 
 # Object files for target DPStest
 DPStest_OBJECTS = \
-"CMakeFiles/DPStest.dir/DPStest.cc.o"
+"CMakeFiles/DPStest.dir/DPStest.cpp.o"
 
 # External object files for target DPStest
 DPStest_EXTERNAL_OBJECTS =
 
-tests/DPStest: tests/CMakeFiles/DPStest.dir/DPStest.cc.o
+tests/DPStest: tests/CMakeFiles/DPStest.dir/DPStest.cpp.o
 tests/DPStest: tests/CMakeFiles/DPStest.dir/build.make
 tests/DPStest: libtdg.a
 tests/DPStest: tests/CMakeFiles/DPStest.dir/link.txt
