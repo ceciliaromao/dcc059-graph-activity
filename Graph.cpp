@@ -12,6 +12,7 @@
 #include <float.h>
 #include <iomanip>
 #include <map>
+#include <limits.h>
 
 using namespace std;
 
@@ -230,8 +231,42 @@ float** Graph::floydMarshall(){
     
 }
 
-   
+int mindist(float dist[], bool visited[], int order){
+    int min = INT_MAX, ind;
+    for(int i = 0; i < order; i++){
+        if(dist[i] <= min && !visited[i]){
+            min = dist[i];
+            ind = i;
+        }
+    }
+    return ind;
+};
 
 float* Graph::dijkstra(int id){
-    
+
+    //vetor de vertices visitados
+    bool *visited = new bool[order];
+    float *distance = new float[order];
+
+    for (int i = 0; i < order; i++)
+    {
+        visited[i] = false;
+        distance[i] = INT_MAX;
+    }
+
+    distance[id] = 0;
+
+    for (int i = 0; i < order; i++)
+    {
+        int min = mindist(distance, visited, order);
+        visited[min] = true;   
+        for (Edge *aux = getNode(min)->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
+        {
+            if (!visited[aux->getTargetId()] && distance[min] != INT_MAX && distance[min] + aux->getWeight() < distance[aux->getTargetId()])
+            {
+                distance[aux->getTargetId()] = distance[min] + aux->getWeight();
+            }
+        }
+    }
+    return distance;
 }
