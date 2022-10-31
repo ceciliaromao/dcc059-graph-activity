@@ -133,9 +133,6 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 Graph *Graph::getComplement(){
     
-    Graph *complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
-
-    return complement;
 }
 
     
@@ -143,29 +140,42 @@ Graph *Graph::getComplement(){
 //A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
 Graph* Graph::getSubjacent(){
 
-    if (this->directed == false)
-    {
-       return nullptr;
+}
+
+//A function that returns the union of two graphs
+Graph* Graph::getUnion(Graph* graph){
+
+    Graph* unionGraph = new Graph(this->order+graph->order, this->directed, this->weighted_edge + graph->weighted_edge, this->weighted_node + graph->weighted_node);
+    Node* auxNode = this->first_node;
+    Node* auxNode2 = graph->first_node;
+
+    //iterates over the nodes of the first graph
+    while(auxNode != nullptr){
+        unionGraph->insertNode(auxNode->getId());
+        Edge* auxEdge = auxNode->getFirstEdge();
+
+        //iterates over the edges of the first graph
+        while(auxEdge != nullptr){
+            unionGraph->insertEdge(auxNode->getId(), auxEdge->getTargetId(), auxEdge->getWeight());
+            auxEdge = auxEdge->getNextEdge();
+        }
+
+        auxNode = auxNode->getNextNode();
     }
-    
-    Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    subjacent->first_node = this->first_node;
-
-    Node * next_node = subjacent->first_node;
-
-    while(next_node != nullptr){
-
-        next_node->in_degree = 0;
-
-        next_node->out_degree = 0;
+    while(auxNode2 != nullptr){
+        unionGraph->insertNode(auxNode2->getId());
+        Edge* auxEdge = auxNode2->getFirstEdge();
         
-        next_node = next_node->getNextNode();
+        while(auxEdge != nullptr){
+            unionGraph->insertEdge(auxNode->getId(), auxEdge->getTargetId(), auxEdge->getWeight());
+            auxEdge = auxEdge->getNextEdge();
+        }
+
+        auxNode2 = auxNode2->getNextNode();
     }
 
-    subjacent->directed = false;
-    
-    return subjacent;
+    return unionGraph;
 }
 
 bool Graph::connectedGraph(){
