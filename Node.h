@@ -10,7 +10,7 @@ using namespace std;
 
 // Definition of the Node class
 class Node{
-
+    friend class Graph; // Friend class Graph
     // Attributes
     private:
         Edge* first_edge;

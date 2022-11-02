@@ -205,13 +205,39 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 Graph *Graph::getComplement(){
     
+    Graph *complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    return complement;
 }
 
     
 
 //A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
 Graph* Graph::getSubjacent(){
+
+    if (this->directed == false)
+    {
+       return nullptr;
+    }
     
+    Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    subjacent->first_node = this->first_node;
+
+    Node * next_node = subjacent->first_node;
+
+    while(next_node != nullptr){
+
+        next_node->in_degree = 0;
+
+        next_node->out_degree = 0;
+        
+        next_node = next_node->getNextNode();
+    }
+
+    subjacent->directed = false;
+    
+    return subjacent;
 }
 
 bool Graph::connectedGraph(){
