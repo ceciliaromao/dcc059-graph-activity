@@ -204,8 +204,38 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 
 Graph *Graph::getComplement(){
+
+    if (this->first_node == nullptr)
+    {
+        return nullptr;
+    }
     
-    Graph *complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    //checking if the graph is completed
+    int check_edges = (this->order*(this->order-1))/2;
+
+    if(check_edges == this->number_edges){
+        cout<< "The graph is completed" << endl;
+        return nullptr;
+    }
+
+
+    Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    complement->first_node = this->first_node;
+    complement->last_node = this->last_node;
+    
+    Node * next_node = this->first_node;
+    Node* checker = next_node->getNextNode();
+
+    while (complement->number_edges<missing_edges)
+    {
+        if(next_node->hasEdgeBetween(checker->getId()) == false){
+            complement->insertEdge(next_node->getId(), checker->getId(), 1);
+            complement->number_edges++;
+        }
+        next_node = next_node->getNextNode();
+        checker = checker->getNextNode();
+    }
 
     return complement;
 }
