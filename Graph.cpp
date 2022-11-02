@@ -11,7 +11,6 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
-#include <map>
 
 using namespace std;
 
@@ -169,27 +168,29 @@ Node *Graph::getNode(int id)
     
 }
 
-//NECESSÁRIO TESTAR!!!!!!!!!!!!!!
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
     Node* aux = getNode(initialId);
 
     if(aux == nullptr)
+    {
         return false; 
+    }
     if(initialId == targetId)
         return true; 
-
-    map<int,bool> verified; 
     verified[initialId] = true; 
 
-    for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
     {
+        //Line for debug
+        cout<<i->getTargetId()<<endl;
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
             {
                 return true; 
             }
+
             return depthFirstSearch(i->getTargetId(), targetId);
         }
     }
@@ -197,9 +198,36 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     return false; 
 }
 
-
+//? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
+    list<int> queue;
+    int ak = this->getFirstNode()->getId();
+    verified[ak] = true;
+    queue.push_back(ak);
+
+    verified.clear();
     
+    Node* aux;
+    while(!queue.empty())
+    {
+        ak = queue.front();
+        queue.pop_front();
+
+        aux = this->getNode(ak);
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            //output_file<<i->getTargetId()<<endl;
+            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
+            cout<<i->getTargetId()<<endl;
+            if (!verified[i->getTargetId()])
+            {
+                verified[i->getTargetId()] = true;
+                queue.push_back(i->getTargetId());
+            }
+        }
+    }
+    //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
+
 }
 
 
