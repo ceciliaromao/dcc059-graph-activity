@@ -129,6 +129,10 @@ void Graph::insertEdge(int id, int target_id, float weight)
         insertNode(id);
     }
     getNode(id)->insertEdge(target_id, weight);
+    if(!directed)
+    {
+        getNode(target_id)->insertEdge(id, weight);
+    }
     this->number_edges++;
 }
 
