@@ -23,7 +23,9 @@ class Graph{
         bool weighted_node;
         Node* first_node;
         Node* last_node;
-        map<int,bool> verified; 
+        map<int, bool> verified; 
+
+
 
     public:
         //Constructor

@@ -129,6 +129,10 @@ void Graph::insertEdge(int id, int target_id, float weight)
         insertNode(id);
     }
     getNode(id)->insertEdge(target_id, weight);
+    if(!directed)
+    {
+        getNode(target_id)->insertEdge(id, weight);
+    }
     this->number_edges++;
 }
 
@@ -183,7 +187,9 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
     {
         //Line for debug
-        //cout<<i->getTargetId()<<endl;
+
+        cout<<i->getTargetId()<<endl;
+
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
@@ -191,29 +197,116 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
                 return true; 
             }
 
+
             if(depthFirstSearch(i->getTargetId(), targetId))
                 return true;
+
+            return depthFirstSearch(i->getTargetId(), targetId);
+
         }
     }
 
     return false; 
 }
 
-
+//? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
+    list<int> queue;
+    int ak = this->getFirstNode()->getId();
+    verified[ak] = true;
+    queue.push_back(ak);
+
+    verified.clear();
     
+    Node* aux;
+    while(!queue.empty())
+    {
+        ak = queue.front();
+        queue.pop_front();
+
+        aux = this->getNode(ak);
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            //output_file<<i->getTargetId()<<endl;
+            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
+            cout<<i->getTargetId()<<endl;
+            if (!verified[i->getTargetId()])
+            {
+                verified[i->getTargetId()] = true;
+                queue.push_back(i->getTargetId());
+            }
+        }
+    }
+    //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
+
 }
 
 
 Graph *Graph::getComplement(){
+
+    if (this->first_node == nullptr)
+    {
+        return nullptr;
+    }
     
+    //checking if the graph is completed
+    int check_edges = (this->order*(this->order-1))/2;
+
+    if(check_edges == this->number_edges){
+        cout<< "The graph is completed" << endl;
+        return nullptr;
+    }
+
+
+    Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    complement->first_node = this->first_node;
+    complement->last_node = this->last_node;
+    
+    Node * next_node = this->first_node;
+    Node* checker = next_node->getNextNode();
+
+    while (complement->number_edges<missing_edges)
+    {
+        if(next_node->hasEdgeBetween(checker->getId()) == false){
+            complement->insertEdge(next_node->getId(), checker->getId(), 1);
+            complement->number_edges++;
+        }
+        next_node = next_node->getNextNode();
+        checker = checker->getNextNode();
+    }
+
+    return complement;
 }
 
     
 
 //A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
 Graph* Graph::getSubjacent(){
+
+    if (this->directed == false)
+    {
+       return nullptr;
+    }
     
+    Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    subjacent->first_node = this->first_node;
+
+    Node * next_node = subjacent->first_node;
+
+    while(next_node != nullptr){
+
+        next_node->in_degree = 0;
+
+        next_node->out_degree = 0;
+        
+        next_node = next_node->getNextNode();
+    }
+
+    subjacent->directed = false;
+    
+    return subjacent;
 }
 
 bool Graph::connectedGraph(){
