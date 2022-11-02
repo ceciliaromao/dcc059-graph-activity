@@ -146,7 +146,6 @@ Graph *Graph::getComplement(){
         return nullptr;
     }
 
-    int missing_edges = check_edges - this->number_edges;
 
     Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
