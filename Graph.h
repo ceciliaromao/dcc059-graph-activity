@@ -26,6 +26,7 @@ class Graph{
         map<int, bool> verified; 
 
 
+
     public:
         //Constructor
         Graph(int order, bool directed, bool weighted_edge, bool weighted_node);

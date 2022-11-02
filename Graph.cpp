@@ -187,7 +187,9 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
     {
         //Line for debug
+
         cout<<i->getTargetId()<<endl;
+
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
@@ -195,7 +197,12 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
                 return true; 
             }
 
+
+            if(depthFirstSearch(i->getTargetId(), targetId))
+                return true;
+
             return depthFirstSearch(i->getTargetId(), targetId);
+
         }
     }
 
