@@ -328,3 +328,12 @@ float** Graph::floydMarshall(){
 float* Graph::dijkstra(int id){
     
 }
+
+void Graph::writeDotFile(string file_name)
+{
+    //Para cada nó
+        //pegar cada aresta
+        //ir no nó seguinte
+    //se for grafo simples: colocar strict (?)
+        //Se for colocar strict, não pode ter multiaresta
+}

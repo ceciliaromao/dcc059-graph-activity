@@ -55,6 +55,7 @@ class Graph{
         bool connectedGraph();
         float** floydMarshall();
         float* dijkstra(int id);
+        void writeDotFile(string file_name);
 
     private:
         //Auxiliar methods
