@@ -268,8 +268,8 @@ Graph *Graph::getComplement(){
 
     while (node !=nullptr)
     {
-        for(Node *i = this->first_node->next_node; i!=nullptr; i = i->next_node){
-            if(node->hasEdgeBetween(i->id)==nullptr){
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            if(node->hasEdgeBetween(i->id)==nullptr && (i->id != node->id)){
                 complement->insertEdge(node->id,i->id,0);
             }
         }
