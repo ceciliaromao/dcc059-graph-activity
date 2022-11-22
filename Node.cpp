@@ -27,11 +27,9 @@ Node::~Node(){
     Edge* next_edge = this->first_edge;
 
     while(next_edge != nullptr){
-
         Edge* aux_edge = next_edge->getNextEdge();
         delete next_edge;
         next_edge = aux_edge;
-
     }
 
 };
@@ -102,8 +100,8 @@ void Node::insertEdge(int target_id, float weight){
         edge->setWeight(weight);
         this->last_edge->setNextEdge(edge);
         this->last_edge = edge;
-
     }
+    
     else{
          // Allocating the new edge and keeping the integrity of the edge list
         this->first_edge = new Edge(target_id);
