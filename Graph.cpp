@@ -222,19 +222,17 @@ Graph *Graph::getComplement(){
     Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
     complement->first_node = this->first_node;
-    complement->last_node = this->last_node;
     
-    Node * next_node = this->first_node;
-    Node* checker = next_node->getNextNode();
+    Node * node = this->first_node;
 
-    while (complement->number_edges<missing_edges)
+    while (node !=nullptr)
     {
-        if(next_node->hasEdgeBetween(checker->getId()) == false){
-            complement->insertEdge(next_node->getId(), checker->getId(), 1);
-            complement->number_edges++;
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            if(node->hasEdgeBetween(i->id)==nullptr && (i->id != node->id)){
+                complement->insertEdge(node->id,i->id,0);
+            }
         }
-        next_node = next_node->getNextNode();
-        checker = checker->getNextNode();
+        node = node->next_node;
     }
 
     return complement;
