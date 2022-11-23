@@ -336,4 +336,24 @@ void Graph::writeDotFile(string file_name)
         //ir no nó seguinte
     //se for grafo simples: colocar strict (?)
         //Se for colocar strict, não pode ter multiaresta
+    if (this->first_node != nullptr)
+    {
+        string edge_simbol = "--";
+        cout<<"graph{"<<endl;
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            cout<<aux->getId();
+            
+            for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
+            {
+                cout<<edge_simbol<<i->getTargetId();
+            }
+            cout<<endl;
+        }
+        cout<<"}";
+    }
+    else
+    {
+        cout<<"Grafo vazio"<<endl;
+    }
 }

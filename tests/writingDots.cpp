@@ -34,9 +34,6 @@ int main()
     Graph* graph;
 
     graph = leituraInstancia(input_file, 0, 0, 0);
-    ofstream output; 
-    output.open("/home/lucas/Documentos/teoria-dos-grafos/outputBFS.txt");
-    graph->breadthFirstSearch(output);
-    output.close();
+    graph->writeDotFile("t");
 
 }
