@@ -13,3 +13,6 @@ target_link_libraries(InsertEdge PUBLIC tdg)
 add_executable(TestComplement TestComplement.cpp)
 target_link_libraries(TestComplement PUBLIC tdg)
 
+add_executable(TestSubjacent TestSubjacent.cpp)
+target_link_libraries(TestSubjacent PUBLIC tdg)
+
