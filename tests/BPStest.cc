@@ -10,7 +10,7 @@ Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int wei
     //Variáveis para auxiliar na criação dos nós no Grafo
     int idNodeSource;
     int idNodeTarget;
-    int order = input_file[0];
+    int order = input_file[0] -1;
     int numEdges;
 
     //Criando objeto grafo
@@ -34,20 +34,9 @@ int main()
     Graph* graph;
 
     graph = leituraInstancia(input_file, 0, 0, 0);
-    
-    if(graph->depthFirstSearch(0, 4))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl;
-
-    if(graph->depthFirstSearch(0,0))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nõ não encontrado"<<endl;
-    
-    if(graph->depthFirstSearch(0,9))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl;
+    ofstream output; 
+    output.open("/home/lucas/Documentos/teoria-dos-grafos/outputBFS.txt");
+    graph->breadthFirstSearch(output);
+    output.close();
 
 }

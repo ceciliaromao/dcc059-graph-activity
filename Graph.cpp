@@ -12,6 +12,7 @@
 #include <float.h>
 #include <iomanip>
 #include <map>
+#include <limits.h>
 
 using namespace std;
 
@@ -130,6 +131,10 @@ void Graph::insertEdge(int id, int target_id, float weight)
         insertNode(id);
     }
     getNode(id)->insertEdge(target_id, weight);
+    if(!directed)
+    {
+        getNode(target_id)->insertEdge(id, weight);
+    }
     this->number_edges++;
 }
 
@@ -169,43 +174,109 @@ Node *Graph::getNode(int id)
     
 }
 
-//NECESSÁRIO TESTAR!!!!!!!!!!!!!!
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
     Node* aux = getNode(initialId);
 
     if(aux == nullptr)
+    {
         return false; 
+    }
     if(initialId == targetId)
         return true; 
-
-    map<int,bool> verified; 
     verified[initialId] = true; 
 
-    for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
     {
+        //Line for debug
+
+        cout<<i->getTargetId()<<endl;
+
         if(!verified[i->getTargetId()])
         {
             if(i->getTargetId() == targetId)
             {
                 return true; 
             }
+
+
+            if(depthFirstSearch(i->getTargetId(), targetId))
+                return true;
+
             return depthFirstSearch(i->getTargetId(), targetId);
+
         }
     }
 
     return false; 
 }
 
-
+//? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
+    list<int> queue;
+    int ak = this->getFirstNode()->getId();
+    verified[ak] = true;
+    queue.push_back(ak);
+
+    verified.clear();
     
+    Node* aux;
+    while(!queue.empty())
+    {
+        ak = queue.front();
+        queue.pop_front();
+
+        aux = this->getNode(ak);
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            //output_file<<i->getTargetId()<<endl;
+            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
+            cout<<i->getTargetId()<<endl;
+            if (!verified[i->getTargetId()])
+            {
+                verified[i->getTargetId()] = true;
+                queue.push_back(i->getTargetId());
+            }
+        }
+    }
+    //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
+
 }
 
 
 Graph *Graph::getComplement(){
+
+    if (this->first_node == nullptr)
+    {
+        return nullptr;
+    }
     
-    Graph *complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    //checking if the graph is completed
+    int check_edges = (this->order*(this->order-1))/2;
+
+    if(check_edges == this->number_edges){
+        cout<< "The graph is completed" << endl;
+        return nullptr;
+    }
+
+
+    Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    // complement->insertNode(this->first_node->id);
+    
+    Node * node = this->first_node;
+
+    while (node !=nullptr)
+    {
+        complement->insertNode(node->id);
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            if(node->hasEdgeBetween(i->id)==nullptr && (i->id != node->id)){
+                complement->insertNode(i->id);
+                complement->insertEdge(node->id,i->id,0);
+            }
+        }
+        node = node->next_node;
+    }
 
     return complement;
 }
@@ -256,8 +327,42 @@ float** Graph::floydMarshall(){
     
 }
 
-   
+int mindist(float dist[], bool visited[], int order){
+    int min = INT_MAX, ind;
+    for(int i = 0; i < order; i++){
+        if(dist[i] <= min && !visited[i]){
+            min = dist[i];
+            ind = i;
+        }
+    }
+    return ind;
+};
 
 float* Graph::dijkstra(int id){
-    
+
+    //vetor de vertices visitados
+    bool *visited = new bool[order];
+    float *distance = new float[order];
+
+    for (int i = 0; i < order; i++)
+    {
+        visited[i] = false;
+        distance[i] = INT_MAX;
+    }
+
+    distance[id] = 0;
+
+    for (int i = 0; i < order; i++)
+    {
+        int min = mindist(distance, visited, order);
+        visited[min] = true;   
+        for (Edge *aux = getNode(min)->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
+        {
+            if (!visited[aux->getTargetId()] && distance[min] != INT_MAX && distance[min] + aux->getWeight() < distance[aux->getTargetId()])
+            {
+                distance[aux->getTargetId()] = distance[min] + aux->getWeight();
+            }
+        }
+    }
+    return distance;
 }
