@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.14)
 project(teoria-dos-grafos)
 
 include_directories(${PROJECT_SOURCE_DIR})
-
-#Deletei o config file 
+set(USER_DIR "${PROJECT_SOURCE_DIR}/")
+#Deletei o config file
+configure_file(${PROJECT_SOURCE_DIR}/config.h.in ${PROJECT_SOURCE_DIR}/config.h) 
 enable_testing()
 add_subdirectory(tests)
 

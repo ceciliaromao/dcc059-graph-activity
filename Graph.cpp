@@ -262,14 +262,16 @@ Graph *Graph::getComplement(){
 
     Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    complement->first_node = this->first_node;
+    // complement->insertNode(this->first_node->id);
     
     Node * node = this->first_node;
 
     while (node !=nullptr)
     {
+        complement->insertNode(node->id);
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
             if(node->hasEdgeBetween(i->id)==nullptr && (i->id != node->id)){
+                complement->insertNode(i->id);
                 complement->insertEdge(node->id,i->id,0);
             }
         }
