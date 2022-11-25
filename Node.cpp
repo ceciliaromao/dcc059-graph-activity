@@ -136,6 +136,7 @@ void Node::removeAllEdges(){
 
 int Node::removeEdge(int id, bool directed, Node* target_node){
     // Verifies whether the edge to remove is in the node
+    int i = 1; 
     if(this->searchEdge(id)){
 
         Edge* aux = this->first_edge;
@@ -157,22 +158,20 @@ int Node::removeEdge(int id, bool directed, Node* target_node){
         if(aux == this->last_edge)
             this->last_edge = previous;
 
-        if(aux->getNextEdge() == this->last_edge)
-            this->last_edge = aux->getNextEdge();
+        /* if(aux->getNextEdge() == this->last_edge)
+            this->last_edge = aux->getNextEdge(); */
 
-        delete aux;
+        //delete aux;
         // Verifies whether the graph is directed
         if(directed)
             this->decrementOutDegree();
-
         else{
-
             this->decrementInDegree();
+            i+=target_node->removeEdge(this->id, true, nullptr);
             target_node->decrementInDegree();
-
         }
 
-        return 1;
+        return i;
 
     }
 

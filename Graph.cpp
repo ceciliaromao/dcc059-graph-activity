@@ -11,6 +11,7 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <map>
 
 using namespace std;
 
@@ -95,13 +96,46 @@ Node *Graph::getLastNode()
 */
 void Graph::insertNode(int id)
 {
-    
+    Node *next;
+    Node *aux = nullptr;
+
+    if(this->getFirstNode() == nullptr) {
+        this->first_node = new Node(id);
+        this->last_node = this->getFirstNode();
+    } else {
+      if (!this->searchNode(id)) {
+            Node *node = new Node(id);
+            node->setNextNode(nullptr);
+
+            this->last_node->setNextNode(node);
+            this->last_node = node;
+        
+            /* next = this->first_node;
+
+            while (next != nullptr)
+            {
+                aux = next;
+                next = next->getNextNode();
+            }
+
+            aux->setNextNode(node) */;
+        }      
+    }
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
+    if(getNode(id) == nullptr)
+    {
+        insertNode(id);
+    }
+    getNode(id)->insertEdge(target_id, weight);
+    this->number_edges++;
+}
 
-    
+void Graph::removeEdge(int id, int target_id)
+{
+    this->number_edges -= getNode(id)->removeEdge(target_id, directed, getNode(target_id));
 }
 
 void Graph::removeNode(int id){ 
@@ -110,19 +144,57 @@ void Graph::removeNode(int id){
 
 bool Graph::searchNode(int id)
 {
-    
+    if (this->first_node != nullptr)
+    {
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            if (aux->getId() == id) return true;
+        }
+    }
+
+    return false;
 }
 
 Node *Graph::getNode(int id)
 {
+    if (this->first_node != nullptr)
+    {
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            if (aux->getId() == id) return aux;
+        }
+    }
 
+    return nullptr;
     
 }
 
-
+//NECESSÁRIO TESTAR!!!!!!!!!!!!!!
 //Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId){
-    
+    Node* aux = getNode(initialId);
+
+    if(aux == nullptr)
+        return false; 
+    if(initialId == targetId)
+        return true; 
+
+    map<int,bool> verified; 
+    verified[initialId] = true; 
+
+    for(Edge *i = aux->getFirstEdge(); i != aux->getLastEdge(); i = i->getNextEdge())
+    {
+        if(!verified[i->getTargetId()])
+        {
+            if(i->getTargetId() == targetId)
+            {
+                return true; 
+            }
+            return depthFirstSearch(i->getTargetId(), targetId);
+        }
+    }
+
+    return false; 
 }
 
 
