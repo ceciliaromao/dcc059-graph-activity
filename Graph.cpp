@@ -12,6 +12,7 @@
 #include <float.h>
 #include <iomanip>
 #include <map>
+#include <vector>
 #include <limits.h>
 
 #define INT 99999
@@ -382,38 +383,43 @@ float* Graph::dijkstra(int id){
         visited[i] = false;
         distance[i] = INT;
     }
+    //distancia do nó fonte para ele mesmo é 0
+    
     distance[id] = 0;
-    visited[id] = true;
     
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> queue_;
+    priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
     queue_.push(make_pair(distance[id], id));
-    pair<int,int>pair_ = queue_.top();
+    pair<float,int>pair_ = queue_.top();
     
+    //primeira iteração seta o primeiro nó como visitado
     while(!queue_.empty()){
-        pair_ = queue_.top();
-        int u = pair_.second;
-        // cout << u << endl;
+
+        pair<float,int>pair_aux = queue_.top();
+        int u = pair_aux.second;
         queue_.pop();
-        // if(!visited[u]){
+        
+        if(visited[u]) 
+            continue; 
+        else 
             visited[u] = true;
-            Node* aux = getNode(u);
-            // cout << aux->id   << endl;
-            for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge()){
-                if (!this->weighted_edge)
-                {
-                    i->setWeight(1);
-                }
-                int v = i->getTargetId();
-                
-                float weight = i->getWeight();
-                if((!visited[v]) && distance[v] > (distance[u] + weight)){
-                    distance[v] = distance[u] + weight;
-                    queue_.push(make_pair(distance[v], v));
-                }
+        
+        Node* aux = getNode(u);
+        // cout << aux->id   << endl;
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge()){
+            float weight;
+            
+            !(this->weighted_edge) ? weight = 1 : weight = i->getWeight(); 
+
+            int v = i->getTargetId();
+
+            if((!visited[v]) && distance[v] > (distance[u] + weight)){
+                distance[v] = distance[u] + weight;
+                queue_.push(make_pair(distance[v], v));
             }
-            //  aux = aux->getNextNode();
-        // }
+        }
+        
     }
 
+    delete [] visited;
     return distance;
 }

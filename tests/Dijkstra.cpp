@@ -20,12 +20,20 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
-    while(input_file >> idNodeSource >> idNodeTarget) {
+    if(weightedEdge){
+        float weight;
+        while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
-        graph->insertEdge(idNodeSource, idNodeTarget, 0);
+            graph->insertEdge(idNodeSource, idNodeTarget, weight);
 
+        }
+    } else {
+        while(input_file >> idNodeSource >> idNodeTarget) {
+
+            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+
+        }
     }
-
     return graph;
 }
 
@@ -55,11 +63,11 @@ void printDegrees(Graph *graph,ofstream&op)
 }
 
 void executeDijkstra(ofstream&output, Graph* graph){
-    int source =20;
+    int source =1;
 
     float* array= graph->dijkstra(source);
     int iterative=graph->getOrder();
-    for(int i=0;i<iterative;i++){
+    for(int i=1;i<iterative;i++){
         output<<array[i]<<endl;
     }
 }
@@ -71,12 +79,23 @@ int main()
     ifstream input;
     
     string path = USER_DIR;
-    string path_out =path+ "output.txt";
-    string path_in = path+"grafo_1000_1.txt";
+    string path_in = path;
+
+    cout << "É ponderado? 1 - Sim, 0 - Não" << endl;
+    int ponderado = 0;
+    cin >> ponderado;
+    
+    ponderado ? path_in +="input/grafo_585.txt": path_in+="input/grafo_1000_1.txt";
+
+    string path_out =path+ "output/output.txt";
 
     output.open(path_out, ios::out | ios::trunc);
     input.open(path_in, ios::in);
-    graph = leituraInstancia(input, 0, 0, 0);
+
+    if(ponderado)
+        graph = leituraInstancia(input, 0, 1, 0);
+    else
+        graph = leituraInstancia(input, 0, 0, 0);
 
     output<< "Vector Dijkstra"<<endl;
 
