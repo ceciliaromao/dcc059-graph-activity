@@ -269,7 +269,8 @@ Graph *Graph::getComplement(){
 
     if(check_edges == this->number_edges){
         cout<< "The graph is completed" << endl;
-        return nullptr;
+        Graph* complement= new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+        return complement;
     }
 
 

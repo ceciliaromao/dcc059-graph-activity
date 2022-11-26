@@ -4,27 +4,36 @@
 
 using namespace std; 
 
-int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
+// int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
 
-Graph* leituraInstancia(int *input_file, int directed, int weightedEdge, int weightedNode){
+Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int weightedNode){
 
     //Variáveis para auxiliar na criação dos nós no Grafo
     int idNodeSource;
     int idNodeTarget;
-    int order = input_file[0];
+    int order;
     int numEdges;
+
+    input_file >> order >> numEdges;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
-    for(int i = 1; i < 22 ; i+=3)
-    {
-        graph->insertNode(input_file[i]);
-        graph->insertNode(input_file[i+1]);
-        graph->insertEdge(input_file[i], input_file[i+1], input_file[i+2]);
-    }
+    if(weightedEdge){
+        float weight;
+        while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
+            graph->insertEdge(idNodeSource, idNodeTarget, weight);
+
+        }
+    } else {
+        while(input_file >> idNodeSource >> idNodeTarget) {
+
+            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+
+        }
+    }
     return graph;
 }
 
@@ -41,16 +50,37 @@ void printEdges(Graph *graph,ofstream&op)
         aux = aux->getNextNode();
     }
 }
+
+void printComplement(ofstream&op, Graph *graph){
+    int order = graph->getOrder();
+
+    for(int i = 1; i < order+1; i++){
+        Node *aux = graph->getNode(i);
+        for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
+            op<< i << " " << j->getTargetId() << endl;
+        }
+    }
+}
+
 int main()
 {
     Graph* graph;
     ofstream output;
+    ifstream input;
+    
     string path = USER_DIR;
-    path += "output.txt";
-    output.open(path, ios::out | ios::trunc);
-    graph = leituraInstancia(input_file, 0, 0, 0);
-    output<< "Grafo complementar:"<<endl;
-    printEdges(graph->getComplement(),output);
-    output<<"O programa foi executado "<< graph->getNumberEdges()<<endl;
-    printEdges(graph,output);
+    string path_in = path;
+
+    path_in+="input/grafo_1000_1.txt";
+
+    string path_out =path+ "output/output.txt";
+
+    output.open(path_out, ios::out | ios::trunc);
+    input.open(path_in, ios::in);
+
+   
+    graph = leituraInstancia(input, 0, 0, 0);
+    output<< "Grafo Complementar"<<endl;
+
+    printComplement(output, graph);
 }
