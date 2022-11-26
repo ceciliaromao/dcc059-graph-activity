@@ -14,6 +14,8 @@
 #include <map>
 #include <limits.h>
 
+#define INT 99999
+
 using namespace std;
 
 /**************************************************************************************************
@@ -135,6 +137,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
     {
         insertNode(target_id);
     }
+    
     if(directed)
     {
         getNode(id)->insertEdge(target_id, weight);
@@ -362,6 +365,14 @@ int mindist(float dist[], bool visited[], int order){
 
 float* Graph::dijkstra(int id){
 
+    Node *node = getNode(id);
+
+    if(node == nullptr)
+    {
+        cout<<"Node not found" <<endl;
+        return nullptr;
+    }
+
     //vetor de vertices visitados
     bool *visited = new bool[order];
     float *distance = new float[order];
@@ -369,22 +380,40 @@ float* Graph::dijkstra(int id){
     for (int i = 0; i < order; i++)
     {
         visited[i] = false;
-        distance[i] = INT_MAX;
+        distance[i] = INT;
     }
-
     distance[id] = 0;
-
-    for (int i = 0; i < order; i++)
-    {
-        int min = mindist(distance, visited, order);
-        visited[min] = true;   
-        for (Edge *aux = getNode(min)->getFirstEdge(); aux != nullptr; aux = aux->getNextEdge())
-        {
-            if (!visited[aux->getTargetId()] && distance[min] != INT_MAX && distance[min] + aux->getWeight() < distance[aux->getTargetId()])
-            {
-                distance[aux->getTargetId()] = distance[min] + aux->getWeight();
+    visited[id] = true;
+    
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> queue_;
+    queue_.push(make_pair(distance[id], id));
+    pair<int,int>pair_ = queue_.top();
+    
+    while(!queue_.empty()){
+        pair_ = queue_.top();
+        int u = pair_.second;
+        // cout << u << endl;
+        queue_.pop();
+        // if(!visited[u]){
+            visited[u] = true;
+            Node* aux = getNode(u);
+            // cout << aux->id   << endl;
+            for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge()){
+                if (!this->weighted_edge)
+                {
+                    i->setWeight(1);
+                }
+                int v = i->getTargetId();
+                
+                float weight = i->getWeight();
+                if((!visited[v]) && distance[v] > (distance[u] + weight)){
+                    distance[v] = distance[u] + weight;
+                    queue_.push(make_pair(distance[v], v));
+                }
             }
-        }
+            //  aux = aux->getNextNode();
+        // }
     }
+
     return distance;
 }
