@@ -267,34 +267,48 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 //A function that returns the union of two graphs
 Graph* Graph::getUnion(Graph* graph){
 
-    Graph* unionGraph = new Graph(this->order+graph->order, this->directed, this->weighted_edge + graph->weighted_edge, this->weighted_node + graph->weighted_node);
-    Node* auxNode = this->first_node;
-    Node* auxNode2 = graph->first_node;
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+    {
+        return nullptr;
+    }
+    Graph* unionGraph = new Graph(this->order ,this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+    if(this->order == graph->order)
+        Graph* unionGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    else if(this->order > graph->order)
+        Graph* unionGraph = new Graph(this->order + (this->order-graph->order), this->directed, this->weighted_edge, this->weighted_node);
+    else if(this->order < graph->order)
+        Graph* unionGraph = new Graph(graph->order + (graph->order-this->order), this->directed, this->weighted_edge , this->weighted_node);
+    
+    Node* sourceNode = this->first_node;
 
-    //iterates over the nodes of the first graph
-    while(auxNode != nullptr){
-        unionGraph->insertNode(auxNode->getId());
-        Edge* auxEdge = auxNode->getFirstEdge();
-
-        //iterates over the edges of the first graph
-        while(auxEdge != nullptr){
-            unionGraph->insertEdge(auxNode->getId(), auxEdge->getTargetId(), auxEdge->getWeight());
-            auxEdge = auxEdge->getNextEdge();
+    //Insere nós e arestas do grafo fonte
+    while(sourceNode != nullptr)
+    {
+        for(Edge* i = sourceNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            unionGraph->insertEdge(sourceNode->id, i->getTargetId(), i->getWeight());
         }
-
-        auxNode = auxNode->getNextNode();
+        sourceNode = sourceNode->next_node;
     }
 
-    while(auxNode2 != nullptr){
-        unionGraph->insertNode(auxNode2->getId());
-        Edge* auxEdge = auxNode2->getFirstEdge();
-        
-        while(auxEdge != nullptr){
-            unionGraph->insertEdge(auxNode->getId(), auxEdge->getTargetId(), auxEdge->getWeight());
-            auxEdge = auxEdge->getNextEdge();
-        }
+    Node* unionNode = graph->first_node;
 
-        auxNode2 = auxNode2->getNextNode();
+    // Insere nós e arestas do grafo de união
+    while(unionNode != nullptr)
+    {
+        // for(Node* graph_1 = this->first_node; graph_1 !=nullptr; graph_1 = graph_1->next_node){
+        //     for(Edge *i = unionNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        //     {
+        //        if(unionNode->id != graph_1->id)
+        //             unionGraph->insertEdge(unionNode->id, i->getTargetId(), i->getWeight());
+        //     }
+        // }
+        for(Edge *i = unionNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            unionGraph->insertEdge(unionNode->id, i->getTargetId(), i->getWeight());
+        }
+        unionNode = unionNode->next_node;
     }
 
     return unionGraph;

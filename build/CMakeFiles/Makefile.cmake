@@ -60,4 +60,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/CMakeFiles/TestComplement.dir/DependInfo.cmake"
   "tests/CMakeFiles/TestSubjacent.dir/DependInfo.cmake"
   "tests/CMakeFiles/Dijikstra.dir/DependInfo.cmake"
+  "tests/CMakeFiles/Union.dir/DependInfo.cmake"
   )

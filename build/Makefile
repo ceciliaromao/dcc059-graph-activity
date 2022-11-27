@@ -229,6 +229,19 @@ Dijikstra/fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Dijikstra.dir\build.make tests/CMakeFiles/Dijikstra.dir/build
 .PHONY : Dijikstra/fast
 
+#=============================================================================
+# Target rules for targets named Union
+
+# Build rule for target.
+Union: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Union
+.PHONY : Union
+
+# fast build rule for target.
+Union/fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/build
+.PHONY : Union/fast
+
 Edge.obj: Edge.cpp.obj
 .PHONY : Edge.obj
 
@@ -340,6 +353,7 @@ help:
 	@echo ... InsertEdge
 	@echo ... TestComplement
 	@echo ... TestSubjacent
+	@echo ... Union
 	@echo ... removeEdge
 	@echo ... tdg
 	@echo ... Edge.obj

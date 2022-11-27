@@ -223,6 +223,20 @@ Dijikstra/fast:
 	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Dijikstra.dir\build.make tests/CMakeFiles/Dijikstra.dir/build
 .PHONY : Dijikstra/fast
 
+# Convenience name for target.
+tests/CMakeFiles/Union.dir/rule:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/Union.dir/rule
+.PHONY : tests/CMakeFiles/Union.dir/rule
+
+# Convenience name for target.
+Union: tests/CMakeFiles/Union.dir/rule
+.PHONY : Union
+
+# fast build rule for target.
+Union/fast:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/build
+.PHONY : Union/fast
+
 BPStest.obj: BPStest.cc.obj
 .PHONY : BPStest.obj
 
@@ -367,6 +381,30 @@ TestSubjacent.cpp.s:
 	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\TestSubjacent.dir\build.make tests/CMakeFiles/TestSubjacent.dir/TestSubjacent.cpp.s
 .PHONY : TestSubjacent.cpp.s
 
+Union.obj: Union.cpp.obj
+.PHONY : Union.obj
+
+# target to build an object file
+Union.cpp.obj:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/Union.cpp.obj
+.PHONY : Union.cpp.obj
+
+Union.i: Union.cpp.i
+.PHONY : Union.i
+
+# target to preprocess a source file
+Union.cpp.i:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/Union.cpp.i
+.PHONY : Union.cpp.i
+
+Union.s: Union.cpp.s
+.PHONY : Union.s
+
+# target to generate assembly for a file
+Union.cpp.s:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/Union.cpp.s
+.PHONY : Union.cpp.s
+
 removeEdge.obj: removeEdge.cpp.obj
 .PHONY : removeEdge.obj
 
@@ -406,6 +444,7 @@ help:
 	@echo ... InsertEdge
 	@echo ... TestComplement
 	@echo ... TestSubjacent
+	@echo ... Union
 	@echo ... removeEdge
 	@echo ... BPStest.obj
 	@echo ... BPStest.i
@@ -425,6 +464,9 @@ help:
 	@echo ... TestSubjacent.obj
 	@echo ... TestSubjacent.i
 	@echo ... TestSubjacent.s
+	@echo ... Union.obj
+	@echo ... Union.i
+	@echo ... Union.s
 	@echo ... removeEdge.obj
 	@echo ... removeEdge.i
 	@echo ... removeEdge.s

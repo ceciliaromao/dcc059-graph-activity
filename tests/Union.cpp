@@ -51,41 +51,63 @@ void printEdges(Graph *graph,ofstream&op)
     }
 }
 
+void printDegrees(Graph *graph,ofstream&op)
+{
+    Node *aux = graph->getFirstNode();
+
+    while(aux != nullptr)
+    {
+        op<< "No:"<<aux->getId()<<endl<<"Grau de Entrada:" <<aux->getInDegree()<<"; Grau de Saida:"<<aux->getOutDegree()<<endl;
+        aux = aux->getNextNode();
+    }
+}
+
 void printGraph(ofstream&op, Graph *graph){
     int order = graph->getOrder();
 
     for(int i = 1; i < order; i++){
         Node *aux = graph->getNode(i);
         for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
-            op<< i << " " << j->getTargetId() << endl;
+            op<< i << " " << j->getTargetId() << " " << j->getWeight() << endl;
         }
     }
 }
 
 int main()
 {
-    Graph* graph;
+    Graph* graph1, * graph2;
     ofstream output;
     ifstream input;
     
     string path = USER_DIR;
-    string path_in = path;
-
-    path_in+="input/grafo_1000_1.txt";
-
     string path_out =path+ "output/output.txt";
 
+    string path_in1 = path+"input/grafo_585.txt";
+    string path_in2 = path+"input/grafo_125.txt";
+
     output.open(path_out, ios::out | ios::trunc);
-    input.open(path_in, ios::in);
 
-   
-    graph = leituraInstancia(input, 0, 0, 0);
+    input.open(path_in1, ios::in);
 
-    cout << graph->getNumberEdges() << endl;
+    graph1 = leituraInstancia(input, 0, 1, 0);
 
-    cout << graph->getComplement()->getNumberEdges() << endl;
+    input.close();
 
-    output<< "Grafo Complementar"<<endl;
+    input.open(path_in2, ios::in);
 
-    printGraph(output, graph);
+    graph2 = leituraInstancia(input, 0, 1, 0);
+
+    output<<"Grafo 1:"<<endl;
+    printGraph(output, graph1);
+
+    output<<"Grafo 2:"<<endl;
+    printGraph(output, graph2);
+
+    output<< "Grafo União:"<<endl;
+    Graph* unionG = graph1->getUnion(graph2);
+    printGraph(output,unionG);
+
+    cout<< graph1->getNumberEdges()<<endl;
+    cout<< graph2->getNumberEdges()<<endl;
+    cout << unionG->getNumberEdges()<<endl;
 }
