@@ -8,6 +8,7 @@
 #include <fstream>
 #include <stack>
 #include <list>
+#include <map>
 
 using namespace std;
 
@@ -22,6 +23,9 @@ class Graph{
         bool weighted_node;
         Node* first_node;
         Node* last_node;
+        map<int, bool> verified; 
+
+
 
     public:
         //Constructor
@@ -47,6 +51,7 @@ class Graph{
         void breadthFirstSearch(ofstream& output_file);
         Graph* getComplement();
         Graph* getSubjacent();
+        Graph* getUnion(Graph* graph);
         bool hasCircuit();
         bool connectedGraph();
         float** floydMarshall();
