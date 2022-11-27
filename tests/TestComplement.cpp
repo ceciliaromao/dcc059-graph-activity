@@ -30,7 +30,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     } else {
         while(input_file >> idNodeSource >> idNodeTarget) {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
 
         }
     }
@@ -54,7 +54,7 @@ void printEdges(Graph *graph,ofstream&op)
 void printComplement(ofstream&op, Graph *graph){
     int order = graph->getOrder();
 
-    for(int i = 1; i < order+1; i++){
+    for(int i = 1; i < order; i++){
         Node *aux = graph->getNode(i);
         for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
             op<< i << " " << j->getTargetId() << endl;
@@ -80,6 +80,11 @@ int main()
 
    
     graph = leituraInstancia(input, 0, 0, 0);
+
+    cout << graph->getNumberEdges() << endl;
+
+    cout << graph->getComplement()->getNumberEdges() << endl;
+
     output<< "Grafo Complementar"<<endl;
 
     printComplement(output, graph);

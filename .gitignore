@@ -34,4 +34,5 @@
 #folders
 build/
 .vscode/
+output/
 

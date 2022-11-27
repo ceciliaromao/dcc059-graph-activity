@@ -138,17 +138,23 @@ void Graph::insertEdge(int id, int target_id, float weight)
     {
         insertNode(target_id);
     }
-    
-    if(directed)
-    {
-        getNode(id)->insertEdge(target_id, weight);
-        getNode(id)->incrementOutDegree();
-        getNode(target_id)->incrementInDegree();
-    } else {
-        getNode(id)->insertEdge(target_id, weight);
-        getNode(target_id)->insertEdge(id, weight);
+    if(!getNode(id)->searchEdge(target_id) && !getNode(target_id)->searchEdge(id)){
+        if(directed)
+        {
+            getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->incrementOutDegree();
+            getNode(target_id)->incrementInDegree();
+        } else {
+
+            getNode(id)->insertEdge(target_id, weight);
+
+            
+            getNode(target_id)->insertEdge(id, weight);
+            
+        }
+        this->number_edges++;
     }
-    this->number_edges++;
+    
 }
 
 void Graph::removeEdge(int id, int target_id)
@@ -282,13 +288,13 @@ Graph *Graph::getComplement(){
 
     while (node !=nullptr)
     {
-        complement->insertNode(node->id);
+
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            if(node->hasEdgeBetween(i->id)==nullptr && (i->id != node->id)){
-                complement->insertNode(i->id);
+            if((!(node->searchEdge(i->id))) && (i->id != node->id)){
                 complement->insertEdge(node->id,i->id,0);
             }
         }
+
         node = node->next_node;
     }
 
@@ -353,17 +359,6 @@ bool Graph::hasCircuit(){
 float** Graph::floydMarshall(){
     
 }
-
-int mindist(float dist[], bool visited[], int order){
-    int min = INT_MAX, ind;
-    for(int i = 0; i < order; i++){
-        if(dist[i] <= min && !visited[i]){
-            min = dist[i];
-            ind = i;
-        }
-    }
-    return ind;
-};
 
 float* Graph::dijkstra(int id){
 
