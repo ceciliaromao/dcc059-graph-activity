@@ -351,20 +351,33 @@ Graph* Graph::getSubjacent(){
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    subjacent->first_node = this->first_node;
+    
 
-    Node * next_node = subjacent->first_node;
-
+    Node * next_node = this->first_node;
+    subjacent->directed = false;
+    
     while(next_node != nullptr){
 
-        next_node->in_degree = 0;
+        subjacent->insertNode(next_node->id);
 
-        next_node->out_degree = 0;
+        Node* aux = subjacent->getNode(next_node->id);
+
+        aux->in_degree= 0;
+        aux->out_degree = 0;
+
+        if (next_node->first_edge != nullptr)
+        {
+            Edge * next_edge = next_node->first_edge;
+
+            while (next_edge != nullptr)
+            {
+                subjacent->insertEdge(next_edge->getTargetId(), next_node->id, next_edge->getWeight());
+                next_edge = next_edge->getNextEdge();
+            }
+        }
         
         next_node = next_node->getNextNode();
     }
-
-    subjacent->directed = false;
     
     return subjacent;
 }
