@@ -82,21 +82,42 @@ int main()
     string path = USER_DIR;
     string path_out =path+ "output/output.txt";
 
-    string path_in1 = path+"input/grafo_585.txt";
-    string path_in2 = path+"input/grafo_125.txt";
+    int viaComplement =0;
+
+    cout<< "Deseja União com Grafo Complementar (não ponderado)?" << endl;
+    cin>> viaComplement;
+
+    if(viaComplement>1)
+        viaComplement = 1;
+    else if(viaComplement<0)
+        viaComplement = 0;
+
+    string path_in1 = path;
+    string path_in2 = path;
+
+    if(viaComplement){
+        path_in1+= "input/grafo_1000_1.txt";
+        input.open(path_in1, ios::in);
+
+        graph1 = leituraInstancia(input, 0, 0, 0);
+        graph2 = graph1->getComplement();
+
+        input.close();
+    } else {
+        path_in1+="input/grafo_125.txt";
+        path_in2+="input/grafo_585.txt";
+
+        input.open(path_in1, ios::in);
+        graph1 = leituraInstancia(input, 0, 1, 0); 
+
+        input.close();
+
+        input.open(path_in2, ios::in);
+        graph2 = leituraInstancia(input, 0, 1, 0);
+        input.close();
+    }
 
     output.open(path_out, ios::out | ios::trunc);
-
-    input.open(path_in1, ios::in);
-
-    graph1 = leituraInstancia(input, 0, 1, 0);
-
-    input.close();
-
-    input.open(path_in2, ios::in);
-
-    graph2 = leituraInstancia(input, 0, 1, 0);
-
     output<<"Grafo 1:"<<endl;
     printGraph(output, graph1);
 
