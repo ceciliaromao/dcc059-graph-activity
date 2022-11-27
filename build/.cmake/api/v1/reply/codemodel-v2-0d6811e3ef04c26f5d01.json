@@ -1,0 +1,142 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "tests",
+					"jsonFile" : "directory-tests-Debug-70e4927a02b591d5c1f8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "teoria-dos-grafos",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "BPStest::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-BPStest-Debug-20c34e65d67a371fd58e.json",
+					"name" : "BPStest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "DPStest::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-DPStest-Debug-cf21e3c0650600b3108e.json",
+					"name" : "DPStest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Dijikstra::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Dijikstra-Debug-9cf0d4b83da4f2e359d5.json",
+					"name" : "Dijikstra",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "InsertEdge::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-InsertEdge-Debug-3ef3485861f542815727.json",
+					"name" : "InsertEdge",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "TestComplement::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-TestComplement-Debug-69d71fe460324a834cf9.json",
+					"name" : "TestComplement",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "TestSubjacent::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-TestSubjacent-Debug-abec59c3abab419cf4d0.json",
+					"name" : "TestSubjacent",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "removeEdge::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-removeEdge-Debug-27abbcc086bc683d06da.json",
+					"name" : "removeEdge",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tdg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tdg-Debug-49670d63885e40a96511.json",
+					"name" : "tdg",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build",
+		"source" : "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

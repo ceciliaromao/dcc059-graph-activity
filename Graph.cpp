@@ -130,18 +130,6 @@ void Graph::breadthFirstSearch(ofstream &output_file){
     
 }
 
-
-Graph *Graph::getComplement(){
-    
-}
-
-    
-
-//A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
-Graph* Graph::getSubjacent(){
-
-}
-
 //A function that returns the union of two graphs
 Graph* Graph::getUnion(Graph* graph){
 
@@ -176,6 +164,18 @@ Graph* Graph::getUnion(Graph* graph){
     }
 
     return unionGraph;
+}
+
+
+Graph *Graph::getComplement(){
+    
+}
+
+    
+
+//A function that returns a subjacent of a directed graph, which is a graph which the arcs have opposite directions to the original graph
+Graph* Graph::getSubjacent(){
+
 }
 
 bool Graph::connectedGraph(){
