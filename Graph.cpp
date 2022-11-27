@@ -273,6 +273,7 @@ Graph* Graph::getUnion(Graph* graph){
         return nullptr;
     }
     Graph* unionGraph = new Graph(this->order ,this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+
     if(this->order == graph->order)
         Graph* unionGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     else if(this->order > graph->order)

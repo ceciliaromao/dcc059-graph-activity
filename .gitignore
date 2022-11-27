@@ -36,3 +36,5 @@ build/
 .vscode/
 output/
 
+output/output.txt
+

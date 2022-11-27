@@ -6,6 +6,7 @@ using namespace std;
 
 // int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
 
+
 Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int weightedNode){
 
     //Variáveis para auxiliar na criação dos nós no Grafo
@@ -44,13 +45,12 @@ void printEdges(Graph *graph,ofstream&op)
 }
 
 void printDegrees(Graph *graph,ofstream&op)
-{
-    Node *aux = graph->getFirstNode();
-
-    while(aux != nullptr)
+{   
+    int order = graph->getOrder();
+    for(int i= 1; i < order; i++)
     {
-        op<< "No:"<<aux->getId()<<endl<<"Grau de Entrada:" <<aux->getInDegree()<<"; Grau de Saida:"<<aux->getOutDegree()<<endl;
-        aux = aux->getNextNode();
+        Node *aux = graph->getNode(i);
+        op<<"Nó: "<< aux->getId()<<endl << "Grau de Entrada: "<<aux->getInDegree()<< " Grau de Saída:"<<aux->getOutDegree()<<endl<<endl;
     }
 }
 
@@ -61,18 +61,19 @@ int main()
     ifstream input;
     
     string path = USER_DIR;
-    string path_out =path+ "output.txt";
-    string path_in = path+"grafo_1000_1.txt";
+    string path_out =path+ "output/output.txt";
+    string path_in = path+"input/grafo_1000_1.txt";
 
     output.open(path_out, ios::out | ios::trunc);
     input.open(path_in, ios::in);
+
     graph = leituraInstancia(input, 1, 0, 0);
 
     output<< "Grafo Subjacente:"<<endl;
 
     printDegrees(graph->getSubjacent(),output);
 
-    output<<"Grafo Original "<< graph->getNumberEdges()<<endl;
+    output<<"Grafo Original "<<endl;
 
     printDegrees(graph,output);
 }
