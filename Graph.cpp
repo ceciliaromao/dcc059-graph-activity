@@ -147,8 +147,6 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
-
-            
             getNode(target_id)->insertEdge(id, weight);
             
         }
@@ -290,7 +288,7 @@ Graph *Graph::getComplement(){
     {
 
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            if((!(node->searchEdge(i->id))) && (i->id != node->id)){
+            if(!(node->searchEdge(i->id))){
                 complement->insertEdge(node->id,i->id,0);
             }
         }
