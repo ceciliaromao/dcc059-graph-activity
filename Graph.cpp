@@ -138,19 +138,23 @@ void Graph::insertEdge(int id, int target_id, float weight)
     {
         insertNode(target_id);
     }
-    if(!getNode(id)->searchEdge(target_id) && !getNode(target_id)->searchEdge(id)){
+    if(!getNode(id)->searchEdge(target_id)){
         if(directed)
         {
             getNode(id)->insertEdge(target_id, weight);
             getNode(id)->incrementOutDegree();
             getNode(target_id)->incrementInDegree();
+            this->number_edges++;
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
-            getNode(target_id)->insertEdge(id, weight);
-            
+            if(!getNode(target_id)->searchEdge(id))
+            {
+                getNode(target_id)->insertEdge(id, weight);
+            }   
+            this->number_edges++;
         }
-        this->number_edges++;
+        
     }
     
 }
