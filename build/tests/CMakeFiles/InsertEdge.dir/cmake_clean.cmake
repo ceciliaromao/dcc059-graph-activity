@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/InsertEdge.dir/InsertEdge.cpp.obj"
-  "CMakeFiles/InsertEdge.dir/InsertEdge.cpp.obj.d"
-  "InsertEdge.exe"
-  "InsertEdge.exe.manifest"
+  "CMakeFiles/InsertEdge.dir/InsertEdge.cpp.o"
+  "InsertEdge"
   "InsertEdge.pdb"
-  "libInsertEdge.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

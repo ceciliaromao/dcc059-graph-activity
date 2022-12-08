@@ -1,62 +1,67 @@
 [
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/tdg.dir/includes_CXX.rsp -g -o CMakeFiles\\tdg.dir\\Edge.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\Edge.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Edge.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/tdg.dir/Edge.cpp.o -c /workspaces/dcc059-graph-activity/Edge.cpp",
+  "file": "/workspaces/dcc059-graph-activity/Edge.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/tdg.dir/includes_CXX.rsp -g -o CMakeFiles\\tdg.dir\\Graph.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\Graph.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Graph.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/tdg.dir/Graph.cpp.o -c /workspaces/dcc059-graph-activity/Graph.cpp",
+  "file": "/workspaces/dcc059-graph-activity/Graph.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/tdg.dir/includes_CXX.rsp -g -o CMakeFiles\\tdg.dir\\Node.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\Node.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Node.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/tdg.dir/Node.cpp.o -c /workspaces/dcc059-graph-activity/Node.cpp",
+  "file": "/workspaces/dcc059-graph-activity/Node.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/tdg.dir/includes_CXX.rsp -g -o CMakeFiles\\tdg.dir\\main.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\main.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/main.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/tdg.dir/main.cpp.o -c /workspaces/dcc059-graph-activity/main.cpp",
+  "file": "/workspaces/dcc059-graph-activity/main.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/DPStest.dir/includes_CXX.rsp -g -o CMakeFiles\\DPStest.dir\\DPStest.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\DPStest.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/DPStest.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/Union.dir/Union.cpp.o -c /workspaces/dcc059-graph-activity/tests/Union.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/Union.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/BPStest.dir/includes_CXX.rsp -g -o CMakeFiles\\BPStest.dir\\BPStest.cc.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\BPStest.cc",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/BPStest.cc"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/Dijikstra.dir/Dijkstra.cpp.o -c /workspaces/dcc059-graph-activity/tests/Dijkstra.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/Dijkstra.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/removeEdge.dir/includes_CXX.rsp -g -o CMakeFiles\\removeEdge.dir\\removeEdge.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\removeEdge.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/removeEdge.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/TestSubjacent.dir/TestSubjacent.cpp.o -c /workspaces/dcc059-graph-activity/tests/TestSubjacent.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/TestSubjacent.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/InsertEdge.dir/includes_CXX.rsp -g -o CMakeFiles\\InsertEdge.dir\\InsertEdge.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\InsertEdge.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/InsertEdge.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/TestComplement.dir/TestComplement.cpp.o -c /workspaces/dcc059-graph-activity/tests/TestComplement.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/TestComplement.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/TestComplement.dir/includes_CXX.rsp -g -o CMakeFiles\\TestComplement.dir\\TestComplement.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\TestComplement.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/TestComplement.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/writingDots.dir/writingDots.cpp.o -c /workspaces/dcc059-graph-activity/tests/writingDots.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/writingDots.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/TestSubjacent.dir/includes_CXX.rsp -g -o CMakeFiles\\TestSubjacent.dir\\TestSubjacent.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\TestSubjacent.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/TestSubjacent.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/InsertEdge.dir/InsertEdge.cpp.o -c /workspaces/dcc059-graph-activity/tests/InsertEdge.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/InsertEdge.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Dijikstra.dir/includes_CXX.rsp -g -o CMakeFiles\\Dijikstra.dir\\Dijkstra.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\Dijkstra.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/Dijkstra.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/removeEdge.dir/removeEdge.cpp.o -c /workspaces/dcc059-graph-activity/tests/removeEdge.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/removeEdge.cpp"
 },
 {
-  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Union.dir/includes_CXX.rsp -g -o CMakeFiles\\Union.dir\\Union.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\Union.cpp",
-  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/Union.cpp"
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/BPStest.dir/BPStest.cpp.o -c /workspaces/dcc059-graph-activity/tests/BPStest.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/BPStest.cpp"
+},
+{
+  "directory": "/workspaces/dcc059-graph-activity/build/tests",
+  "command": "/usr/bin/g++   -I/workspaces/dcc059-graph-activity  -g   -o CMakeFiles/DPStest.dir/DPStest.cpp.o -c /workspaces/dcc059-graph-activity/tests/DPStest.cpp",
+  "file": "/workspaces/dcc059-graph-activity/tests/DPStest.cpp"
 }
 ]

@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TestComplement.dir/TestComplement.cpp.obj"
-  "CMakeFiles/TestComplement.dir/TestComplement.cpp.obj.d"
-  "TestComplement.exe"
-  "TestComplement.exe.manifest"
+  "CMakeFiles/TestComplement.dir/TestComplement.cpp.o"
+  "TestComplement"
   "TestComplement.pdb"
-  "libTestComplement.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

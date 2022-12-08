@@ -96,7 +96,7 @@ int main()
     string path_in2 = path;
 
     if(viaComplement){
-        path_in1+= "input/grafo_1000_1.txt";
+        path_in1+= "input/grafo_15.txt";
         input.open(path_in1, ios::in);
 
         graph1 = leituraInstancia(input, 0, 0, 0);
@@ -127,7 +127,10 @@ int main()
     output<< "Grafo União:"<<endl;
     Graph* unionG = graph1->getUnion(graph2);
     printGraph(output,unionG);
+    output.close();
 
+    string dot = path+ "graph.dot";
+    graph1->writeDotFile(dot);
     cout<< graph1->getNumberEdges()<<endl;
     cout<< graph2->getNumberEdges()<<endl;
     cout << unionG->getNumberEdges()<<endl;

@@ -1,3 +1,1 @@
-C:\msys64\mingw64\bin\cmake.exe -E rm -f CMakeFiles\Dijikstra.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\Dijikstra.dir/objects.a @CMakeFiles\Dijikstra.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\Dijikstra.dir/objects.a -Wl,--no-whole-archive -o Dijikstra.exe -Wl,--out-implib,libDijikstra.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Dijikstra.dir\linklibs.rsp
+/usr/bin/g++  -g   CMakeFiles/Dijikstra.dir/Dijkstra.cpp.o  -o Dijikstra  ../libtdg.a 

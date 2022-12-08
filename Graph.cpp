@@ -490,7 +490,7 @@ void Graph::writeDotFile(string file_name)
     if (this->first_node != nullptr)
     {
         string edge_symbol;
-        if(this->directed = 1)
+        if(this->directed)
         {
             edge_symbol = "->";
             output_file<<"digraph{"<<endl;

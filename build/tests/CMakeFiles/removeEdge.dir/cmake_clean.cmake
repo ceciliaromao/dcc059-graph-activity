@@ -1,9 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/removeEdge.dir/removeEdge.cpp.obj"
-  "CMakeFiles/removeEdge.dir/removeEdge.cpp.obj.d"
-  "libremoveEdge.dll.a"
-  "removeEdge.exe"
-  "removeEdge.exe.manifest"
+  "CMakeFiles/removeEdge.dir/removeEdge.cpp.o"
+  "removeEdge"
   "removeEdge.pdb"
 )
 

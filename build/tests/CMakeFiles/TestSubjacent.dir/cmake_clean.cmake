@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TestSubjacent.dir/TestSubjacent.cpp.obj"
-  "CMakeFiles/TestSubjacent.dir/TestSubjacent.cpp.obj.d"
-  "TestSubjacent.exe"
-  "TestSubjacent.exe.manifest"
+  "CMakeFiles/TestSubjacent.dir/TestSubjacent.cpp.o"
+  "TestSubjacent"
   "TestSubjacent.pdb"
-  "libTestSubjacent.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,10 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Dijikstra.dir/Dijkstra.cpp.obj"
-  "CMakeFiles/Dijikstra.dir/Dijkstra.cpp.obj.d"
-  "Dijikstra.exe"
-  "Dijikstra.exe.manifest"
+  "CMakeFiles/Dijikstra.dir/Dijkstra.cpp.o"
+  "Dijikstra"
   "Dijikstra.pdb"
-  "libDijikstra.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

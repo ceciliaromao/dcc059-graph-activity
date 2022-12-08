@@ -1,12 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/tdg.dir/Edge.cpp.obj"
-  "CMakeFiles/tdg.dir/Edge.cpp.obj.d"
-  "CMakeFiles/tdg.dir/Graph.cpp.obj"
-  "CMakeFiles/tdg.dir/Graph.cpp.obj.d"
-  "CMakeFiles/tdg.dir/Node.cpp.obj"
-  "CMakeFiles/tdg.dir/Node.cpp.obj.d"
-  "CMakeFiles/tdg.dir/main.cpp.obj"
-  "CMakeFiles/tdg.dir/main.cpp.obj.d"
+  "CMakeFiles/tdg.dir/Edge.cpp.o"
+  "CMakeFiles/tdg.dir/Graph.cpp.o"
+  "CMakeFiles/tdg.dir/Node.cpp.o"
+  "CMakeFiles/tdg.dir/main.cpp.o"
   "libtdg.a"
   "libtdg.pdb"
 )
