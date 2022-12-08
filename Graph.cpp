@@ -331,6 +331,12 @@ float* Graph::dijkstra(int id){
 
 void Graph::writeDotFile(string file_name)
 {
+    ofstream output_file(file_name, ios::out | ios::trunc);
+
+    if(!output_file.is_open())
+    {
+        cout<<"Arquivo não aberto"<<endl; 
+    }
     //Para cada nó
         //pegar cada aresta
         //ir no nó seguinte
@@ -338,22 +344,33 @@ void Graph::writeDotFile(string file_name)
         //Se for colocar strict, não pode ter multiaresta
     if (this->first_node != nullptr)
     {
-        string edge_simbol = "--";
-        cout<<"graph{"<<endl;
+        string edge_symbol;
+        if(this->directed = 1)
+        {
+            edge_symbol = "->";
+            output_file<<"digraph{"<<endl;
+        }
+        else    
+        {
+            edge_symbol = "--";
+            output_file<<"strict graph{"<<endl;
+        }
+        
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            cout<<aux->getId();
+            output_file<<aux->getId();
             
             for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
             {
-                cout<<edge_simbol<<i->getTargetId();
+                output_file<<edge_symbol<<i->getTargetId();
             }
-            cout<<endl;
+            output_file<<endl;
         }
-        cout<<"}";
+        output_file<<"}";
     }
     else
     {
         cout<<"Grafo vazio"<<endl;
     }
+    output_file.close();
 }
