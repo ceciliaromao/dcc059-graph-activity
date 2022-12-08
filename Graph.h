@@ -51,6 +51,7 @@ class Graph{
         void breadthFirstSearch(ofstream& output_file);
         Graph* getComplement();
         Graph* getSubjacent();
+        Graph* getUnion(Graph* graph);
         bool hasCircuit();
         bool connectedGraph();
         float** floydMarshall();
