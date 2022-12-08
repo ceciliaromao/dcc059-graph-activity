@@ -12,3 +12,15 @@ target_link_libraries(InsertEdge PUBLIC tdg)
 
 add_executable(writingDots writingDots.cpp)
 target_link_libraries(writingDots PUBLIC tdg)
+add_executable(TestComplement TestComplement.cpp)
+target_link_libraries(TestComplement PUBLIC tdg)
+
+add_executable(TestSubjacent TestSubjacent.cpp)
+target_link_libraries(TestSubjacent PUBLIC tdg)
+
+add_executable(Dijikstra Dijkstra.cpp)
+target_link_libraries(Dijikstra PUBLIC tdg)
+
+add_executable(Union Union.cpp)
+target_link_libraries(Union PUBLIC tdg)
+

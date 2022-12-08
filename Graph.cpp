@@ -11,6 +11,11 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <map>
+#include <vector>
+#include <limits.h>
+
+#define INT 99999
 
 using namespace std;
 
@@ -128,12 +133,30 @@ void Graph::insertEdge(int id, int target_id, float weight)
     {
         insertNode(id);
     }
-    getNode(id)->insertEdge(target_id, weight);
-    if(!directed)
+
+    if(getNode(target_id) == nullptr)
     {
-        getNode(target_id)->insertEdge(id, weight);
+        insertNode(target_id);
     }
-    this->number_edges++;
+    if(!getNode(id)->searchEdge(target_id)){
+        if(directed)
+        {
+            getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->incrementOutDegree();
+            getNode(target_id)->incrementInDegree();
+            this->number_edges++;
+        } else {
+
+            getNode(id)->insertEdge(target_id, weight);
+            if(!getNode(target_id)->searchEdge(id))
+            {
+                getNode(target_id)->insertEdge(id, weight);
+            }   
+            this->number_edges++;
+        }
+        
+    }
+    
 }
 
 void Graph::removeEdge(int id, int target_id)
@@ -241,6 +264,57 @@ void Graph::breadthFirstSearch(ofstream &output_file){
 
 }
 
+//A function that returns the union of two graphs
+Graph* Graph::getUnion(Graph* graph){
+
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+    {
+        return nullptr;
+    }
+    Graph* unionGraph = new Graph(this->order ,this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+
+    if(this->order == graph->order)
+        Graph* unionGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+    else if(this->order > graph->order)
+        Graph* unionGraph = new Graph(this->order + (this->order-graph->order), this->directed, this->weighted_edge, this->weighted_node);
+    else if(this->order < graph->order)
+        Graph* unionGraph = new Graph(graph->order + (graph->order-this->order), this->directed, this->weighted_edge , this->weighted_node);
+    
+    Node* sourceNode = this->first_node;
+
+    //Insere nós e arestas do grafo fonte
+    while(sourceNode != nullptr)
+    {
+        for(Edge* i = sourceNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            unionGraph->insertEdge(sourceNode->id, i->getTargetId(), i->getWeight());
+        }
+        sourceNode = sourceNode->next_node;
+    }
+
+    Node* unionNode = graph->first_node;
+
+    // Insere nós e arestas do grafo de união
+    while(unionNode != nullptr)
+    {
+        // for(Node* graph_1 = this->first_node; graph_1 !=nullptr; graph_1 = graph_1->next_node){
+        //     for(Edge *i = unionNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        //     {
+        //        if(unionNode->id != graph_1->id)
+        //             unionGraph->insertEdge(unionNode->id, i->getTargetId(), i->getWeight());
+        //     }
+        // }
+        for(Edge *i = unionNode->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+        {
+            unionGraph->insertEdge(unionNode->id, i->getTargetId(), i->getWeight());
+        }
+        unionNode = unionNode->next_node;
+    }
+
+    return unionGraph;
+}
+
 
 Graph *Graph::getComplement(){
 
@@ -254,23 +328,26 @@ Graph *Graph::getComplement(){
 
     if(check_edges == this->number_edges){
         cout<< "The graph is completed" << endl;
-        return nullptr;
+        Graph* complement= new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+        return complement;
     }
 
 
     Graph * complement = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    complement->first_node = this->first_node;
+    // complement->insertNode(this->first_node->id);
     
     Node * node = this->first_node;
 
     while (node !=nullptr)
     {
-        for(Node *i = this->first_node->next_node; i!=nullptr; i = i->next_node){
-            if(node->hasEdgeBetween(i->id)==nullptr){
+
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            if(!(node->searchEdge(i->id))){
                 complement->insertEdge(node->id,i->id,0);
             }
         }
+
         node = node->next_node;
     }
 
@@ -289,20 +366,33 @@ Graph* Graph::getSubjacent(){
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    subjacent->first_node = this->first_node;
+    
 
-    Node * next_node = subjacent->first_node;
-
+    Node * next_node = this->first_node;
+    subjacent->directed = false;
+    
     while(next_node != nullptr){
 
-        next_node->in_degree = 0;
+        subjacent->insertNode(next_node->id);
 
-        next_node->out_degree = 0;
+        Node* aux = subjacent->getNode(next_node->id);
+
+        aux->in_degree= 0;
+        aux->out_degree = 0;
+
+        if (next_node->first_edge != nullptr)
+        {
+            Edge * next_edge = next_node->first_edge;
+
+            while (next_edge != nullptr)
+            {
+                subjacent->insertEdge(next_edge->getTargetId(), next_node->id, next_edge->getWeight());
+                next_edge = next_edge->getNextEdge();
+            }
+        }
         
         next_node = next_node->getNextNode();
     }
-
-    subjacent->directed = false;
     
     return subjacent;
 }
@@ -323,11 +413,66 @@ float** Graph::floydMarshall(){
     
 }
 
-   
-
 float* Graph::dijkstra(int id){
+
+    Node *node = getNode(id);
+
+    if(node == nullptr)
+    {
+        cout<<"Node not found" <<endl;
+        return nullptr;
+    }
+
+    //vetor de vertices visitados
+    bool *visited = new bool[order];
+    float *distance = new float[order];
+
+    for (int i = 0; i < order; i++)
+    {
+        visited[i] = false;
+        distance[i] = INT;
+    }
+    //distancia do nó fonte para ele mesmo é 0
     
+    distance[id] = 0;
+
+    priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
+    queue_.push(make_pair(distance[id], id));
+    pair<float,int>pair_ = queue_.top();
+    
+    //primeira iteração seta o primeiro nó como visitado
+    while(!queue_.empty()){
+
+        pair<float,int>pair_aux = queue_.top();
+        int u = pair_aux.second;
+        queue_.pop();
+        
+        if(visited[u]) 
+            continue; 
+        else 
+            visited[u] = true;
+        
+        Node* aux = getNode(u);
+        // cout << aux->id   << endl;
+        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge()){
+            float weight;
+            
+            !(this->weighted_edge) ? weight = 1 : weight = i->getWeight(); 
+
+            int v = i->getTargetId();
+
+            if((!visited[v]) && distance[v] > (distance[u] + weight)){
+                distance[v] = distance[u] + weight;
+                queue_.push(make_pair(distance[v], v));
+            }
+        }
+        
+    }
+
+    delete [] visited;
+    return distance;
 }
+
 
 void Graph::writeDotFile(string file_name)
 {

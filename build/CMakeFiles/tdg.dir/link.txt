@@ -1,0 +1,2 @@
+C:\msys64\mingw64\bin\ar.exe qc libtdg.a CMakeFiles/tdg.dir/Edge.cpp.obj CMakeFiles/tdg.dir/Graph.cpp.obj CMakeFiles/tdg.dir/Node.cpp.obj CMakeFiles/tdg.dir/main.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe libtdg.a
