@@ -83,7 +83,7 @@ Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, in
     int numEdges;
 
     //Pegando a ordem do grafo
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -110,7 +110,6 @@ int menu(){
     cout << "[4] Imprimir componentes conexas" << endl;
     cout << "[5] Imprimir componentes fortemente conexas" << endl;
     cout << "[6] Imprimir ordenacao topológica" << endl;
-    cout << "[7] Árvore Geradora Mínima de Prim" << endl;
     cout << "[8] Caminho Mínimo Dijkstra" << endl;
     cout << "[9] Caminho Mínimo Floyd" << endl;
     cout << "[10] Algoritmos Gulosos (Abre um submenu)" << endl;
@@ -122,13 +121,36 @@ int menu(){
 
 }
 
+void printGraph(ofstream&op, Graph *graph){
+    int order = graph->getOrder();
+
+    for(int i = 1; i < order; i++){
+        Node *aux = graph->getNode(i);
+        for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
+            op<< i << " " << j->getTargetId() << " " << j->getWeight() << endl;
+        }
+    }
+}
+
+void executeDijkstra(ofstream&output, Graph* graph){
+    int source =14;
+
+    float* array= graph->dijkstra(source);
+    int iterative=graph->getOrder();
+    for(int i=1;i<iterative;i++){
+        output<<array[i]<<endl;
+    }
+}
+
+
 void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
     switch (selecao) {
 
         //Complementar
         case 1:{
-            
+            Graph* complementar = graph->getComplement();
+            printGraph(output_file,complementar);
             break;
         }
 
@@ -162,27 +184,23 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             break;
         }
 
-        case 7:{
-
-            break;
-        }
 
         //Algoritmo de Prim
-        case 8:
+        case 7:
         {
             
             break;
         }
 
         //Algoritmo de Dijkstra
-        case 9:
+        case 8:
         {
-            
+            executeDijkstra(output_file, graph);
             break;
         }
 
         //Algoritmo de Floyd
-        case 10:
+        case 9:
         {
             
             break;
@@ -212,6 +230,7 @@ int mainMenu(ofstream& output_file, Graph* graph){
 
     return 0;
 }
+
 
 
 
