@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/TestComplement.dir/TestComplement.cpp.o  -o TestComplement  ../libtdg.a 

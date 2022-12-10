@@ -14,7 +14,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int order;
     int numEdges;
 
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -130,7 +130,7 @@ int main()
     output.close();
 
     string dot = path+ "graph.dot";
-    graph1->writeDotFile(dot);
+    graph2->writeDotFile(dot);
     cout<< graph1->getNumberEdges()<<endl;
     cout<< graph2->getNumberEdges()<<endl;
     cout << unionG->getNumberEdges()<<endl;

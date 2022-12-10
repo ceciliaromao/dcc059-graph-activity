@@ -151,9 +151,11 @@ void Graph::insertEdge(int id, int target_id, float weight)
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+                
             }   
             this->number_edges++;
         }
+        
         
     }
     
@@ -343,7 +345,9 @@ Graph *Graph::getComplement(){
     {
 
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            if(!(node->searchEdge(i->id))){
+            if((node->searchEdge(i->id) == false) || (i->searchEdge(node->id) == false)){
+                if(i->id == node->id)
+                    continue;
                 complement->insertEdge(node->id,i->id,0);
             }
         }
@@ -503,13 +507,12 @@ void Graph::writeDotFile(string file_name)
         
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            output_file<<aux->getId();
+            
             
             for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
             {
-                output_file<<edge_symbol<<i->getTargetId();
+                output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
             }
-            output_file<<endl;
         }
         output_file<<"}";
     }

@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/removeEdge.dir/removeEdge.cpp.o  -o removeEdge  ../libtdg.a 

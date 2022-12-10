@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/Dijikstra.dir/Dijkstra.cpp.o  -o Dijikstra  ../libtdg.a 

@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/BPStest.dir/BPStest.cpp.o  -o BPStest  ../libtdg.a 

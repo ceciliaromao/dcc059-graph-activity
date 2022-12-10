@@ -1,1 +1,0 @@
-/usr/bin/g++  -g   CMakeFiles/InsertEdge.dir/InsertEdge.cpp.o  -o InsertEdge  ../libtdg.a 

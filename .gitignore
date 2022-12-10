@@ -32,8 +32,10 @@
 *.app
 
 #folders
-/build/
+build/
+
 .vscode/
+
 output/
 
 output/output.txt
