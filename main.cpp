@@ -112,7 +112,7 @@ int menu(){
     cout << "[6] Imprimir ordenacao topológica" << endl;
     cout << "[8] Caminho Mínimo Dijkstra" << endl;
     cout << "[9] Caminho Mínimo Floyd" << endl;
-    cout << "[10] Algoritmos Gulosos (Abre um submenu)" << endl;
+    cout << "[10] Grafo União(Com grafo complementar)" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -205,7 +205,15 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             
             break;
 
-    }
+        }
+
+        // Grafo União
+        case 10:
+        {
+            Graph * complement = graph->getComplement();
+            Graph* unionG = graph->getUnion(complement);
+            printGraph(output_file,unionG);
+        }
 
   }
 }
