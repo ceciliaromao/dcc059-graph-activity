@@ -58,6 +58,7 @@ class Graph{
         float** floydMarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
+        void pert();
 
     private:
         //Auxiliar methods

@@ -634,3 +634,12 @@ void Graph::writeDotFile(string file_name)
     }
     output_file.close();
 }
+
+void Graph::pert()
+{
+    //verificando condições de existência
+    if(!this->directed || !this->weighted_edge)
+    {
+        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não direcionado ou não ponderado nas arestas"<<endl;
+    }
+}
