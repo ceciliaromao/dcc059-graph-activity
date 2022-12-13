@@ -215,6 +215,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
     verified.clear();
 
     int current;
+    //atualiza o nó a ser analizado e tira ele da pilha
     while(!pilha.empty())
     {
         current = pilha.top();
@@ -226,14 +227,17 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
             verified[current] = true; 
             if(current == targetId) return true;
             
+            //percorre todos as arestas do nó analisado
             for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
             {
                 if(!verified[i->getTargetId()])
                 {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
                     auxPilha.push(i->getTargetId());
                 }
             }
 
+            //coloca nós na pilha auxiliar na ordem correta
             while(!auxPilha.empty())
             {
                 pilha.push(auxPilha.top());
@@ -309,7 +313,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
                 }
             }
             
-            //aloca nós na pilha auxiliar na ordem correta
+            //coloca nós na pilha auxiliar na ordem correta
             while(!auxPilha.empty())
             {
                 pilha.push(auxPilha.top());
@@ -588,6 +592,7 @@ float* Graph::dijkstra(int id){
 }
 
 
+//Escreve o grafo no arquivo dot
 void Graph::writeDotFile(string file_name)
 {
     ofstream output_file(file_name, ios::out | ios::trunc);
@@ -596,8 +601,6 @@ void Graph::writeDotFile(string file_name)
     {
         cout<<"Arquivo não aberto"<<endl; 
     }
-    //qual minha nova ideia:
-        //na hora de adicionar uma aresta, ver se já existe uma aresta entre os dois nós
     if (this->first_node != nullptr)
     {
         string edge_symbol;
