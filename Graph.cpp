@@ -507,8 +507,6 @@ void Graph::writeDotFile(string file_name)
         
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            
-            
             for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
             {
                 output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
