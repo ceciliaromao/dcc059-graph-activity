@@ -247,6 +247,77 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
     return false;
 }
 
+bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
+{
+    if(getNode(initialId) == nullptr)
+        return false; 
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
+    string edge_symbol; 
+
+    verified.clear();
+
+    if(output_file.is_open())
+    {
+        //escrevendo o grafo em dot
+        if(this->directed)
+        {
+            output_file<<"digraph{"<<endl;
+            edge_symbol = "->";
+        }
+        else
+        {
+            output_file<<"strict graph{"<<endl;
+            edge_symbol = "--";
+        }
+    }else
+    {
+        //Mensagem de aviso: não para o código
+        cout<<"Depth First Search: Arquivo de saída não aberto"<<endl;
+    }
+
+    int current;
+    while(!pilha.empty())
+    {
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
+        {
+            output_file<<current;
+            
+            verified[current] = true; 
+            if(current == targetId)
+            {
+                output_file<<" }"<<endl;
+                return true;
+            }
+            if(!pilha.empty())
+                output_file<<edge_symbol;
+            
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
+            {
+                if(!verified[i->getTargetId()])
+                {
+                    auxPilha.push(i->getTargetId());
+                }
+            }
+
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
+        }
+    }
+    output_file.seekp(-sizeof(edge_symbol.c_str()), ios::end);
+    output_file<<"           }"<<endl;
+    return false;
+}
+
 //? Essa função começa a procurar a partir de onde?
 void Graph::breadthFirstSearch(ofstream &output_file){
     list<int> queue;
@@ -287,7 +358,7 @@ void Graph::breadthFirstSearch(ofstream &output_file){
         {
             if(aux->getId() == i->getTargetId())
                 continue;
-                
+
             //Desenha TODAS as arestas do grafo
             output_file<<aux->getId()<<edge_symbol<<i->getTargetId();
             //cout<<i->getTargetId()<<endl;
@@ -541,6 +612,8 @@ void Graph::writeDotFile(string file_name)
         {
             for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
             {
+                if(aux->getId() == i->getTargetId())
+                    continue; 
                 if(!verified[i->getTargetId()])
                     output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
             }

@@ -70,7 +70,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/grafo_1000_1.txt";
+    path_in+="input/grafo_125.txt";
 
     string path_out =path+ "output/output.txt";
 
@@ -79,20 +79,20 @@ int main()
 
    
     graph = leituraInstancia(input, 0, 0, 0);
-    
-    if(graph->depthFirstSearch(0, 4))
+
+    if(graph->depthFirstSearch(0, 126, output))
         cout<<"Nó encontrado"<<endl;
     else
         cout<<"Nó não encontrado"<<endl;
 
-    if(graph->depthFirstSearch(0,0))
+    /* if(graph->depthFirstSearch(0,0, output))
         cout<<"Nó encontrado"<<endl;
     else
         cout<<"Nõ não encontrado"<<endl;
     
-    if(graph->depthFirstSearch(0,9))
+    if(graph->depthFirstSearch(0,9, output))
         cout<<"Nó encontrado"<<endl;
     else
-        cout<<"Nó não encontrado"<<endl;
+        cout<<"Nó não encontrado"<<endl; */
 
 }

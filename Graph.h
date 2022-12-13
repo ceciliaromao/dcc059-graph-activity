@@ -48,6 +48,7 @@ class Graph{
         bool searchNode(int id);
         Node* getNode(int id);
         bool depthFirstSearch(int initialId,int targetId);
+        bool depthFirstSearch(int initialId, int targetId, ofstream &output_file); 
         void breadthFirstSearch(ofstream& output_file);
         Graph* getComplement();
         Graph* getSubjacent();

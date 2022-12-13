@@ -79,7 +79,7 @@ int main()
 
    
     graph = leituraInstancia(input, 0, 0, 0);
-    graph->breadthFirstSearch(output);
+    graph->getComplement()->breadthFirstSearch(output);
     output.close();
 
 }
