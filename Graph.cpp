@@ -21,7 +21,7 @@ using namespace std;
 
 /**************************************************************************************************
  * Defining the Graph's methods
-**************************************************************************************************/
+ **************************************************************************************************/
 
 // Constructor
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
@@ -103,17 +103,21 @@ void Graph::insertNode(int id)
     Node *next;
     Node *aux = nullptr;
 
-    if(this->getFirstNode() == nullptr) {
+    if (this->getFirstNode() == nullptr)
+    {
         this->first_node = new Node(id);
         this->last_node = this->getFirstNode();
-    } else {
-      if (!this->searchNode(id)) {
+    }
+    else
+    {
+        if (!this->searchNode(id))
+        {
             Node *node = new Node(id);
             node->setNextNode(nullptr);
 
             this->last_node->setNextNode(node);
             this->last_node = node;
-        
+
             /* next = this->first_node;
 
             while (next != nullptr)
@@ -122,8 +126,9 @@ void Graph::insertNode(int id)
                 next = next->getNextNode();
             }
 
-            aux->setNextNode(node) */;
-        }      
+            aux->setNextNode(node) */
+            ;
+        }
     }
 }
 
@@ -176,7 +181,8 @@ bool Graph::searchNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return true;
+            if (aux->getId() == id)
+                return true;
         }
     }
 
@@ -189,49 +195,56 @@ Node *Graph::getNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return aux;
+            if (aux->getId() == id)
+                return aux;
         }
     }
 
     return nullptr;
-    
 }
 
-//Function that verifies if there is a path between two nodes
-bool Graph::depthFirstSearch(int initialId, int targetId){
-    Node* aux = getNode(initialId);
-
-    if(aux == nullptr)
-    {
+// Function that verifies if there is a path between two nodes
+bool Graph::depthFirstSearch(int initialId, int targetId)
+{
+    if(getNode(initialId) == nullptr)
         return false; 
-    }
-    if(initialId == targetId)
-        return true; 
-    verified[initialId] = true; 
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
 
-    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+    verified.clear();
+
+    int current;
+    while(!pilha.empty())
     {
-        //Line for debug
-
-        cout<<i->getTargetId()<<endl;
-
-        if(!verified[i->getTargetId()])
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
         {
-            if(i->getTargetId() == targetId)
+            cout<<current<<endl;
+
+            verified[current] = true; 
+            if(current == targetId) return true;
+            
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
             {
-                return true; 
+                if(!verified[i->getTargetId()])
+                {
+                    auxPilha.push(i->getTargetId());
+                }
             }
 
-
-            if(depthFirstSearch(i->getTargetId(), targetId))
-                return true;
-
-            return depthFirstSearch(i->getTargetId(), targetId);
-
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
         }
     }
-
-    return false; 
+    return false;
 }
 
 //? Essa função começa a procurar a partir de onde?
@@ -401,20 +414,16 @@ Graph* Graph::getSubjacent(){
     return subjacent;
 }
 
-bool Graph::connectedGraph(){
-    
+bool Graph::connectedGraph()
+{
 }
 
-
-
-bool Graph::hasCircuit(){
-    
+bool Graph::hasCircuit()
+{
 }
 
-
-
-float** Graph::floydMarshall(){
-    
+float **Graph::floydMarshall()
+{
 }
 
 float* Graph::dijkstra(int id){
