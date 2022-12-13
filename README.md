@@ -10,3 +10,7 @@
 ###### This application was developed by Computer Science students at Universidade Federal de Juiz de Fora
 ###### Lucas Marins Ramalho de Lima, Maria Cecília Romão Santos, Maria Luísa Riolino Guimarães, Nicolas Soares Martins
 ###### tags: `graphs` `Graph Theory` `C++` `ADT` `UFJF`
+
+
+
+sfdp -x -Goverlap=scale -Tpng data.dot > data.png

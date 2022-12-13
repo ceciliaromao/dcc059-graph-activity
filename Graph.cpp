@@ -486,11 +486,8 @@ void Graph::writeDotFile(string file_name)
     {
         cout<<"Arquivo não aberto"<<endl; 
     }
-    //Para cada nó
-        //pegar cada aresta
-        //ir no nó seguinte
-    //se for grafo simples: colocar strict (?)
-        //Se for colocar strict, não pode ter multiaresta
+    //qual minha nova ideia:
+        //na hora de adicionar uma aresta, ver se já existe uma aresta entre os dois nós
     if (this->first_node != nullptr)
     {
         string edge_symbol;
@@ -509,8 +506,10 @@ void Graph::writeDotFile(string file_name)
         {
             for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
             {
-                output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
+                if(!verified[i->getTargetId()])
+                    output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
             }
+            verified[aux->getId()] = true;
         }
         output_file<<"}";
     }
