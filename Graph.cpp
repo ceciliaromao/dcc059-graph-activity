@@ -253,9 +253,29 @@ void Graph::breadthFirstSearch(ofstream &output_file){
     int ak = this->getFirstNode()->getId();
     verified[ak] = true;
     queue.push_back(ak);
+    string edge_symbol;
 
     verified.clear();
-    
+
+    if(output_file.is_open())
+    {
+        //escrevendo o grafo em dot
+        if(this->directed)
+        {
+            output_file<<"digraph{"<<endl;
+            edge_symbol = "->";
+        }
+        else
+        {
+            output_file<<"strict graph{"<<endl;
+            edge_symbol = "--";
+        }
+    }else
+    {
+        //Mensagem de aviso: não para o código
+        cout<<"Breadth First Search: Arquivo de saída não aberto"<<endl;
+    }
+
     Node* aux;
     while(!queue.empty())
     {
@@ -265,16 +285,22 @@ void Graph::breadthFirstSearch(ofstream &output_file){
         aux = this->getNode(ak);
         for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
         {
-            //output_file<<i->getTargetId()<<endl;
-            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
-            cout<<i->getTargetId()<<endl;
+            if(aux->getId() == i->getTargetId())
+                continue;
+                
+            //Desenha TODAS as arestas do grafo
+            output_file<<aux->getId()<<edge_symbol<<i->getTargetId();
+            //cout<<i->getTargetId()<<endl;
             if (!verified[i->getTargetId()])
             {
+                output_file<<"[color=\"red\"]"<<endl;
                 verified[i->getTargetId()] = true;
                 queue.push_back(i->getTargetId());
-            }
+            }else
+                output_file<<endl;
         }
     }
+    output_file<<"}"<<endl;
     //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
 
 }
