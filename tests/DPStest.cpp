@@ -80,7 +80,7 @@ int main()
    
     graph = leituraInstancia(input, 0, 0, 0);
 
-    if(graph->depthFirstSearch(0, 126, output))
+    if(graph->depthFirstSearch(0, 124, output))
         cout<<"Nó encontrado"<<endl;
     else
         cout<<"Nó não encontrado"<<endl;

@@ -127,7 +127,6 @@ void Graph::insertNode(int id)
             }
 
             aux->setNextNode(node) */
-            ;
         }
     }
 }
@@ -151,17 +150,14 @@ void Graph::insertEdge(int id, int target_id, float weight)
             getNode(target_id)->incrementInDegree();
             this->number_edges++;
         } else {
-
+            //Não possui incremento de grau //TODO
             getNode(id)->insertEdge(target_id, weight);
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
-                
             }   
             this->number_edges++;
         }
-        
-        
     }
     
 }
@@ -206,7 +202,8 @@ Node *Graph::getNode(int id)
 // Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId)
 {
-    if(getNode(initialId) == nullptr)
+    //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
+    if(getNode(initialId) == nullptr || getNode(targetId) == nullptr)
         return false; 
     else if(initialId == targetId)
         return true;
@@ -249,7 +246,8 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
 
 bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
 {
-    if(getNode(initialId) == nullptr)
+    //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
+    if(getNode(initialId) == nullptr || getNode(targetId) == nullptr)
         return false; 
     else if(initialId == targetId)
         return true;
@@ -261,6 +259,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
 
     verified.clear();
 
+    //Escrita em arquivo dot
     if(output_file.is_open())
     {
         //escrevendo o grafo em dot
@@ -281,31 +280,36 @@ bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
     }
 
     int current;
+    //enquanto a pilha não estiver vazia
     while(!pilha.empty())
     {
         current = pilha.top();
         pilha.pop();
+        //atualiza o nó a ser analizado e tira ele da pilha
         if(!verified[current])
         {
-            output_file<<current;
+            output_file<<current; //saida no arquivo
             
             verified[current] = true; 
-            if(current == targetId)
+            if(current == targetId) 
             {
-                output_file<<" }"<<endl;
+                output_file<<" }"<<endl; //saida no arquivo
                 return true;
             }
             if(!pilha.empty())
-                output_file<<edge_symbol;
+                output_file<<edge_symbol; //saida no arquivo
             
+            //percorre todos as arestas do nó analisado
             for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
             {
                 if(!verified[i->getTargetId()])
                 {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
                     auxPilha.push(i->getTargetId());
                 }
             }
-
+            
+            //aloca nós na pilha auxiliar na ordem correta
             while(!auxPilha.empty())
             {
                 pilha.push(auxPilha.top());
@@ -314,7 +318,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
         }
     }
     output_file.seekp(-sizeof(edge_symbol.c_str()), ios::end);
-    output_file<<"           }"<<endl;
+    output_file<<"           }"<<endl; //saida no arquivo
     return false;
 }
 
