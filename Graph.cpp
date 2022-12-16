@@ -400,21 +400,14 @@ bool Graph::connectedGraph(){
 
     bool *visited = new bool[order];
     int count = 0;
-
-    // mark all nodes as not visited
-    for (int i = 0; i < order; i++)
-        visited[i] = false;
     
-    // call DFS for node 0
-    // TODO: verificar possibilidade de adaptar a DFS já implementada ou implementar outra do jeito que a função precisa
-    // DFS(0, lista de adj, visited);
-
-    // count number of nodes visited
-    for (int i = 0; i < order; i++)
+    // call DFS from node 0 to all nodes to check if they are reachable
+    for (int i = 0; i < nodes; i++)
+        visited[i] = depthFirstSearch(0, i);
         if (visited[i])
             count++;
 
-    // check if every node is visited
+    // check if every node is reachable
     if (count == nodes)
         return true;
     else
