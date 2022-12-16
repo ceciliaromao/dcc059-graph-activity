@@ -49,7 +49,7 @@ float Edge::getWeight(){
 void Edge::setNextEdge(Edge* edge){
 
     this->next_edge = edge;
-
+    
 }
 
 void Edge::setWeight(float weight){

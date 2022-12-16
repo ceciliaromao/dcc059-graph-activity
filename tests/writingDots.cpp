@@ -14,7 +14,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int order;
     int numEdges;
 
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -70,12 +70,12 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/grafo_585.txt";
+    path_in+="input/grafo_15.txt";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
 
    
-    graph = leituraInstancia(input, 0, 0, 0);
+    graph = leituraInstancia(input, 1, 0, 0);
     graph->writeDotFile(path_out);
 }

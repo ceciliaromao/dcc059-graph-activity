@@ -130,7 +130,7 @@ int main()
     output.close();
 
     string dot = path+ "graph.dot";
-    graph2->writeDotFile(dot);
+    graph1->writeDotFile(dot);
     cout<< graph1->getNumberEdges()<<endl;
     cout<< graph2->getNumberEdges()<<endl;
     cout << unionG->getNumberEdges()<<endl;

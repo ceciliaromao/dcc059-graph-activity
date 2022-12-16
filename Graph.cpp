@@ -495,13 +495,6 @@ Graph* Graph::getSubjacent(){
     
     while(next_node != nullptr){
 
-        subjacent->insertNode(next_node->id);
-
-        Node* aux = subjacent->getNode(next_node->id);
-
-        aux->in_degree= 0;
-        aux->out_degree = 0;
-
         if (next_node->first_edge != nullptr)
         {
             Edge * next_edge = next_node->first_edge;

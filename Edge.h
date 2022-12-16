@@ -28,7 +28,7 @@ class Edge{
         // Setters
         void setNextEdge(Edge* edge);
         void setWeight(float weight); 
-
+        
 }; 
 
 #endif // EDGE_H_INCLUDED
