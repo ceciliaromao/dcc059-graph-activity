@@ -54,7 +54,7 @@ class Graph{
         Graph* getUnion(Graph* graph);
         bool hasCircuit();
         bool connectedGraph();
-        float** floydMarshall();
+        float** floydWarshall();
         float* dijkstra(int id);
 
     private:

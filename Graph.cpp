@@ -396,34 +396,50 @@ Graph* Graph::getSubjacent(){
 
 
 bool Graph::connectedGraph(){
-    int nodes = this->getOrder;
-
-    bool *visited = new bool[order];
-    int count = 0;
     
-    // call DFS from node 0 to all nodes to check if they are reachable
-    for (int i = 0; i < nodes; i++)
-        visited[i] = depthFirstSearch(0, i);
-        if (visited[i])
-            count++;
-
-    // check if every node is reachable
-    if (count == nodes)
-        return true;
-    else
-        return false;
 }
-
-
 
 bool Graph::hasCircuit(){
     
 }
 
 
+float** Graph::floydWarshall(int id){
+    Node *node = getNode(id);
 
-float** Graph::floydMarshall(){
-    
+    if(node == nullptr)
+    {
+        cout<<"Node not found"<<endl;
+        return nullptr;
+    }
+
+    float **dist = new float*[order];
+
+    // Initialize the distance matrix with INT
+    for (int i = 0; i < order; i++)
+        dist[i] = new float[order];
+        for (int j = 0; j < order; j++)
+            dist[i][j] = INT;
+
+    // Initialize the distance matrix with the weight of the edges
+    for (int i = 0; i < order; i++) {
+        for (Edge *j = getNode(i)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
+            dist[i][j->getTargetId()] = j->getWeight();
+        }
+    }
+
+    // Calculate the shortest path
+    for (int k = 0; k < order; k++) {
+        for (int i = 0; i < order; i++) {
+            for (j = 0; j < order; j++) {
+                if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+            dist[i][i] = 0;
+        }
+    }
+
+    return dist;
 }
 
 float* Graph::dijkstra(int id){
@@ -445,8 +461,8 @@ float* Graph::dijkstra(int id){
         visited[i] = false;
         distance[i] = INT;
     }
+
     //distancia do nó fonte para ele mesmo é 0
-    
     distance[id] = 0;
     
     priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
