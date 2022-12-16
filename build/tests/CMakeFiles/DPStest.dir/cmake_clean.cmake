@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DPStest.dir/DPStest.cpp.obj"
-  "CMakeFiles/DPStest.dir/DPStest.cpp.obj.d"
-  "DPStest.exe"
-  "DPStest.exe.manifest"
+  "CMakeFiles/DPStest.dir/DPStest.cpp.o"
+  "CMakeFiles/DPStest.dir/DPStest.cpp.o.d"
+  "DPStest"
   "DPStest.pdb"
-  "libDPStest.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

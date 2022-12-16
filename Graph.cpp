@@ -205,6 +205,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
     }
     if(initialId == targetId)
         return true; 
+
     verified[initialId] = true; 
 
     for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
@@ -220,12 +221,10 @@ bool Graph::depthFirstSearch(int initialId, int targetId){
                 return true; 
             }
 
-
             if(depthFirstSearch(i->getTargetId(), targetId))
                 return true;
 
             return depthFirstSearch(i->getTargetId(), targetId);
-
         }
     }
 
@@ -366,8 +365,6 @@ Graph* Graph::getSubjacent(){
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    
-
     Node * next_node = this->first_node;
     subjacent->directed = false;
     
@@ -397,8 +394,31 @@ Graph* Graph::getSubjacent(){
     return subjacent;
 }
 
+
 bool Graph::connectedGraph(){
+    int nodes = this->getOrder;
+
+    bool *visited = new bool[order];
+    int count = 0;
+
+    // mark all nodes as not visited
+    for (int i = 0; i < order; i++)
+        visited[i] = false;
     
+    // call DFS for node 0
+    // TODO: verificar possibilidade de adaptar a DFS já implementada ou implementar outra do jeito que a função precisa
+    // DFS(0, lista de adj, visited);
+
+    // count number of nodes visited
+    for (int i = 0; i < order; i++)
+        if (visited[i])
+            count++;
+
+    // check if every node is visited
+    if (count == nodes)
+        return true;
+    else
+        return false;
 }
 
 

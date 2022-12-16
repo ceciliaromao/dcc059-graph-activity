@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "BPStest.exe"
-  "BPStest.exe.manifest"
+  "BPStest"
   "BPStest.pdb"
-  "CMakeFiles/BPStest.dir/BPStest.cc.obj"
-  "CMakeFiles/BPStest.dir/BPStest.cc.obj.d"
-  "libBPStest.dll.a"
+  "CMakeFiles/BPStest.dir/BPStest.cc.o"
+  "CMakeFiles/BPStest.dir/BPStest.cc.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

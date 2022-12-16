@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Edge.cpp" "CMakeFiles/tdg.dir/Edge.cpp.obj" "gcc" "CMakeFiles/tdg.dir/Edge.cpp.obj.d"
-  "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Graph.cpp" "CMakeFiles/tdg.dir/Graph.cpp.obj" "gcc" "CMakeFiles/tdg.dir/Graph.cpp.obj.d"
-  "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/Node.cpp" "CMakeFiles/tdg.dir/Node.cpp.obj" "gcc" "CMakeFiles/tdg.dir/Node.cpp.obj.d"
-  "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/main.cpp" "CMakeFiles/tdg.dir/main.cpp.obj" "gcc" "CMakeFiles/tdg.dir/main.cpp.obj.d"
+  "/home/maria/ufjf/dcc059-graph-activity/Edge.cpp" "CMakeFiles/tdg.dir/Edge.cpp.o" "gcc" "CMakeFiles/tdg.dir/Edge.cpp.o.d"
+  "/home/maria/ufjf/dcc059-graph-activity/Graph.cpp" "CMakeFiles/tdg.dir/Graph.cpp.o" "gcc" "CMakeFiles/tdg.dir/Graph.cpp.o.d"
+  "/home/maria/ufjf/dcc059-graph-activity/Node.cpp" "CMakeFiles/tdg.dir/Node.cpp.o" "gcc" "CMakeFiles/tdg.dir/Node.cpp.o.d"
+  "/home/maria/ufjf/dcc059-graph-activity/main.cpp" "CMakeFiles/tdg.dir/main.cpp.o" "gcc" "CMakeFiles/tdg.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links.
