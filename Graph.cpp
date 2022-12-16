@@ -399,47 +399,43 @@ bool Graph::connectedGraph(){
     
 }
 
+// check if the graph has an eulerian circuit (closed trail -> no repeated edges)
 bool Graph::hasCircuit(){
+
+    // if the graph is not connected, it can't have an eulerian circuit
+    if (!this->connectedGraph())
+        return false;
+
+    // if the graph is directed, it has an eulerian circuit if and only if every vertex has equal in degree 
+    // and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component
     
+    if (this->directed)
+    {
+        Node * node = this->first_node;
+        while (node != nullptr)
+        {
+            if (node->getInDegree() != node->getOutDegree())
+                return false;
+            node = node->getNextNode();
+        }
+        return true;
+    }
+
+    // if the graph is undirected and has nodes with odd degree, it can't have an eulerian circuit
+    Node * node = this->first_node;
+    while (node != nullptr)
+    {
+        if (node->getDegree() % 2 != 0)
+            return false;
+        node = node->getNextNode();
+    }
+
+    return true;
 }
 
 
 float** Graph::floydWarshall(int id){
-    Node *node = getNode(id);
-
-    if(node == nullptr)
-    {
-        cout<<"Node not found"<<endl;
-        return nullptr;
-    }
-
-    float **dist = new float*[order];
-
-    // Initialize the distance matrix with INT
-    for (int i = 0; i < order; i++)
-        dist[i] = new float[order];
-        for (int j = 0; j < order; j++)
-            dist[i][j] = INT;
-
-    // Initialize the distance matrix with the weight of the edges
-    for (int i = 0; i < order; i++) {
-        for (Edge *j = getNode(i)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
-            dist[i][j->getTargetId()] = j->getWeight();
-        }
-    }
-
-    // Calculate the shortest path
-    for (int k = 0; k < order; k++) {
-        for (int i = 0; i < order; i++) {
-            for (j = 0; j < order; j++) {
-                if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
-                    dist[i][j] = dist[i][k] + dist[k][j];
-            }
-            dist[i][i] = 0;
-        }
-    }
-
-    return dist;
+    
 }
 
 float* Graph::dijkstra(int id){
