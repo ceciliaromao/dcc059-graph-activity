@@ -40,6 +40,9 @@ class Graph{
         bool getWeightedNode();
         Node* getFirstNode();
         Node* getLastNode();
+        // Setters
+        void setFirstNode(Node* node);
+        void setLastNode(Node* node);
         //Other methods
         void insertNode(int id);
         void insertEdge(int id, int target_id, float weight);

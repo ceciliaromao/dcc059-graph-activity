@@ -83,7 +83,6 @@ bool Graph::getWeightedNode()
 
 Node *Graph::getFirstNode()
 {
-
     return this->first_node;
 }
 
@@ -91,6 +90,16 @@ Node *Graph::getLastNode()
 {
 
     return this->last_node;
+}
+
+void Graph::setFirstNode(Node *node)
+{
+    this->first_node = node;
+}
+
+void Graph::setLastNode(Node *node)
+{
+    this->last_node = node;
 }
 
 // Other methods
@@ -166,6 +175,28 @@ void Graph::removeEdge(int id, int target_id)
 
 void Graph::removeNode(int id){ 
     
+    if (this->searchNode(id))
+    {
+        Node *node_current = this->getFirstNode();
+        Node *node_previous = nullptr;
+
+        while (node_current->getId() != id)
+        {
+            node_previous = node_current;
+            node_current = node_current->getNextNode();
+        }
+
+        if (node_previous == nullptr)
+            this->setFirstNode(node_current->getNextNode());
+        else
+            node_previous->setNextNode(node_current->getNextNode());
+
+        if (node_current->getNextNode() == nullptr)
+            this->setLastNode(node_previous);
+        
+        node_current->removeAllEdges();
+        delete node_current;
+    } 
 }
 
 bool Graph::searchNode(int id)
