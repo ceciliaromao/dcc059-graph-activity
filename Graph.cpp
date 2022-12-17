@@ -177,25 +177,25 @@ void Graph::removeNode(int id){
     
     if (this->searchNode(id))
     {
-        Node *node_current = this->getFirstNode();
-        Node *node_previous = nullptr;
+        Node *current_node = this->getFirstNode();
+        Node *previous_node = nullptr;
 
-        while (node_current->getId() != id)
+        while (current_node->getId() != id)
         {
-            node_previous = node_current;
-            node_current = node_current->getNextNode();
+            previous_node = current_node;
+            current_node = current_node->getNextNode();
         }
 
-        if (node_previous == nullptr)
-            this->setFirstNode(node_current->getNextNode());
+        if (previous_node == nullptr)
+            this->setFirstNode(current_node->getNextNode());
         else
-            node_previous->setNextNode(node_current->getNextNode());
+            previous_node->setNextNode(current_node->getNextNode());
 
-        if (node_current->getNextNode() == nullptr)
-            this->setLastNode(node_previous);
+        if (current_node->getNextNode() == nullptr)
+            this->setLastNode(previous_node);
         
-        node_current->removeAllEdges();
-        delete node_current;
+        current_node->removeAllEdges();
+        delete current_node;
     } 
 }
 
