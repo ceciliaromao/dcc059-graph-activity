@@ -425,11 +425,46 @@ bool Graph::connectedGraph(){
             count++;
     }
 
+float** Graph::floydWarshall(){
+    Node *node = getNode(1);
+
+    if(node == nullptr)
+    {
+        cout<<"Node not found"<<endl;
+        return nullptr;
+    }
+    
+    int nodes = order-1;
+    float **dist = new float*[nodes];
+    
+    // Initialize the distance matrix with INT
+    for (int i = 0; i < nodes; i++){
+        dist[i] = new float[nodes];
+        for (int j = 0; j < nodes; j++)
+            dist[i][j] = INT;
+    }
+    
+    // Initialize the distance matrix with the weight of the edges
+    
+    for (int i = 0; i < nodes; i++) { 
+        for (Edge *j = getNode(i+1)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
+            dist[i][j->getTargetId()-1] = j->getWeight();
+        }
+        dist[i][i] = 0;
+    }
+
+    // Calculate the shortest path
+    for (int k = 0; k < nodes; k++) {
+        for (int i = 0; i < nodes; i++) {
+            for (int j = 0; j < nodes; j++) {
+                if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+        }
+        
     // check if every node is reachable
-    if (count == nodes)
-        return true;
-    else
-        return false;
+    if (count == nodes) return true;
+    else return false;
 }
 
 // check if the graph has an eulerian circuit (closed trail -> no repeated edges)
@@ -464,11 +499,6 @@ bool Graph::hasCircuit(){
     }
 
     return true;
-}
-
-
-float** Graph::floydWarshall(){
-    
 }
 
 float* Graph::dijkstra(int id){

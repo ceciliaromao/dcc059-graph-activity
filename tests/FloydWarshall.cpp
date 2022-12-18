@@ -14,7 +14,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int order;
     int numEdges;
 
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -66,10 +66,10 @@ void executeWarshall(ofstream&output, Graph* graph){
     int source =1;
 
     float** array= graph->floydWarshall();
-    int iterative=graph->getOrder();
-    for(int i=1;i<iterative;i++){
-        output<<"Nó " <<array[i]<<endl;
-        for(int j=1;j<iterative;j++){
+
+    int iterative=graph->getOrder()-1;
+    for(int i=0;i<iterative;i++){
+        for(int j=0;j<iterative;j++){
             output<<array[i][j]<<" ";
         }
         output<<endl;
@@ -89,7 +89,7 @@ int main()
     int ponderado = 0;
     cin >> ponderado;
     
-    ponderado ? path_in +="input/grafo_585.txt": path_in+="input/grafo_1000_1.txt";
+    ponderado ? path_in +="input/grafo_3.txt": path_in+="input/grafo_10.txt";
 
     string path_out =path+ "output/output.txt";
 
@@ -97,7 +97,7 @@ int main()
     input.open(path_in, ios::in);
 
     if(ponderado)
-        graph = leituraInstancia(input, 0, 1, 0);
+        graph = leituraInstancia(input, 1, 1, 0);
     else
         graph = leituraInstancia(input, 0, 0, 0);
 
