@@ -152,9 +152,11 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
             //Não possui incremento de grau //TODO
             getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->in_degree++;
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
