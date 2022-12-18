@@ -237,6 +237,20 @@ Union/fast:
 	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/build
 .PHONY : Union/fast
 
+# Convenience name for target.
+tests/CMakeFiles/removeNode.dir/rule:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/removeNode.dir/rule
+.PHONY : tests/CMakeFiles/removeNode.dir/rule
+
+# Convenience name for target.
+removeNode: tests/CMakeFiles/removeNode.dir/rule
+.PHONY : removeNode
+
+# fast build rule for target.
+removeNode/fast:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/build
+.PHONY : removeNode/fast
+
 BPStest.obj: BPStest.cc.obj
 .PHONY : BPStest.obj
 
@@ -429,6 +443,30 @@ removeEdge.cpp.s:
 	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeEdge.dir\build.make tests/CMakeFiles/removeEdge.dir/removeEdge.cpp.s
 .PHONY : removeEdge.cpp.s
 
+removeNode.obj: removeNode.cpp.obj
+.PHONY : removeNode.obj
+
+# target to build an object file
+removeNode.cpp.obj:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/removeNode.cpp.obj
+.PHONY : removeNode.cpp.obj
+
+removeNode.i: removeNode.cpp.i
+.PHONY : removeNode.i
+
+# target to preprocess a source file
+removeNode.cpp.i:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/removeNode.cpp.i
+.PHONY : removeNode.cpp.i
+
+removeNode.s: removeNode.cpp.s
+.PHONY : removeNode.s
+
+# target to generate assembly for a file
+removeNode.cpp.s:
+	cd /d C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build && $(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/removeNode.cpp.s
+.PHONY : removeNode.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -446,6 +484,7 @@ help:
 	@echo ... TestSubjacent
 	@echo ... Union
 	@echo ... removeEdge
+	@echo ... removeNode
 	@echo ... BPStest.obj
 	@echo ... BPStest.i
 	@echo ... BPStest.s
@@ -470,6 +509,9 @@ help:
 	@echo ... removeEdge.obj
 	@echo ... removeEdge.i
 	@echo ... removeEdge.s
+	@echo ... removeNode.obj
+	@echo ... removeNode.i
+	@echo ... removeNode.s
 .PHONY : help
 
 

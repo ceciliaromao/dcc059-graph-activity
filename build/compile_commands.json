@@ -58,5 +58,10 @@
   "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
   "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/Union.dir/includes_CXX.rsp -g -o CMakeFiles\\Union.dir\\Union.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\Union.cpp",
   "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/Union.cpp"
+},
+{
+  "directory": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/tests",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/removeNode.dir/includes_CXX.rsp -g -o CMakeFiles\\removeNode.dir\\removeNode.cpp.obj -c C:\\Users\\Nicolas\\Desktop\\grafos\\dcc059-graph-activity\\tests\\removeNode.cpp",
+  "file": "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/tests/removeNode.cpp"
 }
 ]

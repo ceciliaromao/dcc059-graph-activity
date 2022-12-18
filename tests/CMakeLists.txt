@@ -22,3 +22,6 @@ target_link_libraries(Dijikstra PUBLIC tdg)
 add_executable(Union Union.cpp)
 target_link_libraries(Union PUBLIC tdg)
 
+add_executable(removeNode removeNode.cpp)
+target_link_libraries(removeNode PUBLIC tdg)
+

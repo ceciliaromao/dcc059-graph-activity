@@ -242,6 +242,19 @@ Union/fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/build
 .PHONY : Union/fast
 
+#=============================================================================
+# Target rules for targets named removeNode
+
+# Build rule for target.
+removeNode: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 removeNode
+.PHONY : removeNode
+
+# fast build rule for target.
+removeNode/fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/build
+.PHONY : removeNode/fast
+
 Edge.obj: Edge.cpp.obj
 .PHONY : Edge.obj
 
@@ -355,6 +368,7 @@ help:
 	@echo ... TestSubjacent
 	@echo ... Union
 	@echo ... removeEdge
+	@echo ... removeNode
 	@echo ... tdg
 	@echo ... Edge.obj
 	@echo ... Edge.i

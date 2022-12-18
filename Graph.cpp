@@ -44,7 +44,7 @@ Graph::~Graph()
     while (next_node != nullptr)
     {
 
-        next_node->removeAllEdges();
+        next_node->removeAllEdges(this->directed);
         Node *aux_node = next_node->getNextNode();
         delete next_node;
         next_node = aux_node;
@@ -174,30 +174,34 @@ void Graph::removeEdge(int id, int target_id)
 }
 
 void Graph::removeNode(int id){ 
-    
-    if (this->searchNode(id))
+    if(!this->searchNode(id))
     {
-        Node *current_node = this->getFirstNode();
-        Node *previous_node = nullptr;
+        cout << "Node not found" << endl;
+        return;
+    }
 
-        while (current_node->getId() != id)
-        {
-            previous_node = current_node;
-            current_node = current_node->getNextNode();
-        }
+    Node *current_node = this->getFirstNode();
+    Node *previous_node = nullptr;
 
-        if (previous_node == nullptr)
-            this->setFirstNode(current_node->getNextNode());
-        else
-            previous_node->setNextNode(current_node->getNextNode());
+    while (current_node->getId() != id)
+    {
+        previous_node = current_node;
+        current_node = current_node->getNextNode();
+    }
 
-        if (current_node->getNextNode() == nullptr)
-            this->setLastNode(previous_node);
+    if (previous_node == nullptr)
+        this->setFirstNode(current_node->getNextNode());
+    else
+        previous_node->setNextNode(current_node->getNextNode());
+
+    if (current_node->getNextNode() == nullptr)
+        this->setLastNode(previous_node);
         
-        current_node->removeAllEdges();
-        delete current_node;
+    current_node->removeAllEdges(this->directed);
+
+    // delete current_node;
     } 
-}
+
 
 bool Graph::searchNode(int id)
 {

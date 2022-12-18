@@ -87,6 +87,7 @@ tests/all: tests/CMakeFiles/TestComplement.dir/all
 tests/all: tests/CMakeFiles/TestSubjacent.dir/all
 tests/all: tests/CMakeFiles/Dijikstra.dir/all
 tests/all: tests/CMakeFiles/Union.dir/all
+tests/all: tests/CMakeFiles/removeNode.dir/all
 .PHONY : tests/all
 
 # Recursive "preinstall" directory target.
@@ -102,6 +103,7 @@ tests/clean: tests/CMakeFiles/TestComplement.dir/clean
 tests/clean: tests/CMakeFiles/TestSubjacent.dir/clean
 tests/clean: tests/CMakeFiles/Dijikstra.dir/clean
 tests/clean: tests/CMakeFiles/Union.dir/clean
+tests/clean: tests/CMakeFiles/removeNode.dir/clean
 .PHONY : tests/clean
 
 #=============================================================================
@@ -111,7 +113,7 @@ tests/clean: tests/CMakeFiles/Union.dir/clean
 CMakeFiles/tdg.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\tdg.dir\build.make CMakeFiles/tdg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\tdg.dir\build.make CMakeFiles/tdg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build\CMakeFiles --progress-num=17,18,19,20,21 "Built target tdg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build\CMakeFiles --progress-num=19,20,21,22,23 "Built target tdg"
 .PHONY : CMakeFiles/tdg.dir/all
 
 # Build rule for subdir invocation for target.
@@ -337,6 +339,32 @@ Union: tests/CMakeFiles/Union.dir/rule
 tests/CMakeFiles/Union.dir/clean:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\Union.dir\build.make tests/CMakeFiles/Union.dir/clean
 .PHONY : tests/CMakeFiles/Union.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/removeNode.dir
+
+# All Build rule for target.
+tests/CMakeFiles/removeNode.dir/all: CMakeFiles/tdg.dir/all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build\CMakeFiles --progress-num=17,18 "Built target removeNode"
+.PHONY : tests/CMakeFiles/removeNode.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/removeNode.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build\CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 tests/CMakeFiles/removeNode.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Nicolas\Desktop\grafos\dcc059-graph-activity\build\CMakeFiles 0
+.PHONY : tests/CMakeFiles/removeNode.dir/rule
+
+# Convenience name for target.
+removeNode: tests/CMakeFiles/removeNode.dir/rule
+.PHONY : removeNode
+
+# clean rule for target.
+tests/CMakeFiles/removeNode.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\removeNode.dir\build.make tests/CMakeFiles/removeNode.dir/clean
+.PHONY : tests/CMakeFiles/removeNode.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

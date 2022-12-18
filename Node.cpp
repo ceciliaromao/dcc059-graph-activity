@@ -112,23 +112,40 @@ void Node::insertEdge(int target_id, float weight){
 
 }
 
-void Node::removeAllEdges(){
+void Node::removeAllEdges(bool directed){
     // Verifies whether there are at least one edge in the node
-    if(this->first_edge != nullptr){
+    if(directed){
+        if(this->first_edge != nullptr){
 
-        Edge* next = nullptr;
-        Edge* aux = this->first_edge;
-        // Removing all edges of the node
-        while(aux != nullptr){
+            Edge* next = nullptr;
+            Edge* aux = this->first_edge;
+            // Removing all edges of the node
+            while(aux != nullptr){
 
-            next = aux->getNextEdge();
+                next = aux->getNextEdge();
+               
+                aux = next;
+            }
+             delete aux;
+        }   
+
+        this->first_edge = this->last_edge = nullptr;
+    } else {
+        if(this->first_edge != nullptr){
+            Edge * aux = this->first_edge;
+            Edge * next = nullptr;
+            while(aux != nullptr){
+                Node * target_node;
+                target_node->id = aux->getTargetId();
+                cout << "Target node id: " << target_node->id << endl;
+                // target_node->removeEdge(this->id, directed, nullptr);
+                next = aux->getNextEdge();
+                aux = next;
+            }
             delete aux;
-
         }
-
+        this->first_edge = this->last_edge = nullptr;
     }
-
-    this->first_edge = this->last_edge = nullptr;
 
 }
 
