@@ -66,6 +66,7 @@ void executeWarshall(ofstream&output, Graph* graph){
     int source =1;
 
     float** array= graph->floydWarshall();
+
     int iterative=graph->getOrder()-1;
     for(int i=0;i<iterative;i++){
         for(int j=0;j<iterative;j++){

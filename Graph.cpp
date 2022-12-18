@@ -148,9 +148,13 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->in_degree++;
+
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -196,39 +200,52 @@ Node *Graph::getNode(int id)
 }
 
 //Function that verifies if there is a path between two nodes
-bool Graph::depthFirstSearch(int initialId, int targetId){
-    Node* aux = getNode(initialId);
-
-    if(aux == nullptr)
-    {
+bool Graph::depthFirstSearch(int initialId, int targetId)
+{
+    //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
+    if(getNode(initialId) == nullptr || getNode(targetId) == nullptr)
         return false; 
-    }
-    if(initialId == targetId)
-        return true; 
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
 
-    verified[initialId] = true; 
+    verified.clear();
 
-    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+    int current;
+    //atualiza o nó a ser analizado e tira ele da pilha
+    while(!pilha.empty())
     {
-        //Line for debug
-
-        cout<<i->getTargetId()<<endl;
-
-        if(!verified[i->getTargetId()])
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
         {
-            if(i->getTargetId() == targetId)
+            // cout<<current<<endl;
+
+            verified[current] = true; 
+            if(current == targetId) return true;
+            
+            //percorre todos as arestas do nó analisado
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
             {
-                return true; 
+                if(!verified[i->getTargetId()])
+                {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
+                    auxPilha.push(i->getTargetId());
+                }
             }
 
-            if(depthFirstSearch(i->getTargetId(), targetId))
-                return true;
-
-            return depthFirstSearch(i->getTargetId(), targetId);
+            //coloca nós na pilha auxiliar na ordem correta
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
         }
     }
-
-    return false; 
+    return false;
 }
 
 //? Essa função começa a procurar a partir de onde?
@@ -396,13 +413,17 @@ Graph* Graph::getSubjacent(){
 
 
 bool Graph::connectedGraph(){
-    
-}
+    int nodes = this->order-1;
 
-bool Graph::hasCircuit(){
-    
-}
+    bool *visited = new bool[this->order];
+    int count = 1;
 
+    // call DFS from node 1 to all nodes to check if they are reachable
+    for (int i = 1; i < nodes; i++){
+        visited[i] = depthFirstSearch(1, i+1);
+        if (visited[i])
+            count++;
+    }
 
 float** Graph::floydWarshall(){
     Node *node = getNode(1);
@@ -412,6 +433,7 @@ float** Graph::floydWarshall(){
         cout<<"Node not found"<<endl;
         return nullptr;
     }
+    
     int nodes = order-1;
     float **dist = new float*[nodes];
     
@@ -421,31 +443,62 @@ float** Graph::floydWarshall(){
         for (int j = 0; j < nodes; j++)
             dist[i][j] = INT;
     }
+    
     // Initialize the distance matrix with the weight of the edges
     
-    for (int i = 0; i < nodes; i++) {
-           
-            for (Edge *j = getNode(i+1)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
-                dist[i][j->getTargetId()-1] = j->getWeight();
-                
-            }
+    for (int i = 0; i < nodes; i++) { 
+        for (Edge *j = getNode(i+1)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
+            dist[i][j->getTargetId()-1] = j->getWeight();
+        }
         dist[i][i] = 0;
     }
 
-        
-
     // Calculate the shortest path
     for (int k = 0; k < nodes; k++) {
-        
         for (int i = 0; i < nodes; i++) {
             for (int j = 0; j < nodes; j++) {
                 if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
                     dist[i][j] = dist[i][k] + dist[k][j];
             }
         }
+        
+    // check if every node is reachable
+    if (count == nodes) return true;
+    else return false;
+}
+
+// check if the graph has an eulerian circuit (closed trail -> no repeated edges)
+bool Graph::hasCircuit(){
+
+    // if the graph is not connected, it can't have an eulerian circuit
+    if (!this->connectedGraph())
+        return false;
+
+    // if the graph is directed, it has an eulerian circuit if and only if every vertex has equal in degree 
+    // and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component
+    
+    if (this->directed)
+    {
+        Node * node = this->first_node;
+        while (node != nullptr)
+        {
+            if (node->getInDegree() != node->getOutDegree())
+                return false;
+            node = node->getNextNode();
+        }
+        return true;
     }
 
-    return dist;
+    // if the graph is undirected and has nodes with odd degree, it can't have an eulerian circuit
+    Node * node = this->first_node;
+    while (node != nullptr)
+    {
+        if (node->in_degree % 2 != 0)
+            return false;
+        node = node->getNextNode();
+    }
+
+    return true;
 }
 
 float* Graph::dijkstra(int id){
