@@ -46,7 +46,7 @@ Graph::~Graph()
 
         next_node->removeAllEdges();
         Node *aux_node = next_node->getNextNode();
-        delete next_node;
+        delete next_node; 
         next_node = aux_node;
     }
 }

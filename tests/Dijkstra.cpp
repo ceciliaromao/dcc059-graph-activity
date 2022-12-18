@@ -14,7 +14,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int order;
     int numEdges;
 
-    input_file >> order >> numEdges;
+    input_file >> order; 
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -63,11 +63,12 @@ void printDegrees(Graph *graph,ofstream&op)
 }
 
 void executeDijkstra(ofstream&output, Graph* graph){
-    int source =1;
+    int source = 1;
 
-    float* array= graph->dijkstra(source);
-    int iterative=graph->getOrder();
+    float* array = graph->dijkstra(source);
+    int iterative = graph->getOrder();
     for(int i=1;i<iterative;i++){
+        output<<"Distancia do vertice "<<source<<" para "<<i<<": ";
         output<<array[i]<<endl;
     }
 }
@@ -85,7 +86,7 @@ int main()
     int ponderado = 0;
     cin >> ponderado;
     
-    ponderado ? path_in +="input/grafo_585.txt": path_in+="input/grafo_1000_1.txt";
+    ponderado ? path_in +="input/grafo_dijkstra.txt": path_in+="input/grafo_1000_1.txt";
 
     string path_out =path+ "output/output.txt";
 
@@ -93,7 +94,7 @@ int main()
     input.open(path_in, ios::in);
 
     if(ponderado)
-        graph = leituraInstancia(input, 0, 1, 0);
+        graph = leituraInstancia(input, 1, 1, 0);
     else
         graph = leituraInstancia(input, 0, 0, 0);
 

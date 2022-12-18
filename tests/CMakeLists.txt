@@ -18,8 +18,8 @@ target_link_libraries(TestComplement PUBLIC tdg)
 add_executable(TestSubjacent TestSubjacent.cpp)
 target_link_libraries(TestSubjacent PUBLIC tdg)
 
-add_executable(Dijikstra Dijkstra.cpp)
-target_link_libraries(Dijikstra PUBLIC tdg)
+add_executable(Dijkstra Dijkstra.cpp)
+target_link_libraries(Dijkstra PUBLIC tdg)
 
 add_executable(Union Union.cpp)
 target_link_libraries(Union PUBLIC tdg)
