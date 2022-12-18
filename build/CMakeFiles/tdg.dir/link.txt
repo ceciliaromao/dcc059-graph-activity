@@ -1,2 +1,0 @@
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-ar qc libtdg.a CMakeFiles/tdg.dir/Edge.cpp.o CMakeFiles/tdg.dir/Graph.cpp.o CMakeFiles/tdg.dir/Node.cpp.o CMakeFiles/tdg.dir/main.cpp.o
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-ranlib libtdg.a
