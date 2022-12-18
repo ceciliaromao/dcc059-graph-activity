@@ -425,6 +425,12 @@ bool Graph::connectedGraph(){
             count++;
     }
 
+        
+    // check if every node is reachable
+    if (count == nodes) return true;
+    else return false;
+}
+
 float** Graph::floydWarshall(){
     Node *node = getNode(1);
 
@@ -461,12 +467,10 @@ float** Graph::floydWarshall(){
                     dist[i][j] = dist[i][k] + dist[k][j];
             }
         }
-        
-    // check if every node is reachable
-    if (count == nodes) return true;
-    else return false;
-}
+    }
 
+    return dist;
+}
 // check if the graph has an eulerian circuit (closed trail -> no repeated edges)
 bool Graph::hasCircuit(){
 
@@ -559,4 +563,48 @@ float* Graph::dijkstra(int id){
 
     delete [] visited;
     return distance;
+}
+
+
+//Escreve o grafo no arquivo dot
+void Graph::writeDotFile(string file_name)
+{
+    ofstream output_file(file_name, ios::out | ios::trunc);
+
+    if(!output_file.is_open())
+    {
+        cout<<"Arquivo não aberto"<<endl; 
+    }
+    if (this->first_node != nullptr)
+    {
+        string edge_symbol;
+        if(this->directed)
+        {
+            edge_symbol = "->";
+            output_file<<"digraph{"<<endl;
+        }
+        else    
+        {
+            edge_symbol = "--";
+            output_file<<"strict graph{"<<endl;
+        }
+        
+        for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
+        {
+            for(Edge *i = aux->first_edge; i != nullptr; i = i->getNextEdge())
+            {
+                if(aux->getId() == i->getTargetId())
+                    continue; 
+                if(!verified[i->getTargetId()])
+                    output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
+            }
+            verified[aux->getId()] = true;
+        }
+        output_file<<"}";
+    }
+    else
+    {
+        cout<<"Grafo vazio"<<endl;
+    }
+    output_file.close();
 }
