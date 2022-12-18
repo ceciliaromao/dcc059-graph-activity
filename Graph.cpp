@@ -404,8 +404,8 @@ bool Graph::hasCircuit(){
 }
 
 
-float** Graph::floydWarshall(int id){
-    Node *node = getNode(id);
+float** Graph::floydWarshall(){
+    Node *node = getNode(1);
 
     if(node == nullptr)
     {
@@ -416,11 +416,11 @@ float** Graph::floydWarshall(int id){
     float **dist = new float*[order];
 
     // Initialize the distance matrix with INT
-    for (int i = 0; i < order; i++)
+    for (int i = 0; i < order; i++){
         dist[i] = new float[order];
         for (int j = 0; j < order; j++)
             dist[i][j] = INT;
-
+    }
     // Initialize the distance matrix with the weight of the edges
     for (int i = 0; i < order; i++) {
         for (Edge *j = getNode(i)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
@@ -431,7 +431,7 @@ float** Graph::floydWarshall(int id){
     // Calculate the shortest path
     for (int k = 0; k < order; k++) {
         for (int i = 0; i < order; i++) {
-            for (j = 0; j < order; j++) {
+            for (int j = 0; j < order; j++) {
                 if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
                     dist[i][j] = dist[i][k] + dist[k][j];
             }

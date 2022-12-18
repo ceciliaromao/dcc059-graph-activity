@@ -1,483 +1,494 @@
-The system is: Linux - 5.15.79.1-microsoft-standard-WSL2 - x86_64
+The system is: Windows - 10.0.19045 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc 
-Build flags: -march=nocona;-mtune=haswell;-ftree-vectorize;-fPIC;-fstack-protector-strong;-fno-plt;-O2;-ffunction-sections;-pipe;-isystem;/home/maria/miniconda3/envs/cmake-tutorial/include
+Compiler: C:/msys64/mingw64/bin/cc.exe 
+Build flags: 
 Id flags:  
 
 The output was:
 0
 
 
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
 
-The C compiler identification is GNU, found in "/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/3.25.0/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/3.23.2/CompilerIdC/a.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++ 
-Build flags: -fvisibility-inlines-hidden;-std=c++17;-fmessage-length=0;-march=nocona;-mtune=haswell;-ftree-vectorize;-fPIC;-fstack-protector-strong;-fno-plt;-O2;-ffunction-sections;-pipe;-isystem;/home/maria/miniconda3/envs/cmake-tutorial/include
+Compiler: C:/msys64/mingw64/bin/c++.exe 
+Build flags: 
 Id flags:  
 
 The output was:
 0
 
 
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
 
-The CXX compiler identification is GNU, found in "/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/3.25.0/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/3.23.2/CompilerIdCXX/a.exe"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-HyC0do
+Change Dir: C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_94716/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_94716.dir/build.make CMakeFiles/cmTC_94716.dir/build
-gmake[1]: Entering directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-HyC0do'
-Building C object CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc   -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include    -v -o CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -c /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCCompilerABI.c
-Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs
-could not find specs file conda.specs
-COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc
-Target: x86_64-conda-linux-gnu
-Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c,c++,fortran,objc,obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose
-Thread model: posix
-Supported LTO compression algorithms: zlib
-gcc version 10.4.0 (conda-forge gcc 10.4.0-19) 
-COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o' '-c'
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/cc1 -quiet -v -iprefix /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/ -isysroot /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot -isystem /home/maria/miniconda3/envs/cmake-tutorial/include /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -march=nocona -mtune=haswell -auxbase-strip CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -O2 -version -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -ffunction-sections -o - |
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o
-GNU assembler version 2.39 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.39
-GNU C17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)
-	compiled by GNU C version 10.4.0, GMP version 6.1.0, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.18-GMP
-
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include"
-ignoring nonexistent directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed"
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include"
-#include "..." search starts here:
-#include <...> search starts here:
- /home/maria/miniconda3/envs/cmake-tutorial/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include
-End of search list.
-GNU C17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)
-	compiled by GNU C version 10.4.0, GMP version 6.1.0, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.18-GMP
-
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-Compiler executable checksum: 261c333cfb634f8a42c0ca2a8624ba40
-COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/
-LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
-COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o' '-c'
-Linking C executable cmTC_94716
-/home/maria/miniconda3/envs/cmake-tutorial/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94716.dir/link.txt --verbose=1
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include  -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/maria/miniconda3/envs/cmake-tutorial/lib -Wl,-rpath-link,/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/lib -v CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -o cmTC_94716 
-Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs
-could not find specs file conda.specs
-COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc
-COLLECT_LTO_WRAPPER=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper
-Target: x86_64-conda-linux-gnu
-Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c,c++,fortran,objc,obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose
-Thread model: posix
-Supported LTO compression algorithms: zlib
-gcc version 10.4.0 (conda-forge gcc 10.4.0-19) 
-COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/
-LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
-COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_94716'
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2 -plugin /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so -plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKcbvCM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_94716 /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o -L/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0 -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../.. -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -O2 --sort-common --as-needed -z relro -z now --disable-new-dtags --gc-sections --allow-shlib-undefined -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib
-COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_94716'
-gmake[1]: Leaving directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-HyC0do'
+Run Build Command(s):C:/msys64/mingw64/bin/ninja.exe cmTC_0aeca && [1/2] Building C object CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj
+Using built-in specs.
+COLLECT_GCC=C:\msys64\mingw64\bin\cc.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.1.0 (Rev2, Built by MSYS2 project) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/ -D_REENTRANT C:/msys64/mingw64/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_0aeca.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\Nicolas\AppData\Local\Temp\ccaPTrIm.s
+GNU C17 (Rev2, Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 12.1.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include"
+ignoring nonexistent directory "D:/a/msys64/mingw64/include"
+ignoring nonexistent directory "/mingw64/include"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed"
+ignoring nonexistent directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "D:/a/msys64/mingw64/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed
+End of search list.
+GNU C17 (Rev2, Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 12.1.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 2606e4081f3c55efc3b1821476758512
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj C:\Users\Nicolas\AppData\Local\Temp\ccaPTrIm.s
+GNU assembler version 2.38 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.38
+COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.'
+[2/2] Linking C executable cmTC_0aeca.exe
+Using built-in specs.
+COLLECT_GCC=C:\msys64\mingw64\bin\cc.exe
+COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.1.0 (Rev2, Built by MSYS2 project) 
+COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0aeca.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_0aeca.'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccEq5bps.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_0aeca.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../.. CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_0aeca.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0aeca.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_0aeca.'
 
 
 
 Parsed C implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
   end of search list found
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/include]
-  implicit include dirs: [/home/maria/miniconda3/envs/cmake-tutorial/include;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include] ==> [C:/msys64/mingw64/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
+  implicit include dirs: [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include;C:/msys64/mingw64/include;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
 
 
 Parsed C implicit link information from above output:
-  link line regex: [^( *|.*[/\])(x86_64-conda-linux-gnu-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-HyC0do]
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_94716/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_94716.dir/build.make CMakeFiles/cmTC_94716.dir/build]
-  ignore line: [gmake[1]: Entering directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-HyC0do']
-  ignore line: [Building C object CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc   -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include    -v -o CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -c /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCCompilerABI.c]
-  ignore line: [Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs]
-  ignore line: [could not find specs file conda.specs]
-  ignore line: [COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc]
-  ignore line: [Target: x86_64-conda-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c c++ fortran objc obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose]
+  ignore line: [Run Build Command(s):C:/msys64/mingw64/bin/ninja.exe cmTC_0aeca && [1/2] Building C object CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=C:\msys64\mingw64\bin\cc.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib]
-  ignore line: [gcc version 10.4.0 (conda-forge gcc 10.4.0-19) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o' '-c']
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/cc1 -quiet -v -iprefix /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/ -isysroot /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot -isystem /home/maria/miniconda3/envs/cmake-tutorial/include /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -march=nocona -mtune=haswell -auxbase-strip CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -O2 -version -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -ffunction-sections -o - |]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o]
-  ignore line: [GNU assembler version 2.39 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.39]
-  ignore line: [GNU C17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)]
-  ignore line: [	compiled by GNU C version 10.4.0  GMP version 6.1.0  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.1.0 (Rev2  Built by MSYS2 project) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/']
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/cc1.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/ -D_REENTRANT C:/msys64/mingw64/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_0aeca.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\Nicolas\AppData\Local\Temp\ccaPTrIm.s]
+  ignore line: [GNU C17 (Rev2  Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 12.1.0  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include"]
-  ignore line: [ignoring nonexistent directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed"]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include"]
+  ignore line: [ignoring nonexistent directory "D:/a/msys64/mingw64/include"]
+  ignore line: [ignoring nonexistent directory "/mingw64/include"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring nonexistent directory "D:/a/msys64/mingw64/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
   ignore line: [End of search list.]
-  ignore line: [GNU C17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)]
-  ignore line: [	compiled by GNU C version 10.4.0  GMP version 6.1.0  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: [GNU C17 (Rev2  Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 12.1.0  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [Compiler executable checksum: 261c333cfb634f8a42c0ca2a8624ba40]
-  ignore line: [COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/]
-  ignore line: [LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o' '-c']
-  ignore line: [Linking C executable cmTC_94716]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94716.dir/link.txt --verbose=1]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include  -Wl -O2 -Wl --sort-common -Wl --as-needed -Wl -z relro -Wl -z now -Wl --disable-new-dtags -Wl --gc-sections -Wl --allow-shlib-undefined -Wl -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -Wl -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/lib -v CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -o cmTC_94716 ]
-  ignore line: [Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs]
-  ignore line: [could not find specs file conda.specs]
-  ignore line: [COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-cc]
-  ignore line: [COLLECT_LTO_WRAPPER=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper]
-  ignore line: [Target: x86_64-conda-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c c++ fortran objc obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose]
+  ignore line: [Compiler executable checksum: 2606e4081f3c55efc3b1821476758512]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/']
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj C:\Users\Nicolas\AppData\Local\Temp\ccaPTrIm.s]
+  ignore line: [GNU assembler version 2.38 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.38]
+  ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.']
+  ignore line: [[2/2] Linking C executable cmTC_0aeca.exe]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=C:\msys64\mingw64\bin\cc.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib]
-  ignore line: [gcc version 10.4.0 (conda-forge gcc 10.4.0-19) ]
-  ignore line: [COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/]
-  ignore line: [LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_94716']
-  link line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2 -plugin /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so -plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKcbvCM.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_94716 /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o -L/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0 -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../.. -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -O2 --sort-common --as-needed -z relro -z now --disable-new-dtags --gc-sections --allow-shlib-undefined -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2] ==> ignore
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.1.0 (Rev2  Built by MSYS2 project) ]
+  ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_0aeca.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_0aeca.']
+  link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccEq5bps.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_0aeca.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../.. CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_0aeca.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccKcbvCM.res] ==> ignore
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll] ==> ignore
+    arg [-plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccEq5bps.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+    arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+    arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [--sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
     arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
     arg [-o] ==> ignore
-    arg [cmTC_94716] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib]
-    arg [-O2] ==> ignore
-    arg [--sort-common] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
-    arg [--disable-new-dtags] ==> ignore
-    arg [--gc-sections] ==> ignore
-    arg [--allow-shlib-undefined] ==> ignore
-    arg [-rpath] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-    arg [-rpath-link] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-    arg [CMakeFiles/cmTC_94716.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [cmTC_0aeca.exe] ==> ignore
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc] ==> dir [C:/msys64/mingw64/bin/../lib/gcc]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..]
+    arg [CMakeFiles/cmTC_0aeca.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_0aeca.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lmingw32] ==> lib [mingw32]
     arg [-lgcc] ==> lib [gcc]
-    arg [--push-state] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--pop-state] ==> ignore
-    arg [-lc] ==> lib [c]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
     arg [-lgcc] ==> lib [gcc]
-    arg [--push-state] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--pop-state] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o]
-    arg [-rpath] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/Scrt1.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crti.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crtn.o]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
-  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
-  implicit objs: [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/Scrt1.o;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crti.o;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crtn.o]
-  implicit dirs: [/home/maria/miniconda3/envs/cmake-tutorial/lib;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o] ==> [C:/msys64/mingw64/lib/crt2.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o] ==> [C:/msys64/mingw64/lib/default-manifest.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc] ==> [C:/msys64/mingw64/lib/gcc]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/msys64/mingw64/x86_64-w64-mingw32/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib] ==> [C:/msys64/mingw64/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/msys64/mingw64/x86_64-w64-mingw32/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..] ==> [C:/msys64/mingw64/lib]
+  implicit libs: [mingw32;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc;moldname;mingwex;kernel32]
+  implicit objs: [C:/msys64/mingw64/lib/crt2.o;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o;C:/msys64/mingw64/lib/default-manifest.o;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  implicit dirs: [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0;C:/msys64/mingw64/lib/gcc;C:/msys64/mingw64/x86_64-w64-mingw32/lib;C:/msys64/mingw64/lib]
   implicit fwks: []
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-fTEX0Z
+Change Dir: C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_96616/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_96616.dir/build.make CMakeFiles/cmTC_96616.dir/build
-gmake[1]: Entering directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-fTEX0Z'
-Building CXX object CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++   -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include    -v -o CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -c /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp
-Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs
-could not find specs file conda.specs
-COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++
-Target: x86_64-conda-linux-gnu
-Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c,c++,fortran,objc,obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose
-Thread model: posix
-Supported LTO compression algorithms: zlib
-gcc version 10.4.0 (conda-forge gcc 10.4.0-19) 
-COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc'
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/cc1plus -quiet -v -iprefix /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/ -isysroot /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot -D_GNU_SOURCE -isystem /home/maria/miniconda3/envs/cmake-tutorial/include /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -march=nocona -mtune=haswell -auxbase-strip CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -O2 -std=c++17 -version -fvisibility-inlines-hidden -fmessage-length=0 -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -ffunction-sections -o - |
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o
-GNU assembler version 2.39 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.39
-GNU C++17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)
-	compiled by GNU C version 10.4.0, GMP version 6.1.0, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.18-GMP
-
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include"
-ignoring nonexistent directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed"
-ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include"
-#include "..." search starts here:
-#include <...> search starts here:
- /home/maria/miniconda3/envs/cmake-tutorial/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/backward
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include
-End of search list.
-GNU C++17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)
-	compiled by GNU C version 10.4.0, GMP version 6.1.0, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.18-GMP
-
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-Compiler executable checksum: 0fca5b8e4fb11ad6149b2d89dd596e0c
-COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/
-LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
-COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc'
-Linking CXX executable cmTC_96616
-/home/maria/miniconda3/envs/cmake-tutorial/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96616.dir/link.txt --verbose=1
-/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++ -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include  -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/maria/miniconda3/envs/cmake-tutorial/lib -Wl,-rpath-link,/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/lib -v CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_96616 
-Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs
-could not find specs file conda.specs
-COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++
-COLLECT_LTO_WRAPPER=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper
-Target: x86_64-conda-linux-gnu
-Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c,c++,fortran,objc,obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose
-Thread model: posix
-Supported LTO compression algorithms: zlib
-gcc version 10.4.0 (conda-forge gcc 10.4.0-19) 
-COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/
-LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/
-COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_96616' '-shared-libgcc'
- /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2 -plugin /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so -plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cctGQAW7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_96616 /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o -L/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0 -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../.. -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -O2 --sort-common --as-needed -z relro -z now --disable-new-dtags --gc-sections --allow-shlib-undefined -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib
-COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_96616' '-shared-libgcc'
-gmake[1]: Leaving directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-fTEX0Z'
+Run Build Command(s):C:/msys64/mingw64/bin/ninja.exe cmTC_f109c && [1/2] Building CXX object CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj
+Using built-in specs.
+COLLECT_GCC=C:\msys64\mingw64\bin\c++.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.1.0 (Rev2, Built by MSYS2 project) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/ -D_REENTRANT C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f109c.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\Nicolas\AppData\Local\Temp\ccYseziG.s
+GNU C++17 (Rev2, Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 12.1.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include"
+ignoring nonexistent directory "D:/a/msys64/mingw64/include"
+ignoring nonexistent directory "/mingw64/include"
+ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed"
+ignoring nonexistent directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "D:/a/msys64/mingw64/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed
+End of search list.
+GNU C++17 (Rev2, Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 12.1.0, GMP version 6.2.1, MPFR version 4.1.0-p13, MPC version 1.2.1, isl version isl-0.24-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: a11494dd7faf8c9fd9d9562fe7dfbb73
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\Nicolas\AppData\Local\Temp\ccYseziG.s
+GNU assembler version 2.38 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.38
+COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.'
+[2/2] Linking CXX executable cmTC_f109c.exe
+Using built-in specs.
+COLLECT_GCC=C:\msys64\mingw64\bin\c++.exe
+COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.1.0 (Rev2, Built by MSYS2 project) 
+COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/
+LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/;C:/msys64/mingw64/bin/../lib/gcc/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/;C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f109c.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f109c.'
+ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccODDanH.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_f109c.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../.. CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_f109c.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f109c.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f109c.'
 
 
 
 Parsed CXX implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/backward]
-    add: [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include]
+    add: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
   end of search list found
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/backward] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0/backward]
-  collapse include dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/include]
-  implicit include dirs: [/home/maria/miniconda3/envs/cmake-tutorial/include;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/include/c++/10.4.0/backward;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0] ==> [C:/msys64/mingw64/include/c++/12.1.0]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32] ==> [C:/msys64/mingw64/include/c++/12.1.0/x86_64-w64-mingw32]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward] ==> [C:/msys64/mingw64/include/c++/12.1.0/backward]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include] ==> [C:/msys64/mingw64/include]
+  collapse include dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
+  implicit include dirs: [C:/msys64/mingw64/include/c++/12.1.0;C:/msys64/mingw64/include/c++/12.1.0/x86_64-w64-mingw32;C:/msys64/mingw64/include/c++/12.1.0/backward;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include;C:/msys64/mingw64/include;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
 
 
 Parsed CXX implicit link information from above output:
-  link line regex: [^( *|.*[/\])(x86_64-conda-linux-gnu-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-fTEX0Z]
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_96616/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_96616.dir/build.make CMakeFiles/cmTC_96616.dir/build]
-  ignore line: [gmake[1]: Entering directory '/home/maria/ufjf/dcc059-graph-activity/build/CMakeFiles/CMakeScratch/TryCompile-fTEX0Z']
-  ignore line: [Building CXX object CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++   -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include    -v -o CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -c /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs]
-  ignore line: [could not find specs file conda.specs]
-  ignore line: [COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++]
-  ignore line: [Target: x86_64-conda-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c c++ fortran objc obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose]
+  ignore line: [Run Build Command(s):C:/msys64/mingw64/bin/ninja.exe cmTC_f109c && [1/2] Building CXX object CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=C:\msys64\mingw64\bin\c++.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib]
-  ignore line: [gcc version 10.4.0 (conda-forge gcc 10.4.0-19) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc']
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/cc1plus -quiet -v -iprefix /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/ -isysroot /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot -D_GNU_SOURCE -isystem /home/maria/miniconda3/envs/cmake-tutorial/include /home/maria/miniconda3/envs/cmake-tutorial/share/cmake-3.25/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -march=nocona -mtune=haswell -auxbase-strip CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -O2 -std=c++17 -version -fvisibility-inlines-hidden -fmessage-length=0 -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -ffunction-sections -o - |]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/as -v --64 -o CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [GNU assembler version 2.39 (x86_64-conda-linux-gnu) using BFD version (GNU Binutils) 2.39]
-  ignore line: [GNU C++17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)]
-  ignore line: [	compiled by GNU C version 10.4.0  GMP version 6.1.0  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.1.0 (Rev2  Built by MSYS2 project) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/']
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/cc1plus.exe -quiet -v -iprefix C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/ -D_REENTRANT C:/msys64/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_f109c.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\Nicolas\AppData\Local\Temp\ccYseziG.s]
+  ignore line: [GNU C++17 (Rev2  Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 12.1.0  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include"]
-  ignore line: [ignoring nonexistent directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/local/include"]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed"]
-  ignore line: [ignoring duplicate directory "/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include"]
+  ignore line: [ignoring nonexistent directory "D:/a/msys64/mingw64/include"]
+  ignore line: [ignoring nonexistent directory "/mingw64/include"]
+  ignore line: [ignoring duplicate directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "C:/msys64/mingw64/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring nonexistent directory "D:/a/msys64/mingw64/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/include-fixed]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/include]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/x86_64-conda-linux-gnu]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/../../x86_64-conda-linux-gnu/include/c++/10.4.0/backward]
-  ignore line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/x86_64-w64-mingw32]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include/c++/12.1.0/backward]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../include]
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/include-fixed]
   ignore line: [End of search list.]
-  ignore line: [GNU C++17 (conda-forge gcc 10.4.0-19) version 10.4.0 (x86_64-conda-linux-gnu)]
-  ignore line: [	compiled by GNU C version 10.4.0  GMP version 6.1.0  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.18-GMP]
+  ignore line: [GNU C++17 (Rev2  Built by MSYS2 project) version 12.1.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 12.1.0  GMP version 6.2.1  MPFR version 4.1.0-p13  MPC version 1.2.1  isl version isl-0.24-GMP]
   ignore line: []
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [Compiler executable checksum: 0fca5b8e4fb11ad6149b2d89dd596e0c]
-  ignore line: [COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/]
-  ignore line: [LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-v' '-o' 'CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc']
-  ignore line: [Linking CXX executable cmTC_96616]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/cmake -E cmake_link_script CMakeFiles/cmTC_96616.dir/link.txt --verbose=1]
-  ignore line: [/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++ -fvisibility-inlines-hidden -std=c++17 -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/maria/miniconda3/envs/cmake-tutorial/include  -Wl -O2 -Wl --sort-common -Wl --as-needed -Wl -z relro -Wl -z now -Wl --disable-new-dtags -Wl --gc-sections -Wl --allow-shlib-undefined -Wl -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -Wl -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/lib -v CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_96616 ]
-  ignore line: [Reading specs from /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/specs]
-  ignore line: [could not find specs file conda.specs]
-  ignore line: [COLLECT_GCC=/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-c++]
-  ignore line: [COLLECT_LTO_WRAPPER=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper]
-  ignore line: [Target: x86_64-conda-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho --with-slibdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --libdir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/lib --mandir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/man --build=x86_64-conda-linux-gnu --host=x86_64-conda-linux-gnu --target=x86_64-conda-linux-gnu --enable-default-pie --enable-languages=c c++ fortran objc obj-c++ --enable-__cxa_atexit --disable-libmudflap --enable-libgomp --disable-libssp --enable-libquadmath --enable-libquadmath-support --enable-libsanitizer --enable-lto --enable-threads=posix --enable-target-optspace --enable-plugin --enable-gold --disable-nls --disable-bootstrap --disable-multilib --enable-long-long --with-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/sysroot --with-build-sysroot=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_build_env/x86_64-conda-linux-gnu/sysroot --with-gxx-include-dir=/home/conda/feedstock_root/build_artifacts/gcc_compilers_1666516817544/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho/x86_64-conda-linux-gnu/include/c++/10.4.0 --with-pkgversion='conda-forge gcc 10.4.0-19' --with-bugurl=https://github.com/conda-forge/ctng-compilers-feedstock/issues/new/choose]
+  ignore line: [Compiler executable checksum: a11494dd7faf8c9fd9d9562fe7dfbb73]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/']
+  ignore line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj C:\Users\Nicolas\AppData\Local\Temp\ccYseziG.s]
+  ignore line: [GNU assembler version 2.38 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.38]
+  ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [[2/2] Linking CXX executable cmTC_f109c.exe]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=C:\msys64\mingw64\bin\c++.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-12.1.0/configure --prefix=/mingw64 --with-local-prefix=/mingw64/local --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --with-native-system-header-dir=/mingw64/include --libexecdir=/mingw64/lib --enable-bootstrap --enable-checking=release --with-arch=x86-64 --with-tune=generic --enable-languages=c,lto,c++,fortran,ada,objc,obj-c++,jit --enable-shared --enable-static --enable-libatomic --enable-threads=posix --enable-graphite --enable-fully-dynamic-string --enable-libstdcxx-filesystem-ts --enable-libstdcxx-time --disable-libstdcxx-pch --enable-lto --enable-libgomp --disable-multilib --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-libiconv --with-system-zlib --with-gmp=/mingw64 --with-mpfr=/mingw64 --with-mpc=/mingw64 --with-isl=/mingw64 --with-pkgversion='Rev2, Built by MSYS2 project' --with-bugurl=https://github.com/msys2/MINGW-packages/issues --with-gnu-as --with-gnu-ld --disable-libstdcxx-debug --with-boot-ldflags=-static-libstdc++ --with-stage1-ldflags=-static-libstdc++]
   ignore line: [Thread model: posix]
-  ignore line: [Supported LTO compression algorithms: zlib]
-  ignore line: [gcc version 10.4.0 (conda-forge gcc 10.4.0-19) ]
-  ignore line: [COMPILER_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/bin/]
-  ignore line: [LIBRARY_PATH=/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/:/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-fvisibility-inlines-hidden' '-std=c++17' '-fmessage-length=0' '-march=nocona' '-mtune=haswell' '-ftree-vectorize' '-fPIC' '-fstack-protector-strong' '-fno-plt' '-O2' '-ffunction-sections' '-pipe' '-isystem' '/home/maria/miniconda3/envs/cmake-tutorial/include' '-L/home/maria/miniconda3/envs/cmake-tutorial/lib' '-v' '-o' 'cmTC_96616' '-shared-libgcc']
-  link line: [ /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2 -plugin /home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so -plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cctGQAW7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -o cmTC_96616 /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o -L/home/maria/miniconda3/envs/cmake-tutorial/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0 -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../.. -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib -L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib -O2 --sort-common --as-needed -z relro -z now --disable-new-dtags --gc-sections --allow-shlib-undefined -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib -rpath-link /home/maria/miniconda3/envs/cmake-tutorial/lib CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o /home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o -rpath /home/maria/miniconda3/envs/cmake-tutorial/lib]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/collect2] ==> ignore
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.1.0 (Rev2  Built by MSYS2 project) ]
+  ignore line: [COMPILER_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/bin/]
+  ignore line: [LIBRARY_PATH=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f109c.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f109c.']
+  link line: [ C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe -plugin C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll -plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccODDanH.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -m i386pep -Bdynamic -o cmTC_f109c.exe C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../.. CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_f109c.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/collect2.exe] ==> ignore
     arg [-plugin] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/home/maria/miniconda3/envs/cmake-tutorial/bin/../libexec/gcc/x86_64-conda-linux-gnu/10.4.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cctGQAW7.res] ==> ignore
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/liblto_plugin.dll] ==> ignore
+    arg [-plugin-opt=C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/lto-wrapper.exe] ==> ignore
+    arg [-plugin-opt=-fresolution=C:\Users\Nicolas\AppData\Local\Temp\ccODDanH.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+    arg [-plugin-opt=-pass-through=-ladvapi32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lshell32] ==> ignore
+    arg [-plugin-opt=-pass-through=-luser32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [--sysroot=/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmoldname] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmingwex] ==> ignore
+    arg [-plugin-opt=-pass-through=-lmsvcrt] ==> ignore
+    arg [-plugin-opt=-pass-through=-lkernel32] ==> ignore
     arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [-pie] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
     arg [-o] ==> ignore
-    arg [cmTC_96616] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib]
-    arg [-L/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib]
-    arg [-O2] ==> ignore
-    arg [--sort-common] ==> ignore
-    arg [--as-needed] ==> ignore
-    arg [-zrelro] ==> ignore
-    arg [-znow] ==> ignore
-    arg [--disable-new-dtags] ==> ignore
-    arg [--gc-sections] ==> ignore
-    arg [--allow-shlib-undefined] ==> ignore
-    arg [-rpath] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-    arg [-rpath-link] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-    arg [CMakeFiles/cmTC_96616.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [cmTC_f109c.exe] ==> ignore
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc] ==> dir [C:/msys64/mingw64/bin/../lib/gcc]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib]
+    arg [-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..] ==> dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..]
+    arg [CMakeFiles/cmTC_f109c.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_f109c.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
-    arg [-lm] ==> lib [m]
+    arg [-lmingw32] ==> lib [mingw32]
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
-    arg [-lc] ==> lib [c]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lmingw32] ==> lib [mingw32]
     arg [-lgcc_s] ==> lib [gcc_s]
     arg [-lgcc] ==> lib [gcc]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o]
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o] ==> obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o]
-    arg [-rpath] ==> ignore
-    arg [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> ignore
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/Scrt1.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/Scrt1.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crti.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crti.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o]
-  collapse obj [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib/crtn.o] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crtn.o]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib/../lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../../../x86_64-conda-linux-gnu/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../lib/gcc/x86_64-conda-linux-gnu/10.4.0/../../..] ==> [/home/maria/miniconda3/envs/cmake-tutorial/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib]
-  collapse library dir [/home/maria/miniconda3/envs/cmake-tutorial/bin/../x86_64-conda-linux-gnu/sysroot/usr/lib] ==> [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
-  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
-  implicit objs: [/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/Scrt1.o;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crti.o;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtbeginS.o;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0/crtendS.o;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib/crtn.o]
-  implicit dirs: [/home/maria/miniconda3/envs/cmake-tutorial/lib;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc/x86_64-conda-linux-gnu/10.4.0;/home/maria/miniconda3/envs/cmake-tutorial/lib/gcc;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/lib;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/lib;/home/maria/miniconda3/envs/cmake-tutorial/x86_64-conda-linux-gnu/sysroot/usr/lib]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o]
+    arg [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o] ==> obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  remove lib [msvcrt]
+  remove lib [msvcrt]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/crt2.o] ==> [C:/msys64/mingw64/lib/crt2.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib/default-manifest.o] ==> [C:/msys64/mingw64/lib/default-manifest.o]
+  collapse obj [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0] ==> [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc] ==> [C:/msys64/mingw64/lib/gcc]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [C:/msys64/mingw64/x86_64-w64-mingw32/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../lib] ==> [C:/msys64/mingw64/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../../../x86_64-w64-mingw32/lib] ==> [C:/msys64/mingw64/x86_64-w64-mingw32/lib]
+  collapse library dir [C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.1.0/../../..] ==> [C:/msys64/mingw64/lib]
+  implicit libs: [stdc++;mingw32;gcc_s;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;mingw32;gcc_s;gcc;moldname;mingwex;kernel32]
+  implicit objs: [C:/msys64/mingw64/lib/crt2.o;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtbegin.o;C:/msys64/mingw64/lib/default-manifest.o;C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0/crtend.o]
+  implicit dirs: [C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/12.1.0;C:/msys64/mingw64/lib/gcc;C:/msys64/mingw64/x86_64-w64-mingw32/lib;C:/msys64/mingw64/lib]
   implicit fwks: []
 
 

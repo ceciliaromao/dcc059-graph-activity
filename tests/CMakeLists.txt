@@ -22,3 +22,5 @@ target_link_libraries(Dijikstra PUBLIC tdg)
 add_executable(Union Union.cpp)
 target_link_libraries(Union PUBLIC tdg)
 
+add_executable(FloydWarshall FloydWarshall.cpp)
+target_link_libraries(FloydWarshall PUBLIC tdg)
