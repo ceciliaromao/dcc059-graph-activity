@@ -196,39 +196,52 @@ Node *Graph::getNode(int id)
 }
 
 //Function that verifies if there is a path between two nodes
-bool Graph::depthFirstSearch(int initialId, int targetId){
-    Node* aux = getNode(initialId);
-
-    if(aux == nullptr)
-    {
+bool Graph::depthFirstSearch(int initialId, int targetId)
+{
+    //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
+    if(getNode(initialId) == nullptr || getNode(targetId) == nullptr)
         return false; 
-    }
-    if(initialId == targetId)
-        return true; 
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
 
-    verified[initialId] = true; 
+    verified.clear();
 
-    for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
+    int current;
+    //atualiza o nó a ser analizado e tira ele da pilha
+    while(!pilha.empty())
     {
-        //Line for debug
-
-        cout<<i->getTargetId()<<endl;
-
-        if(!verified[i->getTargetId()])
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
         {
-            if(i->getTargetId() == targetId)
+            // cout<<current<<endl;
+
+            verified[current] = true; 
+            if(current == targetId) return true;
+            
+            //percorre todos as arestas do nó analisado
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
             {
-                return true; 
+                if(!verified[i->getTargetId()])
+                {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
+                    auxPilha.push(i->getTargetId());
+                }
             }
 
-            if(depthFirstSearch(i->getTargetId(), targetId))
-                return true;
-
-            return depthFirstSearch(i->getTargetId(), targetId);
+            //coloca nós na pilha auxiliar na ordem correta
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
         }
     }
-
-    return false; 
+    return false;
 }
 
 //? Essa função começa a procurar a partir de onde?
@@ -396,16 +409,17 @@ Graph* Graph::getSubjacent(){
 
 
 bool Graph::connectedGraph(){
-    int nodes = this->getOrder;
+    int nodes = this->order-1;
 
-    bool *visited = new bool[order];
-    int count = 0;
-    
-    // call DFS from node 0 to all nodes to check if they are reachable
-    for (int i = 0; i < nodes; i++)
-        visited[i] = depthFirstSearch(0, i);
+    bool *visited = new bool[this->order];
+    int count = 1;
+
+    // call DFS from node 1 to all nodes to check if they are reachable
+    for (int i = 1; i < nodes; i++){
+        visited[i] = depthFirstSearch(1, i+1);
         if (visited[i])
             count++;
+    }
 
     // check if every node is reachable
     if (count == nodes)
@@ -422,7 +436,7 @@ bool Graph::hasCircuit(){
 
 
 
-float** Graph::floydMarshall(){
+float** Graph::floydWarshall(){
     
 }
 
