@@ -148,9 +148,13 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->in_degree++;
+
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -428,12 +432,39 @@ bool Graph::connectedGraph(){
         return false;
 }
 
-
-
+// check if the graph has an eulerian circuit (closed trail -> no repeated edges)
 bool Graph::hasCircuit(){
-    
-}
 
+    // if the graph is not connected, it can't have an eulerian circuit
+    if (!this->connectedGraph())
+        return false;
+
+    // if the graph is directed, it has an eulerian circuit if and only if every vertex has equal in degree 
+    // and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component
+    
+    if (this->directed)
+    {
+        Node * node = this->first_node;
+        while (node != nullptr)
+        {
+            if (node->getInDegree() != node->getOutDegree())
+                return false;
+            node = node->getNextNode();
+        }
+        return true;
+    }
+
+    // if the graph is undirected and has nodes with odd degree, it can't have an eulerian circuit
+    Node * node = this->first_node;
+    while (node != nullptr)
+    {
+        if (node->in_degree % 2 != 0)
+            return false;
+        node = node->getNextNode();
+    }
+
+    return true;
+}
 
 
 float** Graph::floydWarshall(){
@@ -459,8 +490,8 @@ float* Graph::dijkstra(int id){
         visited[i] = false;
         distance[i] = INT;
     }
+
     //distancia do nó fonte para ele mesmo é 0
-    
     distance[id] = 0;
     
     priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
