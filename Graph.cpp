@@ -148,9 +148,13 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->in_degree++;
+
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -425,7 +429,7 @@ bool Graph::hasCircuit(){
     Node * node = this->first_node;
     while (node != nullptr)
     {
-        if (node->getDegree() % 2 != 0)
+        if (node->in_degree % 2 != 0)
             return false;
         node = node->getNextNode();
     }
@@ -434,7 +438,7 @@ bool Graph::hasCircuit(){
 }
 
 
-float** Graph::floydWarshall(int id){
+float** Graph::floydWarshall(){
     
 }
 
