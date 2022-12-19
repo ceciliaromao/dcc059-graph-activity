@@ -73,7 +73,7 @@ int main()
 
     path_in+="input/grafo_41.txt";
 
-    string path_out =path+ "output/output.txt";
+    string path_out =path+ "output/pert.txt";
 
     input.open(path_in, ios::in);
 

@@ -638,13 +638,7 @@ void Graph::writeDotFile(string file_name)
 
 void Graph::pert(string path_out)
 {
-    ofstream output;
-    output.open(path_out, ios::app);
-    if(!output.is_open())
-    {
-        cout<<"Rede PERT: erro ao abrir o arquivo"<<endl;
-        return;
-    }
+    
     //Debug:
     Graph * grafo = new Graph(order, 1, 1, 0);
 
@@ -722,6 +716,15 @@ void Graph::pert(string path_out)
         }
         isInSolution = false; 
     }
+    //grafo->writeDotFile(path_out);
+
+    ofstream output;
+    output.open(path_out, ios::trunc);
+    if(!output.is_open())
+    {
+        cout<<"Rede PERT: erro ao abrir o arquivo"<<endl;
+        return;
+    }
     output<<"Custo:"<<custo<<endl;
     output<<"Ordem de execução"<<endl;
     for(auto it = S.begin(); it != S.end(); it++)
@@ -729,5 +732,5 @@ void Graph::pert(string path_out)
         output<<*it<<" ";
     }
     output<<endl;
-    grafo->writeDotFile("/home/lucas/Documentos/tdg/output/output.dot");
+    
 }
