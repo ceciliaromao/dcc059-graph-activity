@@ -30,7 +30,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     } else {
         while(input_file >> idNodeSource >> idNodeTarget) {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
 
         }
     }
@@ -65,6 +65,7 @@ void printGraph(ofstream&op, Graph *graph){
 int main()
 {
     Graph* graph;
+    ofstream output;
     ifstream input;
     
     string path = USER_DIR;
@@ -73,9 +74,16 @@ int main()
     path_in+="input/grafo_41.txt";
 
     string path_out =path+ "output/output.txt";
+
     input.open(path_in, ios::in);
 
-   
     graph = leituraInstancia(input, 1, 1, 0);
+
+    //testando o grafo completo
+    //graph = graph->getComplement()->getUnion(graph);
     graph->writeDotFile(path_out);
+    graph->pert();
+    path_out = path + "output/outputa.txt";
+    graph->writeDotFile(path_out);
+    
 }
