@@ -655,23 +655,30 @@ void Graph::pert()
     }
 
     verified.clear();
-    //Busca pelos caminhos críticos
+    
     //passa por todos os nós procurando algum sem precedência
     Node * aux = this->first_node; 
+    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+        if(aux->getInDegree() == 0)
+        {
+            S.push_back(aux->getId());
+        }
 
+    int tutameniquem;
+    bool isInSolution = false; 
     for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
     {
         cout<<aux->getId()<<endl;
         
         int auxDegree = aux->getInDegree();
         int maiorAresta = 0; 
-        int tutameniquem;
         for(auto it = S.begin(); it != S.end(); it++)
         {
             //aux já está dentro da solução
             if(aux->getId() == *it)
             {
                 cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
+                isInSolution = true; 
                 break; 
             }
             cout<<"iteração: "<<*it<<endl; 
@@ -688,62 +695,62 @@ void Graph::pert()
             }
         }
         //all os antecedentes de aux estão na solução, portanto, entra na solução:
-        if(auxDegree == 0)
+        if(auxDegree == 0 && !isInSolution)
         {
             grafo->insertEdge( tutameniquem, aux->getId(), 1);
+            tutameniquem = aux->getId();
             S.push_back(aux->getId());
+            cout<<"Somou-se "<<maiorAresta<<endl;
             custoA += maiorAresta; 
             verified[aux->getId()] = true; 
+            aux = this->first_node; 
         }
+        isInSolution = false; 
     }
-     
-    //TODO: tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru quando vocẽ vem, passar o fim de semana, fica tudo bem; mesmo duro ou com grana, vc ignoraaaaaa tudo oq eu faço, depois vai emboraaa  tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru
-    //buscar nó que seja terminal e adicionar na solução
-    for(aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
-    {
-        if(aux->getOutDegree() == 0)
-        {
-            S.push_back(aux->getId());
-            verified[aux->getId()] = true; 
-            break; 
-        }
-    }
-    if(aux == nullptr)
-        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não possui nó terminal"<<endl;
 
-    //todos os nós cujos todos os sucessores estão na solução:
+    /* cout<<"et minha casa telefone\n"<<endl; 
+    //TODO: tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru quando vocẽ vem, passar o fim de semana, fica tudo bem; mesmo duro ou com grana, vc ignoraaaaaa tudo oq eu faço, depois vai emboraaa  tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru
+    //all os nós cujos todos os sucessores estão na solução:
     for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
     {
+        cout<<aux->getId()<<endl;
         int auxDegree = aux->getOutDegree();
-        int menorAresta = INT_MAX-1; //maior número representado pelo inteiro, menos um
+        int menorAresta = INT; //maior número representado pelo inteiro, menos um
 
-        for(auto it = S.begin(); it != S.end(); ++it)
+        for(auto it = S.begin(); it != S.end(); it++)
         {
             //aux já está dentro da solução
             if(aux->getId() == *it)
-                break;
-
-            //Se um dos antecedentes de aux estiver na solução:diminuir o auxDegree
-            if(aux->searchEdge(*it))
             {
+                cout<<aux->getId()<<" Aux já se localiza na solução"<<endl;
+                break;
+            }
+            cout<<"iteração: "<<*it<<endl;
+            //Se um dos antecedentes de aux estiver na solução:diminuir o auxDegree
+            if(this->getNode(*it)->searchEdge(aux->getId()))
+            {
+                cout<<"reduzindo grau de entrada"<<endl;
                 auxDegree--; 
                 //pega aresta de maior peso
-                for(Edge * i = this->getNode(*it)->first_edge; i!= nullptr; i = i->getNextEdge())
-                {
-                    if(i->getWeight() < menorAresta) menorAresta = i->getWeight();
+                if(aux->hasEdgeBetween(*it)->getWeight() < menorAresta)
+                { 
+                    menorAresta = aux->hasEdgeBetween(*it)->getWeight();
+                    tutameniquem = *it;
                 }
             }
         }
         //todos os sucessores de aux estão na solução, portanto, entra na solução:
         if(auxDegree == 0)
         {
+            cout<<"adicionando "<<aux->getId()<<endl;
+            grafo->insertEdge(tutameniquem, aux->getId(), 1);
             S.push_back(aux->getId());
             custoB += menorAresta; 
             verified[aux->getId()] = true; 
         }
     }   
-
+ */
     cout<<"Custo A:"<<custoA<<endl;
-    cout<<"Custo B:"<<custoB<<endl;
+    //!cout<<"Custo B:"<<custoB<<endl;
     grafo->writeDotFile("/home/lucas/Documentos/tdg/output/output.dot");
 }
