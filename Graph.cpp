@@ -636,22 +636,31 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-void Graph::pert()
+void Graph::pert(string path_out)
 {
+    ofstream output;
+    output.open(path_out, ios::app);
+    if(!output.is_open())
+    {
+        cout<<"Rede PERT: erro ao abrir o arquivo"<<endl;
+        return;
+    }
     //Debug:
     Graph * grafo = new Graph(order, 1, 1, 0);
 
     list<int> S;
-    int custoA = 0, custoB = 0; 
+    int custo = 0; 
     //verificando condições de existência
     if(!this->directed || !this->weighted_edge)
     {
         cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não direcionado ou não ponderado nas arestas"<<endl;
+        return; 
     }
 
     if(this->hasCircuit())
     {
         cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo possui circuito"<<endl; 
+        return;
     }
 
     verified.clear();
@@ -664,11 +673,17 @@ void Graph::pert()
             S.push_back(aux->getId());
         }
 
+    if(S.empty())
+    {
+        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não possui aresta de grau de entrada nulo"<<endl; 
+        return;
+    }
+
     int tutameniquem;
     bool isInSolution = false; 
     for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
     {
-        cout<<aux->getId()<<endl;
+        //cout<<aux->getId()<<endl;
         
         int auxDegree = aux->getInDegree();
         int maiorAresta = 0; 
@@ -677,15 +692,15 @@ void Graph::pert()
             //aux já está dentro da solução
             if(aux->getId() == *it)
             {
-                cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
+                //cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
                 isInSolution = true; 
                 break; 
             }
-            cout<<"iteração: "<<*it<<endl; 
+            //cout<<"iteração: "<<*it<<endl; 
             //Se um dos antecedentes de aux estiver na solução:diminuir o auxDegree
             if(this->getNode(*it)->searchEdge(aux->getId()))
             {
-                cout<<"reduzindo grau de entrada"<<endl;
+                //cout<<"reduzindo grau de entrada"<<endl;
                 auxDegree--; 
                 if(this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight() >= maiorAresta)
                 {
@@ -700,57 +715,19 @@ void Graph::pert()
             grafo->insertEdge( tutameniquem, aux->getId(), 1);
             tutameniquem = aux->getId();
             S.push_back(aux->getId());
-            cout<<"Somou-se "<<maiorAresta<<endl;
-            custoA += maiorAresta; 
+            //cout<<"Somou-se "<<maiorAresta<<endl;
+            custo += maiorAresta; 
             verified[aux->getId()] = true; 
             aux = this->first_node; 
         }
         isInSolution = false; 
     }
-
-    /* cout<<"et minha casa telefone\n"<<endl; 
-    //TODO: tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru quando vocẽ vem, passar o fim de semana, fica tudo bem; mesmo duro ou com grana, vc ignoraaaaaa tudo oq eu faço, depois vai emboraaa  tchurururatchuru tchurururatchuru tchurururatchuru tchurururatchuru
-    //all os nós cujos todos os sucessores estão na solução:
-    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    output<<"Custo:"<<custo<<endl;
+    output<<"Ordem de execução"<<endl;
+    for(auto it = S.begin(); it != S.end(); it++)
     {
-        cout<<aux->getId()<<endl;
-        int auxDegree = aux->getOutDegree();
-        int menorAresta = INT; //maior número representado pelo inteiro, menos um
-
-        for(auto it = S.begin(); it != S.end(); it++)
-        {
-            //aux já está dentro da solução
-            if(aux->getId() == *it)
-            {
-                cout<<aux->getId()<<" Aux já se localiza na solução"<<endl;
-                break;
-            }
-            cout<<"iteração: "<<*it<<endl;
-            //Se um dos antecedentes de aux estiver na solução:diminuir o auxDegree
-            if(this->getNode(*it)->searchEdge(aux->getId()))
-            {
-                cout<<"reduzindo grau de entrada"<<endl;
-                auxDegree--; 
-                //pega aresta de maior peso
-                if(aux->hasEdgeBetween(*it)->getWeight() < menorAresta)
-                { 
-                    menorAresta = aux->hasEdgeBetween(*it)->getWeight();
-                    tutameniquem = *it;
-                }
-            }
-        }
-        //todos os sucessores de aux estão na solução, portanto, entra na solução:
-        if(auxDegree == 0)
-        {
-            cout<<"adicionando "<<aux->getId()<<endl;
-            grafo->insertEdge(tutameniquem, aux->getId(), 1);
-            S.push_back(aux->getId());
-            custoB += menorAresta; 
-            verified[aux->getId()] = true; 
-        }
-    }   
- */
-    cout<<"Custo A:"<<custoA<<endl;
-    //!cout<<"Custo B:"<<custoB<<endl;
+        output<<*it<<" ";
+    }
+    output<<endl;
     grafo->writeDotFile("/home/lucas/Documentos/tdg/output/output.dot");
 }

@@ -80,10 +80,8 @@ int main()
     graph = leituraInstancia(input, 1, 1, 0);
 
     //testando o grafo completo
-    //graph = graph->getComplement()->getUnion(graph);
-    graph->writeDotFile(path_out);
-    graph->pert();
-    path_out = path + "output/outputa.txt";
-    graph->writeDotFile(path_out);
+    //graph = graph->getComplement()->getUnion(graph)
+    graph->pert(path_out);
+    
     
 }
