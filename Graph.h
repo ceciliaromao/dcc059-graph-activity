@@ -9,8 +9,15 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <vector>
 
 using namespace std;
+
+struct pertTask{
+    int id;
+    int a;
+    int b;
+}; 
 
 class Graph{
 
@@ -61,6 +68,7 @@ class Graph{
         void pert(string path_out);
 
     private:
+        int isIn(vector<pertTask> sol, int id);
         //Auxiliar methods
 
 };

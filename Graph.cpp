@@ -636,14 +636,6 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-
-struct pertTask{
-    int id;
-    int a;
-    int b;
-}; 
-
-
 void Graph::pert(string path_out)
 {
     //verificando condições de existência
@@ -661,10 +653,8 @@ void Graph::pert(string path_out)
 
     vector<pertTask> sol; //esse vetor, tem que em algum momento, ter todos os nós. 
 
-
-    //!TIRAR ISSO!!!
-    //FIXME: ACHO QUE NÃO PRECISAVA DISSO!!! TIRAR ESSE TREM TODINHO
-    /* for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    //Pega todos os nós com grau de entrada igual a 0
+    for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
         if(aux->getInDegree() == 0 )
         {
@@ -682,7 +672,7 @@ void Graph::pert(string path_out)
                 sol[j].a = 0; 
             }
         }
-    } */
+    }
 
     for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
@@ -703,70 +693,98 @@ void Graph::pert(string path_out)
         }
 
         //Todos os antecedentes estão na solução
-        if(auxDegree == 0)
+        if(auxDegree == 0 && isIn(sol, aux->getId()) == -1)
         {
-            int j = isIn(sol, aux->getId());
-            if(j==-1)
-            {
-                //adiciona novo nó na solução
-                pertTask nTarefa;
-                nTarefa.id = aux->getId();
-                nTarefa.a = max;
-                sol.push_back(nTarefa);
-            }else
-            {
-                //atualiza a informação da tarefa j da solução
-                sol[j].a = max; 
-            }
+            cout<<"Adicionando "<<aux->getId()<<" na solução"<<endl;
+            pertTask nTarefa;
+            nTarefa.id = aux->getId();
+            nTarefa.a = max;
+            sol.push_back(nTarefa);
 
-            //TODO: eu acho que aqui eu tenho que reiniciar o loop, pra garantir que TODOS os nós estão aqui
+            //Reinicia o loop para garantir que todos os nós estão na solução
+            aux =  this->first_node; 
         }
     }
 
-    //TODO: Talvez seja necessário colocar o alpha(F) no betha(F) -> certeza que vou ter que fazer isso
+    int maxAlpha = 0;
+    //!Define nós terminais do grafo
+    for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    {
+        if(aux->getOutDegree() == 0 )
+        {
+            int j = isIn(sol, aux->getId());
+            //atualiza a informação da tarefa j da solução
+            sol[j].b = sol[j].a; 
+            if(sol[j].a > maxAlpha)
+            {
+                maxAlpha = sol[j].a;
+            }
+        }
+    }
+    
     //parte do betha
     for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
         int auxDegree = aux->getOutDegree();
-        int min = INT; 
+        int min = maxAlpha; 
         for(int i = 0; i<sol.size(); i++)
         {
             if(aux->searchEdge(sol[i].id))
             {
                 auxDegree--;
                 //? Tá funcionando isso?
-                int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
+                int pesoAresta = aux->hasEdgeBetween(sol[i].id)->getWeight();
+                //int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
                 if(sol[i].b - pesoAresta < min)
                 {
                     min = sol[i].b - pesoAresta; 
                 }
             }
+            cout<<"Chegou até aqui"<<endl;
         }
+                            
 
         //Todos os precedentes estão na solução
         if(auxDegree == 0)
         {
             int j = isIn(sol, aux->getId());
-            if(j==-1)
-            {
-                //adiciona novo nó na solução
-                pertTask nTarefa;
-                nTarefa.id = aux->getId();
-                nTarefa.b = min;
-                sol.push_back(nTarefa);
-            }else
-            {
-                //atualiza a informação da tarefa j da solução
-                sol[j].b = min; 
-            }
+            //atualiza a informação da tarefa j da solução
+            sol[j].b = min; 
             //TODO; acho que vou ter que reiniciar tudo depois daqui
         }
+
+    }
+    
+    //impressão da ordem de execução e de alpha e betha
+    ofstream output;
+    output.open(path_out, ios::out | ios::trunc);
+    if(!output.is_open())
+    {
+        cout<<"REDE PERT: erro ao abrir o arquivo"<<endl;
+        return; 
     }
 
-    //TODO: imprimir os nós, pra ver o que tá acontecendo
+    output<<"Id: ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].id<<" ";
+    }
+
+    output<<endl<<"a:  ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].a<<" ";
+    }
+
+    output<<endl<<"b:  ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].b<<" ";
+    }
+    output.close();
 }
 
-int isIn(vector<pertTask> sol, int id)
+int Graph::isIn(vector<pertTask> sol, int id)
 {
     for(int i =0; i<sol.size(); i++)
         if(sol[i].id == id)
