@@ -673,7 +673,7 @@ void Graph::pert(string path_out)
         return;
     }
 
-    int tutameniquem;
+    int auxIndex;
     bool isInSolution = false; 
     for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
     {
@@ -699,15 +699,15 @@ void Graph::pert(string path_out)
                 if(this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight() >= maiorAresta)
                 {
                     maiorAresta = this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight();
-                    tutameniquem = *it;
+                    auxIndex = *it;
                 }
             }
         }
         //all os antecedentes de aux estão na solução, portanto, entra na solução:
         if(auxDegree == 0 && !isInSolution)
         {
-            grafo->insertEdge( tutameniquem, aux->getId(), 1);
-            tutameniquem = aux->getId();
+            grafo->insertEdge( auxIndex, aux->getId(), 1);
+            auxIndex = aux->getId();
             S.push_back(aux->getId());
             //cout<<"Somou-se "<<maiorAresta<<endl;
             custo += maiorAresta; 
