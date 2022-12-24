@@ -636,10 +636,16 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
+
+struct pertTask{
+    int id;
+    int a;
+    int b;
+}; 
+
+
 void Graph::pert(string path_out)
 {
-    
-    
     //verificando condições de existência
     if(!this->directed || !this->weighted_edge)
     {
@@ -653,156 +659,118 @@ void Graph::pert(string path_out)
         return;
     }
 
-    verified.clear();
-    //Debug:
-    Graph * grafo = new Graph(order, 1, 1, 0);
-    vector<int> S; //lista de solução
-    vector<int> a, b; //lista de pesos alfa e betha.
-    int custo = 0; 
-    
-    //passa por todos os nós procurando algum sem precedência
-    Node * aux = this->first_node; 
-    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    vector<pertTask> sol; //esse vetor, tem que em algum momento, ter todos os nós. 
+
+
+    //!TIRAR ISSO!!!
+    //FIXME: ACHO QUE NÃO PRECISAVA DISSO!!! TIRAR ESSE TREM TODINHO
+    /* for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
-        if(aux->getInDegree() == 0)
+        if(aux->getInDegree() == 0 )
         {
-            S.push_back(aux->getId());
-            a.push_back(0);
+            int j = isIn(sol, aux->getId());
+            if(j==-1)
+            {
+                //adiciona novo nó na solução
+                pertTask nTarefa;
+                nTarefa.id = aux->getId();
+                nTarefa.a = 0;
+                sol.push_back(nTarefa);
+            }else
+            {
+                //atualiza a informação da tarefa j da solução
+                sol[j].a = 0; 
+            }
         }
-    }
+    } */
 
-    //!Se o grafo não possui ciclo, ele tem pelo menos um nó com grau de entrada 0
-
-    int auxIndex;
-    bool isInSolution = false; 
-    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
-        //cout<<aux->getId()<<endl;
-        
         int auxDegree = aux->getInDegree();
-        int auxWeight = 0; 
-        int maiorAresta = 0; 
-        int i = 0; 
-
-        //TODO: trocar esse for por um for de inteiro i, pq aí melhora a situação
-        for(auto it = S.begin(); it != S.end(); it++)
+        int max = 0; 
+        for(int i = 0; i<sol.size(); i++)
         {
-            //aux já está dentro da solução
-            if(aux->getId() == *it)
+            if(getNode(sol[i].id)->searchEdge(aux->getId()))
             {
-                //cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
-                isInSolution = true; 
-                break; 
-            }
-            //cout<<"iteração: "<<*it<<endl; 
-            //Se um dos antecedentes de aux estiver na solução:diminuir o auxDegree
-            if(this->getNode(*it)->searchEdge(aux->getId()))
-            {
-                //cout<<"reduzindo grau de entrada"<<endl;
-                auxDegree--; 
-                auxWeight = this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight();
-                if(a.at(i) + auxWeight > maiorAresta)
+                auxDegree--;
+                //? Tá funcionando isso?
+                int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
+                if(sol[i].a + pesoAresta > max)
                 {
-                    maiorAresta = auxWeight + a.at(i);
-                    auxIndex = *it;
+                    max = sol[i].a + pesoAresta; 
                 }
             }
-            i++;
         }
 
-        //all os antecedentes de aux estão na solução, portanto, entra na solução:
-        if(auxDegree == 0 && !isInSolution)
+        //Todos os antecedentes estão na solução
+        if(auxDegree == 0)
         {
-            //?grafo->insertEdge( auxIndex, aux->getId(), 1);
-            //?auxIndex = aux->getId();
+            int j = isIn(sol, aux->getId());
+            if(j==-1)
+            {
+                //adiciona novo nó na solução
+                pertTask nTarefa;
+                nTarefa.id = aux->getId();
+                nTarefa.a = max;
+                sol.push_back(nTarefa);
+            }else
+            {
+                //atualiza a informação da tarefa j da solução
+                sol[j].a = max; 
+            }
 
-            S.push_back(aux->getId());
-            a.push_back(maiorAresta);
-            //cout<<"Somou-se "<<maiorAresta<<endl;
-            verified[aux->getId()] = true; 
-            /* aux = this->first_node;  */
-        }
-        isInSolution = false; 
-    }
-    //grafo->writeDotFile(path_out);
-
-    //!parte do beta:
-    //Adicionamos os nós com grau de saída 0
-    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
-    {
-        if(aux->getOutDegree() == 0)
-        {
-            S.push_back(aux->getId());
-            b.push_back(0);
+            //TODO: eu acho que aqui eu tenho que reiniciar o loop, pra garantir que TODOS os nós estão aqui
         }
     }
 
-    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    //TODO: Talvez seja necessário colocar o alpha(F) no betha(F) -> certeza que vou ter que fazer isso
+    //parte do betha
+    for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
-        //cout<<aux->getId()<<endl;
-        
         int auxDegree = aux->getOutDegree();
-        int auxWeight = 0; 
-        int menorAresta = INT; 
-        int i = 0; 
-
-        //TODO: trocar esse for por um for de inteiro i, pq aí melhora a situação
-        for(auto it = S.begin(); it != S.end(); it++)
+        int min = INT; 
+        for(int i = 0; i<sol.size(); i++)
         {
-            //TODO: aux já está dentro da solução
-            if(aux->getId() == *it)
+            if(aux->searchEdge(sol[i].id))
             {
-                //cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
-                isInSolution = true; 
-                break; 
-            }
-
-            //cout<<"iteração: "<<*it<<endl; 
-            //Se um dos precedentes de aux estiver na solução:diminuir o auxDegree
-            if(aux->searchEdge(*it))
-            {
-                //cout<<"reduzindo grau de saída"<<endl;
-                auxDegree--; 
-                auxWeight = aux->hasEdgeBetween(*it)->getWeight();
-                if(a.at(i) + auxWeight < menorAresta)
+                auxDegree--;
+                //? Tá funcionando isso?
+                int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
+                if(sol[i].b - pesoAresta < min)
                 {
-                    menorAresta = auxWeight - b.at(i);
-                    auxIndex = *it;
+                    min = sol[i].b - pesoAresta; 
                 }
             }
-            i++;
         }
 
-        //all os antecedentes de aux estão na solução, portanto, entra na solução:
-        if(auxDegree == 0 && !isInSolution)
+        //Todos os precedentes estão na solução
+        if(auxDegree == 0)
         {
-            //?grafo->insertEdge( auxIndex, aux->getId(), 1);
-            //?auxIndex = aux->getId();
-
-            S.push_back(aux->getId());
-            b.push_back(menorAresta);
-            //cout<<"Somou-se "<<maiorAresta<<endl;
-            verified[aux->getId()] = true; 
-            /* aux = this->first_node;  */
+            int j = isIn(sol, aux->getId());
+            if(j==-1)
+            {
+                //adiciona novo nó na solução
+                pertTask nTarefa;
+                nTarefa.id = aux->getId();
+                nTarefa.b = min;
+                sol.push_back(nTarefa);
+            }else
+            {
+                //atualiza a informação da tarefa j da solução
+                sol[j].b = min; 
+            }
+            //TODO; acho que vou ter que reiniciar tudo depois daqui
         }
-        isInSolution = false; 
     }
 
+    //TODO: imprimir os nós, pra ver o que tá acontecendo
+}
 
+int isIn(vector<pertTask> sol, int id)
+{
+    for(int i =0; i<sol.size(); i++)
+        if(sol[i].id == id)
+            return i;
 
-    ofstream output;
-    output.open(path_out, ios::trunc);
-    if(!output.is_open())
-    {
-        cout<<"Rede PERT: erro ao abrir o arquivo"<<endl;
-        return;
-    }
-    output<<"Custo:"<<custo<<endl;
-    output<<"Ordem de execução"<<endl;
-    for(auto it = S.begin(); it != S.end(); it++)
-    {
-        output<<*it<<" ";
-    }
-    output<<endl;
-    
+    return -1; 
 }
