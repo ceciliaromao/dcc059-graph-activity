@@ -639,11 +639,7 @@ void Graph::writeDotFile(string file_name)
 void Graph::pert(string path_out)
 {
     
-    //Debug:
-    Graph * grafo = new Graph(order, 1, 1, 0);
-
-    list<int> S;
-    int custo = 0; 
+    
     //verificando condições de existência
     if(!this->directed || !this->weighted_edge)
     {
@@ -658,20 +654,24 @@ void Graph::pert(string path_out)
     }
 
     verified.clear();
+    //Debug:
+    Graph * grafo = new Graph(order, 1, 1, 0);
+    vector<int> S; //lista de solução
+    vector<int> a, b; //lista de pesos alfa e betha.
+    int custo = 0; 
     
     //passa por todos os nós procurando algum sem precedência
     Node * aux = this->first_node; 
     for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    {
         if(aux->getInDegree() == 0)
         {
             S.push_back(aux->getId());
+            a.push_back(0);
         }
-
-    if(S.empty())
-    {
-        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não possui aresta de grau de entrada nulo"<<endl; 
-        return;
     }
+
+    //!Se o grafo não possui ciclo, ele tem pelo menos um nó com grau de entrada 0
 
     int auxIndex;
     bool isInSolution = false; 
@@ -680,7 +680,11 @@ void Graph::pert(string path_out)
         //cout<<aux->getId()<<endl;
         
         int auxDegree = aux->getInDegree();
+        int auxWeight = 0; 
         int maiorAresta = 0; 
+        int i = 0; 
+
+        //TODO: trocar esse for por um for de inteiro i, pq aí melhora a situação
         for(auto it = S.begin(); it != S.end(); it++)
         {
             //aux já está dentro da solução
@@ -696,27 +700,95 @@ void Graph::pert(string path_out)
             {
                 //cout<<"reduzindo grau de entrada"<<endl;
                 auxDegree--; 
-                if(this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight() >= maiorAresta)
+                auxWeight = this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight();
+                if(a.at(i) + auxWeight > maiorAresta)
                 {
-                    maiorAresta = this->getNode(*it)->hasEdgeBetween(aux->getId())->getWeight();
+                    maiorAresta = auxWeight + a.at(i);
                     auxIndex = *it;
                 }
             }
+            i++;
         }
+
         //all os antecedentes de aux estão na solução, portanto, entra na solução:
         if(auxDegree == 0 && !isInSolution)
         {
-            grafo->insertEdge( auxIndex, aux->getId(), 1);
-            auxIndex = aux->getId();
+            //?grafo->insertEdge( auxIndex, aux->getId(), 1);
+            //?auxIndex = aux->getId();
+
             S.push_back(aux->getId());
+            a.push_back(maiorAresta);
             //cout<<"Somou-se "<<maiorAresta<<endl;
-            custo += maiorAresta; 
             verified[aux->getId()] = true; 
-            aux = this->first_node; 
+            /* aux = this->first_node;  */
         }
         isInSolution = false; 
     }
     //grafo->writeDotFile(path_out);
+
+    //!parte do beta:
+    //Adicionamos os nós com grau de saída 0
+    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    {
+        if(aux->getOutDegree() == 0)
+        {
+            S.push_back(aux->getId());
+            b.push_back(0);
+        }
+    }
+
+    for(aux = this->first_node; aux!= nullptr ; aux = aux->getNextNode())
+    {
+        //cout<<aux->getId()<<endl;
+        
+        int auxDegree = aux->getOutDegree();
+        int auxWeight = 0; 
+        int menorAresta = INT; 
+        int i = 0; 
+
+        //TODO: trocar esse for por um for de inteiro i, pq aí melhora a situação
+        for(auto it = S.begin(); it != S.end(); it++)
+        {
+            //TODO: aux já está dentro da solução
+            if(aux->getId() == *it)
+            {
+                //cout<<"AUX JÁ ESTÁ DENTRO DA SOLUÇÃO"<<endl;
+                isInSolution = true; 
+                break; 
+            }
+
+            //cout<<"iteração: "<<*it<<endl; 
+            //Se um dos precedentes de aux estiver na solução:diminuir o auxDegree
+            if(aux->searchEdge(*it))
+            {
+                //cout<<"reduzindo grau de saída"<<endl;
+                auxDegree--; 
+                auxWeight = aux->hasEdgeBetween(*it)->getWeight();
+                if(a.at(i) + auxWeight < menorAresta)
+                {
+                    menorAresta = auxWeight - b.at(i);
+                    auxIndex = *it;
+                }
+            }
+            i++;
+        }
+
+        //all os antecedentes de aux estão na solução, portanto, entra na solução:
+        if(auxDegree == 0 && !isInSolution)
+        {
+            //?grafo->insertEdge( auxIndex, aux->getId(), 1);
+            //?auxIndex = aux->getId();
+
+            S.push_back(aux->getId());
+            b.push_back(menorAresta);
+            //cout<<"Somou-se "<<maiorAresta<<endl;
+            verified[aux->getId()] = true; 
+            /* aux = this->first_node;  */
+        }
+        isInSolution = false; 
+    }
+
+
 
     ofstream output;
     output.open(path_out, ios::trunc);
