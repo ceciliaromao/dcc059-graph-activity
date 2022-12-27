@@ -366,6 +366,49 @@ Graph* Graph::getUnion(Graph* graph){
     return unionGraph;
 }
 
+//A function that returns the intersection of two graphs
+Graph* Graph::getIntersection (Graph* graph){
+
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+    {
+        return nullptr;
+    }
+
+    Graph *intersectionGraph;
+    if(this->order < graph->order){
+        intersectionGraph = new Graph(this->order, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *graphNode = graph->getNode(nodeId);
+            if(graphNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(graphNode->searchEdge(j->getTargetId())){
+                    intersectionGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    } else {
+        intersectionGraph = new Graph(graph->order, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *thisNode = this->getNode(nodeId);
+            if(thisNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(thisNode->searchEdge(j->getTargetId())){
+                    intersectionGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    }
+
+    return intersectionGraph;
+}
+
 
 Graph *Graph::getComplement(){
 

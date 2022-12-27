@@ -14,7 +14,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int order;
     int numEdges;
 
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);

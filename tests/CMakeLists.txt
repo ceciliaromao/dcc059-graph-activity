@@ -36,3 +36,6 @@ target_link_libraries(Circuit PUBLIC tdg)
 
 add_executable(writingDots writingDots.cpp)
 target_link_libraries(writingDots PUBLIC tdg)
+
+add_executable(Intersection Intersection.cpp)
+target_link_libraries(Intersection PUBLIC tdg)

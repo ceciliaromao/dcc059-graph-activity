@@ -30,7 +30,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     } else {
         while(input_file >> idNodeSource >> idNodeTarget) {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
 
         }
     }
@@ -51,32 +51,72 @@ void printEdges(Graph *graph,ofstream&op)
     }
 }
 
+void printDegrees(Graph *graph,ofstream&op)
+{
+    Node *aux = graph->getFirstNode();
+
+    while(aux != nullptr)
+    {
+        op<< "No:"<<aux->getId()<<endl<<"Grau de Entrada:" <<aux->getInDegree()<<"; Grau de Saida:"<<aux->getOutDegree()<<endl;
+        aux = aux->getNextNode();
+    }
+}
+
 void printGraph(ofstream&op, Graph *graph){
     int order = graph->getOrder();
 
     for(int i = 1; i < order; i++){
         Node *aux = graph->getNode(i);
         for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
-            op<< i << " " << j->getTargetId() << endl;
+            op<< i << " " << j->getTargetId() << " " << j->getWeight() << endl;
         }
     }
 }
 
 int main()
 {
-    Graph* graph;
+    Graph* graph1, * graph2;
+    ofstream output;
     ifstream input;
     
     string path = USER_DIR;
-    string path_in = path;
-
-    path_in+="input/grafo_10.txt";
-
     string path_out =path+ "output/output.txt";
-    input.open(path_in, ios::in);
+
+
+    string path_in1 = path;
+    string path_in2 = path;
 
     
-    graph = leituraInstancia(input, 0, 0, 0);
-    cout << graph->getNumberEdges() << endl;
-    graph->writeDotFile(path_out);
+    path_in1+= "input/grafo_6.txt";
+
+    input.open(path_in1, ios::in);
+    graph1 = leituraInstancia(input, 0, 0, 0); 
+
+    input.close();
+
+    path_in2+="input/grafo_10.txt";
+
+    input.open(path_in2, ios::in);
+
+    graph2 = leituraInstancia(input, 0, 0, 0);
+
+    input.close();
+
+
+    output.open(path_out, ios::out | ios::trunc);
+
+    output<<"Grafo 1:"<<endl;
+
+    printGraph(output, graph1);
+
+    output<<"Grafo 2:"<<endl;
+    printGraph(output, graph2);
+
+    output<< "Grafo Interseção:"<<endl;
+    Graph* inter = graph2->getIntersection(graph1);
+    printGraph(output,inter);
+
+    cout<< graph1->getNumberEdges()<<endl;
+    cout<< graph2->getNumberEdges()<<endl;
+    cout << inter->getNumberEdges()<<endl;
 }
