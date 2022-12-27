@@ -25,3 +25,14 @@ target_link_libraries(Union PUBLIC tdg)
 add_executable(removeNode removeNode.cpp)
 target_link_libraries(removeNode PUBLIC tdg)
 
+add_executable(FloydWarshall FloydWarshall.cpp)
+target_link_libraries(FloydWarshall PUBLIC tdg)
+
+add_executable(Connected ConnectedGraph.cpp)
+target_link_libraries(Connected PUBLIC tdg)
+
+add_executable(Circuit hasCircuit.cpp)
+target_link_libraries(Circuit PUBLIC tdg)
+
+add_executable(writingDots writingDots.cpp)
+target_link_libraries(writingDots PUBLIC tdg)

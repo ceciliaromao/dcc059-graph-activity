@@ -57,8 +57,9 @@ class Graph{
         Graph* getUnion(Graph* graph);
         bool hasCircuit();
         bool connectedGraph();
-        float** floydMarshall();
+        float** floydWarshall();
         float* dijkstra(int id);
+        void writeDotFile(string file_name);
 
     private:
         //Auxiliar methods
