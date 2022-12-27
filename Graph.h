@@ -57,6 +57,7 @@ class Graph{
         float** floydWarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
+        Graph* GreedyConstructive();
 
     private:
         //Auxiliar methods

@@ -608,3 +608,14 @@ void Graph::writeDotFile(string file_name)
     }
     output_file.close();
 }
+
+//Greedy Constructive Algorithm
+Graph* Graph::GreedyConstructive(){
+    Graph* solution;
+    vector<Edge*> auxSolutionVector;
+    int order = 0;
+
+    
+
+    return solution;
+}
