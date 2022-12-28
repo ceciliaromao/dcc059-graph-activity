@@ -713,16 +713,19 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 
         // restarts max heap
         node_degrees = heuristic(this);
+
+        heuristic_node = node_degrees.top().second;
+
+        node_degrees.pop();
        
         node = node->getNextNode();
 
-        // heuristic_node = node_degrees.top().second;
     }
 
     /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
             return a->getWeight() < b->getWeight();
         });*/
-    cout << in_solution[4] << endl;
+        
     return auxSolutionSet;
 }
 
