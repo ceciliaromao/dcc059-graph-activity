@@ -377,31 +377,16 @@ Graph* Graph::getIntersection (Graph* graph){
 //A function that checks if a graph is a subgraph of another graph
 bool Graph::isSubgraph(Graph* graph){
     
-    if(this->order <= graph->order){
-        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            int nodeId = i->getId();
-            Node *graphNode = graph->getNode(nodeId);
+    for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+        int nodeId = i->getId();
+        Node *graphNode = graph->getNode(nodeId);
 
-            if(graphNode == nullptr) continue;
+        if(graphNode == nullptr) continue;
 
-            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
-            {
-                if(!graphNode->searchEdge(j->getTargetId())){
-                    return false;
-                }
-            }
-        }
-    } else if(this->order > graph->order){
-        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
-            int nodeId = i->getId();
-            Node *thisNode = this->getNode(nodeId);
-            if(thisNode == nullptr) continue;
-
-            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
-            {
-                if(!thisNode->searchEdge(j->getTargetId())){
-                    return false;
-                }
+        for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+        {
+            if(!graphNode->searchEdge(j->getTargetId())){
+                return false;
             }
         }
     }
@@ -414,11 +399,15 @@ Graph * Graph::getDifference(Graph* graph){
 
     //checks if the graphs are compatible
     if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
-    {
         return nullptr;
-    }
 
     cout << "Os grafos são compatíveis." << endl;
+
+    //checks if the graphs have the same order
+    if(this->getOrder() != graph->getOrder()) {
+        cout << "Os grafos não têm a mesma ordem." << endl;
+        return nullptr;
+    }
 
     // checks if one graph is subgraph of the other
     if (this->isSubgraph(graph))
@@ -429,14 +418,10 @@ Graph * Graph::getDifference(Graph* graph){
 
     int graphOrder = graph->getOrder();
 
-    if (this->getOrder() >= graph->getOrder())
-        graphOrder = this->getOrder();
-
     Graph *differenceGraph = new Graph(graphOrder, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
     cout << "Instancia um grafo de ordem " << graphOrder << endl;
 
     // runs through the nodes of the graph
-
     cout << "Percorre os nós desse grafo" << endl << endl;
     for(Node *i = this->getFirstNode(); i!=nullptr; i = i->getNextNode()){
         int nodeId = i->getId();
@@ -467,41 +452,6 @@ Graph * Graph::getDifference(Graph* graph){
     }
 
     cout << "Fim do grafo" << endl << endl;
-
-    cout << "XXXXXXX" << endl << endl;
-
-    // runs through the nodes of the other graph
-    cout << "Percorre os nós do outro grafo" << endl << endl;
-    for (Node *i = graph->getFirstNode(); i!=nullptr; i = i->getNextNode())
-    {
-        int nodeId = i->getId();
-        Node *thisNode = this->getNode(nodeId);
-        cout << "Instancia o nó " << nodeId << " do outro grafo" << endl;
-        cout << "Instancia o nó " << this->getNode(nodeId) << " desse grafo" << endl;
-        
-        if(thisNode == nullptr){
-            differenceGraph->insertNode(nodeId);
-            if(graph->getWeightedNode())
-                differenceGraph->getNode(nodeId)->setWeight(i->getWeight());
-            cout << "O nó " << nodeId << " não existe nesse grafo. Insere no diferença" << endl;
-            if (differenceGraph->searchNode(nodeId))
-                cout << "entrou no grafo" << endl;
-            continue;
-        }
-
-        cout << "Percorre as arestas do nó " << nodeId << endl;
-        for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
-        {
-            cout << "Aresta de " << nodeId << " para " << j->getTargetId() << endl;
-            if(!thisNode->searchEdge(j->getTargetId())){
-                cout << "Aresta não existe nesse grafo. Insere no diferença" << endl;
-                differenceGraph->insertEdge(nodeId, j->getTargetId(), j->getWeight());
-            }
-        }
-        cout << "Fim do nó " << nodeId << endl << endl;
-    }
-
-    cout << "Fim do outro grafo" << endl;
 
     return differenceGraph;
 }

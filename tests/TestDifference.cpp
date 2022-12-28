@@ -85,8 +85,8 @@ int main()
     string path_in1 = path;
     string path_in2 = path;
 
-    path_in1+="input/grafo_3.txt";
-    path_in2+="input/grafo_6.txt";
+    path_in1+="input/grafo_4_1.txt";
+    path_in2+="input/grafo_4_2.txt";
 
     input.open(path_in1, ios::in);
     graph1 = leituraInstancia(input, 0, 1, 0); 
@@ -104,10 +104,18 @@ int main()
     printGraph(output, graph2);
 
     output<< "Grafo Diferença:"<<endl;
-    Graph *differenceG2 = graph2->getDifference(graph1);
-    printGraph(output,differenceG2);
+    Graph *differenceG2 = graph1->getDifference(graph2);
+    if (differenceG2 != nullptr) {
+        printGraph(output, differenceG2);
 
-    cout << "edges: " << graph1->getNumberEdges() << " | order: " << graph1->getOrder() - 1 << endl;
-    cout << "edges: " << graph2->getNumberEdges() << " | order: " << graph2->getOrder() - 1 << endl;
-    cout << "edges: " << differenceG2->getNumberEdges() << " | order: " << differenceG2->getOrder() - 1 << endl;
+        graph1->writeDotFile(path_out);
+        graph2->writeDotFile(path_out);
+        differenceG2->writeDotFile(path_out);
+
+        cout << "edges: " << graph1->getNumberEdges() << " | order: " << graph1->getOrder() - 1 << endl;
+        cout << "edges: " << graph2->getNumberEdges() << " | order: " << graph2->getOrder() - 1 << endl;
+        cout << "edges: " << differenceG2->getNumberEdges() << " | order: " << differenceG2->getOrder() - 1 << endl;
+    } else {
+        cout << "Erro ao calcular a diferença! Insira grafos válidos!" << endl;
+    }
 }
