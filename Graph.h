@@ -9,8 +9,15 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <vector>
 
 using namespace std;
+
+struct pertTask{
+    int id;
+    int a;
+    int b;
+}; 
 
 class Graph{
 
@@ -51,6 +58,7 @@ class Graph{
         bool searchNode(int id);
         Node* getNode(int id);
         bool depthFirstSearch(int initialId,int targetId);
+        bool depthFirstSearch(int initialId, int targetId, ofstream &output_file); 
         void breadthFirstSearch(ofstream& output_file);
         Graph* getComplement();
         Graph* getSubjacent();
@@ -61,8 +69,11 @@ class Graph{
         float** floydWarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
+        void pert(string path_out);
+
 
     private:
+        int isIn(vector<pertTask> sol, int id);
         //Auxiliar methods
 
 };

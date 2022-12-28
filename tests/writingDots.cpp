@@ -13,6 +13,8 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int idNodeTarget;
     int order;
     int numEdges;
+    float weight;
+
 
     input_file >> order;
 
@@ -21,7 +23,6 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
 
     //Leitura de arquivo
     if(weightedEdge){
-        float weight;
         while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
             graph->insertEdge(idNodeSource, idNodeTarget, weight);
@@ -69,14 +70,12 @@ int main()
     
     string path = USER_DIR;
     string path_in = path;
+    path_in+="input/grafo_pert.txt";
 
-    path_in+="input/grafo_10.txt";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
-
-    
-    graph = leituraInstancia(input, 0, 0, 0);
-    cout << graph->getNumberEdges() << endl;
+   
+    graph = leituraInstancia(input, 1, 1, 0);
     graph->writeDotFile(path_out);
 }

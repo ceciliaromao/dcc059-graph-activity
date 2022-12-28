@@ -21,7 +21,7 @@ using namespace std;
 
 /**************************************************************************************************
  * Defining the Graph's methods
-**************************************************************************************************/
+ **************************************************************************************************/
 
 // Constructor
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
@@ -112,17 +112,21 @@ void Graph::insertNode(int id)
     Node *next;
     Node *aux = nullptr;
 
-    if(this->getFirstNode() == nullptr) {
+    if (this->getFirstNode() == nullptr)
+    {
         this->first_node = new Node(id);
         this->last_node = this->getFirstNode();
-    } else {
-      if (!this->searchNode(id)) {
+    }
+    else
+    {
+        if (!this->searchNode(id))
+        {
             Node *node = new Node(id);
             node->setNextNode(nullptr);
 
             this->last_node->setNextNode(node);
             this->last_node = node;
-        
+
             /* next = this->first_node;
 
             while (next != nullptr)
@@ -131,8 +135,8 @@ void Graph::insertNode(int id)
                 next = next->getNextNode();
             }
 
-            aux->setNextNode(node) */;
-        }      
+            aux->setNextNode(node) */
+        }
     }
 }
 
@@ -155,7 +159,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             getNode(target_id)->incrementInDegree();
             this->number_edges++;
         } else {
-
+            //Não possui incremento de grau //TODO
             getNode(id)->insertEdge(target_id, weight);
             getNode(id)->in_degree++;
 
@@ -167,7 +171,6 @@ void Graph::insertEdge(int id, int target_id, float weight)
             }   
             this->number_edges++;
         }
-        
     }
     
 }
@@ -213,7 +216,8 @@ bool Graph::searchNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return true;
+            if (aux->getId() == id)
+                return true;
         }
     }
 
@@ -226,15 +230,14 @@ Node *Graph::getNode(int id)
     {
         for (Node *aux = this->first_node; aux != nullptr; aux = aux->getNextNode())
         {
-            if (aux->getId() == id) return aux;
+            if (aux->getId() == id)
+                return aux;
         }
     }
 
     return nullptr;
-    
 }
 
-//Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId)
 {
     //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
@@ -257,8 +260,6 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
         pilha.pop();
         if(!verified[current])
         {
-            // cout<<current<<endl;
-
             verified[current] = true; 
             if(current == targetId) return true;
             
@@ -278,8 +279,87 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
                 pilha.push(auxPilha.top());
                 auxPilha.pop();
             }
+
         }
     }
+    return false;
+}
+
+bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
+{
+    //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
+    if(getNode(initialId) == nullptr || getNode(targetId) == nullptr)
+        return false; 
+    else if(initialId == targetId)
+        return true;
+    
+    stack<int> pilha;
+    pilha.push(initialId);
+    stack<int> auxPilha; 
+    string edge_symbol; 
+
+    verified.clear();
+
+    //Escrita em arquivo dot
+    if(output_file.is_open())
+    {
+        //escrevendo o grafo em dot
+        if(this->directed)
+        {
+            output_file<<"digraph{"<<endl;
+            edge_symbol = "->";
+        }
+        else
+        {
+            output_file<<"strict graph{"<<endl;
+            edge_symbol = "--";
+        }
+    }else
+    {
+        //Mensagem de aviso: não para o código
+        cout<<"Depth First Search: Arquivo de saída não aberto"<<endl;
+    }
+
+int current;
+    //enquanto a pilha não estiver vazia
+    while(!pilha.empty())
+    {
+        current = pilha.top();
+        pilha.pop();
+        //atualiza o nó a ser analizado e tira ele da pilha
+        if(!verified[current])
+        {
+            output_file<<current; //saida no arquivo
+            
+            verified[current] = true; 
+            if(current == targetId) 
+            {
+                output_file<<" }"<<endl; //saida no arquivo
+                return true;
+            }
+            if(!pilha.empty())
+                output_file<<edge_symbol; //saida no arquivo
+            
+            //percorre todos as arestas do nó analisado
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
+            {
+                if(!verified[i->getTargetId()])
+                {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
+                    auxPilha.push(i->getTargetId());
+                }
+            }
+            
+            //coloca nós na pilha auxiliar na ordem correta
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
+        }
+    }
+    output_file.seekp(-sizeof(edge_symbol.c_str()), ios::end);
+    output_file<<"           }"<<endl; //saida no arquivo
     return false;
 }
 
@@ -289,9 +369,29 @@ void Graph::breadthFirstSearch(ofstream &output_file){
     int ak = this->getFirstNode()->getId();
     verified[ak] = true;
     queue.push_back(ak);
+    string edge_symbol;
 
     verified.clear();
-    
+
+    if(output_file.is_open())
+    {
+        //escrevendo o grafo em dot
+        if(this->directed)
+        {
+            output_file<<"digraph{"<<endl;
+            edge_symbol = "->";
+        }
+        else
+        {
+            output_file<<"strict graph{"<<endl;
+            edge_symbol = "--";
+        }
+    }else
+    {
+        //Mensagem de aviso: não para o código
+        cout<<"Breadth First Search: Arquivo de saída não aberto"<<endl;
+    }
+
     Node* aux;
     while(!queue.empty())
     {
@@ -301,16 +401,22 @@ void Graph::breadthFirstSearch(ofstream &output_file){
         aux = this->getNode(ak);
         for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
         {
-            //output_file<<i->getTargetId()<<endl;
-            //Não sei exatamente como escrever esse dado no arquivo ainda, eis o cout:
-            cout<<i->getTargetId()<<endl;
+            if(aux->getId() == i->getTargetId())
+                continue;
+
+            //Desenha TODAS as arestas do grafo
+            output_file<<aux->getId()<<edge_symbol<<i->getTargetId();
+            //cout<<i->getTargetId()<<endl;
             if (!verified[i->getTargetId()])
             {
+                output_file<<"[color=\"red\"]"<<endl;
                 verified[i->getTargetId()] = true;
                 queue.push_back(i->getTargetId());
-            }
+            }else
+                output_file<<endl;
         }
     }
+    output_file<<"}"<<endl;
     //delete aux; //?pq quando eu deixo esse delete, o código dá problema de segmentação?
 
 }
@@ -437,7 +543,9 @@ Graph *Graph::getComplement(){
     {
 
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            if(!(node->searchEdge(i->id))){
+            if((node->searchEdge(i->id) == false) || (i->searchEdge(node->id) == false)){
+                if(i->id == node->id)
+                    continue;
                 complement->insertEdge(node->id,i->id,0);
             }
         }
@@ -488,6 +596,7 @@ Graph* Graph::getSubjacent(){
     
     return subjacent;
 }
+
 
 
 bool Graph::connectedGraph(){
@@ -605,7 +714,7 @@ float* Graph::dijkstra(int id){
 
     //distancia do nó fonte para ele mesmo é 0
     distance[id] = 0;
-    
+
     priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
     queue_.push(make_pair(distance[id], id));
     pair<float,int>pair_ = queue_.top();
@@ -648,6 +757,7 @@ float* Graph::dijkstra(int id){
 void Graph::writeDotFile(string file_name)
 {
     ofstream output_file(file_name, ios::out | ios::trunc);
+    verified.clear();
 
     if(!output_file.is_open())
     {
@@ -674,7 +784,7 @@ void Graph::writeDotFile(string file_name)
                 if(aux->getId() == i->getTargetId())
                     continue; 
                 if(!verified[i->getTargetId()])
-                    output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
+                output_file<<aux->id <<edge_symbol<<i->getTargetId() << endl;
             }
             verified[aux->getId()] = true;
         }
@@ -685,4 +795,184 @@ void Graph::writeDotFile(string file_name)
         cout<<"Grafo vazio"<<endl;
     }
     output_file.close();
+}
+
+void Graph::pert(string path_out)
+{
+    //verificando condições de existência
+    if(!this->directed || !this->weighted_edge)
+    {
+        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo não direcionado ou não ponderado nas arestas"<<endl;
+        return; 
+    }
+
+    if(this->hasCircuit())
+    {
+        cout<<"Rede PERT: não é possível fazer algoritmo PERT: \n Grafo possui circuito"<<endl; 
+        return;
+    }
+
+    vector<pertTask> sol; //esse vetor, tem que em algum momento, ter todos os nós. 
+    vector<int> criticPath; 
+    int auxDegree = 0; 
+    int min, max; 
+    int pesoAresta; 
+    int maxAlpha = 0;
+    int custo = 0;
+
+    //Pega todos os nós com grau de entrada igual a 0
+    for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    {
+        if(aux->getInDegree() == 0 )
+        {
+            int j = isIn(sol, aux->getId());
+            if(j==-1)
+            {
+                //adiciona novo nó na solução
+                pertTask nTarefa;
+                nTarefa.id = aux->getId();
+                nTarefa.a = 0;
+                sol.push_back(nTarefa);
+            }else
+            {
+                //atualiza a informação da tarefa j da solução
+                sol[j].a = 0; 
+            }
+        }
+    }
+
+    
+    for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    {
+        auxDegree = aux->getInDegree();
+        max = 0; 
+        for(int i = 0; i<sol.size(); i++)
+        {
+            if(getNode(sol[i].id)->searchEdge(aux->getId()))
+            {
+                auxDegree--;
+                pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
+                if(sol[i].a + pesoAresta > max)
+                {
+                    max = sol[i].a + pesoAresta; 
+                }
+            }
+        }
+
+        //Todos os antecedentes estão na solução
+        if(auxDegree == 0 && isIn(sol, aux->getId()) == -1)
+        {
+            cout<<"Adicionando "<<aux->getId()<<" na solução"<<endl;
+            pertTask nTarefa;
+            nTarefa.id = aux->getId();
+            nTarefa.a = max;
+            sol.push_back(nTarefa);
+
+            //Reinicia o loop para garantir que todos os nós estão na solução
+            aux =  this->first_node; 
+        }
+    }
+    
+    
+    //!Define nós terminais do grafo
+    for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    {
+        if(aux->getOutDegree() == 0 )
+        {
+            int j = isIn(sol, aux->getId());
+            //atualiza a informação da tarefa j da solução
+            sol[j].b = sol[j].a; 
+            if(sol[j].a > maxAlpha)
+            {
+                maxAlpha = sol[j].a;
+            }
+        }
+    }
+    
+    //parte do betha
+    Node *aux;
+    for(int j=sol.size() - 1; j>-1; j--)
+    {
+        aux = this->getNode(sol[j].id);
+        auxDegree = aux->getOutDegree();
+        min = maxAlpha; 
+        for(int i = 0; i<sol.size(); i++)
+        {
+            if(aux->searchEdge(sol[i].id))
+            {
+                auxDegree--;
+                pesoAresta = aux->hasEdgeBetween(sol[i].id)->getWeight();
+                if(sol[i].b - pesoAresta < min )
+                {
+                    min = sol[i].b - pesoAresta; 
+                }
+            }
+        }
+                            
+        //Todos os precedentes estão na solução
+        if(auxDegree == 0)
+        {
+            int j = isIn(sol, aux->getId());
+            //atualiza a informação da tarefa j da solução
+            sol[j].b = min; 
+        }
+    }    
+
+    for(int i =0; i<sol.size(); i++)
+    {
+        if(sol[i].b - sol[i].a == 0)
+        {
+            criticPath.push_back(sol[i].id);
+        }
+    }
+
+    for(int i =0; i<criticPath.size()-1; i++)
+    {
+        custo += this->getNode(criticPath[i])->hasEdgeBetween(criticPath[i+1])->getWeight(); 
+    }
+
+    //impressão da ordem de execução e de alpha e beta
+    ofstream output;
+    output.open(path_out, ios::out | ios::trunc);
+    if(!output.is_open())
+    {
+        cout<<"REDE PERT: erro ao abrir o arquivo de saída"<<endl;
+        return; 
+    }
+
+    output<<"Id: ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].id<<" ";
+    }
+
+    output<<endl<<"a:  ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].a<<" ";
+    }
+
+    output<<endl<<"b:  ";
+    for(int i =0; i<sol.size(); i++)
+    {
+        output<<sol[i].b<<" ";
+    }
+
+    output<<endl<<endl<<"Caminho crítico: ";
+    for(int i =0; i<criticPath.size(); i++)
+    {
+        output<<criticPath[i]<<" ";
+    }
+
+    output<<endl<<"Custo total: "<<custo;
+    output.close();
+}
+
+int Graph::isIn(vector<pertTask> sol, int id)
+{
+    for(int i =0; i<sol.size(); i++)
+        if(sol[i].id == id)
+            return i;
+
+    return -1; 
 }

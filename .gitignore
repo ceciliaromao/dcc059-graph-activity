@@ -31,9 +31,18 @@
 *.out
 *.app
 
+# Images
+*.png
+
+# Dot files
+
+*.dot
+
 #folders
 build/
+
 .vscode/
+
 output/
 
 output/output.txt
