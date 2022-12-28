@@ -377,7 +377,7 @@ Graph* Graph::getIntersection (Graph* graph){
 //A function that checks if a graph is a subgraph of another graph
 bool Graph::isSubgraph(Graph* graph){
     
-    if(this->order < graph->order){
+    if(this->order <= graph->order){
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
             int nodeId = i->getId();
             Node *graphNode = graph->getNode(nodeId);
@@ -424,10 +424,9 @@ Graph * Graph::getDifference(Graph* graph){
         return new Graph(0, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
     }
 
-    int graphOrder = this->order + graph->getOrder();
+    int graphOrder = this->getUnion(graph)->getOrder() - this->getIntersection(graph)->getOrder();
     
     Graph *differenceGraph = new Graph(graphOrder, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
-    int cont = 0;
 
     if (this->order >= graph->getOrder()) {
         for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
@@ -436,7 +435,6 @@ Graph * Graph::getDifference(Graph* graph){
             cout << "nodeId: " << nodeId << endl;
             if(graphNode == nullptr){
                 differenceGraph->insertNode(nodeId);
-                cont++;
                 cout << "achou nó diferente" << endl;
                 continue;
             }
@@ -456,7 +454,6 @@ Graph * Graph::getDifference(Graph* graph){
             cout << "nodeId: " << nodeId << endl;
             if(thisNode == nullptr){
                 differenceGraph->insertNode(nodeId);
-                cont++;
                 cout << "achou nó diferente" << endl;
                 continue;
             }

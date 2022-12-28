@@ -103,7 +103,7 @@ int main()
     output<<"Grafo 2:"<<endl;
     printGraph(output, graph2);
 
-    output<< "Grafo Difereça:"<<endl;
+    output<< "Grafo Diferença:"<<endl;
     Graph* differenceG = graph1->getDifference(graph2);
     printGraph(output,differenceG);
 
