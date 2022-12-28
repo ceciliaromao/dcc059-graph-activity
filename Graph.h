@@ -53,6 +53,8 @@ class Graph{
         Graph* getSubjacent();
         Graph* getUnion(Graph* graph);
         Graph* getIntersection(Graph *graph);
+        Graph* getDifference(Graph *graph);
+        bool isSubgraph(Graph* graph);
         bool hasCircuit();
         bool connectedGraph();
         float** floydWarshall();

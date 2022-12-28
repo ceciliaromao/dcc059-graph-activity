@@ -374,6 +374,107 @@ Graph* Graph::getIntersection (Graph* graph){
     return intersectionGraph;
 }
 
+//A function that checks if a graph is a subgraph of another graph
+bool Graph::isSubgraph(Graph* graph){
+    
+    if(this->order < graph->order){
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *graphNode = graph->getNode(nodeId);
+
+            if(graphNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(!graphNode->searchEdge(j->getTargetId())){
+                    return false;
+                }
+            }
+        }
+    } else if(this->order > graph->order){
+        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *thisNode = this->getNode(nodeId);
+            if(thisNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(!thisNode->searchEdge(j->getTargetId())){
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+}
+
+//A function that returns the difference of two graphs
+Graph * Graph::getDifference(Graph* graph){
+
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+    {
+        return nullptr;
+    }
+
+    // checks if one graph is subgraph of the other
+    if (this->isSubgraph(graph))
+    {
+        return new Graph(0, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+    }
+
+    int graphOrder = this->order + graph->getOrder();
+    
+    Graph *differenceGraph = new Graph(graphOrder, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+    int cont = 0;
+
+    if (this->order >= graph->getOrder()) {
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *graphNode = graph->getNode(nodeId);
+            cout << "nodeId: " << nodeId << endl;
+            if(graphNode == nullptr){
+                differenceGraph->insertNode(nodeId);
+                cont++;
+                cout << "achou nó diferente" << endl;
+                continue;
+            }
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(!graphNode->searchEdge(j->getTargetId())){
+                    cout << "achou aresta diferente" << endl;
+                    differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    } else {
+        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *thisNode = this->getNode(nodeId);
+            cout << "nodeId: " << nodeId << endl;
+            if(thisNode == nullptr){
+                differenceGraph->insertNode(nodeId);
+                cont++;
+                cout << "achou nó diferente" << endl;
+                continue;
+            }
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(!thisNode->searchEdge(j->getTargetId())){
+                    cout << "achou aresta diferente" << endl;
+                    differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    }
+
+    cout << "chegou no fim" << endl;
+    return differenceGraph;
+}
+
 
 Graph *Graph::getComplement(){
 
