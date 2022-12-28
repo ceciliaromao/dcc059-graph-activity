@@ -432,8 +432,50 @@ bool Graph::connectedGraph(){
         return false;
 }
 
+bool Graph::hasCircuit()
+{
+    stack<int> pilha;
+    pilha.push(this->first_node->getId());
+    stack<int> auxPilha; 
+
+    verified.clear();
+
+    int current;
+    //atualiza o nó a ser analizado e tira ele da pilha
+    while(!pilha.empty())
+    {
+        current = pilha.top();
+        pilha.pop();
+        if(!verified[current])
+        {
+            // cout<<current<<endl;
+
+            verified[current] = true;             
+            //percorre todos as arestas do nó analisado
+            for(Edge *i = getNode(current)->getFirstEdge(); i!= nullptr; i = i->getNextEdge())
+            {
+                if(!verified[i->getTargetId()])
+                {
+                    // adiciona todos os nós "inéditos" na pilha Auxiliar
+                    auxPilha.push(i->getTargetId());
+                }
+            }
+
+            //coloca nós na pilha auxiliar na ordem correta
+            while(!auxPilha.empty())
+            {
+                pilha.push(auxPilha.top());
+                auxPilha.pop();
+            }
+        }
+        else
+            return true;
+    }
+    return false;
+}
+
 // check if the graph has an eulerian circuit (closed trail -> no repeated edges)
-bool Graph::hasCircuit(){
+bool Graph::hasEulerianCircuit(){
 
     // if the graph is not connected, it can't have an eulerian circuit
     if (!this->connectedGraph())

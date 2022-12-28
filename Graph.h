@@ -52,6 +52,7 @@ class Graph{
         Graph* getComplement();
         Graph* getSubjacent();
         Graph* getUnion(Graph* graph);
+        bool hasEulerianCircuit();
         bool hasCircuit();
         bool connectedGraph();
         float** floydWarshall();
