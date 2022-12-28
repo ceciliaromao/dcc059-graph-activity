@@ -668,26 +668,38 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     // get first node 
     Node * node = this->getFirstNode();
 
+    // Edge * first = this->getNode(heuristic_node)->getFirstEdge();
+    // in_solution[heuristic_node] = true;
+    // auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+
+    // while(first!= nullptr){
+    //     in_solution[first->getTargetId()] = true;
+    //     first = first->getNextEdge();
+    // }    
+
+    // heuristic_node = node_degrees.top().second;
+    // node_degrees.pop();
+
     while(node!=nullptr){
         // while node is not in solution
         while(!in_solution[node->getId()]){
 
             //get edges from node with highest degree
             Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
-            
+            cout << heuristic_node << endl;
             while(edge != nullptr){
                 // if edge target is the id of the node not in solution
-                if(edge->getTargetId() == node->getId()){
-
+               
                     // adds node with highest degree to solution
-                   
-                    auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
-                    in_solution[heuristic_node] = true; 
+                    if(!in_solution[heuristic_node]){
+                        auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+                        in_solution[heuristic_node] = true; 
+                    }
                     
                     //sets to true that node is in solution
-                    in_solution[node->getId()] = true;
+                    in_solution[edge->getTargetId()] = true;
                     // cout << heuristic_node << " " << node->getId() << endl; 
-                }
+                
                 edge = edge->getNextEdge();
             }
 
@@ -699,12 +711,10 @@ set<pair<int,int>> Graph::GreedyConstructive(){
             
         }
 
-        //removes node from list
-       
-        node = node->getNextNode();
-
         // restarts max heap
         node_degrees = heuristic(this);
+       
+        node = node->getNextNode();
 
         // heuristic_node = node_degrees.top().second;
     }
@@ -712,7 +722,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
             return a->getWeight() < b->getWeight();
         });*/
-    
+    cout << in_solution[4] << endl;
     return auxSolutionSet;
 }
 
