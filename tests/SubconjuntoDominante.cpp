@@ -11,6 +11,8 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     //Variáveis para auxiliar na criação dos nós no Grafo
     int idNodeSource;
     int idNodeTarget;
+    int weightNodeSource;
+    int weightNodeTarget;
     int order;
     int numEdges;
 
@@ -21,10 +23,12 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
 
     //Leitura de arquivo
     if(weightedNode){
-        float weight;
-        while(input_file >> idNodeSource >> idNodeTarget >> weight) {
+        
+        while(input_file >> idNodeSource >> weightNodeSource >> idNodeTarget >> weightNodeTarget) {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, weight);
+            graph->insertEdge(idNodeSource, idNodeTarget, 0);
+            graph->getNode(idNodeSource)->setWeight(weightNodeSource);
+            graph->getNode(idNodeTarget)->setWeight(weightNodeTarget);
 
         }
     } else {
@@ -78,7 +82,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/grafo_5.txt";
+    path_in+="input/grafo_8_weighted.txt";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
@@ -86,7 +90,7 @@ int main()
     ofstream output;
 
     output.open(path_out, ios::out | ios::trunc);
-    graph = leituraInstancia(input, 0, 0, 0);
+    graph = leituraInstancia(input, 0, 0, 1);
 
     printNodesGreedy(graph->GreedyConstructive(),output);
 }

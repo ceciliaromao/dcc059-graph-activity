@@ -1,2 +1,2 @@
-Nó:1 Peso: 0
-Nó:2 Peso: 0
+Nó:1 Peso: 3
+Nó:2 Peso: 7
