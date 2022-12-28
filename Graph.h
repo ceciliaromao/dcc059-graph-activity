@@ -27,8 +27,6 @@ class Graph{
         Node* last_node;
         map<int, bool> verified; 
 
-
-
     public:
         //Constructor
         Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
@@ -60,10 +58,10 @@ class Graph{
         float* dijkstra(int id);
         void writeDotFile(string file_name);
         set<pair<int,int>> GreedyConstructive();
+        set<pair<int,int>> GreedyRandomizedAdaptive();
 
     private:
         //Auxiliar methods
-        
 };
 
 #endif // GRAPH_H_INCLUDED

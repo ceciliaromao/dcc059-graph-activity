@@ -635,7 +635,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     // map to verify if node is in solution
     map<int,bool> in_solution;
 
-    //max heap to get node with highest degree
+    // max heap to get node with highest degree
     priority_queue<pair<double,int>> node_degrees = heuristic(this);
     
     int heuristic_node = node_degrees.top().second;
@@ -698,3 +698,73 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     return auxSolutionSet;
 }
 
+//Greedy Randomized Adaptive Algorithm
+set<pair<int,int>> Graph::GreedyRandomizedAdaptive(){
+    // set containing each node and its weight
+    set<pair<int,int>> auxSolutionSet;
+    
+    // map to verify if node is in solution
+    map<int,bool> in_solution;
+
+    // max heap to get node with highest degree
+    priority_queue<pair<double,int>> node_degrees = heuristic(this);
+    
+    int heuristic_node = node_degrees.top().second;
+    
+    node_degrees.pop();
+    
+    for(int i = 1; i < this->order; i++){
+        
+        in_solution.insert(make_pair(i,false));
+    }
+        
+    // get first node 
+    Node * node = this->getFirstNode();
+
+    while(node!=nullptr){
+        // while node is not in solution
+        while(!in_solution[node->getId()]){
+    
+            //get edges from node with highest degree
+            Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
+            
+            while(edge != nullptr){
+                // if edge target is the id of the node not in solution
+               
+                // adds node with highest degree to solution
+                if(!in_solution[edge->getTargetId()]){
+                    auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+                    in_solution[heuristic_node] = true; 
+                }
+                
+                //sets to true that node is in solution
+                in_solution[edge->getTargetId()] = true;
+            
+                edge = edge->getNextEdge();
+            }
+
+            //if node with highest degree does not contain edge to node not in solution
+            //gets next node with highest degree
+            
+            heuristic_node = node_degrees.top().second;
+            node_degrees.pop();
+            
+        }
+
+        // restarts max heap
+        node_degrees = heuristic(this);
+
+        heuristic_node = node_degrees.top().second;
+
+        node_degrees.pop();
+       
+        node = node->getNextNode();
+
+    }
+
+    /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
+            return a->getWeight() < b->getWeight();
+        });*/
+        
+    return auxSolutionSet;
+}
