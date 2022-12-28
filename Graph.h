@@ -9,6 +9,7 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -57,11 +58,11 @@ class Graph{
         float** floydWarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
-        Graph* GreedyConstructive();
+        vector<pair<int,int>> GreedyConstructive();
 
     private:
         //Auxiliar methods
-
+        
 };
 
 #endif // GRAPH_H_INCLUDED

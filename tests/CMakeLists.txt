@@ -33,3 +33,6 @@ target_link_libraries(Circuit PUBLIC tdg)
 
 add_executable(writingDots writingDots.cpp)
 target_link_libraries(writingDots PUBLIC tdg)
+
+add_executable(SubconjuntoDominante SubconjuntoDominante.cpp)
+target_link_libraries(SubconjuntoDominante PUBLIC tdg)

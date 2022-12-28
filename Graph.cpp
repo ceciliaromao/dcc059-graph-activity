@@ -154,7 +154,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             {
                 getNode(target_id)->insertEdge(id, weight);
 
-                getNode(target_id)->in_degree++;
+                // getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -609,13 +609,96 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-//Greedy Constructive Algorithm
-Graph* Graph::GreedyConstructive(){
-    Graph* solution;
-    vector<Edge*> auxSolutionVector;
-    int order = 0;
-
+int heuristic(Graph* graph, list<pair<int,bool>> *in_solution){
+    Node * node = graph->getFirstNode();
+    Node * aux = graph->getFirstNode();
+    int id = aux->getId();
     
+    if(in_solution->empty()){
+        while(node != nullptr){
+            if(node->getInDegree() < aux->getInDegree()){
+                id = aux->getId();
+                aux = graph->getNode(id);
+            }
+            node = node->getNextNode();
+        }
+    } else {
+        pair<int, bool> p = in_solution->front();
+            // in_solution->pop_front();
+            
+            if(p.second){
+                aux = aux->getNextNode();
+            }
+        // cout  << p.first << endl;
+        while(node != nullptr){
+            
+            
+            // while(!in_solution->empty()){
+               
+                if(node->getInDegree() < aux->getInDegree() ){
+                    id = aux->getId();
+                    aux = graph->getNode(id);
+                    // cout << id << endl;
+                }
+                node = node->getNextNode();
+            // }
+        }
 
-    return solution;
+    }
+    return id;
 }
+
+
+
+//Greedy Constructive Algorithm
+vector<pair<int,int>> Graph::GreedyConstructive(){
+
+    vector<pair<int,int>> auxSolutionVector;
+    
+    list<pair<int,bool>> in_solution;
+    
+    int highest_degree = heuristic(this,&in_solution);
+    
+    in_solution.push_front(make_pair(highest_degree,true));
+    
+    for(int i = 1; i < this->order; i++){
+        if(i!=highest_degree){
+            
+            in_solution.push_back(make_pair(i,false));
+        }
+    }
+        
+
+    auxSolutionVector.push_back(make_pair(highest_degree,this->getNode(highest_degree)->getWeight()));
+   
+    while(!in_solution.empty()){
+        pair<int,bool> p = in_solution.back();
+        Node * node = this->getNode(p.first);
+
+        if(!p.second){
+
+            Edge * edge = this->getNode(highest_degree)->getFirstEdge();
+            while(edge != nullptr){
+                if(edge->getTargetId() == node->getId()){
+                
+                    auxSolutionVector.push_back(make_pair(node->id,node->weight));
+                    
+                    in_solution.pop_back();
+                    in_solution.push_back(make_pair(node->getId(),true));
+                }
+                edge = edge->getNextEdge();
+            }
+        
+        }
+        
+        highest_degree = heuristic(this,&in_solution);
+        // cout << highest_degree << endl;
+        in_solution.push_front(make_pair(highest_degree,true));
+    }
+
+    /*sort(auxSolutionVector.begin(), auxSolutionVector.end(), [](Edge* a, Edge* b){
+            return a->getWeight() < b->getWeight();
+        });*/
+    return auxSolutionVector;
+}
+
