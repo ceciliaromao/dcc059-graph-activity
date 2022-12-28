@@ -6,6 +6,7 @@
 #include <stack>
 #include <queue>
 #include <list>
+#include <set>
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
@@ -643,9 +644,9 @@ priority_queue<pair<int,int>> heuristic(Graph* graph){
 
 
 //Greedy Constructive Algorithm
-vector<pair<int,int>> Graph::GreedyConstructive(){
+set<pair<int,int>> Graph::GreedyConstructive(){
 
-    vector<pair<int,int>> auxSolutionVector;
+    set<pair<int,int>> auxSolutionVector;
     
     list<pair<int,bool>> in_solution;
 
@@ -664,41 +665,44 @@ vector<pair<int,int>> Graph::GreedyConstructive(){
     }
         
 
-    auxSolutionVector.push_back(make_pair(highest_degree,this->getNode(highest_degree)->getWeight()));
-
     pair<int,bool> p = in_solution.back();
     Node * node = this->getNode(p.first);
+
     while(!in_solution.empty()){
         
         while(!p.second){
 
             Edge * edge = this->getNode(highest_degree)->getFirstEdge();
+            pair<int,int> aux_pair = make_pair(highest_degree,getNode(highest_degree)->getWeight());
             while(edge != nullptr){
                 if(edge->getTargetId() == node->getId()){
                     
-                    in_solution.pop_back();
-                    in_solution.push_back(make_pair(node->getId(),true));
+                   
+                    auxSolutionVector.insert(make_pair(highest_degree,getNode(highest_degree)->getWeight()));
                     p.second = true;
                 }
                 edge = edge->getNextEdge();
             }
             highest_degree = node_degrees.top().second;
-            cout << p.first << endl;
             node_degrees.pop();
-        } 
-        
-        p = in_solution.back();
+        }
 
+       
         in_solution.pop_back();
+        p = in_solution.back();
 
         node = this->getNode(p.first);
 
         node_degrees = heuristic(this);
+        // highest_degree = node_degrees.top().second;
+
+        
     }
 
     /*sort(auxSolutionVector.begin(), auxSolutionVector.end(), [](Edge* a, Edge* b){
             return a->getWeight() < b->getWeight();
         });*/
+    
     return auxSolutionVector;
 }
 

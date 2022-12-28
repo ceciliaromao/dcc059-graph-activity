@@ -1,7 +1,7 @@
 #include<iostream>
 #include "../Graph.h"
 #include "../config.h"
-
+#include <set>
 using namespace std; 
 
 // int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
@@ -51,11 +51,11 @@ void printEdges(Graph *graph,ofstream&op)
     }
 }
 
-void printNodesGreedy(vector<pair<int,int>> solucao,ofstream&op)
+void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op)
 {
-    for(int i = 0; i < solucao.size(); i++)
+    for(auto i = solucao.begin(); i != solucao.end(); i++)
     {
-        op<<"Nó: " <<solucao[i].first<<" "<<"Peso: "<<solucao[i].second<<endl;
+        op<<"Nó:" <<i->first<<" "<<"Peso: " <<i->second<<endl;
     }
 }
 
