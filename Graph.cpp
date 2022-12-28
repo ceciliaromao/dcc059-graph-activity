@@ -614,31 +614,13 @@ priority_queue<pair<double,int>> heuristic(Graph* graph){
     priority_queue<pair<double,int>>node_degrees;
     Node * node = graph->getFirstNode();
     double heuristic_value = 0;
+
     while(node!=nullptr){
         heuristic_value = node->getInDegree()/node->getWeight();
         node_degrees.push(make_pair(heuristic_value, node->getId()));
         node = node->getNextNode();
     }
-    
-    // if(node_degrees->empty()){
-    //     while(node != nullptr){
-    //         if(node->getInDegree() < aux->getInDegree()){
-    //             id = aux->getId();
-    //             aux = graph->getNode(id);
-    //         }
-    //         node = node->getNextNode();
-    //     }
-    //     node_degrees->push(make_pair(id, graph->getNode(id)->getInDegree()));
-    // } else {
-    //     // pick node of highest degree if not in_solution
-    //     while(node != nullptr){
-    //         if(node->getInDegree() < aux->getInDegree()){
-    //             id = aux->getId();
-    //             aux = graph->getNode(id);
-    //         }
-    //         node = node->getNextNode();
-    //     }
-    // }
+
     return node_degrees;
 }
 
@@ -668,38 +650,25 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     // get first node 
     Node * node = this->getFirstNode();
 
-    // Edge * first = this->getNode(heuristic_node)->getFirstEdge();
-    // in_solution[heuristic_node] = true;
-    // auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
-
-    // while(first!= nullptr){
-    //     in_solution[first->getTargetId()] = true;
-    //     first = first->getNextEdge();
-    // }    
-
-    // heuristic_node = node_degrees.top().second;
-    // node_degrees.pop();
-
     while(node!=nullptr){
         // while node is not in solution
         while(!in_solution[node->getId()]){
-
+    
             //get edges from node with highest degree
             Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
-            cout << heuristic_node << endl;
+            
             while(edge != nullptr){
                 // if edge target is the id of the node not in solution
                
-                    // adds node with highest degree to solution
-                    if(!in_solution[heuristic_node]){
-                        auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
-                        in_solution[heuristic_node] = true; 
-                    }
-                    
-                    //sets to true that node is in solution
-                    in_solution[edge->getTargetId()] = true;
-                    // cout << heuristic_node << " " << node->getId() << endl; 
+                // adds node with highest degree to solution
+                if(!in_solution[edge->getTargetId()]){
+                    auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+                    in_solution[heuristic_node] = true; 
+                }
                 
+                //sets to true that node is in solution
+                in_solution[edge->getTargetId()] = true;
+            
                 edge = edge->getNextEdge();
             }
 

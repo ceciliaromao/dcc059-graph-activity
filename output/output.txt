@@ -1,2 +1,3 @@
 Nó:1 Peso: 2
 Nó:3 Peso: 1
+Nó:5 Peso: 14
