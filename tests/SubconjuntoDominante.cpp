@@ -53,7 +53,7 @@ void printEdges(Graph *graph,ofstream&op)
 
 void printNodesGreedy(vector<pair<int,int>> solucao,ofstream&op)
 {
-    for(int i = 1; i < solucao.size(); i++)
+    for(int i = 0; i < solucao.size(); i++)
     {
         op<<"Nó: " <<solucao[i].first<<" "<<"Peso: "<<solucao[i].second<<endl;
     }

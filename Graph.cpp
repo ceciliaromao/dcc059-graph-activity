@@ -609,43 +609,35 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-int heuristic(Graph* graph, list<pair<int,bool>> *in_solution){
+priority_queue<pair<int,int>> heuristic(Graph* graph){
+    priority_queue<pair<int,int>>node_degrees;
     Node * node = graph->getFirstNode();
-    Node * aux = graph->getFirstNode();
-    int id = aux->getId();
-    
-    if(in_solution->empty()){
-        while(node != nullptr){
-            if(node->getInDegree() < aux->getInDegree()){
-                id = aux->getId();
-                aux = graph->getNode(id);
-            }
-            node = node->getNextNode();
-        }
-    } else {
-        pair<int, bool> p = in_solution->front();
-            // in_solution->pop_front();
-            
-            if(p.second){
-                aux = aux->getNextNode();
-            }
-        // cout  << p.first << endl;
-        while(node != nullptr){
-            
-            
-            // while(!in_solution->empty()){
-               
-                if(node->getInDegree() < aux->getInDegree() ){
-                    id = aux->getId();
-                    aux = graph->getNode(id);
-                    // cout << id << endl;
-                }
-                node = node->getNextNode();
-            // }
-        }
 
+    while(node!=nullptr){
+        node_degrees.push(make_pair(node->getInDegree(), node->getId()));
+        node = node->getNextNode();
     }
-    return id;
+    
+    // if(node_degrees->empty()){
+    //     while(node != nullptr){
+    //         if(node->getInDegree() < aux->getInDegree()){
+    //             id = aux->getId();
+    //             aux = graph->getNode(id);
+    //         }
+    //         node = node->getNextNode();
+    //     }
+    //     node_degrees->push(make_pair(id, graph->getNode(id)->getInDegree()));
+    // } else {
+    //     // pick node of highest degree if not in_solution
+    //     while(node != nullptr){
+    //         if(node->getInDegree() < aux->getInDegree()){
+    //             id = aux->getId();
+    //             aux = graph->getNode(id);
+    //         }
+    //         node = node->getNextNode();
+    //     }
+    // }
+    return node_degrees;
 }
 
 
@@ -656,8 +648,11 @@ vector<pair<int,int>> Graph::GreedyConstructive(){
     vector<pair<int,int>> auxSolutionVector;
     
     list<pair<int,bool>> in_solution;
+
+    priority_queue<pair<int,int>> node_degrees = heuristic(this);
     
-    int highest_degree = heuristic(this,&in_solution);
+    int highest_degree = node_degrees.top().second;
+    node_degrees.pop();
     
     in_solution.push_front(make_pair(highest_degree,true));
     
@@ -670,30 +665,35 @@ vector<pair<int,int>> Graph::GreedyConstructive(){
         
 
     auxSolutionVector.push_back(make_pair(highest_degree,this->getNode(highest_degree)->getWeight()));
-   
-    while(!in_solution.empty()){
-        pair<int,bool> p = in_solution.back();
-        Node * node = this->getNode(p.first);
 
-        if(!p.second){
+    pair<int,bool> p = in_solution.back();
+    Node * node = this->getNode(p.first);
+    while(!in_solution.empty()){
+        
+        while(!p.second){
 
             Edge * edge = this->getNode(highest_degree)->getFirstEdge();
             while(edge != nullptr){
                 if(edge->getTargetId() == node->getId()){
-                
-                    auxSolutionVector.push_back(make_pair(node->id,node->weight));
                     
                     in_solution.pop_back();
                     in_solution.push_back(make_pair(node->getId(),true));
+                    p.second = true;
                 }
                 edge = edge->getNextEdge();
             }
+            highest_degree = node_degrees.top().second;
+            cout << p.first << endl;
+            node_degrees.pop();
+        } 
         
-        }
-        
-        highest_degree = heuristic(this,&in_solution);
-        // cout << highest_degree << endl;
-        in_solution.push_front(make_pair(highest_degree,true));
+        p = in_solution.back();
+
+        in_solution.pop_back();
+
+        node = this->getNode(p.first);
+
+        node_degrees = heuristic(this);
     }
 
     /*sort(auxSolutionVector.begin(), auxSolutionVector.end(), [](Edge* a, Edge* b){
