@@ -667,34 +667,47 @@ set<pair<int,int>> Graph::GreedyConstructive(){
         }
     }
         
-
+    // get first node not in_solution
     pair<int,bool> p = in_solution.back();
     Node * node = this->getNode(p.first);
 
+    // while there are nodes not in solution
     while(!in_solution.empty()){
-        
+
+        // while node is not in solution
         while(!p.second){
 
+            //get edges from node with highest degree
             Edge * edge = this->getNode(highest_degree)->getFirstEdge();
-            pair<int,int> aux_pair = make_pair(highest_degree,getNode(highest_degree)->getWeight());
+
             while(edge != nullptr){
+                // if edge target is the id of the node not in solution
                 if(edge->getTargetId() == node->getId()){
-                    
+
+                    // adds node with highest degree to solution
                     auxSolutionSet.insert(make_pair(highest_degree,getNode(highest_degree)->getWeight()));
+
+                    //sets to true that node is in solution
                     p.second = true;
                 }
                 edge = edge->getNextEdge();
             }
+
+            //if node with highest degree does not contain edge to node not in solution
+            //gets next node with highest degree
+            
             highest_degree = node_degrees.top().second;
             node_degrees.pop();
         }
 
-       
+        //removes node from list
         in_solution.pop_back();
-        p = in_solution.back();
 
+        // gets next node
+        p = in_solution.back();
         node = this->getNode(p.first);
 
+        // restarts max heap
         node_degrees = heuristic(this);
         // highest_degree = node_degrees.top().second;
 
