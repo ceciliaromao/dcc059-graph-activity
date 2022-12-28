@@ -1,7 +1,7 @@
 add_executable(DPStest DPStest.cpp)
 target_link_libraries(DPStest PUBLIC tdg)
 
-add_executable(BPStest BPStest.cc)
+add_executable(BPStest BPStest.cpp)
 target_link_libraries(BPStest PUBLIC tdg)
 
 add_executable(removeEdge removeEdge.cpp)
@@ -10,6 +10,8 @@ target_link_libraries(removeEdge PUBLIC tdg)
 add_executable(InsertEdge InsertEdge.cpp)
 target_link_libraries(InsertEdge PUBLIC tdg)
 
+add_executable(writingDots writingDots.cpp)
+target_link_libraries(writingDots PUBLIC tdg)
 add_executable(TestComplement TestComplement.cpp)
 target_link_libraries(TestComplement PUBLIC tdg)
 
@@ -21,6 +23,12 @@ target_link_libraries(Dijikstra PUBLIC tdg)
 
 add_executable(Union Union.cpp)
 target_link_libraries(Union PUBLIC tdg)
+
+add_executable(pert pert.cpp)
+target_link_libraries(pert PUBLIC tdg)
+
+add_executable(removeNode removeNode.cpp)
+target_link_libraries(removeNode PUBLIC tdg)
 
 add_executable(FloydWarshall FloydWarshall.cpp)
 target_link_libraries(FloydWarshall PUBLIC tdg)
@@ -39,3 +47,4 @@ target_link_libraries(Intersection PUBLIC tdg)
 
 add_executable(TestDifference TestDifference.cpp)
 target_link_libraries(TestDifference PUBLIC tdg)
+

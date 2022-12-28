@@ -13,15 +13,15 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int idNodeTarget;
     int order;
     int numEdges;
+    float weight;
 
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
     if(weightedEdge){
-        float weight;
         while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
             graph->insertEdge(idNodeSource, idNodeTarget, weight);
@@ -61,6 +61,7 @@ void printGraph(ofstream&op, Graph *graph){
         }
     }
 }
+
 int main()
 {
     Graph* graph;
@@ -70,29 +71,17 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/grafo_125.txt";
+    path_in+="input/grafo_pert.txt";
 
-    string path_out =path+ "output/output.txt";
+    string path_out =path+ "output/pert.txt";
 
-    output.open(path_out, ios::out | ios::trunc);
     input.open(path_in, ios::in);
 
-   
-    graph = leituraInstancia(input, 0, 0, 0);
+    graph = leituraInstancia(input, 1, 1, 0);
 
-    if(graph->depthFirstSearch(0, 124, output))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl;
-
-    /* if(graph->depthFirstSearch(0,0, output))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nõ não encontrado"<<endl;
+    //testando o grafo completo
+    //graph = graph->getComplement()->getUnion(graph)
+    graph->pert(path_out);
     
-    if(graph->depthFirstSearch(0,9, output))
-        cout<<"Nó encontrado"<<endl;
-    else
-        cout<<"Nó não encontrado"<<endl; */
-
+    
 }
