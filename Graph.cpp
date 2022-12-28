@@ -155,7 +155,7 @@ void Graph::insertEdge(int id, int target_id, float weight)
             {
                 getNode(target_id)->insertEdge(id, weight);
 
-                // getNode(target_id)->in_degree++;
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -610,12 +610,13 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-priority_queue<pair<int,int>> heuristic(Graph* graph){
-    priority_queue<pair<int,int>>node_degrees;
+priority_queue<pair<double,int>> heuristic(Graph* graph){
+    priority_queue<pair<double,int>>node_degrees;
     Node * node = graph->getFirstNode();
-
+    double heuristic_value = 0;
     while(node!=nullptr){
-        node_degrees.push(make_pair(node->getInDegree(), node->getId()));
+        heuristic_value = node->getInDegree()/node->getWeight();
+        node_degrees.push(make_pair(heuristic_value, node->getId()));
         node = node->getNextNode();
     }
     
@@ -649,33 +650,33 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     // set containing each node and its weight
     set<pair<int,int>> auxSolutionSet;
     
-    // list to verify if node is in solution
-    list<pair<int,bool>> in_solution;
+    // map to verify if node is in solution
+    map<int,bool> in_solution;
 
     //max heap to get node with highest degree
-    priority_queue<pair<int,int>> node_degrees = heuristic(this);
+    priority_queue<pair<double,int>> node_degrees = heuristic(this);
     
     int highest_degree = node_degrees.top().second;
+    
     node_degrees.pop();
     
-    in_solution.push_front(make_pair(highest_degree,true));
+    in_solution.insert(make_pair(highest_degree,true));
     
     for(int i = 1; i < this->order; i++){
         if(i!=highest_degree){
             
-            in_solution.push_back(make_pair(i,false));
+            in_solution.insert(make_pair(i,false));
         }
     }
         
-    // get first node not in_solution
-    pair<int,bool> p = in_solution.back();
-    Node * node = this->getNode(p.first);
+    // get first node 
+    Node * node = this->getFirstNode();
 
     // while there are nodes not in solution
-    while(!in_solution.empty()){
+    while(node!=nullptr){
 
         // while node is not in solution
-        while(!p.second){
+        while(!in_solution[node->getId()]){
 
             //get edges from node with highest degree
             Edge * edge = this->getNode(highest_degree)->getFirstEdge();
@@ -688,7 +689,8 @@ set<pair<int,int>> Graph::GreedyConstructive(){
                     auxSolutionSet.insert(make_pair(highest_degree,getNode(highest_degree)->getWeight()));
 
                     //sets to true that node is in solution
-                    p.second = true;
+                    in_solution[highest_degree] = true;
+                    in_solution[node->getId()] = true;
                 }
                 edge = edge->getNextEdge();
             }
@@ -701,11 +703,8 @@ set<pair<int,int>> Graph::GreedyConstructive(){
         }
 
         //removes node from list
-        in_solution.pop_back();
-
-        // gets next node
-        p = in_solution.back();
-        node = this->getNode(p.first);
+       
+        node = node->getNextNode();
 
         // restarts max heap
         node_degrees = heuristic(this);

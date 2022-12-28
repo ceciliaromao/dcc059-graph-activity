@@ -29,7 +29,6 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
             graph->insertEdge(idNodeSource, idNodeTarget, 0);
             graph->getNode(idNodeSource)->setWeight(weightNodeSource);
             graph->getNode(idNodeTarget)->setWeight(weightNodeTarget);
-
         }
     } else {
         while(input_file >> idNodeSource >> idNodeTarget) {
