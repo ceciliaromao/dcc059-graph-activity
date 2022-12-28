@@ -446,7 +446,11 @@ Graph * Graph::getDifference(Graph* graph){
         
         if(graphNode == nullptr){
             differenceGraph->insertNode(nodeId);
+            if(this->getWeightedNode())
+                differenceGraph->getNode(nodeId)->setWeight(i->getWeight());
             cout << "O nó " << nodeId << " não existe no outro grafo. Insere no diferença" << endl;
+            if (differenceGraph->searchNode(nodeId))
+                cout << "entrou no grafo" << endl;
             continue;
         }
 
@@ -455,8 +459,8 @@ Graph * Graph::getDifference(Graph* graph){
         {
             cout << "Aresta de " << nodeId << " para " << j->getTargetId() << endl;
             if(!graphNode->searchEdge(j->getTargetId())){
+                differenceGraph->insertEdge(nodeId, j->getTargetId(), j->getWeight());
                 cout << "Aresta não existe no outro grafo. Insere no diferença" << endl;
-                differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
             }
         }
         cout << "Fim do nó " << nodeId << endl << endl;
@@ -477,7 +481,11 @@ Graph * Graph::getDifference(Graph* graph){
         
         if(thisNode == nullptr){
             differenceGraph->insertNode(nodeId);
+            if(graph->getWeightedNode())
+                differenceGraph->getNode(nodeId)->setWeight(i->getWeight());
             cout << "O nó " << nodeId << " não existe nesse grafo. Insere no diferença" << endl;
+            if (differenceGraph->searchNode(nodeId))
+                cout << "entrou no grafo" << endl;
             continue;
         }
 
@@ -487,7 +495,7 @@ Graph * Graph::getDifference(Graph* graph){
             cout << "Aresta de " << nodeId << " para " << j->getTargetId() << endl;
             if(!thisNode->searchEdge(j->getTargetId())){
                 cout << "Aresta não existe nesse grafo. Insere no diferença" << endl;
-                differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                differenceGraph->insertEdge(nodeId, j->getTargetId(), j->getWeight());
             }
         }
         cout << "Fim do nó " << nodeId << endl << endl;
