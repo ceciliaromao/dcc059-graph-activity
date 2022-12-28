@@ -646,10 +646,13 @@ priority_queue<pair<int,int>> heuristic(Graph* graph){
 //Greedy Constructive Algorithm
 set<pair<int,int>> Graph::GreedyConstructive(){
 
-    set<pair<int,int>> auxSolutionVector;
+    // set containing each node and its weight
+    set<pair<int,int>> auxSolutionSet;
     
+    // list to verify if node is in solution
     list<pair<int,bool>> in_solution;
 
+    //max heap to get node with highest degree
     priority_queue<pair<int,int>> node_degrees = heuristic(this);
     
     int highest_degree = node_degrees.top().second;
@@ -677,8 +680,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
             while(edge != nullptr){
                 if(edge->getTargetId() == node->getId()){
                     
-                   
-                    auxSolutionVector.insert(make_pair(highest_degree,getNode(highest_degree)->getWeight()));
+                    auxSolutionSet.insert(make_pair(highest_degree,getNode(highest_degree)->getWeight()));
                     p.second = true;
                 }
                 edge = edge->getNextEdge();
@@ -699,10 +701,10 @@ set<pair<int,int>> Graph::GreedyConstructive(){
         
     }
 
-    /*sort(auxSolutionVector.begin(), auxSolutionVector.end(), [](Edge* a, Edge* b){
+    /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
             return a->getWeight() < b->getWeight();
         });*/
     
-    return auxSolutionVector;
+    return auxSolutionSet;
 }
 
