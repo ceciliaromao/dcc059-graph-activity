@@ -652,6 +652,7 @@ void Graph::pert(string path_out)
     }
 
     vector<pertTask> sol; //esse vetor, tem que em algum momento, ter todos os nós. 
+    vector<int> criticPath; 
 
     //Pega todos os nós com grau de entrada igual a 0
     for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
@@ -674,6 +675,7 @@ void Graph::pert(string path_out)
         }
     }
 
+    
     for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
         int auxDegree = aux->getInDegree();
@@ -705,7 +707,7 @@ void Graph::pert(string path_out)
             aux =  this->first_node; 
         }
     }
-
+    
     int maxAlpha = 0;
     //!Define nós terminais do grafo
     for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
@@ -722,9 +724,11 @@ void Graph::pert(string path_out)
         }
     }
     
+    Node *aux;
     //parte do betha
-    for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    for(int j=sol.size() - 1; j>-1; j--)
     {
+        aux = this->getNode(sol[j].id);
         int auxDegree = aux->getOutDegree();
         int min = maxAlpha; 
         for(int i = 0; i<sol.size(); i++)
@@ -732,15 +736,12 @@ void Graph::pert(string path_out)
             if(aux->searchEdge(sol[i].id))
             {
                 auxDegree--;
-                //? Tá funcionando isso?
                 int pesoAresta = aux->hasEdgeBetween(sol[i].id)->getWeight();
-                //int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
-                if(sol[i].b - pesoAresta < min)
+                if(sol[i].b - pesoAresta < min )
                 {
                     min = sol[i].b - pesoAresta; 
                 }
             }
-            cout<<"Chegou até aqui"<<endl;
         }
                             
 
@@ -750,17 +751,23 @@ void Graph::pert(string path_out)
             int j = isIn(sol, aux->getId());
             //atualiza a informação da tarefa j da solução
             sol[j].b = min; 
-            //TODO; acho que vou ter que reiniciar tudo depois daqui
         }
-
-    }
+    }    
     
-    //impressão da ordem de execução e de alpha e betha
+    for(int i =0; i<sol.size(); i++)
+    {
+        if(sol[i].b - sol[i].a == 0)
+        {
+            criticPath.push_back(sol[i].id);
+        }
+    }
+
+    //impressão da ordem de execução e de alpha e beta
     ofstream output;
     output.open(path_out, ios::out | ios::trunc);
     if(!output.is_open())
     {
-        cout<<"REDE PERT: erro ao abrir o arquivo"<<endl;
+        cout<<"REDE PERT: erro ao abrir o arquivo de saída"<<endl;
         return; 
     }
 
@@ -780,6 +787,12 @@ void Graph::pert(string path_out)
     for(int i =0; i<sol.size(); i++)
     {
         output<<sol[i].b<<" ";
+    }
+
+    output<<endl<<endl<<"Caminho crítico: ";
+    for(int i =0; i<criticPath.size(); i++)
+    {
+        output<<criticPath[i]<<" ";
     }
     output.close();
 }
