@@ -412,6 +412,12 @@ bool Graph::isSubgraph(Graph* graph){
 //A function that returns the difference of two graphs
 Graph * Graph::getDifference(Graph* graph){
 
+    //checks wich graph is bigger
+    // if (this->getOrder() < graph->getOrder()){
+    //     cout << "The other graph is bigger than this, doing the opposite way" << endl;
+    //     return graph->getDifference(this);
+    // }
+
     //checks if the graphs are compatible
     if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
     {
@@ -424,51 +430,25 @@ Graph * Graph::getDifference(Graph* graph){
         return new Graph(0, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
     }
 
-    int graphOrder = this->getUnion(graph)->getOrder() - this->getIntersection(graph)->getOrder();
-    
-    Graph *differenceGraph = new Graph(graphOrder, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+    Graph *differenceGraph = new Graph(this->order, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
 
-    if (this->order >= graph->getOrder()) {
-        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
-            int nodeId = i->getId();
-            Node *graphNode = graph->getNode(nodeId);
-            cout << "nodeId: " << nodeId << endl;
-            if(graphNode == nullptr){
-                differenceGraph->insertNode(nodeId);
-                cout << "achou nó diferente" << endl;
-                continue;
-            }
+    for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+        int nodeId = i->getId();
+        Node *graphNode = graph->getNode(nodeId);
 
-            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
-            {
-                if(!graphNode->searchEdge(j->getTargetId())){
-                    cout << "achou aresta diferente" << endl;
-                    differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
-                }
-            }
+        if(graphNode == nullptr){
+            differenceGraph->insertNode(nodeId);
+            continue;
         }
-    } else {
-        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
-            int nodeId = i->getId();
-            Node *thisNode = this->getNode(nodeId);
-            cout << "nodeId: " << nodeId << endl;
-            if(thisNode == nullptr){
-                differenceGraph->insertNode(nodeId);
-                cout << "achou nó diferente" << endl;
-                continue;
-            }
 
-            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
-            {
-                if(!thisNode->searchEdge(j->getTargetId())){
-                    cout << "achou aresta diferente" << endl;
-                    differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
-                }
+        for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+        {
+            if(!graphNode->searchEdge(j->getTargetId())){
+                differenceGraph->insertEdge(nodeId, j->getTargetId(), 0);
             }
         }
     }
 
-    cout << "chegou no fim" << endl;
     return differenceGraph;
 }
 

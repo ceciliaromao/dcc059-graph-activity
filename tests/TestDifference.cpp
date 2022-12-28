@@ -104,10 +104,10 @@ int main()
     printGraph(output, graph2);
 
     output<< "Grafo Diferença:"<<endl;
-    Graph* differenceG = graph1->getDifference(graph2);
+    Graph *differenceG = graph1->getDifference(graph2);
     printGraph(output,differenceG);
 
-    cout << graph1->getNumberEdges() << endl;
-    cout << graph2->getNumberEdges() << endl;
-    cout << differenceG->getNumberEdges() << endl;
+    cout << "edges: " << graph1->getNumberEdges() << " | order: " << graph1->getOrder() - 1 << endl;
+    cout << "edges: " << graph2->getNumberEdges() << " | order: " << graph2->getOrder() - 1 << endl;
+    cout << "edges: " << differenceG->getNumberEdges() << " | order: " << differenceG->getOrder() - 1 << endl;
 }
