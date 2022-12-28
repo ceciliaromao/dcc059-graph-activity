@@ -44,7 +44,7 @@ Graph::~Graph()
     while (next_node != nullptr)
     {
 
-        next_node->removeAllEdges();
+        next_node->removeAllEdges(this->directed);
         Node *aux_node = next_node->getNextNode();
         delete next_node;
         next_node = aux_node;
@@ -83,7 +83,6 @@ bool Graph::getWeightedNode()
 
 Node *Graph::getFirstNode()
 {
-
     return this->first_node;
 }
 
@@ -91,6 +90,16 @@ Node *Graph::getLastNode()
 {
 
     return this->last_node;
+}
+
+void Graph::setFirstNode(Node *node)
+{
+    this->first_node = node;
+}
+
+void Graph::setLastNode(Node *node)
+{
+    this->last_node = node;
 }
 
 // Other methods
@@ -152,9 +161,13 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
             //Não possui incremento de grau //TODO
             getNode(id)->insertEdge(target_id, weight);
+            getNode(id)->in_degree++;
+
             if(!getNode(target_id)->searchEdge(id))
             {
                 getNode(target_id)->insertEdge(id, weight);
+
+                getNode(target_id)->in_degree++;
             }   
             this->number_edges++;
         }
@@ -168,8 +181,34 @@ void Graph::removeEdge(int id, int target_id)
 }
 
 void Graph::removeNode(int id){ 
-    
-}
+    if(!this->searchNode(id))
+    {
+        cout << "Node not found" << endl;
+        return;
+    }
+
+    Node *current_node = this->getFirstNode();
+    Node *previous_node = nullptr;
+
+    while (current_node->getId() != id)
+    {
+        previous_node = current_node;
+        current_node = current_node->getNextNode();
+    }
+
+    if (previous_node == nullptr)
+        this->setFirstNode(current_node->getNextNode());
+    else
+        previous_node->setNextNode(current_node->getNextNode());
+
+    if (current_node->getNextNode() == nullptr)
+        this->setLastNode(previous_node);
+        
+    current_node->removeAllEdges(this->directed);
+
+    // delete current_node;
+    } 
+
 
 bool Graph::searchNode(int id)
 {
@@ -199,7 +238,6 @@ Node *Graph::getNode(int id)
     return nullptr;
 }
 
-// Function that verifies if there is a path between two nodes
 bool Graph::depthFirstSearch(int initialId, int targetId)
 {
     //Confere casos triviais: não possuir o nó incial ou target / ou eles serem iguais
@@ -222,8 +260,6 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
         pilha.pop();
         if(!verified[current])
         {
-            cout<<current<<endl;
-
             verified[current] = true; 
             if(current == targetId) return true;
             
@@ -243,6 +279,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId)
                 pilha.push(auxPilha.top());
                 auxPilha.pop();
             }
+
         }
     }
     return false;
@@ -283,7 +320,7 @@ bool Graph::depthFirstSearch(int initialId, int targetId, ofstream &output_file)
         cout<<"Depth First Search: Arquivo de saída não aberto"<<endl;
     }
 
-    int current;
+int current;
     //enquanto a pilha não estiver vazia
     while(!pilha.empty())
     {
@@ -435,6 +472,49 @@ Graph* Graph::getUnion(Graph* graph){
     return unionGraph;
 }
 
+//A function that returns the intersection of two graphs
+Graph* Graph::getIntersection (Graph* graph){
+
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+    {
+        return nullptr;
+    }
+
+    Graph *intersectionGraph;
+    if(this->order < graph->order){
+        intersectionGraph = new Graph(this->order, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+        for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *graphNode = graph->getNode(nodeId);
+            if(graphNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(graphNode->searchEdge(j->getTargetId())){
+                    intersectionGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    } else {
+        intersectionGraph = new Graph(graph->order, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+        for(Node *i = graph->first_node; i!=nullptr; i = i->next_node){
+            int nodeId = i->getId();
+            Node *thisNode = this->getNode(nodeId);
+            if(thisNode == nullptr) continue;
+
+            for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+            {
+                if(thisNode->searchEdge(j->getTargetId())){
+                    intersectionGraph->insertEdge(nodeId, j->getTargetId(), 0);
+                }
+            }
+        }
+    }
+
+    return intersectionGraph;
+}
+
 
 Graph *Graph::getComplement(){
 
@@ -488,8 +568,6 @@ Graph* Graph::getSubjacent(){
     
     Graph* subjacent = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
 
-    
-
     Node * next_node = this->first_node;
     subjacent->directed = false;
     
@@ -519,17 +597,99 @@ Graph* Graph::getSubjacent(){
     return subjacent;
 }
 
-bool Graph::connectedGraph()
-{
+
+
+bool Graph::connectedGraph(){
+    int nodes = this->order-1;
+
+    bool *visited = new bool[this->order];
+    int count = 1;
+
+    // call DFS from node 1 to all nodes to check if they are reachable
+    for (int i = 1; i < nodes; i++){
+        visited[i] = depthFirstSearch(1, i+1);
+        if (visited[i])
+            count++;
+    }
+
+        
+    // check if every node is reachable
+    if (count == nodes) return true;
+    else return false;
 }
 
-bool Graph::hasCircuit()
-{
-    return false; 
-}
+float** Graph::floydWarshall(){
+    Node *node = getNode(1);
 
-float **Graph::floydMarshall()
-{
+    if(node == nullptr)
+    {
+        cout<<"Node not found"<<endl;
+        return nullptr;
+    }
+    
+    int nodes = order-1;
+    float **dist = new float*[nodes];
+    
+    // Initialize the distance matrix with INT
+    for (int i = 0; i < nodes; i++){
+        dist[i] = new float[nodes];
+        for (int j = 0; j < nodes; j++)
+            dist[i][j] = INT;
+    }
+    
+    // Initialize the distance matrix with the weight of the edges
+    
+    for (int i = 0; i < nodes; i++) { 
+        for (Edge *j = getNode(i+1)->getFirstEdge(); j != nullptr; j = j->getNextEdge()) {
+            dist[i][j->getTargetId()-1] = j->getWeight();
+        }
+        dist[i][i] = 0;
+    }
+
+    // Calculate the shortest path
+    for (int k = 0; k < nodes; k++) {
+        for (int i = 0; i < nodes; i++) {
+            for (int j = 0; j < nodes; j++) {
+                if (dist[i][k] + dist[k][j] < dist[i][j] && dist[i][k] != INT && dist[k][j] != INT)
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+        }
+    }
+
+    return dist;
+}
+// check if the graph has an eulerian circuit (closed trail -> no repeated edges)
+bool Graph::hasCircuit(){
+
+    // if the graph is not connected, it can't have an eulerian circuit
+    if (!this->connectedGraph())
+        return false;
+
+    // if the graph is directed, it has an eulerian circuit if and only if every vertex has equal in degree 
+    // and out degree, and all of its vertices with nonzero degree belong to a single strongly connected component
+    
+    if (this->directed)
+    {
+        Node * node = this->first_node;
+        while (node != nullptr)
+        {
+            if (node->getInDegree() != node->getOutDegree())
+                return false;
+            node = node->getNextNode();
+        }
+        return true;
+    }
+
+    // if the graph is undirected and has nodes with odd degree, it can't have an eulerian circuit
+    Node * node = this->first_node;
+    while (node != nullptr)
+    {
+        if (node->in_degree % 2 != 0)
+            return false;
+        node = node->getNextNode();
+    }
+
+    return true;
 }
 
 float* Graph::dijkstra(int id){
@@ -551,8 +711,8 @@ float* Graph::dijkstra(int id){
         visited[i] = false;
         distance[i] = INT;
     }
+
     //distancia do nó fonte para ele mesmo é 0
-    
     distance[id] = 0;
 
     priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> queue_;
@@ -598,6 +758,7 @@ void Graph::writeDotFile(string file_name)
 {
     ofstream output_file(file_name, ios::out | ios::trunc);
     verified.clear();
+
     if(!output_file.is_open())
     {
         cout<<"Arquivo não aberto"<<endl; 

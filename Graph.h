@@ -47,6 +47,9 @@ class Graph{
         bool getWeightedNode();
         Node* getFirstNode();
         Node* getLastNode();
+        // Setters
+        void setFirstNode(Node* node);
+        void setLastNode(Node* node);
         //Other methods
         void insertNode(int id);
         void insertEdge(int id, int target_id, float weight);
@@ -60,12 +63,14 @@ class Graph{
         Graph* getComplement();
         Graph* getSubjacent();
         Graph* getUnion(Graph* graph);
+        Graph* getIntersection(Graph *graph);
         bool hasCircuit();
         bool connectedGraph();
-        float** floydMarshall();
+        float** floydWarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
         void pert(string path_out);
+
 
     private:
         int isIn(vector<pertTask> sol, int id);

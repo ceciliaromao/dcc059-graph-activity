@@ -13,8 +13,6 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int idNodeTarget;
     int order;
     int numEdges;
-    float weight;
-
 
     input_file >> order;
 
@@ -23,6 +21,7 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
 
     //Leitura de arquivo
     if(weightedEdge){
+        float weight;
         while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
             graph->insertEdge(idNodeSource, idNodeTarget, weight);
@@ -52,30 +51,58 @@ void printEdges(Graph *graph,ofstream&op)
     }
 }
 
-void printGraph(ofstream&op, Graph *graph){
-    int order = graph->getOrder();
+void printDegrees(Graph *graph,ofstream&op)
+{
+    Node *aux = graph->getFirstNode();
 
-    for(int i = 1; i < order; i++){
-        Node *aux = graph->getNode(i);
-        for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
-            op<< i << " " << j->getTargetId() << endl;
+    while(aux != nullptr)
+    {
+        op<< "No:"<<aux->getId()<<endl<<"Grau de Entrada:" <<aux->getInDegree()<<"; Grau de Saida:"<<aux->getOutDegree()<<endl;
+        aux = aux->getNextNode();
+    }
+}
+
+void executeWarshall(ofstream&output, Graph* graph){
+    int source =1;
+
+    float** array= graph->floydWarshall();
+
+    int iterative=graph->getOrder()-1;
+    for(int i=0;i<iterative;i++){
+        for(int j=0;j<iterative;j++){
+            output<<array[i][j]<<" ";
         }
+        output<<endl;
     }
 }
 
 int main()
 {
     Graph* graph;
+    ofstream output;
     ifstream input;
     
     string path = USER_DIR;
     string path_in = path;
-    path_in+="input/grafo_pert.txt";
 
+    cout << "É ponderado? 1 - Sim, 0 - Não" << endl;
+    int ponderado = 0;
+    cin >> ponderado;
+    
+    ponderado ? path_in +="input/grafo_3.txt": path_in+="input/grafo_10.txt";
 
     string path_out =path+ "output/output.txt";
+
+    output.open(path_out, ios::out | ios::trunc);
     input.open(path_in, ios::in);
-   
-    graph = leituraInstancia(input, 1, 1, 0);
-    graph->writeDotFile(path_out);
+
+    if(ponderado)
+        graph = leituraInstancia(input, 1, 1, 0);
+    else
+        graph = leituraInstancia(input, 0, 0, 0);
+
+    output<< "Array Warshall:"<<endl;
+
+    executeWarshall(output, graph);
+
 }

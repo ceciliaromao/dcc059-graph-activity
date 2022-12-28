@@ -13,16 +13,15 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     int idNodeTarget;
     int order;
     int numEdges;
-    float weight;
 
-
-    input_file >> order;
+    input_file >> order >> numEdges;
 
     //Criando objeto grafo
     Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
 
     //Leitura de arquivo
     if(weightedEdge){
+        float weight;
         while(input_file >> idNodeSource >> idNodeTarget >> weight) {
 
             graph->insertEdge(idNodeSource, idNodeTarget, weight);
@@ -38,30 +37,18 @@ Graph* leituraInstancia(ifstream&input_file, int directed, int weightedEdge, int
     return graph;
 }
 
-void printEdges(Graph *graph,ofstream&op)
-{
-    Node *aux = graph->getFirstNode();
 
-    while(aux != nullptr)
-    {
-        for(Edge *i = aux->getFirstEdge(); i != nullptr; i = i->getNextEdge())
-        {
-            op<<i->getTargetId()<<endl;
-        }
-        aux = aux->getNextNode();
+void printNodes(Graph* graph){
+    cout << "Nodes: " << endl;
+    for(int i = 1; i < graph->getOrder()-1; i++){
+        if(graph->getNode(i) != nullptr)
+            cout << graph->getNode(i)->getId() << " ";
+        else
+            cout << "null ";
     }
+    cout << endl;
 }
 
-void printGraph(ofstream&op, Graph *graph){
-    int order = graph->getOrder();
-
-    for(int i = 1; i < order; i++){
-        Node *aux = graph->getNode(i);
-        for(Edge* j = aux->getFirstEdge(); j != nullptr; j = j->getNextEdge()){
-            op<< i << " " << j->getTargetId() << endl;
-        }
-    }
-}
 
 int main()
 {
@@ -70,12 +57,14 @@ int main()
     
     string path = USER_DIR;
     string path_in = path;
-    path_in+="input/grafo_pert.txt";
 
+    
+    path_in +="input/grafo_585.txt";
 
-    string path_out =path+ "output/output.txt";
-    input.open(path_in, ios::in);
    
-    graph = leituraInstancia(input, 1, 1, 0);
-    graph->writeDotFile(path_out);
+    input.open(path_in, ios::in);
+
+    graph = leituraInstancia(input, 0, 0, 0);
+    graph->removeNode(2);
+    printNodes(graph);
 }
