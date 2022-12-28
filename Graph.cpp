@@ -653,6 +653,10 @@ void Graph::pert(string path_out)
 
     vector<pertTask> sol; //esse vetor, tem que em algum momento, ter todos os nós. 
     vector<int> criticPath; 
+    int auxDegree = 0; 
+    int min, max; 
+    int pesoAresta; 
+    int maxAlpha = 0;
 
     //Pega todos os nós com grau de entrada igual a 0
     for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
@@ -678,15 +682,14 @@ void Graph::pert(string path_out)
     
     for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
-        int auxDegree = aux->getInDegree();
-        int max = 0; 
+        auxDegree = aux->getInDegree();
+        max = 0; 
         for(int i = 0; i<sol.size(); i++)
         {
             if(getNode(sol[i].id)->searchEdge(aux->getId()))
             {
                 auxDegree--;
-                //? Tá funcionando isso?
-                int pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
+                pesoAresta = getNode(sol[i].id)->hasEdgeBetween(aux->getId())->getWeight();
                 if(sol[i].a + pesoAresta > max)
                 {
                     max = sol[i].a + pesoAresta; 
@@ -708,7 +711,7 @@ void Graph::pert(string path_out)
         }
     }
     
-    int maxAlpha = 0;
+    
     //!Define nós terminais do grafo
     for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
@@ -724,19 +727,19 @@ void Graph::pert(string path_out)
         }
     }
     
-    Node *aux;
     //parte do betha
+    Node *aux;
     for(int j=sol.size() - 1; j>-1; j--)
     {
         aux = this->getNode(sol[j].id);
-        int auxDegree = aux->getOutDegree();
-        int min = maxAlpha; 
+        auxDegree = aux->getOutDegree();
+        min = maxAlpha; 
         for(int i = 0; i<sol.size(); i++)
         {
             if(aux->searchEdge(sol[i].id))
             {
                 auxDegree--;
-                int pesoAresta = aux->hasEdgeBetween(sol[i].id)->getWeight();
+                pesoAresta = aux->hasEdgeBetween(sol[i].id)->getWeight();
                 if(sol[i].b - pesoAresta < min )
                 {
                     min = sol[i].b - pesoAresta; 
@@ -753,7 +756,7 @@ void Graph::pert(string path_out)
             sol[j].b = min; 
         }
     }    
-    
+
     for(int i =0; i<sol.size(); i++)
     {
         if(sol[i].b - sol[i].a == 0)
