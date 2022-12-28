@@ -657,6 +657,7 @@ void Graph::pert(string path_out)
     int min, max; 
     int pesoAresta; 
     int maxAlpha = 0;
+    int custo = 0;
 
     //Pega todos os nós com grau de entrada igual a 0
     for(Node* aux = this->first_node; aux!=nullptr; aux = aux->next_node)
@@ -747,7 +748,6 @@ void Graph::pert(string path_out)
             }
         }
                             
-
         //Todos os precedentes estão na solução
         if(auxDegree == 0)
         {
@@ -763,6 +763,11 @@ void Graph::pert(string path_out)
         {
             criticPath.push_back(sol[i].id);
         }
+    }
+
+    for(int i =0; i<criticPath.size()-1; i++)
+    {
+        custo += this->getNode(criticPath[i])->hasEdgeBetween(criticPath[i+1])->getWeight(); 
     }
 
     //impressão da ordem de execução e de alpha e beta
@@ -797,6 +802,8 @@ void Graph::pert(string path_out)
     {
         output<<criticPath[i]<<" ";
     }
+
+    output<<endl<<"Custo total: "<<custo;
     output.close();
 }
 

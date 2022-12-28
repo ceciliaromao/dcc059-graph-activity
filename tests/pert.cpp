@@ -71,7 +71,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/grafo_10_1.txt";
+    path_in+="input/grafo_pert.txt";
 
     string path_out =path+ "output/pert.txt";
 
