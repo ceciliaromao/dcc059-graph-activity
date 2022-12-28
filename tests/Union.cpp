@@ -104,8 +104,8 @@ int main()
 
         input.close();
     } else {
-        path_in1+="input/grafo_125.txt";
-        path_in2+="input/grafo_585.txt";
+        path_in1+="input/grafo_3.txt";
+        path_in2+="input/grafo_6.txt";
 
         input.open(path_in1, ios::in);
         graph1 = leituraInstancia(input, 0, 1, 0); 

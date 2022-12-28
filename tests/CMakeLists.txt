@@ -45,3 +45,6 @@ target_link_libraries(writingDots PUBLIC tdg)
 add_executable(Intersection Intersection.cpp)
 target_link_libraries(Intersection PUBLIC tdg)
 
+add_executable(TestDifference TestDifference.cpp)
+target_link_libraries(TestDifference PUBLIC tdg)
+

@@ -515,6 +515,88 @@ Graph* Graph::getIntersection (Graph* graph){
     return intersectionGraph;
 }
 
+//A function that checks if a graph is a subgraph of another graph
+bool Graph::isSubgraph(Graph* graph){
+    
+    for(Node *i = this->first_node; i!=nullptr; i = i->next_node){
+        int nodeId = i->getId();
+        Node *graphNode = graph->getNode(nodeId);
+
+        if(graphNode == nullptr) continue;
+
+        for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+        {
+            if(!graphNode->searchEdge(j->getTargetId())){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+//A function that returns the difference of two graphs
+Graph * Graph::getDifference(Graph* graph){
+
+    //checks if the graphs are compatible
+    if(this->getDirected() != graph->getDirected() || this->getWeightedEdge() != graph->getWeightedEdge() || this->getWeightedNode() != graph->getWeightedNode())
+        return nullptr;
+
+    cout << "Os grafos são compatíveis." << endl;
+
+    //checks if the graphs have the same order
+    if(this->getOrder() != graph->getOrder()) {
+        cout << "Os grafos não têm a mesma ordem." << endl;
+        return nullptr;
+    }
+
+    // checks if one graph is subgraph of the other
+    if (this->isSubgraph(graph))
+    {
+        cout << "Um grafo é subgrafo do outro." << endl;
+        return new Graph(0, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+    }
+
+    int graphOrder = graph->getOrder();
+
+    Graph *differenceGraph = new Graph(graphOrder, this->getDirected(), this->getWeightedEdge(), this->getWeightedNode());
+    cout << "Instancia um grafo de ordem " << graphOrder << endl;
+
+    // runs through the nodes of the graph
+    cout << "Percorre os nós desse grafo" << endl << endl;
+    for(Node *i = this->getFirstNode(); i!=nullptr; i = i->getNextNode()){
+        int nodeId = i->getId();
+        Node *graphNode = graph->getNode(nodeId);
+        cout << "Instancia o nó " << nodeId << " desse grafo" << endl;
+        cout << "Instancia o nó " << graph->getNode(nodeId) << " do outro grafo" << endl;
+        
+        if(graphNode == nullptr){
+            differenceGraph->insertNode(nodeId);
+            if(this->getWeightedNode())
+                differenceGraph->getNode(nodeId)->setWeight(i->getWeight());
+            cout << "O nó " << nodeId << " não existe no outro grafo. Insere no diferença" << endl;
+            if (differenceGraph->searchNode(nodeId))
+                cout << "entrou no grafo" << endl;
+            continue;
+        }
+
+        cout << "Percorre as arestas do nó " << nodeId << endl;
+        for(Edge *j = i->getFirstEdge(); j != nullptr; j = j->getNextEdge())
+        {
+            cout << "Aresta de " << nodeId << " para " << j->getTargetId() << endl;
+            if(!graphNode->searchEdge(j->getTargetId())){
+                differenceGraph->insertEdge(nodeId, j->getTargetId(), j->getWeight());
+                cout << "Aresta não existe no outro grafo. Insere no diferença" << endl;
+            }
+        }
+        cout << "Fim do nó " << nodeId << endl << endl;
+    }
+
+    cout << "Fim do grafo" << endl << endl;
+
+    return differenceGraph;
+}
+
 
 Graph *Graph::getComplement(){
 
