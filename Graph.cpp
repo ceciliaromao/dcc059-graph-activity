@@ -625,7 +625,6 @@ priority_queue<pair<double,int>> heuristic(Graph* graph){
 }
 
 
-
 //Greedy Constructive Algorithm
 set<pair<int,int>> Graph::GreedyConstructive(){
 
@@ -643,12 +642,12 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     node_degrees.pop();
     
     for(int i = 1; i < this->order; i++){
-        
         in_solution.insert(make_pair(i,false));
     }
         
     // get first node 
     Node * node = this->getFirstNode();
+
 
     while(node!=nullptr){
         // while node is not in solution
