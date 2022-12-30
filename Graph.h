@@ -5,12 +5,22 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
 #include "Node.h"
+#include "random.h"
 #include <fstream>
 #include <stack>
 #include <list>
 #include <map>
 #include <set>
+#include "Edge.h"
+#include <iostream>
+#include <queue>
+#include <cstdlib>
+#include <ctime>
+#include <float.h>
+#include <iomanip>
 #include <vector>
+#include <limits.h>
+#include <random>
 
 using namespace std;
 
@@ -58,7 +68,7 @@ class Graph{
         float* dijkstra(int id);
         void writeDotFile(string file_name);
         set<pair<int,int>> GreedyConstructive();
-        set<pair<int,int>> GreedyRandomizedAdaptive();
+        set<pair<int,int>> GreedyRandomizedAdaptive(double alpha);
 
     private:
         //Auxiliar methods

@@ -1,20 +1,5 @@
 #include "Graph.h"
-#include "Node.h"
-#include "Edge.h"
-#include <iostream>
-#include <fstream>
-#include <stack>
-#include <queue>
-#include <list>
-#include <set>
-#include <math.h>
-#include <cstdlib>
-#include <ctime>
-#include <float.h>
-#include <iomanip>
-#include <map>
-#include <vector>
-#include <limits.h>
+#include "random.h"
 
 #define INT 99999
 
@@ -643,7 +628,6 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     node_degrees.pop();
     
     for(int i = 1; i < this->order; i++){
-        
         in_solution.insert(make_pair(i,false));
     }
         
@@ -699,12 +683,12 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 }
 
 //Greedy Randomized Adaptive Algorithm
-set<pair<int,int>> Graph::GreedyRandomizedAdaptive(){
+set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
     // set containing each node and its weight
     set<pair<int,int>> auxSolutionSet;
     
     // map to verify if node is in solution
-    map<int,bool> in_solution;
+    map<int,bool> in_solution;      //?verified
 
     // max heap to get node with highest degree
     priority_queue<pair<double,int>> node_degrees = heuristic(this);
@@ -713,18 +697,29 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(){
     
     node_degrees.pop();
     
-    for(int i = 1; i < this->order; i++){
-        
-        in_solution.insert(make_pair(i,false));
+    for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
+    {
+        in_solution.insert(make_pair(aux->getId(), false));
     }
-        
-    // get first node 
-    Node * node = this->getFirstNode();
+    
+    Node *node = this->first_node;
+    int k, i = 1;
+    
+    while(i < this->getOrder()){
+        i++;
+        do {
+            //k = xrandomRange(1, trunc(alpha*this->getOrder()-1));
+            srand(time(0) + k + i); 
+            heuristic_node= 1 + (((float)rand())*(this->order-1-1)) / (float)RAND_MAX; 
+            cout << heuristic_node << endl;
+            //node = this->getNode(k);
+        } while (this->getNode(heuristic_node) == nullptr);
 
-    while(node!=nullptr){
+        cout << "saiu" << endl;
+
         // while node is not in solution
         while(!in_solution[node->getId()]){
-    
+            cout<<"entrou"<<endl;
             //get edges from node with highest degree
             Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
             
@@ -735,10 +730,13 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(){
                 if(!in_solution[edge->getTargetId()]){
                     auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
                     in_solution[heuristic_node] = true; 
+                    verified[heuristic_node] = true;
                 }
                 
                 //sets to true that node is in solution
                 in_solution[edge->getTargetId()] = true;
+                verified[edge->getTargetId()] = true;
+
             
                 edge = edge->getNextEdge();
             }
@@ -748,23 +746,18 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(){
             
             heuristic_node = node_degrees.top().second;
             node_degrees.pop();
-            
         }
 
         // restarts max heap
         node_degrees = heuristic(this);
 
-        heuristic_node = node_degrees.top().second;
+        //heuristic_node = node_degrees.top().second;
 
         node_degrees.pop();
-       
-        node = node->getNextNode();
+
+        node = node->getNextNode(); 
 
     }
-
-    /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
-            return a->getWeight() < b->getWeight();
-        });*/
         
     return auxSolutionSet;
 }
