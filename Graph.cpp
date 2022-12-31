@@ -2,6 +2,7 @@
 #include "random.h"
 
 #define INT 99999
+#define bananinha std::cout
 
 using namespace std;
 
@@ -609,7 +610,15 @@ priority_queue<pair<double,int>> heuristic(Graph* graph){
     return node_degrees;
 }
 
-
+int randomNode(Graph* graph, float alpha)
+{
+    int id; 
+    do {
+            srand(time(0)); 
+            id= 1 + (((float)rand())*(graph->getOrder()-1-1)) / (float)RAND_MAX; 
+        } while (graph->getNode(id) == nullptr);
+    return id; 
+}
 
 //Greedy Constructive Algorithm
 set<pair<int,int>> Graph::GreedyConstructive(){
@@ -690,12 +699,8 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
     // map to verify if node is in solution
     map<int,bool> in_solution;      //?verified
 
-    // max heap to get node with highest degree
-    priority_queue<pair<double,int>> node_degrees = heuristic(this);
-    
-    int heuristic_node = node_degrees.top().second;
-    
-    node_degrees.pop();
+    // max heap to get node with highest degree    
+    int random_node;
     
     for(Node *aux = this->first_node; aux!=nullptr; aux = aux->next_node)
     {
@@ -703,58 +708,37 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
     }
     
     Node *node = this->first_node;
-    int k, i = 1;
+    int i = 1;
     
     while(i < this->getOrder()){
         i++;
-        do {
-            //k = xrandomRange(1, trunc(alpha*this->getOrder()-1));
-            srand(time(0) + k + i); 
-            heuristic_node= 1 + (((float)rand())*(this->order-1-1)) / (float)RAND_MAX; 
-            cout << heuristic_node << endl;
-            //node = this->getNode(k);
-        } while (this->getNode(heuristic_node) == nullptr);
-
-        cout << "saiu" << endl;
+        random_node = randomNode(this, 1);
 
         // while node is not in solution
         while(!in_solution[node->getId()]){
-            cout<<"entrou"<<endl;
             //get edges from node with highest degree
-            Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
-            
+            bananinha<<"chegou"<<endl;
+
+            Edge * edge = this->getNode(random_node)->getFirstEdge();
+
             while(edge != nullptr){
                 // if edge target is the id of the node not in solution
                
                 // adds node with highest degree to solution
                 if(!in_solution[edge->getTargetId()]){
-                    auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
-                    in_solution[heuristic_node] = true; 
-                    verified[heuristic_node] = true;
+                    auxSolutionSet.insert(make_pair(random_node,getNode(random_node)->getWeight()));
+                    in_solution[random_node] = true; 
                 }
-                
                 //sets to true that node is in solution
                 in_solution[edge->getTargetId()] = true;
-                verified[edge->getTargetId()] = true;
-
-            
                 edge = edge->getNextEdge();
             }
 
             //if node with highest degree does not contain edge to node not in solution
             //gets next node with highest degree
             
-            heuristic_node = node_degrees.top().second;
-            node_degrees.pop();
+            random_node = randomNode(this, 1);
         }
-
-        // restarts max heap
-        node_degrees = heuristic(this);
-
-        //heuristic_node = node_degrees.top().second;
-
-        node_degrees.pop();
-
         node = node->getNextNode(); 
 
     }
