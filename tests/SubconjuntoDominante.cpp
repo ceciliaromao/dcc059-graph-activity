@@ -160,6 +160,7 @@ int main()
 
 
     // graph->writeDotFile(path_out);
+    cout << graph->getNode(5)->getInDegree() << endl;
     printNodesGreedy(solucao,output);
    
 }

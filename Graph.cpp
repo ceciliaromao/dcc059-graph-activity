@@ -149,7 +149,11 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
-            getNode(id)->in_degree++;
+            
+            if(id == target_id)
+                getNode(id)->in_degree+=2;
+            else 
+                getNode(id)->in_degree++;
 
             if(!getNode(target_id)->searchEdge(id))
             {
