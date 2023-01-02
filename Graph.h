@@ -21,6 +21,7 @@
 #include <vector>
 #include <limits.h>
 #include <random>
+#include <algorithm>
 
 using namespace std;
 
