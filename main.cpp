@@ -226,6 +226,18 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             cout << "-----------" << endl;
             cout << "Rede PERT" << endl;
             cout << "-----------" << endl;
+
+            graph->pert(output_file);
+            cout << "Rede PERT gerada com sucesso no arquivo de saída!" << endl;
+            cout << "-----------" << endl;
+            cout << "Voltar para menu? (s/n) ";
+            char resposta;
+            cin >> resposta;
+            cout << "-----------" << endl;
+            
+            if (resposta == 'n')
+                exit(0);
+
             break;
         }
 

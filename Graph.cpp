@@ -862,7 +862,7 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-void Graph::pert(string path_out)
+void Graph::pert(ofstream& output)
 {
     //verificando condições de existência
     if(!this->directed || !this->weighted_edge)
@@ -996,14 +996,6 @@ void Graph::pert(string path_out)
     }
 
     //impressão da ordem de execução e de alpha e beta
-    ofstream output;
-    output.open(path_out, ios::out | ios::trunc);
-    if(!output.is_open())
-    {
-        cout<<"REDE PERT: erro ao abrir o arquivo de saída"<<endl;
-        return; 
-    }
-
     output<<"Id: ";
     for(int i =0; i<sol.size(); i++)
     {
