@@ -575,7 +575,7 @@ float* Graph::dijkstra(int id){
 void Graph::writeDotFile(string file_name)
 {
     ofstream output_file(file_name, ios::out | ios::trunc);
-
+    verified.clear();
     if(!output_file.is_open())
     {
         cout<<"Arquivo não aberto"<<endl; 
@@ -646,6 +646,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     node_degrees.pop();
     
     for(int i = 1; i < this->order; i++){
+        
         in_solution.insert(make_pair(i,false));
     }
         
@@ -663,14 +664,15 @@ set<pair<int,int>> Graph::GreedyConstructive(){
             while(edge != nullptr){
                 // if edge target is the id of the node not in solution
                
-                // adds node with highest degree to solution
+                // adds node with best heuristic to solution
                 if(!in_solution[edge->getTargetId()]){
                     auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
                     in_solution[heuristic_node] = true; 
+
+                    //sets to true that node is in solution
+                    in_solution[edge->getTargetId()] = true;
+
                 }
-                
-                //sets to true that node is in solution
-                in_solution[edge->getTargetId()] = true;
             
                 edge = edge->getNextEdge();
             }
@@ -697,7 +699,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
             return a->getWeight() < b->getWeight();
         });*/
-        
+
     return auxSolutionSet;
 }
 

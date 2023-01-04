@@ -61,10 +61,10 @@ void printEdges(Graph *graph,ofstream&op)
 void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op)
 {
     int sumOfWeights = 0;
-    for(auto i = solucao.begin(); i != solucao.end(); i++)
+    for(auto i : solucao)
     {
-        sumOfWeights += i->second;
-        op<<"Nó:" <<i->first<<" "<<"Peso: " <<i->second<<endl; 
+        sumOfWeights += i.second;
+        op<<"Nó:" <<i.first<<" "<<"Peso: " <<i.second<<endl; 
     }
     cout << "Soma dos pesos: " << sumOfWeights << endl;
 }
@@ -108,7 +108,6 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
     while(i < order-1){
         i++;
         getline(input_file, line);
-        
         stringstream stst(line);
         getline(stst,aux);
         graph->insertNode(i);
@@ -127,6 +126,7 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
             
             targetNode++;
             if(aux == "1"){
+                if(currentNode == targetNode) continue;
                 graph->insertEdge(currentNode,targetNode,0);
             }
         }
@@ -160,7 +160,7 @@ int main()
 
 
     // graph->writeDotFile(path_out);
-    cout << graph->getNode(5)->getInDegree() << endl;
+    cout << graph->getNode(1)->getInDegree() << endl;
     printNodesGreedy(solucao,output);
    
 }
