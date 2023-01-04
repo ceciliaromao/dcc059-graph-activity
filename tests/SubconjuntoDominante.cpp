@@ -119,21 +119,25 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
     int currentNode = 1;
     int targetNode = 0;
     line = "";
+    cout << "Ordem de inserção: "<< endl;
     while(!input_file.eof()){
         getline(input_file, line);
         stringstream stst(line);
         while(getline(stst,aux,' ')){
             
             targetNode++;
+            
             if(aux == "1"){
                 if(currentNode == targetNode) continue;
+                cout<<currentNode<<" " << targetNode<<endl;
                 graph->insertEdge(currentNode,targetNode,0);
+                
             }
         }
         currentNode++;
         targetNode = 0;
     }
-
+    cout << "Numero de arestas " << graph->getNumberEdges() << endl;
     return graph;
 }
 
