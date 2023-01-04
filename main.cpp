@@ -104,15 +104,10 @@ int menu(){
 
     cout << "MENU" << endl;
     cout << "----" << endl;
-    cout << "[1] Complementar do grafo" << endl;
-    cout << "[2] Imprimir caminhamento em largura" << endl;
-    cout << "[3] Busca em profundidade" << endl;
-    cout << "[4] Imprimir componentes conexas" << endl;
-    cout << "[5] Imprimir componentes fortemente conexas" << endl;
-    cout << "[6] Imprimir ordenacao topológica" << endl;
-    cout << "[8] Caminho Mínimo Dijkstra" << endl;
-    cout << "[9] Caminho Mínimo Floyd" << endl;
-    cout << "[10] Grafo União(Com grafo complementar)" << endl;
+    cout << "[1] Grafo Interseção" << endl;
+    cout << "[2] Grafo União" << endl;
+    cout << "[3] Grafo Diferença" << endl;
+    cout << "[4] Rede PERT" << endl;
     cout << "[0] Sair" << endl;
 
     cin >> selecao;
@@ -132,89 +127,118 @@ void printGraph(ofstream&op, Graph *graph){
     }
 }
 
-void executeDijkstra(ofstream&output, Graph* graph){
-    int source =14;
-
-    float* array= graph->dijkstra(source);
-    int iterative=graph->getOrder();
-    for(int i=1;i<iterative;i++){
-        output<<array[i]<<endl;
-    }
+string leGrafo2(Graph* graph){
+    string nomeArquivo;
+    cout << "O Grafo 1: ";
+    string texto = (graph->getDirected()) ? "é direcionado, " : "não é direcionado, ";
+    texto += (graph->getWeightedEdge()) ? "possui arestas ponderadas, " : "não possui arestas ponderadas, ";
+    texto += (graph->getWeightedNode()) ? "e possui nós ponderados." : "e não possui nós ponderados.";
+    cout << texto << endl;
+    cout << "Informe o nome do arquivo do Grafo 2: " << endl;
+    cin >> nomeArquivo;
+    return nomeArquivo;
 }
-
 
 void selecionar(int selecao, Graph* graph, ofstream& output_file){
 
     switch (selecao) {
 
-        //Complementar
+        // Interseção
         case 1:{
-            Graph* complementar = graph->getComplement();
-            printGraph(output_file,complementar);
+            cout << "-----------" << endl;
+            cout << "Grafo Interseção" << endl;
+            cout << "-----------" << endl;
+
+            string nomeArquivo = leGrafo2(graph);
+
+            ifstream input_file;
+            input_file.open(nomeArquivo, ios::in);
+
+            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* interG = graph->getIntersection(graph2);
+            printGraph(output_file,interG);
+            cout << "Grafo Interseção gerado com sucesso no arquivo de saída!" << endl;
+            cout << "-----------" << endl;
+            cout << "Voltar para menu? (s/n) ";
+            char resposta;
+            cin >> resposta;
+            cout << "-----------" << endl;
+            if (resposta == 'n')
+                exit(0);
+
             break;
         }
 
-        //BFS
+        // União
         case 2:{
-           
-            break;
-        }
+            cout << "-----------" << endl;
+            cout << "Grafo União" << endl;
+            cout << "-----------" << endl;
 
-        //DFS
-        case 3:{
-            
-            break;
-        }
+            string nomeArquivo = leGrafo2(graph);
 
-        //Componentes Conexas
-        case 4:{
+            ifstream input_file;
+            input_file.open(nomeArquivo, ios::in);
 
-            break;
-        }
-
-        //Componentes Fortementes Conexas
-        case 5:{
-            
-            break;
-        }
-
-        //Ordenação Topológica
-        case 6:{
-            
-            break;
-        }
-
-
-        //Algoritmo de Prim
-        case 7:
-        {
-            
-            break;
-        }
-
-        //Algoritmo de Dijkstra
-        case 8:
-        {
-            executeDijkstra(output_file, graph);
-            break;
-        }
-
-        //Algoritmo de Floyd
-        case 9:
-        {
-            
-            break;
-
-        }
-
-        // Grafo União
-        case 10:
-        {
-            Graph * complement = graph->getComplement();
-            Graph* unionG = graph->getUnion(complement);
+            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* unionG = graph->getUnion(graph2);
             printGraph(output_file,unionG);
+            cout << "Grafo União gerado com sucesso no arquivo de saída!" << endl;
+            cout << "-----------" << endl;
+            cout << "Voltar para menu? (s/n) ";
+            char resposta;
+            cin >> resposta;
+            cout << "-----------" << endl;
+            if (resposta == 'n')
+                exit(0);
+
+            break;
         }
 
+        // Diferença
+        case 3:{
+            cout << "-----------" << endl;
+            cout << "Grafo Diferença" << endl;
+            cout << "-----------" << endl;
+
+            string nomeArquivo = leGrafo2(graph);
+
+            ifstream input_file;
+            input_file.open(nomeArquivo, ios::in);
+
+            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* differenceG = graph->getDifference(graph2);
+            printGraph(output_file,differenceG);
+            cout << "Grafo Diferença gerado com sucesso no arquivo de saída!" << endl;
+            cout << "-----------" << endl;
+            cout << "Voltar para menu? (s/n) ";
+            char resposta;
+            cin >> resposta;
+            cout << "-----------" << endl;
+            if (resposta == 'n')
+                exit(0);
+
+            break;
+        }
+
+        // Rede PERT
+        case 4:{
+            cout << "-----------" << endl;
+            cout << "Rede PERT" << endl;
+            cout << "-----------" << endl;
+            break;
+        }
+
+        // Sair do programa
+        case 0:{
+            "Fim do programa";
+            break;
+        }
+
+        default:{
+            cout << "Opção inválida" << endl;
+            break;
+        }
   }
 }
 
@@ -233,7 +257,6 @@ int mainMenu(ofstream& output_file, Graph* graph){
             cout << "Unable to open the output_file" << endl;
 
         output_file << endl;
-
     }
 
     return 0;
@@ -254,9 +277,7 @@ int main(int argc, char const *argv[]) {
 
     string program_name(argv[0]);
     string input_file_name(argv[1]);
-
     string instance;
-    
 
     //Abrindo arquivo de entrada
     ifstream input_file;
@@ -264,22 +285,15 @@ int main(int argc, char const *argv[]) {
     input_file.open(argv[1], ios::in);
     output_file.open(argv[2], ios::out | ios::trunc);
 
-    
-
     Graph* graph;
 
-    if(input_file.is_open()){
-
+    if(input_file.is_open())
         graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
-
-    }else
+    else
         cout << "Unable to open " << argv[1];
 
-    
     mainMenu(output_file, graph);
-
     
-
     //Fechando arquivo de entrada
     input_file.close();
 

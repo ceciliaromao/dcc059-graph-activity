@@ -10,8 +10,6 @@ target_link_libraries(removeEdge PUBLIC tdg)
 add_executable(InsertEdge InsertEdge.cpp)
 target_link_libraries(InsertEdge PUBLIC tdg)
 
-add_executable(writingDots writingDots.cpp)
-target_link_libraries(writingDots PUBLIC tdg)
 add_executable(TestComplement TestComplement.cpp)
 target_link_libraries(TestComplement PUBLIC tdg)
 
