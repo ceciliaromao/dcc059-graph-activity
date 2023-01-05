@@ -157,6 +157,9 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* interG = graph->getIntersection(graph2);
             printGraph(output_file,interG);
+            
+            interG->writeDotFile("grafoIntersecao.txt");
+
             cout << "Grafo Interseção gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
             cout << "Voltar para menu? (s/n) ";
@@ -183,6 +186,9 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* unionG = graph->getUnion(graph2);
             printGraph(output_file,unionG);
+
+            unionG->writeDotFile("grafoUniao.txt");
+
             cout << "Grafo União gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
             cout << "Voltar para menu? (s/n) ";
@@ -209,6 +215,9 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* differenceG = graph->getDifference(graph2);
             printGraph(output_file,differenceG);
+
+            differenceG->writeDotFile("grafoDiferenca.txt");
+
             cout << "Grafo Diferença gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
             cout << "Voltar para menu? (s/n) ";
@@ -234,7 +243,7 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             char resposta;
             cin >> resposta;
             cout << "-----------" << endl;
-            
+
             if (resposta == 'n')
                 exit(0);
 

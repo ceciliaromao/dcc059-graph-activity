@@ -862,7 +862,7 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-void Graph::pert(ofstream& output)
+void Graph::pert(ofstream&op)
 {
     //verificando condições de existência
     if(!this->directed || !this->weighted_edge)
@@ -996,32 +996,33 @@ void Graph::pert(ofstream& output)
     }
 
     //impressão da ordem de execução e de alpha e beta
-    output<<"Id: ";
-    for(int i =0; i<sol.size(); i++)
+    op << "Id: ";
+    cout << "escreveu id" << endl;
+    for(int i = 0; i<sol.size(); i++)
     {
-        output<<sol[i].id<<" ";
+        op << sol[i].id<<" ";
     }
 
-    output<<endl<<"a:  ";
+    op<<endl<<"a:  ";
     for(int i =0; i<sol.size(); i++)
     {
-        output<<sol[i].a<<" ";
+        op<<sol[i].a<<" ";
     }
 
-    output<<endl<<"b:  ";
+    op<<endl<<"b:  ";
     for(int i =0; i<sol.size(); i++)
     {
-        output<<sol[i].b<<" ";
+        op<<sol[i].b<<" ";
     }
 
-    output<<endl<<endl<<"Caminho crítico: ";
+    op<<endl<<endl<<"Caminho crítico: ";
     for(int i =0; i<criticPath.size(); i++)
     {
-        output<<criticPath[i]<<" ";
+        op<<criticPath[i]<<" ";
     }
 
-    output<<endl<<"Custo total: "<<custo;
-    output.close();
+    op<<endl<<"Custo total: "<<custo;
+    op.close();
 }
 
 int Graph::isIn(vector<pertTask> sol, int id)

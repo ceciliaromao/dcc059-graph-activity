@@ -71,7 +71,7 @@ class Graph{
         float** floydWarshall();
         float* dijkstra(int id);
         void writeDotFile(string file_name);
-        void pert(string path_out);
+        void pert(ofstream& path_out);
 
 
     private:
