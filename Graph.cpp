@@ -135,7 +135,11 @@ void Graph::insertEdge(int id, int target_id, float weight)
         } else {
 
             getNode(id)->insertEdge(target_id, weight);
-            getNode(id)->in_degree++;
+            
+            if(id == target_id)
+                getNode(id)->in_degree+=2;
+            else 
+                getNode(id)->in_degree++;
 
             if(!getNode(target_id)->searchEdge(id))
             {
@@ -557,7 +561,7 @@ float* Graph::dijkstra(int id){
 void Graph::writeDotFile(string file_name)
 {
     ofstream output_file(file_name, ios::out | ios::trunc);
-
+    verified.clear();
     if(!output_file.is_open())
     {
         cout<<"Arquivo não aberto"<<endl; 
@@ -596,14 +600,63 @@ void Graph::writeDotFile(string file_name)
     output_file.close();
 }
 
-priority_queue<pair<double,int>> heuristic(Graph* graph){
+
+//biggest ratio between the node's degree and it's weight
+double lambda3(Graph* graph,int node_id,map <int,bool> &in_solution){
+    Node * node = graph->getNode(node_id);
+ 
+    return node->getInDegree()/node->getWeight();
+}
+
+// biggest ratio between the sum of the weights of the non-dominated neighbors and the node weight
+double lambda4(Graph* graph, int node_id,map <int,bool> &in_solution){
+    Node* node = graph->getNode(node_id);
+    int neighbor_weight = 0;
+    for(Edge* edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge()){
+        if(!in_solution[edge->getTargetId()])
+            neighbor_weight += graph->getNode(edge->getTargetId())->getWeight();
+    }
+    return neighbor_weight/node->getWeight();
+}
+
+// biggest ratio between the product of the non-dominated neighbor count and sum the of weights with the node weight
+double lambda5(Graph* graph,int node_id,map <int,bool> &in_solution){
+    Node * node = graph->getNode(node_id);
+    
+    int neighbor_weight = 0;
+    int non_dominated_neighbors = 0;
+    for(Edge* edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge()){
+        if(!in_solution[edge->getTargetId()]){
+            neighbor_weight += graph->getNode(edge->getTargetId())->getWeight();
+            non_dominated_neighbors++;
+        }    
+    }
+
+    return (non_dominated_neighbors*neighbor_weight)/node->getWeight();
+}
+
+// biggest sum of non-dominated neighbor weight
+double lambda6(Graph* graph, int node_id,map <int,bool> &in_solution){
+    Node* node = graph->getNode(node_id);
+    int neighbor_weight = 0;
+    for(Edge* edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge()){
+        if(!in_solution[edge->getTargetId()])
+            neighbor_weight += graph->getNode(edge->getTargetId())->getWeight();
+    }
+    return neighbor_weight;
+}
+
+
+priority_queue<pair<double,int>> heuristic(Graph* graph,double (lambda)(Graph*,int,map<int,bool>&),map <int,bool> &in_solution){
     priority_queue<pair<double,int>>node_degrees;
     Node * node = graph->getFirstNode();
     double heuristic_value = 0;
 
     while(node!=nullptr){
-        heuristic_value = node->getInDegree()/node->getWeight();
+        heuristic_value = lambda(graph,node->getId(),in_solution);
+
         node_degrees.push(make_pair(heuristic_value, node->getId()));
+        
         node = node->getNextNode();
     }
 
@@ -640,13 +693,6 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     
     // map to verify if node is in solution
     map<int,bool> in_solution;
-
-    // max heap to get node with highest degree
-    priority_queue<pair<double,int>> node_degrees = heuristic(this);
-    
-    int heuristic_node = node_degrees.top().second;
-    
-    node_degrees.pop();
     
     for(int i = 1; i < this->order; i++){
         in_solution.insert(make_pair(i,false));
@@ -654,52 +700,86 @@ set<pair<int,int>> Graph::GreedyConstructive(){
         
     // get first node 
     Node * node = this->getFirstNode();
-
-    while(node!=nullptr){
-        // while node is not in solution
-        while(!in_solution[node->getId()]){
     
-            //get edges from node with highest degree
-            Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
-            
-            while(edge != nullptr){
-                // if edge target is the id of the node not in solution
-               
-                // adds node with highest degree to solution
-                if(!in_solution[edge->getTargetId()]){
-                    auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
-                    in_solution[heuristic_node] = true; 
-                }
-                
-                //sets to true that node is in solution
-                in_solution[edge->getTargetId()] = true;
-            
-                edge = edge->getNextEdge();
-            }
+    //max heap to get node with highest degree
+    priority_queue<pair<double,int>> node_degrees = heuristic(this,lambda4,in_solution);
 
-            //if node with highest degree does not contain edge to node not in solution
-            //gets next node with highest degree
-            
-            heuristic_node = node_degrees.top().second;
-            node_degrees.pop();
-            
+    bool viable = false;
+    int check = 0;
+    int heuristic_node = node_degrees.top().second;
+    node_degrees.pop();
+
+    while(!viable){
+
+        for(Edge* edge =this->getNode(heuristic_node)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge()){
+            if(!in_solution[edge->getTargetId()]){
+                auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+                in_solution[heuristic_node] = true;
+            }
+            in_solution[edge->getTargetId()] = true;
+        }   
+        
+        for(int i = 1; i < this->order; i++){
+            if(in_solution[i]){
+                check++;
+            }
+        }
+        if(check == this->order-1){
+            viable = true;
+        } else {
+            check = 0; 
+            node_degrees = heuristic(this,lambda5,in_solution);
         }
 
-        // restarts max heap
-        node_degrees = heuristic(this);
 
         heuristic_node = node_degrees.top().second;
-
+        
         node_degrees.pop();
-       
-        node = node->getNextNode();
 
     }
+    // while(node!=nullptr){
+    //     // while node is not in solution
+    //     while(!in_solution[node->id]){
+    
+    //         //get edges from node with highest degree
+    //         Edge * edge = this->getNode(heuristic_node)->getFirstEdge();
+            
+    //         while(edge != nullptr){
+    //             // if edge target is the id of the node not in solution
+               
+    //             // adds node with best heuristic to solution
+    //             if(!in_solution[edge->getTargetId()]){
+    //                 auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
+    //                 in_solution[heuristic_node] = true; 
 
-    /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
-            return a->getWeight() < b->getWeight();
-        });*/
-        
+    //                 
+    //             }
+                    //sets to true that node is in solution
+    //              in_solution[edge->getTargetId()] = true;
+                
+    //             edge = edge->getNextEdge();
+    //         }
+
+    //         //if node with highest degree does not contain edge to node not in solution
+    //         //gets next node with highest degree
+            
+    //         heuristic_node = node_degrees.top().second;
+    //         node_degrees.pop();
+            
+    //     }
+
+    //     // restarts max heap
+    //     node_degrees = heuristic(this,lambda4);
+
+    //     heuristic_node = node_degrees.top().second;
+
+    //     node_degrees.pop();
+       
+    //     node = node->getNextNode();
+
+    // }
+
+
     return auxSolutionSet;
 }
 
