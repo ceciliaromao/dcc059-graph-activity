@@ -696,16 +696,14 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     Node * node = this->getFirstNode();
     
     //max heap to get node with highest degree
-    priority_queue<pair<double,int>> node_degrees = heuristic(this,lambda5,in_solution);
+    priority_queue<pair<double,int>> node_degrees = heuristic(this,lambda4,in_solution);
 
     bool viable = false;
     int check = 0;
+    int heuristic_node = node_degrees.top().second;
+    node_degrees.pop();
 
     while(!viable){
-
-        int heuristic_node = node_degrees.top().second;
-    
-        node_degrees.pop();
 
         for(Edge* edge =this->getNode(heuristic_node)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge()){
             if(!in_solution[edge->getTargetId()]){
@@ -726,7 +724,11 @@ set<pair<int,int>> Graph::GreedyConstructive(){
             check = 0; 
             node_degrees = heuristic(this,lambda5,in_solution);
         }
+
+
+        heuristic_node = node_degrees.top().second;
         
+        node_degrees.pop();
 
     }
     // while(node!=nullptr){
@@ -744,10 +746,10 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     //                 auxSolutionSet.insert(make_pair(heuristic_node,getNode(heuristic_node)->getWeight()));
     //                 in_solution[heuristic_node] = true; 
 
-    //                 //sets to true that node is in solution
-    //                 in_solution[edge->getTargetId()] = true;
+    //                 
     //             }
-
+                    //sets to true that node is in solution
+    //              in_solution[edge->getTargetId()] = true;
                 
     //             edge = edge->getNextEdge();
     //         }
