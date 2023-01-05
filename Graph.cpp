@@ -784,87 +784,158 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 }
 
 
-//Greedy Constructive Algorithm
-set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
+set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
+    // set for the best solution
+    set<pair<int,int>> bestSolutionSet;
 
-    // set containing each node and its weight
+    // set for the current solution
     set<pair<int,int>> auxSolutionSet;
-    
+
     // map to verify if node is in solution
     map<int,bool> in_solution;
 
-    // max heap to get node with lowest degree
-    vector<int> node_degrees = heuristic2(this,in_solution);
-    
-    int randomNode, k, i = 0, size_vet = node_degrees.size();
-    
-    for(int i = 1; i < this->order; i++){
-        in_solution.insert(make_pair(i,false));
-    }
+    int i = 1, k, currentWeight = 0, bestWeight;
+
+    while (i <= numIter) {
+
+        cout <<endl<< "XXXX ITERAÇÃO " << i << " XXXX" << endl;
+
+        // candidate list is ordered according to biggest ratio between the weights sum of the
+        // non-dominated neighbors and the weight of the node
+        vector<int> candidateList = heuristic2(this,in_solution);
         
-    // get first node 
-    Node * node = this->getFirstNode();
-    while(node != nullptr){
-
-        do{
-            sort(node_degrees.begin(), node_degrees.end(), greater<int>());
-            k = rNode(0, alpha*size_vet);
-            randomNode = node_degrees[k]; //TODO: é necessário subtrair um nesse trem? ou não?
-            if(randomNode != -1)
-            {
-                size_vet--;
-                node_degrees[k] = -1;
-            } 
-        }while(randomNode == -1);
-
-        // while node is not in solution
-        while(!in_solution[node->getId()]){
-            
-            //get edges from node with highest degree
-            Edge * edge = this->getNode(randomNode)->getFirstEdge();
-
-            while(edge != nullptr){
-                // if edge target is the id of the node not in solution
-               
-                // adds node with highest degree to solution
-                if(!in_solution[edge->getTargetId()]){
-                    auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
-                    in_solution[randomNode] = true; 
-                }
-                
-                //sets to true that node is in solution
-                in_solution[edge->getTargetId()] = true;
-            
-                edge = edge->getNextEdge();
-            }
-
-            //if node with highest degree does not contain edge to node not in solution
-            //gets next node with highest degree
-            
-            do{
-                sort(node_degrees.begin(), node_degrees.end(), greater<int>());
-                k = rNode(0, alpha*size_vet);
-                randomNode = node_degrees[k]; //TODO: é necessário subtrair um nesse trem? ou não?
-                if(randomNode != -1)
-                {
-                    size_vet--;
-                    node_degrees[k] = -1;
-                } 
-            }while(randomNode == -1);
-            
+        // initialize solution set
+        for(int i = 1; i < this->order; i++){
+            in_solution.insert(make_pair(i,false));
         }
 
-         //! restarts max heap
-        node_degrees = heuristic2(this,in_solution);
-        size_vet = node_degrees.size(); 
-       
-        node = node->getNextNode();
+        while (!candidateList.empty()) {
+            // get random node from candidate list
+            k = rNode(0,alpha*candidateList.size());
+            int randomNode = candidateList[k];
+            cout << "nó escolhido: " << randomNode << endl;
 
+            // if node is not in solution yet 
+            if (!in_solution[randomNode]) {
+                // add node to solution
+                auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
+                in_solution[randomNode] = true;
+                currentWeight += getNode(randomNode)->getWeight();
+                cout << "entrou na solução!" << endl;
+            }
+
+            // remove node from candidate list
+            candidateList.erase(candidateList.begin()+k);
+
+            // remove dominated nodes from candidate list
+            for (int j = 0; j < candidateList.size(); j++) {
+                Node * candidate = this->getNode(candidateList[j]);
+                if (candidate->searchEdge(randomNode)) {
+                    cout << j << " é adjacente. removendo da lista de candidatos." << endl;
+                    candidateList.erase(candidateList.begin()+j);
+                }
+            }
+        }
+
+        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl << endl;
+
+        // if current solution is better than best solution
+        if (i == 1 || currentWeight < bestWeight) {
+            bestSolutionSet.clear();
+            bestSolutionSet.swap(auxSolutionSet);
+            bestWeight = currentWeight;
+            cout << "best solution updated!" << endl;
+        }
+
+        i++;
+        currentWeight = 0;
+        auxSolutionSet.clear();
     }
 
-    /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
-            return a->getWeight() < b->getWeight();
-        });*/
-        
-    return auxSolutionSet;
+    return bestSolutionSet;
 }
+
+//Greedy Constructive Algorithm
+// set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
+
+//     // set containing each node and its weight
+//     set<pair<int,int>> auxSolutionSet;
+    
+//     // map to verify if node is in solution
+//     map<int,bool> in_solution;
+
+//     // max heap to get node with highest degree 
+//     vector<int> node_degrees = heuristic2(this,in_solution);
+    
+//     int randomNode, k, i = 0, size_vet = node_degrees.size();
+    
+//     for(int i = 1; i < this->order; i++){
+//         in_solution.insert(make_pair(i,false));
+//     }
+        
+//     // get first node 
+//     Node * node = this->getFirstNode();
+//     while(node != nullptr){
+
+//         do{
+//             sort(node_degrees.begin(), node_degrees.end(), greater<int>());
+//             k = rNode(0, alpha*size_vet);
+//             randomNode = node_degrees[k]; //TODO: é necessário subtrair um nesse trem? ou não?
+//             if(randomNode != -1)
+//             {
+//                 size_vet--;
+//                 node_degrees[k] = -1;
+//             } 
+//         }while(randomNode == -1);
+
+//         // while node is not in solution
+//         while(!in_solution[node->getId()]){
+            
+//             //get edges from node with highest degree
+//             Edge * edge = this->getNode(randomNode)->getFirstEdge();
+
+//             while(edge != nullptr){
+//                 // if edge target is the id of the node not in solution
+               
+//                 // adds node with highest degree to solution
+//                 if(!in_solution[edge->getTargetId()]){
+//                     auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
+//                     in_solution[randomNode] = true; 
+//                 }
+                
+//                 //sets to true that node is in solution
+//                 in_solution[edge->getTargetId()] = true;
+            
+//                 edge = edge->getNextEdge();
+//             }
+
+//             //if node with highest degree does not contain edge to node not in solution
+//             //gets next node with highest degree
+            
+//             do{
+//                 sort(node_degrees.begin(), node_degrees.end(), greater<int>());
+//                 k = rNode(0, alpha*size_vet);
+//                 randomNode = node_degrees[k]; //TODO: é necessário subtrair um nesse trem? ou não?
+//                 if(randomNode != -1)
+//                 {
+//                     size_vet--;
+//                     node_degrees[k] = -1;
+//                 } 
+//             }while(randomNode == -1);
+            
+//         }
+
+//          //! restarts max heap
+//         node_degrees = heuristic2(this,in_solution);
+//         size_vet = node_degrees.size(); 
+       
+//         node = node->getNextNode();
+
+//     }
+
+//     /*sort(auxSolutionSet.begin(), auxSolutionSet.end(), [](Edge* a, Edge* b){
+//             return a->getWeight() < b->getWeight();
+//         });*/
+        
+//     return auxSolutionSet;
+// }

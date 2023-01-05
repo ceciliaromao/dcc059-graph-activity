@@ -69,7 +69,7 @@ class Graph{
         float* dijkstra(int id);
         void writeDotFile(string file_name);
         set<pair<int,int>> GreedyConstructive();
-        set<pair<int,int>> GreedyRandomizedAdaptive(double alpha);
+        set<pair<int,int>> GreedyRandomizedAdaptive(double alpha, int iterations);
 
     private:
         //Auxiliar methods

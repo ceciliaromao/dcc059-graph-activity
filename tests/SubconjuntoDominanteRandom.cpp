@@ -155,5 +155,5 @@ int main()
     output.open(path_out, ios::out | ios::trunc);
     graph = readAdjacencyMatrix(input, 0, 0, 1);
 
-    printNodesGreedy(graph->GreedyRandomizedAdaptive(0.7),output);
+    printNodesGreedy(graph->GreedyRandomizedAdaptive(1,5),output);
 }
