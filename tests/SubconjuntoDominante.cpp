@@ -149,7 +149,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/dominating_set/Problem.dat_500_500_0";
+    path_in+="input/dominating_set/Problem.dat_50_50_3";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);

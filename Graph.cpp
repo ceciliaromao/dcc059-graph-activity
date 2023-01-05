@@ -615,11 +615,14 @@ void Graph::writeDotFile(string file_name)
 }
 
 
-//biggest ratio between the node's degree and it's weight
+// biggest ratio between the node's degree and it's weight
 double lambda3(Graph* graph,int node_id,map <int,bool> &in_solution){
     Node * node = graph->getNode(node_id);
- 
-    return node->getInDegree()/node->getWeight();
+    if(!in_solution[node_id]){
+        return (node->getInDegree())/node->getWeight(); 
+    } else 
+        return -1.;
+    
 }
 
 // biggest ratio between the sum of the weights of the non-dominated neighbors and the node weight
@@ -663,15 +666,13 @@ double lambda6(Graph* graph, int node_id,map <int,bool> &in_solution){
 
 priority_queue<pair<double,int>> heuristic(Graph* graph,double (lambda)(Graph*,int,map<int,bool>&),map <int,bool> &in_solution){
     priority_queue<pair<double,int>>node_degrees;
-    Node * node = graph->getFirstNode();
+    
     double heuristic_value = 0;
 
-    while(node!=nullptr){
+    for(Node * node = graph->getFirstNode(); node != nullptr; node = node->getNextNode()){
         heuristic_value = lambda(graph,node->getId(),in_solution);
-
+        if(heuristic_value == -1.) continue;
         node_degrees.push(make_pair(heuristic_value, node->getId()));
-        
-        node = node->getNextNode();
     }
 
     return node_degrees;
@@ -696,7 +697,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
     Node * node = this->getFirstNode();
     
     //max heap to get node with highest degree
-    priority_queue<pair<double,int>> node_degrees = heuristic(this,lambda4,in_solution);
+    priority_queue<pair<double,int>> node_degrees = heuristic(this,lambda3,in_solution);
 
     bool viable = false;
     int check = 0;
@@ -713,8 +714,8 @@ set<pair<int,int>> Graph::GreedyConstructive(){
             in_solution[edge->getTargetId()] = true;
         }   
         
-        for(int i = 1; i < this->order; i++){
-            if(in_solution[i]){
+        for(auto i : in_solution){
+            if(i.second){
                 check++;
             }
         }
