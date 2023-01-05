@@ -620,6 +620,7 @@ vector<int> heuristic2(Graph *graph)
         vet.push_back(aux.top().second);
         aux.pop();
     }
+
     return vet; 
 }
 
@@ -712,10 +713,10 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
     // map to verify if node is in solution
     map<int,bool> in_solution;
 
-    // max heap to get node with highest degree
+    // max heap to get node with lowest degree
     vector<int> node_degrees = heuristic2(this);
     
-    int randomNode, k, i =0, size_vet = node_degrees.size();
+    int randomNode, k, i = 0, size_vet = node_degrees.size();
     
     for(int i = 1; i < this->order; i++){
         in_solution.insert(make_pair(i,false));
@@ -738,7 +739,7 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
 
         // while node is not in solution
         while(!in_solution[node->getId()]){
-    
+            
             //get edges from node with highest degree
             Edge * edge = this->getNode(randomNode)->getFirstEdge();
 
