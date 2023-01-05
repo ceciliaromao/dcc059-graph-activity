@@ -647,7 +647,7 @@ double lambda6(Graph* graph, int node_id,map <int,bool> &in_solution){
 }
 
 
-priority_queue<pair<double,int>> heuristic(Graph* graph,double (lambda)(Graph*,int,map<int,bool>&),map <int,bool> &in_solution){
+priority_queue<pair<double,int>> heuristic(Graph* graph, double (lambda)(Graph*,int,map<int,bool>&), map <int,bool> &in_solution){
     priority_queue<pair<double,int>>node_degrees;
     Node * node = graph->getFirstNode();
     double heuristic_value = 0;
@@ -663,9 +663,9 @@ priority_queue<pair<double,int>> heuristic(Graph* graph,double (lambda)(Graph*,i
     return node_degrees;
 }
 
-vector<int> heuristic2(Graph *graph)
+vector<int> heuristic2(Graph *graph,map <int,bool> &in_solution)
 {
-    priority_queue<pair<double, int>> aux = heuristic(graph);
+    priority_queue<pair<double, int>> aux = heuristic(graph,lambda4,in_solution);
     vector<int> vet;
 
     while(!aux.empty())
@@ -794,7 +794,7 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
     map<int,bool> in_solution;
 
     // max heap to get node with lowest degree
-    vector<int> node_degrees = heuristic2(this);
+    vector<int> node_degrees = heuristic2(this,in_solution);
     
     int randomNode, k, i = 0, size_vet = node_degrees.size();
     
@@ -855,7 +855,7 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha){
         }
 
          //! restarts max heap
-        node_degrees = heuristic2(this);
+        node_degrees = heuristic2(this,in_solution);
         size_vet = node_degrees.size(); 
        
         node = node->getNextNode();
