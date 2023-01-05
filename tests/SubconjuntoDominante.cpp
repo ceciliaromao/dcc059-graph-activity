@@ -129,7 +129,7 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
             
             if(aux == "1"){
                 if(currentNode == targetNode) continue;
-                cout<<currentNode<<" " << targetNode<<endl;
+                // cout<<currentNode<<" " << targetNode<<endl;
                 graph->insertEdge(currentNode,targetNode,0);
                 
             }
@@ -137,7 +137,7 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
         currentNode++;
         targetNode = 0;
     }
-    cout << "Numero de arestas " << graph->getNumberEdges() << endl;
+    cout << "Numero de arestas: " << graph->getNumberEdges() << endl;
     return graph;
 }
 
@@ -164,7 +164,7 @@ int main()
 
 
     // graph->writeDotFile(path_out);
-    cout << graph->getNode(1)->getInDegree() << endl;
+    cout << graph->getNode(2)->getInDegree() << endl;
     printNodesGreedy(solucao,output);
    
 }
