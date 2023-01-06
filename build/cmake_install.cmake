@@ -1,4 +1,4 @@
-# Install script for directory: /home/maria/ufjf/dcc059-graph-activity
+# Install script for directory: /home/lucas/Documentos/tdg
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,12 +39,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/maria/ufjf/dcc059-graph-activity/build/tests/cmake_install.cmake")
+  include("/home/lucas/Documentos/tdg/build/tests/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/maria/ufjf/dcc059-graph-activity/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lucas/Documentos/tdg/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

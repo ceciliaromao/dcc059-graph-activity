@@ -1,4 +1,4 @@
-# Install script for directory: /home/maria/ufjf/dcc059-graph-activity/tests
+# Install script for directory: /home/lucas/Documentos/tdg/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/maria/miniconda3/envs/cmake-tutorial/bin/x86_64-conda-linux-gnu-objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 

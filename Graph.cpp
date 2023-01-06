@@ -679,6 +679,8 @@ vector<int> heuristic2(Graph *graph,map <int,bool> &in_solution)
 
 int rNode(int min, int max)
 {
+    if(min == max) return min; 
+
     srand(time(NULL));
     int id = rand();
     
@@ -811,7 +813,8 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
 
         while (!candidateList.empty()) {
             // get random node from candidate list
-            k = rNode(0,alpha*candidateList.size());
+            k = rNode(0, trunc(alpha* (float)candidateList.size()));
+            sort(candidateList.begin(), candidateList.end(), greater<int>());
             int randomNode = candidateList[k];
             cout << "nó escolhido: " << randomNode << endl;
 
@@ -840,10 +843,10 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
         cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl << endl;
 
         // if current solution is better than best solution
-        if (i == 1 || currentWeight < bestWeight) {
+        if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
             bestSolutionSet.clear();
             bestSolutionSet.swap(auxSolutionSet);
-            bestWeight = currentWeight;
+            bestWeight = currentWeight;  //?soma-se 1 aqui?? 
             cout << "best solution updated!" << endl;
         }
 

@@ -145,7 +145,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/dominating_set/Problem.dat_50_50_3";
+    path_in+="input/dominating_set/Problem.dat_300_500_3";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
@@ -155,5 +155,5 @@ int main()
     output.open(path_out, ios::out | ios::trunc);
     graph = readAdjacencyMatrix(input, 0, 0, 1);
 
-    printNodesGreedy(graph->GreedyRandomizedAdaptive(1,5),output);
+    printNodesGreedy(graph->GreedyRandomizedAdaptive(0.1,500),output);
 }
