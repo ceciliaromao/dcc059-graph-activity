@@ -13,6 +13,7 @@
 #include <float.h>
 #include <iomanip>
 #include <map>
+#include <chrono>
 #include <vector>
 #include <limits.h>
 
@@ -681,7 +682,7 @@ priority_queue<pair<double,int>> heuristic(Graph* graph,double (lambda)(Graph*,i
 
 //Greedy Constructive Algorithm
 set<pair<int,int>> Graph::GreedyConstructive(){
-
+    auto t1 = chrono::high_resolution_clock::now();
     // set containing each node and its weight
     set<pair<int,int>> solution;
     
@@ -783,7 +784,9 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 
     // }
 
-
+    auto t2 = chrono::high_resolution_clock::now();
+    auto time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+    cout << "Time: " << time_span.count() << " seconds." << endl;
     return solution;
 }
 
