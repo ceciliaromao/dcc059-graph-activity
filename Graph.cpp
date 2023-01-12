@@ -2,7 +2,7 @@
 #include "random.h"
 
 #define INT 99999
-#define bananinha std::cout
+#define timer_cout std::cout
 
 using namespace std;
 
@@ -787,6 +787,9 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 
 
 set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
+    //!Timer
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    start = chrono::high_resolution_clock::now();
     // set for the best solution
     set<pair<int,int>> bestSolutionSet;
 
@@ -854,6 +857,10 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
         currentWeight = 0;
         auxSolutionSet.clear();
     }
+
+    end = chrono::high_resolution_clock::now();
+    int elapsed_seconds = chrono::duration_cast<chrono::milliseconds>(end-start).count();
+    cout<<endl<<"Tempo de execução: "<<elapsed_seconds<<" ms"<<endl;
 
     return bestSolutionSet;
 }
