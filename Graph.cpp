@@ -788,7 +788,7 @@ set<pair<int,int>> Graph::GreedyConstructive(){
 
 set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
     //!Timer
-    std::chrono::time_point<std::chrono::system_clock> start, end;
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
     start = chrono::high_resolution_clock::now();
     // set for the best solution
     set<pair<int,int>> bestSolutionSet;
