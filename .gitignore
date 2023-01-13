@@ -43,6 +43,6 @@ build/
 
 .vscode/
 input/*.txt
-dot/*.dot
-output/*.txt
+dot/
+output/
 
