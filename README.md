@@ -12,5 +12,5 @@
 ###### tags: `graphs` `Graph Theory` `C++` `ADT` `UFJF`
 
 
-
+## GENERATE PNG
 sfdp -x -Goverlap=scale -Tpng data.dot > data.png

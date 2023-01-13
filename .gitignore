@@ -42,8 +42,7 @@
 build/
 
 .vscode/
-
-output/
-
-output/output.txt
+input/*.txt
+dot/*.dot
+output/*.txt
 

@@ -74,29 +74,7 @@ Graph* leitura(ifstream& input_file, int directed, int weightedEdge, int weighte
     return graph;
 }
 
-Graph* leituraInstancia(ifstream& input_file, int directed, int weightedEdge, int weightedNode){
 
-    //Variáveis para auxiliar na criação dos nós no Grafo
-    int idNodeSource;
-    int idNodeTarget;
-    int order;
-    int numEdges;
-
-    //Pegando a ordem do grafo
-    input_file >> order;
-
-    //Criando objeto grafo
-    Graph* graph = new Graph(order, directed, weightedEdge, weightedNode);
-
-    //Leitura de arquivo
-    while(input_file >> idNodeSource >> idNodeTarget) {
-
-        graph->insertEdge(idNodeSource, idNodeTarget, 0);
-
-    }
-
-    return graph;
-}
 
 int menu(){
 
@@ -109,6 +87,7 @@ int menu(){
     cout << "[3] Grafo Diferença" << endl;
     cout << "[4] Rede PERT" << endl;
     cout << "[0] Sair" << endl;
+    cout << "----" << endl;
 
     cin >> selecao;
 
@@ -154,11 +133,11 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             ifstream input_file;
             input_file.open(nomeArquivo, ios::in);
 
-            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* graph2 = leitura(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* interG = graph->getIntersection(graph2);
             printGraph(output_file,interG);
             
-            interG->writeDotFile("grafoIntersecao.txt");
+            interG->writeDotFile("dot/grafoIntersecao.dot");
 
             cout << "Grafo Interseção gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
@@ -183,11 +162,11 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             ifstream input_file;
             input_file.open(nomeArquivo, ios::in);
 
-            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* graph2 = leitura(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* unionG = graph->getUnion(graph2);
             printGraph(output_file,unionG);
 
-            unionG->writeDotFile("grafoUniao.txt");
+            unionG->writeDotFile("dot/grafoUniao.dot");
 
             cout << "Grafo União gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
@@ -212,11 +191,11 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file){
             ifstream input_file;
             input_file.open(nomeArquivo, ios::in);
 
-            Graph* graph2 = leituraInstancia(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
+            Graph* graph2 = leitura(input_file, graph->getDirected(), graph->getWeightedEdge(), graph->getWeightedNode());
             Graph* differenceG = graph->getDifference(graph2);
             printGraph(output_file,differenceG);
 
-            differenceG->writeDotFile("grafoDiferenca.txt");
+            differenceG->writeDotFile("dot/grafoDiferenca.dot");
 
             cout << "Grafo Diferença gerado com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;
@@ -309,7 +288,7 @@ int main(int argc, char const *argv[]) {
     Graph* graph;
 
     if(input_file.is_open())
-        graph = leituraInstancia(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+        graph = leitura(input_file, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
     else
         cout << "Unable to open " << argv[1];
 

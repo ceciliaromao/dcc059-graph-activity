@@ -434,9 +434,9 @@ Graph* Graph::getUnion(Graph* graph){
     if(this->order == graph->order)
         Graph* unionGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     else if(this->order > graph->order)
-        Graph* unionGraph = new Graph(this->order + (this->order-graph->order), this->directed, this->weighted_edge, this->weighted_node);
+        Graph* unionGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
     else if(this->order < graph->order)
-        Graph* unionGraph = new Graph(graph->order + (graph->order-this->order), this->directed, this->weighted_edge , this->weighted_node);
+        Graph* unionGraph = new Graph(graph->order , this->directed, this->weighted_edge , this->weighted_node);
     
     Node* sourceNode = this->first_node;
 
