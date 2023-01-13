@@ -814,6 +814,7 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
         i++;
         currentWeight = 0;
         auxSolutionSet.clear();
+        in_solution.clear();
     }
 
     end = chrono::high_resolution_clock::now();
@@ -823,7 +824,7 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
     return bestSolutionSet;
 }
 
-void Graph::updateProbabilities(vector<double>*probabilities, vector<double>alphas, int currentWeight, vector<double>avgWeights) {
+void Graph::updateProbabilities(vector<double>&probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights) {
     
     // according to section 3.1 Reactive GRASP on Handbook of Metaheuristics (check if it's correct)
 
@@ -831,34 +832,59 @@ void Graph::updateProbabilities(vector<double>*probabilities, vector<double>alph
     double sum = 0;
 
     for (int i = 0; i < alphas.size(); i++) {
-        q.push_back((double)currentWeight/avgWeights[i]);
+        cout << "avgWeights[" << i << "]: " << avgWeights[i].first << endl;
+        if (avgWeights[i].first == 0) {
+            q.push_back(0);
+            continue;
+        } else {
+            q.push_back((double)bestWeight/avgWeights[i].first);
+        }
+        
+        cout << "q[" << i << "]: " << q[i] << endl;
         sum += q[i];
     }
-
-    for (int i = 0; i < alphas.size(); i++)
-        probabilities->at(i) = q[i]/sum;
+    
+    for (int i = 0; i < alphas.size(); i++) {
+        if (q[i] != 0) {
+            probabilities.at(i) = q[i]/sum;
+            cout << "entrou: " << i << endl;
+        } else {
+            probabilities.at(i) = 1/alphas.size();
+        }
+        cout << "probabilities[" << i << "]: " << probabilities.at(i) << endl;
+    }
 }
 
-double Graph::chooseAlpha(vector<double>* probabilities, vector<double> alphas) {
+double Graph::chooseAlpha(vector<double>& probabilities, vector<double> alphas) {
     // choose alpha according to probabilities
     double alpha;
     double highest = 0;
-
-    for (int i = 0; i < probabilities->size(); i++) {
-        if (probabilities->at(i) > highest) {
-            highest = probabilities->at(i);
+    
+    for (int i = 0; i < probabilities.size(); i++) {
+        if (probabilities.at(i) > highest) {
+            highest = probabilities.at(i);
             alpha = alphas[i];
         }
     }
-
+    
     return alpha;
 }
 
-void Graph::updateAvgWeights(vector<double>* avgWeights, vector<double> alphas, double alpha, int currentWeight, int i) {
+void Graph::updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double> alphas, double alpha, int currentWeight) {
     // update average weights when alphas[j] == alpha
+    if (currentWeight == 0) return;
+
     for (int j = 0; j < alphas.size(); j++) {
         if (alphas[j] == alpha) {
-            avgWeights->at(j) = (avgWeights->at(j)*(i-1) + currentWeight)/i;
+            cout << j << endl;
+            avgWeights.at(j).second++;
+
+            int qtd = avgWeights.at(j).second;
+            double avg = avgWeights.at(j).first;
+
+            cout << "qtd: " << qtd << " avgWeight: " << avg << endl;
+
+            avgWeights.at(j).first = (avg*(qtd-1) + currentWeight)/qtd;
             break;
         }
     }
@@ -869,7 +895,7 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
     vector<double> probabilities;
 
     // average of weights for each alpha
-    vector<double> avgWeights;
+    vector<pair<double,int>> avgWeights;
 
     // set for the best solution
     set<pair<int,int>> bestSolutionSet;
@@ -880,40 +906,46 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
     // map to verify if node is in solution
     map<int,bool> in_solution;
 
-    int i=1, k, currentWeight = 0, bestWeight;
+    int i=1, k, currentWeight = 0, bestWeight = INT;
 
     // initialize vector of probabilities with 1/m => m is the number of alphas
     for (int j = 0; j < alphas.size(); j++) {
         probabilities.push_back(1.0/alphas.size());
     }
+    
+    // initialize vector of average weights with 0
+    for (int j = 0; j < alphas.size(); j++) {
+        avgWeights.push_back(make_pair(0,0));
+    }
 
     while (i <= numIter) {
 
+        cout << "XXX ITERAÇÃO " << i << " XXX"<< endl;
+
         if (i % block_size == 0) {
             // update probabilities
-            updateProbabilities(&probabilities, alphas, currentWeight, avgWeights);
+            cout << "probabilidades atualizadas" << endl;
+            updateProbabilities(probabilities, alphas, bestWeight, avgWeights);
         }
 
-        // candidate list is ordered according to biggest ratio between the weights sum of the
-        // non-dominated neighbors and the weight of the node
-        vector<int> candidateList = heuristic2(this,in_solution);
-        
         // initialize solution set
         for(int i = 1; i < this->order; i++){
             in_solution.insert(make_pair(i,false));
         }
 
-        double alpha = chooseAlpha(&probabilities, alphas);
+        // candidate list is ordered according to biggest ratio between the weights sum of the
+        // non-dominated neighbors and the weight of the node
+        vector<int> candidateList = heuristic2(this,in_solution);
+
+        double alpha = chooseAlpha(probabilities, alphas);
 
         do {
-
             // exactly like the GRASP algorithm, but choosing between a set of possible alphas
 
-            k = rNode(0, trunc(alpha * (float)candidateList.size()));
+            k = rNode(0, trunc((1-alpha) * (float)candidateList.size()));
             
             sort(candidateList.begin(), candidateList.end(), greater<int>());
             int randomNode = candidateList[k];
-            cout << "nó escolhido: " << randomNode << endl;
 
             // if node is not in solution yet 
             if (!in_solution[randomNode]) {
@@ -921,7 +953,6 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
                 auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
                 in_solution[randomNode] = true;
                 currentWeight += getNode(randomNode)->getWeight();
-                cout << "entrou na solução!" << endl;
             }
 
             // remove node from candidate list
@@ -931,27 +962,26 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
             for (int j = 0; j < candidateList.size(); j++) {
                 Node * candidate = this->getNode(candidateList[j]);
                 if (candidate->searchEdge(randomNode)) {
-                    cout << j << " é adjacente. removendo da lista de candidatos." << endl;
                     candidateList.erase(candidateList.begin()+j);
                 }
             }
         } while (!candidateList.empty());
 
-        updateAvgWeights(&avgWeights, alphas, alpha, currentWeight, i);
+        updateAvgWeights(avgWeights, alphas, alpha, currentWeight);
         
-        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl << endl;
+        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl;
 
         // if current solution is better than best solution
         if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
             bestSolutionSet.clear();
             bestSolutionSet.swap(auxSolutionSet);
             bestWeight = currentWeight;
-            cout << "best solution updated!" << endl;
         }
 
         i++;
         currentWeight = 0;
         auxSolutionSet.clear();
+        in_solution.clear();
     }
 
     return bestSolutionSet;

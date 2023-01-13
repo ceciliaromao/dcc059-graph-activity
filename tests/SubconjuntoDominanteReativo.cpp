@@ -145,7 +145,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/dominating_set/Problem.dat_300_500_3";
+    path_in+="input/dominating_set/Problem.dat_50_50_3";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
@@ -156,8 +156,8 @@ int main()
     graph = readAdjacencyMatrix(input, 0, 0, 1);
 
     vector<double> alphas = {0.05, 0.10, 0.15, 0.30, 0.50};
-    int numIterations = 2500;
-    int block_size = 250;
+    int numIterations = 140;
+    int block_size = 20;
 
     printNodesGreedy(graph->GreedyRandomizedReactive(alphas, numIterations, block_size),output);
 }
