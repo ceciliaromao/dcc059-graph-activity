@@ -36,7 +36,6 @@
 
 # Dot files
 
-*.dot
 
 #folders
 build/
