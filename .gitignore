@@ -43,6 +43,5 @@ build/
 
 .vscode/
 input/*.txt
-dot/
-output/
+
 
