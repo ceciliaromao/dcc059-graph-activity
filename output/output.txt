@@ -1,0 +1,240 @@
+Solucao 0
+No:3 | Peso: 45
+No:9 | Peso: 30
+No:13 | Peso: 40
+No:14 | Peso: 20
+No:16 | Peso: 47
+No:17 | Peso: 23
+No:21 | Peso: 26
+No:24 | Peso: 22
+No:25 | Peso: 49
+No:27 | Peso: 35
+No:28 | Peso: 36
+No:29 | Peso: 31
+No:32 | Peso: 27
+No:33 | Peso: 35
+No:34 | Peso: 21
+No:38 | Peso: 32
+No:39 | Peso: 45
+No:41 | Peso: 44
+No:44 | Peso: 38
+No:45 | Peso: 34
+No:48 | Peso: 35
+Soma dos pesos da solução: 715
+--------
+Solucao 1
+No:3 | Peso: 45
+No:4 | Peso: 25
+No:13 | Peso: 40
+No:16 | Peso: 47
+No:17 | Peso: 23
+No:19 | Peso: 42
+No:20 | Peso: 34
+No:22 | Peso: 37
+No:24 | Peso: 22
+No:27 | Peso: 35
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:36 | Peso: 46
+No:40 | Peso: 39
+No:41 | Peso: 44
+No:42 | Peso: 36
+No:44 | Peso: 38
+No:46 | Peso: 33
+No:47 | Peso: 30
+No:48 | Peso: 35
+No:49 | Peso: 33
+Soma dos pesos da solução: 732
+--------
+Solucao 2
+No:5 | Peso: 36
+No:9 | Peso: 30
+No:12 | Peso: 44
+No:13 | Peso: 40
+No:14 | Peso: 20
+No:18 | Peso: 45
+No:21 | Peso: 26
+No:23 | Peso: 34
+No:24 | Peso: 22
+No:26 | Peso: 33
+No:28 | Peso: 36
+No:30 | Peso: 34
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:36 | Peso: 46
+No:37 | Peso: 35
+No:38 | Peso: 32
+No:42 | Peso: 36
+No:43 | Peso: 45
+No:45 | Peso: 34
+No:47 | Peso: 30
+Soma dos pesos da solução: 719
+--------
+Solucao 3
+No:3 | Peso: 45
+No:9 | Peso: 30
+No:13 | Peso: 40
+No:17 | Peso: 23
+No:19 | Peso: 42
+No:20 | Peso: 34
+No:21 | Peso: 26
+No:24 | Peso: 22
+No:25 | Peso: 49
+No:27 | Peso: 35
+No:30 | Peso: 34
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:38 | Peso: 32
+No:42 | Peso: 36
+No:44 | Peso: 38
+No:46 | Peso: 33
+No:47 | Peso: 30
+No:48 | Peso: 35
+No:49 | Peso: 33
+Soma dos pesos da solução: 705
+--------
+Solucao 4
+No:3 | Peso: 45
+No:4 | Peso: 25
+No:13 | Peso: 40
+No:17 | Peso: 23
+No:21 | Peso: 26
+No:23 | Peso: 34
+No:24 | Peso: 22
+No:25 | Peso: 49
+No:26 | Peso: 33
+No:28 | Peso: 36
+No:31 | Peso: 28
+No:32 | Peso: 27
+No:33 | Peso: 35
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:40 | Peso: 39
+No:41 | Peso: 44
+No:42 | Peso: 36
+No:48 | Peso: 35
+No:49 | Peso: 33
+Soma dos pesos da solução: 671
+--------
+Solucao 5
+No:5 | Peso: 36
+No:9 | Peso: 30
+No:12 | Peso: 44
+No:13 | Peso: 40
+No:14 | Peso: 20
+No:20 | Peso: 34
+No:21 | Peso: 26
+No:23 | Peso: 34
+No:24 | Peso: 22
+No:26 | Peso: 33
+No:30 | Peso: 34
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:36 | Peso: 46
+No:38 | Peso: 32
+No:42 | Peso: 36
+No:46 | Peso: 33
+No:47 | Peso: 30
+No:48 | Peso: 35
+No:49 | Peso: 33
+Soma dos pesos da solução: 686
+--------
+Solucao 6
+No:9 | Peso: 30
+No:13 | Peso: 40
+No:15 | Peso: 22
+No:16 | Peso: 47
+No:17 | Peso: 23
+No:21 | Peso: 26
+No:23 | Peso: 34
+No:26 | Peso: 33
+No:28 | Peso: 36
+No:31 | Peso: 28
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:36 | Peso: 46
+No:40 | Peso: 39
+No:41 | Peso: 44
+No:42 | Peso: 36
+No:47 | Peso: 30
+No:48 | Peso: 35
+No:49 | Peso: 33
+No:50 | Peso: 38
+Soma dos pesos da solução: 668
+--------
+Solucao 7
+No:5 | Peso: 36
+No:7 | Peso: 27
+No:9 | Peso: 30
+No:10 | Peso: 31
+No:12 | Peso: 44
+No:19 | Peso: 42
+No:20 | Peso: 34
+No:24 | Peso: 22
+No:27 | Peso: 35
+No:29 | Peso: 31
+No:32 | Peso: 27
+No:33 | Peso: 35
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:36 | Peso: 46
+No:40 | Peso: 39
+No:41 | Peso: 44
+No:44 | Peso: 38
+No:46 | Peso: 33
+No:48 | Peso: 35
+No:49 | Peso: 33
+Soma dos pesos da solução: 723
+--------
+Solucao 8
+No:3 | Peso: 45
+No:5 | Peso: 36
+No:9 | Peso: 30
+No:13 | Peso: 40
+No:14 | Peso: 20
+No:17 | Peso: 23
+No:22 | Peso: 37
+No:24 | Peso: 22
+No:26 | Peso: 33
+No:28 | Peso: 36
+No:29 | Peso: 31
+No:30 | Peso: 34
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:36 | Peso: 46
+No:38 | Peso: 32
+No:39 | Peso: 45
+No:44 | Peso: 38
+No:45 | Peso: 34
+No:48 | Peso: 35
+Soma dos pesos da solução: 705
+--------
+Solucao 9
+No:3 | Peso: 45
+No:5 | Peso: 36
+No:9 | Peso: 30
+No:13 | Peso: 40
+No:14 | Peso: 20
+No:17 | Peso: 23
+No:20 | Peso: 34
+No:21 | Peso: 26
+No:23 | Peso: 34
+No:24 | Peso: 22
+No:26 | Peso: 33
+No:29 | Peso: 31
+No:30 | Peso: 34
+No:31 | Peso: 28
+No:32 | Peso: 27
+No:34 | Peso: 21
+No:35 | Peso: 40
+No:36 | Peso: 46
+No:37 | Peso: 35
+No:43 | Peso: 45
+No:49 | Peso: 33
+Soma dos pesos da solução: 683
+--------
+Média dos valores das soluções: 700.7
+A solucao tem média de desempenho 0.269384 pior que o da literatura.
