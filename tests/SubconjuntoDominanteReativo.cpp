@@ -2,6 +2,7 @@
 #include "../Graph.h"
 #include "../config.h"
 #include <set>
+
 using namespace std; 
 
 // int input_file[] = {6,0, 2, 3,0, 4, 1, 0, 5, 2, 1, 5, 4, 2, 3, 6, 2, 4, 3, 4, 5, 7};
@@ -156,7 +157,7 @@ int main()
     graph = readAdjacencyMatrix(input, 0, 0, 1);
 
     vector<double> alphas = {0.05, 0.10, 0.15, 0.30, 0.50};
-    int numIterations = 140;
+    int numIterations = 200;
     int block_size = 20;
 
     printNodesGreedy(graph->GreedyRandomizedReactive(alphas, numIterations, block_size),output);

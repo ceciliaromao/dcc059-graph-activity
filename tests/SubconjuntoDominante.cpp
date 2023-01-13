@@ -58,15 +58,21 @@ void printEdges(Graph *graph,ofstream&op)
     }
 }
 
-void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op)
+void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op, int instance)
 {
     int sumOfWeights = 0;
     for(auto i : solucao)
     {
         sumOfWeights += i.second;
-        op<<"Nó:" <<i.first<<" "<<"Peso: " <<i.second<<endl; 
+        op<<"No:" <<i.first<<" "<<"Peso: " <<i.second<<endl; 
     }
     cout << "Soma dos pesos: " << sumOfWeights << endl;
+    if (instance < sumOfWeights)
+        cout << "A solucao e " << (sumOfWeights / (double)instance) - 1 << " pior" << endl;
+    else if (instance > sumOfWeights)
+        cout << "A solucao e melhor! A literatura e " << (instance / (double)sumOfWeights) - 1 << " pior" << endl;
+    else
+        cout << "A soulcao e igual a literatura." << endl;
 }
 
 void printGraph(ofstream&op, Graph *graph){
@@ -140,6 +146,18 @@ Graph* readAdjacencyMatrix(ifstream&input_file,int directed, int weightedEdge, i
     cout << "Numero de arestas: " << graph->getNumberEdges() << endl;
     return graph;
 }
+enum {
+    SMALL_1 = 552,
+    SMALL_2 = 192,
+    SMALL_3 = 672,
+    MEDIUM_1 = 432,
+    MEDIUM_2 = 1608,
+    MEDIUM_3 = 1640,
+    MEDIUM_4 = 2723,
+    LARGE_1 = 1533,
+    LARGE_2 = 1825,
+    LARGE_3 = 1824 
+};
 
 int main()
 {
@@ -149,7 +167,7 @@ int main()
     string path = USER_DIR;
     string path_in = path;
 
-    path_in+="input/dominating_set/Problem.dat_50_50_3";
+    path_in+="input/dominating_set/Problem.dat_500_500_3";
 
     string path_out =path+ "output/output.txt";
     input.open(path_in, ios::in);
@@ -165,6 +183,6 @@ int main()
 
     // graph->writeDotFile(path_out);
 
-    printNodesGreedy(solucao,output);
+    printNodesGreedy(solucao,output,SMALL_1);
    
 }

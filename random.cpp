@@ -42,7 +42,7 @@
 */
 
 #include <stdio.h>
-#include "random.h"
+#include "random_n.h"
 
 /* Period parameters */  
 
@@ -177,13 +177,13 @@ double genrand_res53(void)
  * Retorno   : Retorna o numero aleatorio gerado.                                  *
  ***********************************************************************************/
 
-int xrandomRange (unsigned   short int min, unsigned   short int max)
+unsigned int xrandomRange (unsigned short int min, unsigned   short int max)
 {
     int delta;
 
     delta = max - min;
     if (delta >= 0)
-        return  (genrand_int32 () % delta+1);
+        return  (genrand_int32 () % (delta+1));
 
     return genrand_int32() % ((delta * -1)+1);
 }

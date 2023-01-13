@@ -5,7 +5,7 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
 #include "Node.h"
-#include "random.h"
+#include "random_n.h"
 #include <fstream>
 #include <stack>
 #include <list>

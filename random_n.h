@@ -6,8 +6,8 @@
  * Descricao: Definicao de funcoes para geracao de numeros aleatorios.            *
  **********************************************************************************/
 
-#ifndef __random_h__
-#define __random_h__
+#ifndef __random_n_h__
+#define __random_n_h__
 
 
 #define N 624
@@ -24,7 +24,7 @@ double genrand_real1(void);
 double genrand_real2(void);
 double genrand_real3(void);
 double genrand_res53(void);
-int xrandomRange (unsigned short int min, unsigned   short int max);
+unsigned int xrandomRange (unsigned short int min, unsigned   short int max);
 
 
 
