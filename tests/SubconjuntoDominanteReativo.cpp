@@ -157,8 +157,8 @@ int main()
     graph = readAdjacencyMatrix(input, 0, 0, 1);
 
     vector<double> alphas = {0.05, 0.10, 0.15, 0.30, 0.50};
-    int numIterations = 200;
-    int block_size = 20;
+    int numIterations = 2500;
+    int block_size = 500;
 
     printNodesGreedy(graph->GreedyRandomizedReactive(alphas, numIterations, block_size),output);
 }

@@ -762,8 +762,6 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
     unsigned int k = 0;
     while (i <= numIter) {
 
-        cout <<endl<< "XXXX ITERAÇÃO " << i << " XXXX" << endl;
-
         // candidate list is ordered according to biggest ratio between the weights sum of the
         // non-dominated neighbors and the weight of the node
         vector<int> candidateList = heuristic2(this,in_solution);
@@ -778,7 +776,6 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
             k = rNode(0, trunc(alpha* (float)candidateList.size()));
             sort(candidateList.begin(), candidateList.end(), greater<int>());
             int randomNode = candidateList[k];
-            cout << "nó escolhido: " << randomNode << endl;
 
             // if node is not in solution yet 
             if (!in_solution[randomNode]) {
@@ -786,7 +783,6 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
                 auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
                 in_solution[randomNode] = true;
                 currentWeight += getNode(randomNode)->getWeight();
-                cout << "entrou na solução!" << endl;
             }
 
             // remove node from candidate list
@@ -796,20 +792,16 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
             for (int j = 0; j < candidateList.size(); j++) {
                 Node * candidate = this->getNode(candidateList[j]);
                 if (candidate->searchEdge(randomNode)) {
-                    cout << j << " é adjacente. removendo da lista de candidatos." << endl;
                     candidateList.erase(candidateList.begin()+j);
                 }
             }
         }
-
-        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl << endl;
 
         // if current solution is better than best solution
         if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
             bestSolutionSet.clear();
             bestSolutionSet.swap(auxSolutionSet);
             bestWeight = currentWeight;  //?soma-se 1 aqui?? 
-            cout << "best solution updated!" << endl;
         }
 
         i++;
@@ -820,7 +812,6 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
 
     end = chrono::high_resolution_clock::now();
     int elapsed_seconds = chrono::duration_cast<chrono::milliseconds>(end-start).count();
-    cout<<endl<<"Tempo de execução: "<<elapsed_seconds<<" ms"<<endl;
 
     return bestSolutionSet;
 }
@@ -833,21 +824,17 @@ void Graph::updateProbabilities(vector<double>&probabilities, vector<double>alph
     double sum = 0, qi;
 
     for (int i = 0; i < alphas.size(); i++) {
-        if (avgWeights.at(i).first != 0) {
-            // qi = bestWeight/avgWeights.at(i).first;
-            qi = 10;
-        }
+        if (avgWeights.at(i).first != 0)
+            qi = (double)bestWeight/avgWeights.at(i).first;
         else
-            qi = 0;
+            qi = 1.0/alphas.size();
         q.push_back(qi);
         sum += qi;
     }
 
     for (int i = 0; i < alphas.size(); i++) {
         if (q.at(i) != 0)
-            // probabilities.at(i) = q.at(i) / sum;
-            probabilities.at(i) = q.at(i);
-        cout << "probabilities at " << i << ": " << probabilities.at(i) << endl;
+            probabilities.at(i) = q.at(i) / sum;
     }
 
     q.clear();
@@ -878,8 +865,6 @@ void Graph::updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double
 
             int qtd = avgWeights.at(j).second;
             double avg = avgWeights.at(j).first;
-
-            cout << "qtd: " << qtd << " avgWeight: " << avg << endl;
 
             avgWeights.at(j).first = (avg*(qtd-1) + currentWeight)/qtd;
             break;
@@ -917,11 +902,8 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
 
     while (i <= numIter) {
 
-        cout << "XXX ITERAÇÃO " << i << " XXX"<< endl;
-
         if (i % block_size == 0) {
             // update probabilities
-            cout << "probabilidades atualizadas" << endl;
             updateProbabilities(probabilities, alphas, bestWeight, avgWeights);
         }
 
@@ -963,8 +945,6 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
         }
 
         updateAvgWeights(avgWeights, alphas, alpha, currentWeight);
-        
-        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl;
 
         // if current solution is better than best solution
         if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
