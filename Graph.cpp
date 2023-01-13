@@ -822,3 +822,137 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
 
     return bestSolutionSet;
 }
+
+void Graph::updateProbabilities(vector<double>*probabilities, vector<double>alphas, int currentWeight, vector<double>avgWeights) {
+    
+    // according to section 3.1 Reactive GRASP on Handbook of Metaheuristics (check if it's correct)
+
+    vector <double> q;
+    double sum = 0;
+
+    for (int i = 0; i < alphas.size(); i++) {
+        q.push_back((double)currentWeight/avgWeights[i]);
+        sum += q[i];
+    }
+
+    for (int i = 0; i < alphas.size(); i++)
+        probabilities->at(i) = q[i]/sum;
+}
+
+double Graph::chooseAlpha(vector<double>* probabilities, vector<double> alphas) {
+    // choose alpha according to probabilities
+    double alpha;
+    double highest = 0;
+
+    for (int i = 0; i < probabilities->size(); i++) {
+        if (probabilities->at(i) > highest) {
+            highest = probabilities->at(i);
+            alpha = alphas[i];
+        }
+    }
+
+    return alpha;
+}
+
+void Graph::updateAvgWeights(vector<double>* avgWeights, vector<double> alphas, double alpha, int currentWeight, int i) {
+    // update average weights when alphas[j] == alpha
+    for (int j = 0; j < alphas.size(); j++) {
+        if (alphas[j] == alpha) {
+            avgWeights->at(j) = (avgWeights->at(j)*(i-1) + currentWeight)/i;
+            break;
+        }
+    }
+}
+
+set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int numIter, int block_size){
+    // list of probabilities
+    vector<double> probabilities;
+
+    // average of weights for each alpha
+    vector<double> avgWeights;
+
+    // set for the best solution
+    set<pair<int,int>> bestSolutionSet;
+
+    // set for the current solution
+    set<pair<int,int>> auxSolutionSet;
+
+    // map to verify if node is in solution
+    map<int,bool> in_solution;
+
+    int i=1, k, currentWeight = 0, bestWeight;
+
+    // initialize vector of probabilities with 1/m => m is the number of alphas
+    for (int j = 0; j < alphas.size(); j++) {
+        probabilities.push_back(1.0/alphas.size());
+    }
+
+    while (i <= numIter) {
+
+        if (i % block_size == 0) {
+            // update probabilities
+            updateProbabilities(&probabilities, alphas, currentWeight, avgWeights);
+        }
+
+        // candidate list is ordered according to biggest ratio between the weights sum of the
+        // non-dominated neighbors and the weight of the node
+        vector<int> candidateList = heuristic2(this,in_solution);
+        
+        // initialize solution set
+        for(int i = 1; i < this->order; i++){
+            in_solution.insert(make_pair(i,false));
+        }
+
+        double alpha = chooseAlpha(&probabilities, alphas);
+
+        do {
+
+            // exactly like the GRASP algorithm, but choosing between a set of possible alphas
+
+            k = rNode(0, trunc(alpha * (float)candidateList.size()));
+            
+            sort(candidateList.begin(), candidateList.end(), greater<int>());
+            int randomNode = candidateList[k];
+            cout << "nó escolhido: " << randomNode << endl;
+
+            // if node is not in solution yet 
+            if (!in_solution[randomNode]) {
+                // add node to solution
+                auxSolutionSet.insert(make_pair(randomNode,getNode(randomNode)->getWeight()));
+                in_solution[randomNode] = true;
+                currentWeight += getNode(randomNode)->getWeight();
+                cout << "entrou na solução!" << endl;
+            }
+
+            // remove node from candidate list
+            candidateList.erase(candidateList.begin()+k);
+
+            // remove dominated nodes from candidate list
+            for (int j = 0; j < candidateList.size(); j++) {
+                Node * candidate = this->getNode(candidateList[j]);
+                if (candidate->searchEdge(randomNode)) {
+                    cout << j << " é adjacente. removendo da lista de candidatos." << endl;
+                    candidateList.erase(candidateList.begin()+j);
+                }
+            }
+        } while (!candidateList.empty());
+
+        updateAvgWeights(&avgWeights, alphas, alpha, currentWeight, i);
+        
+        cout << endl << "best: " << bestWeight << " | current: " << currentWeight << endl << endl;
+
+        // if current solution is better than best solution
+        if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
+            bestSolutionSet.clear();
+            bestSolutionSet.swap(auxSolutionSet);
+            bestWeight = currentWeight;
+            cout << "best solution updated!" << endl;
+        }
+
+        i++;
+        currentWeight = 0;
+        auxSolutionSet.clear();
+    }
+
+    return bestSolutionSet;
+}

@@ -40,3 +40,5 @@ target_link_libraries(SubconjuntoDominante PUBLIC tdg)
 add_executable(SubconjuntoDominanteRandom SubconjuntoDominanteRandom.cpp)
 target_link_libraries(SubconjuntoDominanteRandom PUBLIC tdg)
 
+add_executable(SubconjuntoDominanteReativo SubconjuntoDominanteReativo.cpp)
+target_link_libraries(SubconjuntoDominanteReativo PUBLIC tdg)
