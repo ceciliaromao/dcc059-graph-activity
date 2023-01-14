@@ -1,1 +1,1 @@
-#define USER_DIR "/home/maria/ufjf/dcc059-graph-activity/"
+#define USER_DIR "C:/Users/Nicolas/Desktop/grafos/dcc059-graph-activity/"

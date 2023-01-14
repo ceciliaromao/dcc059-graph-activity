@@ -71,8 +71,8 @@ class Graph{
         set<pair<int,int>> GreedyConstructive();
         set<pair<int,int>> GreedyRandomizedAdaptive(double alpha, int iterations);
         set<pair<int,int>> GreedyRandomizedReactive(vector<double> alphas, int numIter, int block_size);
-        void updateProbabilities(vector<double>&probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights);
-        double chooseAlpha(vector<double>& probabilities, vector<double>alphas);
+        void updateProbabilities(vector<double>* probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights);
+        double chooseAlpha(vector<double>* probabilities, vector<double>alphas);
         void updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double> alphas, double alpha, int currentWeight);
 
 };

@@ -681,10 +681,32 @@ unsigned int rNode(int min, int max)
 {
     // if(min == max) return min; 
 
-    std::this_thread::sleep_for(25ms);
-    srand(std::chrono::system_clock::to_time_t(
-                           std::chrono::system_clock::now()));
-    unsigned int randomNumber = rand() % (max - min + 1) + min;
+    // std::this_thread::sleep_for(25ms);
+    // srand(std::chrono::system_clock::to_time_t(
+    //                        std::chrono::system_clock::now()));
+    std::random_device rd;
+    std::mt19937_64 e{rd()}; 
+    std::uniform_int_distribution<> dist{min, max};
+
+    // unsigned int randomNumber = rand() % (max - min + 1) + min;
+    unsigned int randomNumber = dist(e);
+    return randomNumber;
+}
+
+double numb()
+{
+    // if(min == max) return min; 
+
+    // std::this_thread::sleep_for(25ms);
+    // srand(std::chrono::system_clock::to_time_t(
+    //                        std::chrono::system_clock::now()));
+    std::random_device rd;
+    std::mt19937 e{rd()}; 
+    
+    std::uniform_real_distribution<double> dist{0.0, 1.0};
+
+    // unsigned int randomNumber = rand() % (max - min + 1) + min;
+    double randomNumber = dist(e);
     return randomNumber;
 }
 
@@ -816,16 +838,16 @@ set<pair<int,int>> Graph::GreedyRandomizedAdaptive(double alpha, int numIter){
     return bestSolutionSet;
 }
 
-void Graph::updateProbabilities(vector<double>&probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights) {
+void Graph::updateProbabilities(vector<double>*probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights) {
     
     // according to section 3.1 Reactive GRASP on Handbook of Metaheuristics (check if it's correct)
 
     vector <double> q;
     double sum = 0, qi;
-
+    
     for (int i = 0; i < alphas.size(); i++) {
         if (avgWeights.at(i).first != 0)
-            qi = (double)bestWeight/avgWeights.at(i).first;
+            qi = bestWeight/(double)avgWeights.at(i).first;
         else
             qi = 1.0/alphas.size();
         q.push_back(qi);
@@ -834,24 +856,48 @@ void Graph::updateProbabilities(vector<double>&probabilities, vector<double>alph
 
     for (int i = 0; i < alphas.size(); i++) {
         if (q.at(i) != 0)
-            probabilities.at(i) = q.at(i) / sum;
+            probabilities->at(i) = (q.at(i) / sum);
+        // if(avgWeights.at(i).first == 0)
+        //     probabilities->at(i) = 1.0/alphas.size();
+
     }
 
     q.clear();
 }
 
-double Graph::chooseAlpha(vector<double>& probabilities, vector<double> alphas) {
+// void Graph::updateProbabilities(vector<double>*probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights) {
+    
+//     for (int i = 0; i < alphas.size(); i++) {
+//             double p = avgWeights[i].first ;
+//             if (bestWeight > 0) {
+//                 p = bestWeight/p;
+//             } else {
+//                 p = 1.0 / alphas.size();
+//             }
+//             probabilities->at(i) = p;
+//             cout << "probabilities: " << probabilities->at(i) << endl;
+//         }  
+// }
+
+double Graph::chooseAlpha(vector<double>* probabilities, vector<double> alphas) {
     // choose alpha according to probabilities
     double alpha;
     double highest = 0;
-    
-    for (int i = 0; i < probabilities.size(); i++) {
-        if (probabilities.at(i) > highest) {
-            highest = probabilities.at(i);
+   
+    for (int i = 0; i < probabilities->size(); i++) {
+        if (probabilities->at(i) > highest) {
+            highest = probabilities->at(i);
             alpha = alphas[i];
+            
         }
+        // cout << "alpha: " << alphas[i] << " prob: " << probabilities->at(i) << endl;
     }
-    
+
+    // discrete_distribution<> d(probabilities->begin(), probabilities->end());
+    // random_device rd;
+    // mt19937 gen(rd());
+    // int index = d(gen);
+    // cout << d.probabilities()[3] << endl;
     return alpha;
 }
 
@@ -867,6 +913,7 @@ void Graph::updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double
             double avg = avgWeights.at(j).first;
 
             avgWeights.at(j).first = (avg*(qtd-1) + currentWeight)/qtd;
+            // cout << "alpha: " << alphas[j] << " avg: " << avgWeights.at(j).first << endl;
             break;
         }
     }
@@ -874,10 +921,10 @@ void Graph::updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double
 
 set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int numIter, int block_size){
     // list of probabilities
-    vector<double> probabilities;
+    vector<double> probabilities(alphas.size(), 1.0/alphas.size());
 
     // average of weights for each alpha
-    vector<pair<double,int>> avgWeights;
+    vector<pair<double,int>> avgWeights(alphas.size(), make_pair(0,0));
 
     // set for the best solution
     set<pair<int,int>> bestSolutionSet;
@@ -890,21 +937,24 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
 
     int i=1, currentWeight = 0, bestWeight = INT;
     unsigned int k;
-    // initialize vector of probabilities with 1/m => m is the number of alphas
-    for (int j = 0; j < alphas.size(); j++) {
-        probabilities.push_back(1.0/alphas.size());
+
+    double alpha = alphas.at(rNode(0, alphas.size()-1));
+    cout << alpha << endl;
+
+    bool runOnce = false;
+    map<double,bool>run_alphas;
+
+    for(auto i: alphas){
+        run_alphas.insert(make_pair(i,false));
     }
-    
-    // initialize vector of average weights with 0
-    for (int j = 0; j < alphas.size(); j++) {
-        avgWeights.push_back(make_pair(0,0));
-    }
+    run_alphas[alpha] = true;
 
     while (i <= numIter) {
 
-        if (i % block_size == 0) {
+        if (i % block_size == 0 && runOnce) {
             // update probabilities
-            updateProbabilities(probabilities, alphas, bestWeight, avgWeights);
+            updateProbabilities(&probabilities, alphas, bestWeight, avgWeights);
+            // alpha = alphas.at(rNode(0, alphas.size()-1));
         }
 
         // initialize solution set
@@ -917,11 +967,13 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
         vector<int> candidateList = heuristic2(this,in_solution);
         sort(candidateList.begin(), candidateList.end(), greater<int>());
 
-        double alpha = chooseAlpha(probabilities, alphas);
+        
         int c = 0;
         while (!candidateList.empty()) {
             // exactly like the GRASP algorithm, but choosing between a set of possible alphas
-            k = rNode(0, trunc((1-alpha)* (float)candidateList.size()));
+            // k = rNode(0, trunc((1-alpha)* (float)candidateList.size()));
+            // cout << c<<"k: " << k << endl;
+            // c++;
             int randomNode = candidateList[k];
 
             // if node is not in solution yet 
@@ -943,8 +995,13 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
                 }
             }
         }
-
+        
         updateAvgWeights(avgWeights, alphas, alpha, currentWeight);
+        if(runOnce)
+            alpha = chooseAlpha(&probabilities, alphas);
+        else
+            alpha = alphas.at(rNode(0, alphas.size()-1));
+        run_alphas[alpha] = true;
 
         // if current solution is better than best solution
         if ((i == 1 || currentWeight < bestWeight) && !auxSolutionSet.empty()) {
@@ -953,7 +1010,19 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
             bestWeight = currentWeight;
         }
 
+        int checker = 0;
+
+        for(auto i: run_alphas){
+            if(i.second)
+                checker++;
+        }
+
+        if(checker == alphas.size()-1){
+            runOnce = true;
+        }
+
         i++;
+        
         currentWeight = 0;
         auxSolutionSet.clear();
         in_solution.clear();
@@ -962,3 +1031,138 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
 
     return bestSolutionSet;
 }
+
+
+/*
+    Here is an example of how you might implement the Reactive GRASP procedure in C++, using the rule proposed in [78]:
+
+    #include <vector>
+    #include <random>
+    #include <numeric>
+    #include <iostream>
+
+    std::vector<double> RCL_values = {0.1, 0.2, 0.3, 0.4, 0.5}; // list of possible RCL values
+    std::vector<double> RCL_probabilities(RCL_values.size(), 1.0/RCL_values.size()); // initial probabilities for each RCL value
+    double incumbent_solution = 0; // the current best solution found
+    double average_solution = 0; // the average value of all solutions found
+
+    std::random_device rd; // used to obtain a seed for the random number engine
+    std::mt19937 gen(rd()); // standard mersenne_twister_engine seeded with rd()
+    std::discrete_distribution<> RCL_distribution(RCL_probabilities.begin(), RCL_probabilities.end()); // generates random RCL value based on probabilities
+
+    void updateProbabilities(double new_solution) {
+        average_solution = (average_solution * (RCL_values.size() - 1) + new_solution) / RCL_values.size(); // update average_solution
+        if (new_solution > incumbent_solution) {
+            incumbent_solution = new_solution; // update incumbent_solution
+        }
+
+        for (int i = 0; i < RCL_values.size(); i++) {
+            RCL_probabilities[i] = RCL_probabilities[i] * (1 - RCL_values[i]) + (RCL_values[i] * (incumbent_solution - average_solution));
+        }
+        RCL_distribution = std::discrete_distribution<>(RCL_probabilities.begin(), RCL_probabilities.end()); //update the discrete distribution
+    }
+
+    void grasp_iteration() {
+        double RCL = RCL_values[RCL_distribution(gen)]; // select RCL value based on probabilities
+        // construction phase of GRASP using RCL value
+        double new_solution = ...; // code to find new solution
+        updateProbabilities(new_solution);
+        // local search phase of GRASP using new_solution
+    }
+
+    int main() {
+        for (int i = 0; i < 100; i++) {
+            grasp_iteration();
+        }
+        return 0;
+    }
+
+    In this example, the RCL_values list stores the possible values for the RCL parameter, the RCL_probabilities list stores the probabilities of selecting each RCL value, incumbent_solution stores the current best solution found and average_solution stores the average value of all solutions found. The std::random_device, std::mt19937, and std::discrete_distribution are used to generate a random RCL value based on the probabilities.
+
+    The updateProbabilities function is called after each iteration to update the average_solution, incumbent_solution, and RCL_probabilities list. This function
+
+    #include <iostream>
+    #include <vector>
+    #include <set>
+    #include <map>
+    #include <algorithm>
+    #include <random>
+
+    using namespace std;
+
+    int rNode(int min, int max) {
+        random_device rd;
+        mt19937 mt(rd());
+        uniform_int_distribution<int> dist(min, max);
+        return dist(mt);
+    }
+
+    double numb() {
+        random_device rd;
+        mt19937 mt(rd());
+        uniform_real_distribution<double> dist(0, 1);
+        return dist(mt);
+    }
+
+    void updateProbabilities(vector<double>* probabilities, const vector<double>& alphas, int bestWeight, vector<pair<double,int>>& avgWeights) {
+        for (int i = 0; i < alphas.size(); i++) {
+            double p = avgWeights[i].first / avgWeights[i].second;
+            if (bestWeight > 0) {
+                p = p / bestWeight;
+            }
+            (*probabilities)[i] = p;
+        }
+    }
+
+    double chooseAlpha(vector<double>* probabilities, const vector<double>& alphas) {
+        std::discrete_distribution<> d(probabilities->begin(), probabilities->end());
+        int index = d(std::mt19937{std::random_device{}()});
+        return alphas[index];
+    }
+
+    void updateAvgWeights(vector<pair<double,int>>& avgWeights, const vector<double>& alphas, double alpha, int currentWeight) {
+        int index = -1;
+        for (int i = 0; i < alphas.size(); i++) {
+            if (alphas[i] == alpha) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            avgWeights[index].first += currentWeight;
+            avgWeights[index].second++;
+        }
+    }
+
+    int main() {
+        // list of possible alphas
+        vector<double> alphas{0.1, 0.2, 0.3, 0.4, 0.5};
+
+        // list of probabilities
+        vector<double> probabilities(alphas.size(), 1.0/alphas.size());
+
+        // average of weights for each alpha
+        vector<pair<double,int>> avgWeights;
+
+        // set for the best solution
+        set<pair<int,int>> bestSolutionSet;
+
+        // set for the current solution
+        set<pair<int,int>> auxSolutionSet;
+
+        // map to verify if node is in solution
+        map<int,bool> in_solution;
+
+        int numIter = 100;
+        int block_size = 10;
+        int i=1, currentWeight = 0, bestWeight = INT_MAX;
+        unsigned int k;
+
+        // initialize vector of average weights with 0
+        for (int j = 0; j < alphas.size(); j++) {
+            avgWeights.push_back(make_pair(0,0));
+        }
+
+    double alpha = alphas.at(rNode(0, alphas.size()-1));
+    cout << alpha
+*/
