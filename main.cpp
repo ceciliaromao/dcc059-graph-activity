@@ -79,9 +79,15 @@ void printNodesRandomReactiveGreedy(Graph* graph, ofstream&op, string input_file
 
     double avgWeights = 0;      // Média dos pesos de todas as soluções
     int sumOfWeights = 0;       // Soma dos pesos de uma solução
+    double avgTime = 0;         // Média do tempo de execução de todas as soluções
     
     for (int i = 0; i < 10; i++) {
+        auto t1 = chrono::high_resolution_clock::now();
         set<pair<int,int>> solucao = graph->GreedyRandomizedReactive(alphas, numIterations, block_size);
+        auto t2 = chrono::high_resolution_clock::now();
+        auto elapsed_seconds = chrono::duration_cast<chrono::duration<double>>(t2 - t1).count();
+        avgTime += elapsed_seconds;
+
         op << "Solucao " << i+1 << endl;
 
         // soma os pesos de cada nó da solução
@@ -98,6 +104,7 @@ void printNodesRandomReactiveGreedy(Graph* graph, ofstream&op, string input_file
     }
 
     avgWeights = avgWeights / 10.0;
+    avgTime = avgTime / 10.0;
 
     op << "Média dos valores das soluções: " << avgWeights << endl;
     cout << "Média dos valores das soluções: " << avgWeights << endl;
@@ -117,6 +124,11 @@ void printNodesRandomReactiveGreedy(Graph* graph, ofstream&op, string input_file
         op << "A média das soluções tem desempenho igual ao da literatura." << endl;
         cout << "A média das soluções tem desempenho igual ao da literatura." << endl;
     }
+
+    cout << "--------" << endl;
+
+    op << "Média do tempo de execução: " << avgTime << "s." << endl;
+    cout << "Média do tempo de execução: " << avgTime << "s." << endl;
 
     cout << "--------" << endl;
 }
@@ -125,11 +137,17 @@ void printNodesRandomReactiveGreedy(Graph* graph, ofstream&op, string input_file
 void printNodesRandomGreedy(Graph* graph, ofstream&op, string input_file_name, double alpha, int numIterations) {
     int instance = getLiteratureSolution(input_file_name);
 
-    double avgWeights = 0;     // Média dos pesos de todas as soluções
-    int sumOfWeights = 0;   // Soma dos pesos de uma solução
+    double avgWeights = 0;      // Média dos pesos de todas as soluções
+    int sumOfWeights = 0;       // Soma dos pesos de uma solução
+    double avgTime = 0;         // Média do tempo de execução de todas as soluções
     
     for (int i = 0; i < 10; i++) {
+        auto t1 = chrono::high_resolution_clock::now();
         set<pair<int,int>> solucao = graph->GreedyRandomizedAdaptive(alpha, numIterations);
+        auto t2 = chrono::high_resolution_clock::now();
+        auto elapsed_seconds = chrono::duration_cast<chrono::duration<double>>(t2 - t1).count();
+        avgTime += elapsed_seconds;
+
         op << "Solucao " << i+1 << endl;
 
         // soma os pesos de cada nó da solução
@@ -146,6 +164,7 @@ void printNodesRandomGreedy(Graph* graph, ofstream&op, string input_file_name, d
     }
 
     avgWeights = avgWeights / 10.0;
+    avgTime = avgTime / 10.0;
 
     op << "Média dos valores das soluções: " << avgWeights << endl;
     cout << "Média dos valores das soluções: " << avgWeights << endl;
@@ -167,9 +186,14 @@ void printNodesRandomGreedy(Graph* graph, ofstream&op, string input_file_name, d
     }
 
     cout << "--------" << endl;
+
+    op << "Média do tempo de execução: " << avgTime << "s." << endl;
+    cout << "Média do tempo de execução: " << avgTime << "s." << endl;
+
+    cout << "--------" << endl;
 }
 
-void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op, string input_file_name)
+void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op, string input_file_name, double elapsed_secs)
 {   
     int instance = getLiteratureSolution(input_file_name);
 
@@ -200,6 +224,11 @@ void printNodesGreedy(set<pair<int,int>> solucao,ofstream&op, string input_file_
         op << "A solucao tem desempenho igual ao da literatura." << endl;
         cout << "A solucao tem desempenho igual ao da literatura." << endl;
     }
+
+    cout << "--------" << endl;
+
+    cout  << "Tempo de execução: " << elapsed_secs << "s." << endl;
+    op << "Tempo de execução: " << elapsed_secs << "s." << endl;
 
     cout << "--------" << endl;
 }
@@ -296,8 +325,12 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file, string input_f
             cout << "Solução por algoritmo guloso" << endl;
             cout << "-----------" << endl;
 
+            auto t1 = chrono::high_resolution_clock::now();
             set<pair<int,int>> solucao = graph->GreedyConstructive();
-            printNodesGreedy(solucao, output_file, input_file_name);
+            auto t2 = chrono::high_resolution_clock::now();
+            auto elapsed_seconds = chrono::duration_cast<chrono::duration<double>>(t2 - t1).count();
+            
+            printNodesGreedy(solucao, output_file, input_file_name, elapsed_seconds);
 
             cout << "Solução gerada com sucesso no arquivo de saída!" << endl;
             cout << "-----------" << endl;

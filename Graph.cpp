@@ -1,5 +1,4 @@
 #include "Graph.h"
-#include "random_n.h"
 #include <thread>
 #define INT 99999
 #define timer_cout std::cout
