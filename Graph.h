@@ -58,16 +58,6 @@ class Graph{
         void removeNode(int id);
         bool searchNode(int id);
         Node* getNode(int id);
-        bool depthFirstSearch(int initialId,int targetId);
-        void breadthFirstSearch(ofstream& output_file);
-        Graph* getComplement();
-        Graph* getSubjacent();
-        Graph* getUnion(Graph* graph);
-        bool hasCircuit();
-        bool connectedGraph();
-        float** floydWarshall();
-        float* dijkstra(int id);
-        void writeDotFile(string file_name);
         set<pair<int,int>> GreedyConstructive();
         set<pair<int,int>> GreedyRandomizedAdaptive(double alpha, int iterations);
         set<pair<int,int>> GreedyRandomizedReactive(vector<double> alphas, int numIter, int block_size);
