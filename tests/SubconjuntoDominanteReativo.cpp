@@ -158,8 +158,8 @@ int main()
 
     vector<double> alphas = {0.05, 0.10, 0.15, 0.30, 0.50};
   
-    int numIterations = 250;
-    int block_size = 25;
+    int numIterations = 2500;
+    int block_size = 500;
 
     printNodesGreedy(graph->GreedyRandomizedReactive(alphas, numIterations, block_size),output);
 }
