@@ -9,7 +9,18 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <set>
+#include "Edge.h"
+#include <iostream>
+#include <queue>
+#include <cstdlib>
+#include <float.h>
+#include <iomanip>
 #include <vector>
+#include <limits.h>
+#include <random>
+#include <algorithm>
+#include<chrono>
 
 using namespace std;
 
@@ -31,8 +42,6 @@ class Graph{
         Node* first_node;
         Node* last_node;
         map<int, bool> verified; 
-
-
 
     public:
         //Constructor
@@ -57,26 +66,12 @@ class Graph{
         void removeNode(int id);
         bool searchNode(int id);
         Node* getNode(int id);
-        bool depthFirstSearch(int initialId,int targetId);
-        bool depthFirstSearch(int initialId, int targetId, ofstream &output_file); 
-        void breadthFirstSearch(ofstream& output_file);
-        Graph* getComplement();
-        Graph* getSubjacent();
-        Graph* getUnion(Graph* graph);
-        Graph* getIntersection(Graph *graph);
-        Graph* getDifference(Graph *graph);
-        bool isSubgraph(Graph* graph);
-        bool hasCircuit();
-        bool connectedGraph();
-        float** floydWarshall();
-        float* dijkstra(int id);
-        void writeDotFile(string file_name);
-        void pert(ofstream& path_out);
-
-
-    private:
-        int isIn(vector<pertTask> sol, int id);
-        //Auxiliar methods
+        set<pair<int,int>> GreedyConstructive();
+        set<pair<int,int>> GreedyRandomizedAdaptive(double alpha, int iterations);
+        set<pair<int,int>> GreedyRandomizedReactive(vector<double> alphas, int numIter, int block_size);
+        void updateProbabilities(vector<double>* probabilities, vector<double>alphas, int bestWeight, vector<pair<double,int>>avgWeights);
+        double chooseAlpha(vector<double>* probabilities, vector<double>alphas);
+        void updateAvgWeights(vector<pair<double,int>>& avgWeights, vector<double> alphas, double alpha, int currentWeight);
 
 };
 
