@@ -73,6 +73,55 @@ int getLiteratureSolution(string input_file_name)
     return instance;
 }
 
+// Faz 10 soluções diferentes e imprime a média dos pesos encontrados 
+void printNodesRandomReactiveGreedy(Graph* graph, ofstream&op, string input_file_name, vector<double> alphas, int numIterations, int block_size) {
+    int instance = getLiteratureSolution(input_file_name);
+
+    double avgWeights = 0;      // Média dos pesos de todas as soluções
+    int sumOfWeights = 0;       // Soma dos pesos de uma solução
+    
+    for (int i = 0; i < 10; i++) {
+        set<pair<int,int>> solucao = graph->GreedyRandomizedReactive(alphas, numIterations, block_size);
+        op << "Solucao " << i+1 << endl;
+
+        // soma os pesos de cada nó da solução
+        for(auto i : solucao){
+            sumOfWeights += i.second;
+            op<<"No:" << i.first << " | " << "Peso: " << i.second << endl; 
+        }   
+
+        op << "Soma dos pesos da solução: " << sumOfWeights << endl;
+        op << "--------" << endl;
+
+        avgWeights += sumOfWeights;
+        sumOfWeights = 0;
+    }
+
+    avgWeights = avgWeights / 10.0;
+
+    op << "Média dos valores das soluções: " << avgWeights << endl;
+    cout << "Média dos valores das soluções: " << avgWeights << endl;
+    cout << "Soma dos pesos da melhor solução da literatura: " << instance << endl;
+    cout << "--------" << endl;
+
+    if (instance < avgWeights) {
+        double qualidade = (avgWeights - instance) / (double)instance;
+        op << "A solucao tem média de desempenho " << qualidade << " pior que o da literatura." << endl;
+        cout << "A solucao tem média de desempenho " << qualidade << " pior que o da literatura." << endl;
+    } else if (instance > avgWeights) {
+        double qualidade = (instance - avgWeights) / avgWeights;
+        op << "A média da solucao é melhor que a da literatura! O desempenho da literatura foi " << qualidade << " pior." << endl;
+        cout << "A média da solucao e melhor que a da literatura! O desempenho da literatura foi " << (instance - sumOfWeights) / (double)sumOfWeights << " pior." << endl;
+    }
+    else {
+        op << "A média das soluções tem desempenho igual ao da literatura." << endl;
+        cout << "A média das soluções tem desempenho igual ao da literatura." << endl;
+    }
+
+    cout << "--------" << endl;
+}
+
+// Faz 10 soluções diferentes e imprime a média dos pesos encontrados 
 void printNodesRandomGreedy(Graph* graph, ofstream&op, string input_file_name, double alpha, int numIterations) {
     int instance = getLiteratureSolution(input_file_name);
 
@@ -292,13 +341,51 @@ void selecionar(int selecao, Graph* graph, ofstream& output_file, string input_f
             if (resposta == 'n')
                 exit(0);
 
-
             break;
         }
 
         // Guloso Randomizado Reativo
         case 3:{
+            cout << "-----------" << endl;
+            cout << "Solução por algoritmo guloso randomizado reativo" << endl;
+            cout << "-----------" << endl;
+
+            cout << "Insira a quantidade de alphas: ";
+            int n;
+            cin >> n;
+
+            vector<double> alphas;
             
+            for (int i = 0; i < n; i++) {
+                cout << "Insira o " << i+1 << "o valor de alpha: ";
+                double alpha;
+                cin >> alpha;
+                alphas.push_back(alpha);
+            }
+            
+            cout << "Insira o número de iterações: ";
+            int iteracoes;
+            cin >> iteracoes;
+
+            cout << endl << "Insira o tamanho do bloco: ";
+            int bloco;
+            cin >> bloco;
+            cout << "-----------" << endl;
+
+            cout << "O algoritmo será executado 10 vezes e a média das soluções será salva no arquivo de saída." << endl;
+
+            cout << "-----------" << endl;
+            
+            printNodesRandomReactiveGreedy(graph, output_file, input_file_name, alphas, iteracoes, bloco);
+
+            cout << "Solução gerada com sucesso no arquivo de saída!" << endl;
+            cout << "-----------" << endl;
+            cout << "Voltar para menu? (s/n) ";
+            char resposta;
+            cin >> resposta;
+            cout << "-----------" << endl;
+            if (resposta == 'n')
+                exit(0);
 
             break;
         }
@@ -335,8 +422,6 @@ int mainMenu(string input_file_name, ofstream& output_file, Graph* graph){
 
     return 0;
 }
-
-
 
 
 int main(int argc, char const *argv[]) {
