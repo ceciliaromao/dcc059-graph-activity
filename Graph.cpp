@@ -947,6 +947,7 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
     for(auto i: alphas){
         run_alphas.insert(make_pair(i,false));
     }
+
     run_alphas[alpha] = true;
 
     while (i <= numIter) {
@@ -971,7 +972,7 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
         int c = 0;
         while (!candidateList.empty()) {
             // exactly like the GRASP algorithm, but choosing between a set of possible alphas
-            // k = rNode(0, trunc((1-alpha)* (float)candidateList.size()));
+            k = rNode(0, trunc((1-alpha)* (float)candidateList.size()));
             // cout << c<<"k: " << k << endl;
             // c++;
             int randomNode = candidateList[k];
@@ -1001,6 +1002,7 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
             alpha = chooseAlpha(&probabilities, alphas);
         else
             alpha = alphas.at(rNode(0, alphas.size()-1));
+
         run_alphas[alpha] = true;
 
         // if current solution is better than best solution
@@ -1016,7 +1018,7 @@ set<pair<int,int>> Graph::GreedyRandomizedReactive(vector<double> alphas, int nu
             if(i.second)
                 checker++;
         }
-
+        cout << checker << endl;
         if(checker == alphas.size()-1){
             runOnce = true;
         }
